@@ -5,7 +5,7 @@ html, body {
     font-weight: 300;
     line-height: 1.5;
   }
-  
+
   body {
     font-family: 'Lato', sans-serif;
     background-image: url('https://s3.amazonaws.com/codecademy-content/projects/make-a-website/lesson-3/background.jpg');
@@ -13,25 +13,25 @@ html, body {
     background-size: cover;
     margin: 0;
   }
-  
+
   .page-title {
     text-align: center;
     font-weight: 100;
   }
-  
+
   .page-description {
     padding: 10px;
     border: 1px solid #000000;
     text-align: center;
   }
-  
+
   .gallery {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     margin-top: 20px;
   }
-  
+
   .gallery-item {
     border: 5px solid #FFF;
     margin: 20px;
@@ -43,18 +43,21 @@ html, body {
 
   }
   /* ============= Navigator ============= */
-  
+
   #nav {
-    background-color: #FFFFFF;
+    background-color: #fff;
     text-align: center;
+    position: sticky;
+    top: 0;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   }
-  
+
   #nav li {
     margin: 0;
     display: inline;
     padding: 0 10px;
   }
-  
+
   #nav ul {
     display: inline;
   }
@@ -74,7 +77,7 @@ html, body {
   }
   .nav-dropdown:hover .nav-dropdown-content {
     display: block;
-        
+
   }
   .nav-dropdown-content a:hover {background-color: #f1f1f1}
   .nav-dropdown-content a {
@@ -113,20 +116,16 @@ html, body {
     font-size: 250%;
     margin-top: 50px;
   }
-/* ===========Abaut blocks==========*/
+/* ===========Abaut blocks========== */
   .AbautBlock {
     position: inline;
     text-align: center;
     margin: 20px 20px 20px 20px;
     width: 300px;
     height: 500px;
-
-     
   }
 
-
-
-/* ===========Buttons==========*/
+/* ===========Buttons========== */
 
   .button1 {
     background-color: #4CAF50; /* Green */
@@ -144,3 +143,20 @@ html, body {
     box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
     cursor: pointer;
 }
+/* ===========News========= */
+
+  .newsblock {
+    padding: 20px 20px;
+    background-color: #fff;
+    text-allign: left;
+    display: block;
+    color: #000;
+    margin: 100px 200px 200px 200px;
+    height: 500px;
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+  }
+
+  .newsheading {
+    text-allign: left;
+    
+  }

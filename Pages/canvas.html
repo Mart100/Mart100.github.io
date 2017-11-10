@@ -2,13 +2,16 @@
     <head>
         <title>Canvas</title>
         <meta charset="utf-8"/>
-        <style type="text/css">
-            canvas {
-                border: 1px solid black;
-            }
-        </style>
-    </head>   
+        <script type="text/javascript" src="../canvas.js"></script>
+        <style type="text/css"></style>
+        <script>
+          var canvas = document.getElementById("myCanvas");
+          var ctx = canvas.getContext("2d");
+          ctx.fillStyle = "#FF0000";
+          ctx.fillRect(0,0,150,75);
+        </script>
+    </head>
     <body>
-        <canvas></canvas>
+      <canvas id="myCanvas" width="200" height="100" style="border:1px solid #000000;"></canvas>
     </body>
 </html>
