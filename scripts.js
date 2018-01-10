@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 $(document).ready(function(){
   $('.WhiteBOX').hover(function() {
     $(this).css('opacity', '1')
@@ -10,3 +11,6 @@ $(document).ready(function(){
     $(this).css('height', '400')
   })
 })
+=======
+
+>>>>>>> 305cd6a47ebb2d73a0a779b26bd49533bf178968

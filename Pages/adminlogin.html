@@ -1,0 +1,52 @@
+<html>
+  <head>
+    <title>Midoxus</title>
+    <meta charset="utf-8"/>
+    <link href='https://fonts.googleapis.com/css?family=Lato:400,300,100,700,900' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="../main.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="../scripts.js"></script>
+  </head>
+  <body>
+    <div id="nav">
+      <ul>
+        <li><a href="../index.html">Home Page</a></li>
+        <li>
+          <div class="nav-dropdown">
+            <a href="Discordbots.html">Discord bots</a>
+            <div class="nav-dropdown-content">
+              <a href="Midoxusbot.html">Midoxus bot</a>
+              <a href="Bubblebot.html">Bubble bot</a>
+            </div>
+          </div>
+        </li>
+        <li><a href="#">About us</a></li>
+        <div class="nav-dropdown">
+          More
+          <div class="nav-dropdown-content">
+            <a href="Games.html">Games</a>
+            <a href="canvas.html">Canvas</a>
+          </div>
+        </div>
+        <li><a href="adminlogin.html"><b>Administration</b></a></li>
+      </ul>
+    </div>
+    <div class="popup1">
+      Password:<input type="password" id="AdminPagePassword" style='font-size: 20px;'>
+      <button class="LoginButton" onclick="logintoadminpage()">Login</button>
+      <br /><div class="LoginINCORRECT">
+        <a id="demo"></a>
+      </div>
+      <script>
+        function logintoadminpage() {
+          if(document.getElementById("AdminPagePassword").value === 'marto') {
+            window.location.href = "adminpage.html";
+          } else {
+            document.getElementById("demo").innerHTML = 'Incorrect'
+            setTimeout(function(){document.getElementById("demo").innerHTML = ''}, 3000)
+          }
+        }
+      </script>
+    </div>
+  </body>
+</html>
