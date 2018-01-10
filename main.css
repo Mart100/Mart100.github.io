@@ -1,146 +1,163 @@
-html, body {
-    min-height: 100%;
-    display: flex;
-    flex-direction: column;
-    font-weight: 300;
-    line-height: 1.5;
-  }
-  
-  body {
-    font-family: 'Lato', sans-serif;
-    background-image: url('https://s3.amazonaws.com/codecademy-content/projects/make-a-website/lesson-3/background.jpg');
-    background-position: center top;
-    background-size: cover;
-    margin: 0;
-  }
-  
-  .page-title {
-    text-align: center;
-    font-weight: 100;
-  }
-  
-  .page-description {
-    padding: 10px;
-    border: 1px solid #000000;
-    text-align: center;
-  }
-  
-  .gallery {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin-top: 20px;
-  }
-  
-  .gallery-item {
-    border: 5px solid #FFF;
-    margin: 20px;
-  }
-
-  img {
-    margin: auto;
-    display: block;
-
-  }
-  /* ============= Navigator ============= */
-  
-  #nav {
-    background-color: #FFFFFF;
-    text-align: center;
-  }
-  
-  #nav li {
-    margin: 0;
-    display: inline;
-    padding: 0 10px;
-  }
-  
-  #nav ul {
-    display: inline;
-  }
-  .nav-dropdown {
-    position: relative;
-    display: inline-block;
-  }
-
-  .nav-dropdown-content {
-    display: none;
-    position: absolute;
-    background: #FFFFFF;
-    min-width: 110px;
-    text-align: left;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
-  }
-  .nav-dropdown:hover .nav-dropdown-content {
-    display: block;
-        
-  }
-  .nav-dropdown-content a:hover {background-color: #f1f1f1}
-  .nav-dropdown-content a {
-    text-decoration: none;
-    display: block;
-    text-align: left;
-    font-size: 120%;
+body {
+  font-family: 'Lato', sans-serif;
+  background-image: url('Pictures/soft-background.jpg');
+  background-position: center top;
+  background-size: cover;
+  margin: 0;
+  font-weight: 300;
 }
-  #nav a {
-    height: 60px;
-    line-height: 60px;
-    color: #204156;
-    text-decoration: none;
-  }
+
+img {
+  margin: auto;
+  display: block;
+}
+/* ============= Navigator ============= */
+
+#nav {
+  top: 0;
+  background-color: #fff;
+  height: 35px;
+  text-align: center;
+  position: sticky;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+#nav a {
+  position: relative;
+  position: inline;
+  padding: 10px 10px;
+  color: #204156;
+  text-decoration: none;
+  font-size: 20px;
+}
+
+#nav a:hover {
+  background-color: #d8d8d8;
+  cursor: pointer;
+}
+
 
 /* =============Containers============= */
 
-  .containerBlock-gray1 {
-    background-color: #212121;
-    height: 800px;
-  }
-  .containerBlock-gray2 {
-    background-color: #313131;
-    height: 500px;
-  }
-  .containerBlock-gray3 {
-    background-color: #333333;
-    height: 800px;
-  }
-  .containerBlock-background {
-    height: 500px;
-  }
-  .block-title {
-    color: #2895D4;
-    text-align: center;
-    font-size: 250%;
-    margin-top: 50px;
-  }
-/* ===========Abaut blocks==========*/
-  .AbautBlock {
-    position: inline;
-    text-align: center;
-    margin: 20px 20px 20px 20px;
-    width: 300px;
-    height: 500px;
+.containerBlock-gray1 {
+  background-color: #212121;
+  height: 800px;
+}
+.containerBlock-gray2 {
+  background-color: #313131;
+  height: 500px;
+}
+.containerBlock-gray3 {
+  background-color: #333333;
+  height: 800px;
+}
+.containerBlock-background {
+  height: 500px;
+}
+.block-title {
+  color: #2895D4;
+  text-align: center;
+  font-size: 250%;
+  margin-top: 50px;
+}
+/* ===========Abaut blocks========== */
+.AbautBlock {
+  position: inline;
+  text-align: center;
+  margin: 20px 20px 20px 20px;
+  width: 300px;
+  height: 500px;
+}
 
-     
-  }
+/* ===========Buttons========== */
 
+.button1 {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: #000000;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: block;
+  font-size: 20px;
+  margin-top: 100px;
+  margin: auto;
+}
+.button1:hover {
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+  cursor: pointer;
+}
+/* ===========News========= */
 
+.newsblock {
+  padding: 20px 20px;
+  background-color: #fff;
+  text-allign: left;
+  display: block;
+  color: #000;
+  margin: 100px 200px 200px 200px;
+  height: 500px;
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
 
-/* ===========Buttons==========*/
+.newsheading {
+  text-allign: left;
 
-  .button1 {
-    background-color: #4CAF50; /* Green */
-    border: none;
-    color: #000000;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: block;
-    font-size: 20px;
-    margin-top: 100px;
-    margin: auto;
-  }
-  .button1:hover {
-    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
-    cursor: pointer;
+}
+/* ===========ADMINlogin========= */
+
+.popup1 {
+  padding: 20px;
+  background-color: #fff;
+  text-allign: center;
+  color: #000;
+  font-size: 30px;
+  margin: auto;
+  margin-top: 100px;
+  display: inline-block;
+  top: 200px;
+  height: 60px;
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+.LoginButton {
+  background-color: #fff;
+  border: none;
+  color: #000000;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 20px;
+  margin: auto;
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+.LoginButton:hover {
+  cursor: pointer;
+  background-color: #e8e8e8;
+}
+.LoginINCORRECT {
+  text-allign: center;
+  padding-left: 160px;
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+  margin: auto;
+  margin-top: 50px;
+  background-color: #fff;
+}
+/* ========== WhiteBOX ====== */
+.WhiteBOX {
+  display: inline-block;
+  width: 200;
+  height: 300;
+  margin: 50;
+  background-color: #fff;
+  color: #000;
+  font-size: 30px;
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+  opacity: 0.7;
+}
+.boxWrapper {
+  margin:0px auto;
+  width: 100%;
+  text-align: center;
+  height: 1000;
+  padding-bottom:20px;
 }
