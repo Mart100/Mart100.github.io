@@ -144,6 +144,7 @@ img {
 }
 /* ========== WhiteBOX ====== */
 .WhiteBOX {
+  vertical-align: top;
   display: inline-block;
   width: 300;
   height: 350;
