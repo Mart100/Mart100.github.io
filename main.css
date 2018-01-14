@@ -171,3 +171,15 @@ img {
   height: 1000;
   padding-bottom:20px;
 }
+/* Discord */
+.contact-discord hover {
+    color:#3b5999;
+    box-shadow:0 0 5px #3b5999;
+    -webkit-box-shadow:0 0 5px #3b5999;
+    -moz-box-shadow:0 0 5px #3b5999;
+    -o-box-shadow:0 0 5px #3b5999;
+    text-shadow:0 0 5px #3b5999;
+    -webkit-text-shadow:0 0 5px #3b5999;
+    -moz-text-shadow:0 0 5px #3b5999;
+    -o-text-shadow:0 0 5px #3b5999;
+    cursor:pointer;}
