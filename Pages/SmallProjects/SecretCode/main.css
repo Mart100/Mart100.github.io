@@ -6,9 +6,11 @@ body {
 .checkbox {
   width: 100;
   height: 80;
+  cursor: pointer;
 }
 .Submit {
   width: 300;
   height: 80;
+  cursor: pointer;
   background-color: blue;
 }
