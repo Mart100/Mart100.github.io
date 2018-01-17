@@ -13,8 +13,7 @@ $(function() {
     }
     for(let i = 0; i < $("#length").val(); i++) {
       if(charnum == 1 || (charnum == 3 && Math.random() < 0.5)) Code += Math.round(Math.random() * 10)
-      else Code += alphabet[Math.round(Math.random() * 25 + 1)]
-      console.log(Math.round(Math.random() * 25 + 1))
+      else Code += alphabet[Math.round(Math.random() * 25)]
     }
     $(".code").append(Code)
   })
