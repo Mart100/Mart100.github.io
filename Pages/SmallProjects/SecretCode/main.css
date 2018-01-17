@@ -1,7 +1,14 @@
 body {
   background-color: #232323;
-}
-.text {
-  font-size: 100;
   color: white;
+  font-size: 50;
+}
+.checkbox {
+  width: 100;
+  height: 80;
+}
+.Submit {
+  width: 300;
+  height: 80;
+  background-color: blue;
 }

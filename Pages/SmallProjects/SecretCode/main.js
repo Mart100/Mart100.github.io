@@ -1,12 +1,21 @@
 $(function() {
-  let i = 0
-  const calc = setInterval(function() {
-    i++
-    if(i % 2 == 0 || i % 3 == 0) i++
-    if(Priemgetal(i)) $('.text').prepend(i + '<br />')
-  }, 1)
-  function Priemgetal(i) {
-    for(p = 1; p < (i / 2); p += 2) if(i % p == 0 && p != 1) return false
-    return true
-  }
+  const alphabet = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z']
+  $(".SUBMIT").click(function() {
+    $(".code").text('CODE: ')
+    let Code = ''
+    let charnum = 0
+    if($("#numbersC").prop('checked')) charnum = 1
+    if($("#charactersC").prop('checked')) charnum = 2
+    if($("#numbersC").prop('checked') && $("#charactersC").prop('checked')) charnum = 3
+    if(charnum == 0) {
+      $(".code").append('CHECK THE DAMN RADIO\'S')
+      return
+    }
+    for(let i = 0; i < $("#length").val(); i++) {
+      if(charnum == 1 || (charnum == 3 && Math.random() < 0.5)) Code += Math.round(Math.random() * 10)
+      else Code += alphabet[Math.round(Math.random() * 25 + 1)]
+      console.log(Math.round(Math.random() * 25 + 1))
+    }
+    $(".code").append(Code)
+  })
 })
