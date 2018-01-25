@@ -1,7 +1,7 @@
 // Start when page is loaded
 $(function() {
   start()
-  KeyEvents()
+  $(document).keydown(function(event) { LastKey = event.keyCode})
 })
 // Create Variables
 let Move
@@ -96,9 +96,6 @@ function Restart() {
   Snake.pos = ['5-5','5-6','5-7']
   Snake.movedirection = 'right'
   start()
-}
-function KeyEvents() {
-  $(document).keydown(function(event) { LastKey = event.keyCode})
 }
 function paint() {
   for(i = 0; i < 20; i++) {
