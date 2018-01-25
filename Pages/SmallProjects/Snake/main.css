@@ -1,5 +1,6 @@
 body {
   background-color: #3d3d3d;
+  font-family: 'Yu Gothic UI Light', sans-serif;
 }
 .block {
   position: absolute;
@@ -15,4 +16,38 @@ body {
   position: absolute;
   width: 23px;
   height: 23px;
+}
+.GameOver {
+  position: absolute;
+  border-radius: 5px;
+  transform: translateX(-50%);
+  left: 50%;
+  top: 40%;
+  font-size: 250%;
+  text-align: center;
+  background-color: white;
+  width: 200px;
+  height: 100px;
+}
+.Restart {
+  transform: translateX(-50%);
+  left: 50%;
+  position: absolute;
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 2px 5px 20px 0px rgba(0,0,0,0.4);
+  font-size: 80%;
+  width: 150px;
+  cursor: pointer;
+}
+.Restart:hover {
+  background-color: #e8e8e8;
+  box-shadow: 2px 5px 20px 0px rgba(0,0,0,0.6);
+}
+.Score {
+  position: absolute;
+  transform: translateX(-50%);
+  left: 50%;
+  font-size: 60%;
+  top: -40px;
 }

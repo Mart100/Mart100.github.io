@@ -4,55 +4,57 @@ $(function() {
   KeyEvents()
 })
 // Create Variables
-let Snakepos = ['5-10','5-11','5-12','5-13','6-13','6-14']
-const Game = {'keys': {} }
+let Move
+let LastKey
 const Snake = {
-  'movingdirection': 'right',
+  'movedirection': 'right',
   'grow': false,
+  'pos': ['5-5','5-6','5-7'],
   move() {
     Snake.checkCollision()
-    if(!Snake.grow) Snakepos.shift()
+    if(!Snake.grow) Snake.pos.shift()
     Snake.grow = false
     // right
-    if((Game.keys[68] || Game.keys[39]) && Snake.movingdirection != 'left') MoveTo('right')
+    if((LastKey == 68 || LastKey == 39) && Snake.movedirection != 'left') MoveTo('right')
     // left
-    else if((Game.keys[65] || Game.keys[37]) && Snake.movingdirection != 'right') MoveTo('left')
+    else if((LastKey == 65 || LastKey == 37) && Snake.movedirection != 'right') MoveTo('left')
     // up
-    else if((Game.keys[87] || Game.keys[38]) && Snake.movingdirection != 'down') MoveTo('up')
+    else if((LastKey == 87 || LastKey == 38) && Snake.movedirection != 'down') MoveTo('up')
     // down
-    else if((Game.keys[83] || Game.keys[40]) && Snake.movingdirection != 'up') MoveTo('down')
-    else MoveTo(Snake.movingdirection)
+    else if((LastKey == 83 || LastKey == 40) && Snake.movedirection != 'up') MoveTo('down')
+    else MoveTo(Snake.movedirection)
+    paint()
     function MoveTo(direction) {
-      let FSPx = parseInt(Snakepos[Snakepos.length - 1].split('-')[1])
-      let FSPy = parseInt(Snakepos[Snakepos.length - 1].split('-')[0])
+      let FSPx = parseInt(Snake.pos[Snake.pos.length - 1].split('-')[1])
+      let FSPy = parseInt(Snake.pos[Snake.pos.length - 1].split('-')[0])
       switch(direction) {
         case('left'):
-          Snakepos.push((FSPy)+'-'+(FSPx-1))
-          Snake.movingdirection = 'left'
+          Snake.pos.push((FSPy)+'-'+(FSPx-1))
+          Snake.movedirection = 'left'
           break
         case('right'):
-          Snakepos.push((FSPy)+'-'+(FSPx+1))
-          Snake.movingdirection = 'right'
+          Snake.pos.push((FSPy)+'-'+(FSPx+1))
+          Snake.movedirection = 'right'
           break
         case('up'):
-          Snakepos.push((FSPy-1)+'-'+(FSPx))
-          Snake.movingdirection = 'up'
+          Snake.pos.push((FSPy-1)+'-'+(FSPx))
+          Snake.movedirection = 'up'
           break
         case('down'):
-          Snakepos.push((FSPy+1)+'-'+(FSPx))
-          Snake.movingdirection = 'down'
+          Snake.pos.push((FSPy+1)+'-'+(FSPx))
+          Snake.movedirection = 'down'
           break
       }
     }
   },
   checkCollision() {
     // Check if double value
-    if((new Set(Snakepos)).size !== Snakepos.length) $('.block').remove()
-    for(let i = 0; i < Snakepos.length; i++) {
+    if((new Set(Snake.pos)).size !== Snake.pos.length) GameOver()
+    for(let i = 0; i < Snake.pos.length; i++) {
       // Check for walls
-      if(Snakepos[i].includes('--1')) $('.block').remove()
-      if(Snakepos[i].includes('20')) $('.block').remove()
-      if(Snakepos[i].includes(Apple.pos)) {
+      if(Snake.pos[i].replace(/[^-]/g, "").length > 1) GameOver()
+      if(Snake.pos[i].includes('20')) GameOver()
+      if(Snake.pos[i].includes(Apple.pos)) {
         Apple.new()
         Snake.grow = true
       }
@@ -65,6 +67,7 @@ const Apple = {
     let x = Math.round(Math.random() * 19)
     let y = Math.round(Math.random() * 19)
     Apple.pos = y+'-'+x
+    paint()
   }
 }
 // Functions
@@ -75,19 +78,32 @@ function start() {
       $('.block').append(`<div class="pixelDIV" id="${i/24}-${ii/24}"style="top: ${i}; left: ${ii}"></div>`)
     }
   }
-  setInterval(function() { Snake.move() }, 200)
-  setInterval(function() { paint() }, 100)
+  Move = setInterval(function() { Snake.move() }, 100)
   Apple.new()
 
 }
+function GameOver() {
+  clearInterval(Move)
+  $('.block').animate({opacity: '0.2'}, 1000)
+  $('body').append(`<div class="GameOver"> <span>Game Over</span> <div class="Score">Score: ${Snake.pos.length}</div> <div class="Restart">Restart</div> </div>`)
+  $('.Restart').on('click', () => Restart())
+}
+function Restart() {
+  $('.block').animate({opacity: '1'}, 500)
+  $('.block *').remove()
+  $('.GameOver').remove()
+  $('.Restart').off('click')
+  Snake.pos = ['5-5','5-6','5-7']
+  Snake.movedirection = 'right'
+  start()
+}
 function KeyEvents() {
-  $(document).keyup(function(event) { Game.keys[event.keyCode] = false })
-  $(document).keydown(function(event) { Game.keys[event.keyCode] = true })
+  $(document).keydown(function(event) { LastKey = event.keyCode})
 }
 function paint() {
   for(i = 0; i < 20; i++) {
     for(ii = 0; ii < 20; ii++) {
-      if(Snakepos.includes(i+'-'+ii)) $('#'+i+'-'+ii).css({ 'background-color': 'green'})
+      if(Snake.pos.includes(i+'-'+ii)) $('#'+i+'-'+ii).css({ 'background-color': 'green'})
       else if(Apple.pos == (i+'-'+ii)) $('#'+i+'-'+ii).css({ 'background-color': 'red'})
       else $('#'+i+'-'+ii).css({ 'background-color': 'white'})
     }
