@@ -1,0 +1,62 @@
+@font-face {
+  font-family: Digital;
+  src: url(Assets/FontType/timeburnernormal.ttf)
+}
+
+
+body {
+  background-color: #232323;
+}
+#textInput {
+  position: absolute;
+  z-index: 2;
+  margin: 0;
+  border-radius: 4px;
+  color: #444;
+  background-color: white;
+  resize: none;
+  left: 10%;
+  right: 10%;
+  top: 8%;
+  width: 80%;
+  height: 70%;
+}
+#Submit {
+  position: absolute;
+  margin: 0;
+  border-radius: 4px;
+  color: #444;
+  background-color: white;
+  left: 10%;
+  right: 10%;
+  top: 1%;
+  width: 10%;
+  height: 5%;
+}
+#Statics {
+  position: absolute;
+  left: 0px;
+  width: 100%;
+  top: 85%;
+  height: 100%;
+}
+#Statics > div {
+  color: white;
+  font-family: Digital;
+  font-size: 300%;
+  text-align: center;
+}
+#Statics img {
+  transform: rotate(90deg)
+}
+.ArrowIMG {
+  height: 30px;
+  width: 30px;
+  cursor: pointer;
+}
+#ExpandedText {
+  font-size: 100%;
+}
+#ExpandedText span {
+  background-color: #1e1e1e;
+}
