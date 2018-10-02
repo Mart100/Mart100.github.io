@@ -1,0 +1,20 @@
+body {
+    background-color: #232323;
+    margin: 0;
+}
+#canvas {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+}
+#Allsettings {
+    background-color: #303030;
+    color: white;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 400px;
+    height: 200px;
+    border-radius: 0px 0px 0px 10px;
+    user-select: none;
+  }
