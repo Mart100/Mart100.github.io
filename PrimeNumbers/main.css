@@ -1,0 +1,22 @@
+body {
+  background-color: #232323;
+  margin: 0;
+}
+.PN2-9 {
+  font-size: 54;
+  color: white;
+}
+#PN1 {
+  font-size: 200;
+  color: white;
+}
+#box {
+  position: absolute;
+  width: 400px;
+  height: 700px;
+  left: 50%;
+  top: 50%;
+  margin: -350px 0 0 -200px;
+  text-align: center;
+  background-color: #1c1c1c;
+}

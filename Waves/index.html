@@ -1,0 +1,25 @@
+<html>
+  <head>
+      <title>Waves</title>
+      <meta charset="utf-8"/>
+      <link rel="stylesheet" type="text/css" href="main.css">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+      <script src="main.js"></script>
+      <script src="draw.js"></script>
+      <script src="process.js"></script>
+  </head>
+  <body>
+    <div id="hud">
+      <div id="AllSettings">
+        Mode:
+        <button id="settingsModeRW" onclick="changeMode('realisticWaves')">realistic Waves</button>
+        <button id="settingsModeNoise" onclick="changeMode('noise')">noise</button>
+        <hr>
+        <div id="settings"></div>
+        <hr>
+        <div id="buttons"></div>
+      </div>
+    </div>
+    <canvas id="canvas"></canvas>
+  </body>
+</html>
