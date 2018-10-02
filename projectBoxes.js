@@ -39,7 +39,12 @@ let projects = {
     collisions1D: {
         title: '1D-collisions',
         image: 'https://i.gyazo.com/a80383962f28ec36938b4cc2bf8b3718.png',
-        link: siteLink+'SecretCode'
+        link: siteLink+'1D-collision'
+    },
+    collisions2D: {
+        title: '2D-collisions',
+        image: 'https://i.gyazo.com/a80383962f28ec36938b4cc2bf8b3718.png',
+        link: siteLink+'2D-collision'
     },
     Waves: {
         title: 'Waves',

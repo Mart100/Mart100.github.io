@@ -1,0 +1,28 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="script.js"></script>
+  </head>
+  <body>
+    <div id="optionsBOX">
+      <div id="optionBlock0">
+        <b class="text1">  Red block:</b><br>
+        speed: <input type="number" value="1" id="block0speed"><br>
+        mass:  <input type="number" value="1" id="block0mass">
+      </div>
+      <div id="optionBlock1">
+        <b class="text1">  Blue block:</b><br>
+        speed: <input type="number" value="3" id="block1speed"><br>
+        mass:  <input type="number" value="2" id="block1mass">
+      </div>
+      <div id="buttonREFRESH" class="button1" onclick="refresh()">Refresh</div>
+      <div id="buttonPAUSE" class="button1" onclick="pause()">Pause</div>
+      
+      
+    </div>
+    <div id="road"></div>
+    <div id="block0">Speed: 0<br>Mass: 0</div>
+    <div id="block1">Speed: 0<br>Mass: 0</div>
+  </body>
+</html>

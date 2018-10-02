@@ -1,0 +1,78 @@
+body {
+    font-family: "Benton Sans", "Helvetica Neue", helvetica, arial, sans-serif;
+    margin: 0;
+    background-color: black;
+  }
+  
+  #road {
+    background-color: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateY(-50%) translateX(-50%);
+    height: 100px;
+    width: 1400px;
+    
+  }
+  #block0 {
+    background-color: red;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateY(-50%) translateX(-500%);
+    height: 100px;
+    width: 140px;
+    font-size: 20px;
+    text-align: center;
+    color: white;
+    font-weight: bold;
+  }
+  #block1 {
+    background-color: blue;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateY(-50%) translateX(400%);
+    height: 100px;
+    width: 140px;
+    font-size: 20px;
+    text-align: center;
+    color: white;
+    font-weight: bold;
+  }
+  #optionsBOX {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 150px;
+    height: 200px;
+    color: white;
+    font-size: 20px;
+    user-select: none;
+  }
+  input {
+    background-color: transparent;
+    width: 74px;
+    color: white;
+    border: 1px solid black;
+    border-radius: 2px;
+    font-size: 20px;
+    
+  }
+  #optionBlock0 {
+    background-color: red;
+    padding: 5px;
+  }
+  #optionBlock1 {
+    background-color: blue;
+    padding: 5px;
+  }
+  .button1 {
+    background-color: green;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    cursor: pointer;
+    padding: 8px;
+  }
+  .button1:hover { background-color: #005e00 }
