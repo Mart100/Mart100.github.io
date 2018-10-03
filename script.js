@@ -4,7 +4,6 @@ $(() => {
     let stateR = 2
     let states = ['_--', '-_-', '--_', '-_-']
     setInterval(() => {
-        console.log('test')
         $('title').html(states[stateL]+' Mart '+states[stateR])
         stateL++
         stateR++

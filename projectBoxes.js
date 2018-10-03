@@ -66,8 +66,22 @@ let projects = {
         title: 'Waves',
         image: 'https://i.imgur.com/QMRUOgR.png',
         link: siteLink+'Waves',
+        created: '1/10/2018',
+        latestUpdate: '1/10/2018'
+    },
+    GameOfLife: {
+        title: 'Game Of Life',
+        image: 'https://i.imgur.com/jiKiLsT.gif',
+        link: siteLink+'GameOfLife',
         created: '2/10/2018',
         latestUpdate: '2/10/2018'
+    },
+    AnalogClock: {
+        title: 'Analog Clock',
+        image: 'https://i.imgur.com/V9xZWsT.png',
+        link: siteLink+'Analog Clock',
+        created: '3/10/2018',
+        latestUpdate: '3/10/2018'
     },
 }
 $(() => {
