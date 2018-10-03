@@ -1,8 +1,40 @@
 let canvas, ctx
 let time = {s: 0, m: 0, h: 0}
 let size = 100
-if(window.innerHeight < window.innerWidth) size = window.innerWidth/5
-else size = window.innerHeight/5
+if(window.innerHeight < window.innerWidth) size = window.innerHeight/3
+else size = window.innerWidth/3
+
+let settings = {
+    romanNumbers: {
+        show: true,
+    },
+    extraOuterCircle: true,
+    pointers: {
+        seconds: {
+            show: true,
+            thick: size/70,
+            length: size/1.03,
+            color: 'black', // color
+            lineCap: 'butt', // butt || round
+            smoothAnimation: 'ease', // ease || linear || none
+        },
+        minutes: {
+            show: true,
+            thick: size/35,
+            length: size/1.1,
+            color: 'black',
+            lineCap: 'butt',
+        },
+        hours: {
+            show: true,
+            thick: size/20,
+            length: size/1.8,
+            color: 'black',
+            lineCap: 'butt',
+        },
+    },
+    backgroundInnerLayer: 'rgba(255, 255, 255, 0.2)', // rgba code
+}
 
 var background = new Image()
 background.src = "https://i.imgur.com/ecPf0J8.jpg"
