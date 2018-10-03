@@ -79,7 +79,7 @@ let projects = {
     AnalogClock: {
         title: 'Analog Clock',
         image: 'https://i.imgur.com/V9xZWsT.png',
-        link: siteLink+'Analog Clock',
+        link: siteLink+'analogClock',
         created: '3/10/2018',
         latestUpdate: '3/10/2018'
     },
