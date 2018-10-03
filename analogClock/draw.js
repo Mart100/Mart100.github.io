@@ -42,7 +42,7 @@ function frame() {
     ctx.lineWidth = size/20
     ctx.beginPath()
     ctx.moveTo(0,0)
-    ctx.lineTo(Math.cos(toRad(time.h/24*360-90))*size/1.8,Math.sin(toRad(time.h/24*360-90))*size/1.8)
+    ctx.lineTo(Math.cos(toRad(time.h/12*360-90))*size/1.8,Math.sin(toRad(time.h/24*360-90))*size/1.8)
     ctx.stroke()
 
 }
