@@ -28,23 +28,25 @@ function frame() {
     ctx.lineWidth = size/70
     ctx.beginPath()
     ctx.moveTo(0,0)
-    ctx.lineTo(Math.cos(toRad(time.s/60*360-90))*size/1.03,Math.sin(toRad(time.s/60*360-90))*size/1.03)
+    ctx.lineTo(Math.cos(toRad(easeInOutCubic((time.ms/1000))+time.s)/60*360-90)*size/1.03,Math.sin(toRad(easeInOutCubic((time.ms/1000))+time.s)/60*360-90)*size/1.03)
     ctx.stroke()
 
     // minutes
     ctx.lineWidth = size/35
     ctx.beginPath()
     ctx.moveTo(0,0)
-    ctx.lineTo(Math.cos(toRad(time.m/60*360-90))*size/1.1,Math.sin(toRad(time.m/60*360-90))*size/1.1)
+    ctx.lineTo(Math.cos(toRad((time.s/60+time.m)/60*360-90))*size/1.1,Math.sin(toRad((time.s/60+time.m)/60*360-90))*size/1.1)
     ctx.stroke()
 
     // hours
     ctx.lineWidth = size/20
     ctx.beginPath()
     ctx.moveTo(0,0)
-    ctx.lineTo(Math.cos(toRad(time.h/12*360-90))*size/1.8,Math.sin(toRad(time.h/24*360-90))*size/1.8)
+    ctx.lineTo(Math.cos(toRad((time.m/60+time.h)/12*360-90))*size/1.8,Math.sin(toRad((time.m/60+time.h)/12*360-90))*size/1.8)
     ctx.stroke()
 
 }
 
 function toRad (angle) { return angle * (Math.PI / 180) }
+
+function easeInOutCubic(t) { return t<.5 ? 4*t*t*t : (t-1)*(2*t-2)*(2*t-2)+1 }

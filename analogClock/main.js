@@ -20,6 +20,7 @@ $(function() {
   // update time
   setInterval(() => {
     let date = new Date()
+    time.ms = date.getMilliseconds()
     time.s = date.getSeconds()
     time.m = date.getMinutes()
     time.h = date.getHours()
