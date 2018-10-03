@@ -9,9 +9,9 @@ body {
 .projectBOX {
   vertical-align: top;
   display: inline-block;
-  width: 450;
+  width: 350px;
   border-radius: 2px;
-  height: 450;
+  height: 350px;
   margin: 10;
   font-size: 50px;
   cursor: pointer;
@@ -37,8 +37,8 @@ body {
 
 .projectBOX:hover {
   margin: 0;
-  width: 470;
-  height: 470;
+  width: 370;
+  height: 370;
   font-size: 60px;
 
 }
