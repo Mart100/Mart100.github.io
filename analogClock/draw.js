@@ -30,7 +30,7 @@ function frame() {
     ctx.beginPath()
     ctx.moveTo(0,0)
     if(settings.pointers.seconds.smoothAnimation == 'ease') {
-        ctx.lineTo(Math.cos(toRad((easeInOutCubic(time.ms/1000)+time.s)/60*360-90))*size/1.03,Math.sin(toRad((easeInOutCubic(time.ms/1000)+time.s)/60*360-90))*settings.pointers.seconds.length)
+        ctx.lineTo(Math.cos(toRad((easeInOutCubic(time.ms/1000)+time.s)/60*360-90))*size/1.03, Math.sin(toRad((easeInOutCubic(time.ms/1000)+time.s)/60*360-90))*settings.pointers.seconds.length)
     } else if(settings.pointers.seconds.smoothAnimation == 'linear') {
         ctx.lineTo(Math.cos(toRad((time.ms/1000+time.s)/60*360-90))*size/1.03,Math.sin(toRad((time.ms/1000+time.s)/60*360-90))*settings.pointers.seconds.length)
     } else {
@@ -85,8 +85,8 @@ function frame() {
         drawRomanI(size/12, size+size/5)
 
         // 9
-        drawRomanI(-size-size/12, 0)
-        drawRomanX(-size-size/4.5, 0)
+        drawRomanI(-size-size/3.5, 0)
+        drawRomanX(-size-size/7, 0)
 
     }
 

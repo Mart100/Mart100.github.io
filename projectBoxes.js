@@ -44,7 +44,7 @@ let projects = {
     kenmerkendeAspecten: {
         title: 'Kenmerkende Aspecten',
         image: 'https://i.gyazo.com/9c98afc30a2719c3eaf8334d8626c225.png',
-        link: siteLink+'SecretCode',
+        link: 'https://geschiedenis.glitch.me/',
         created: '.././2018',
         latestUpdate: '.././2018'
     },

@@ -1,0 +1,89 @@
+body {
+  background-color: #232323;
+  margin: 0;
+  font-family: Arial,Helvetica Neue,Helvetica,sans-serif;
+}
+#phaseMenu {
+    background-color: white;
+    position: absolute;
+    top: 0;
+    left: 0; 
+    right: 0; 
+    margin-left: auto; 
+    margin-right: auto; 
+    width: 200px; /* Need a specific value to work */
+    height: 30px;
+    padding: 20px 0px;
+    border-radius: 0px 0px 20px 20px;
+    font-size: 30px;
+    transition: opacity .5s ease;
+    cursor: none;
+    user-select: none;
+}
+#phaseMenu:hover {
+    opacity: 0.1;
+}
+#canvas {
+    cursor: none;
+}
+#nextButton {
+    position: absolute;
+    background-color: white;
+    bottom: 0;
+    right: 0;
+    width: 70px;
+    height: 70px;
+    border-radius: 20px 0px 0px 0px;
+    cursor: pointer;
+}
+#nextButton img {
+    width: 70px;
+    height: 70px;
+}
+
+/* ==========Settings Menu========== */
+#settingsWindow {
+    position: absolute;
+    box-shadow: 25px 25px 41px -5px rgba(0,0,0,0.83);
+    background-color: white;
+    border-radius: 10px;
+    width: 400px;
+    height: 500px;
+}
+#settingsWindowHead {
+    position: relative;
+    top: 0px;
+    width: 100%;
+    height: 35px;
+    background-color: #cecece;
+    border-radius: 10px 10px 0px 0px;
+    font-size: 35px;
+    user-select: none;
+    text-align: center;
+    padding: 15px 0px 15px 0px;
+}
+#settingsWindowSubmit {
+    width: 70px;
+    height: 40px;
+    position: absolute;
+    font-size: 18px;
+    right: 0px;
+    bottom: 0px;
+    border-radius: 20px 0px 10px 0px;
+    background-color: #5ec94e;
+    cursor: pointer;
+    border: none;
+}
+input:invalid+span:after {
+    content: '✖';
+    padding-left: 5px;
+  }
+  
+input:valid+span:after {
+content: '✓';
+padding-left: 5px;
+}
+
+#settingsWindow form div {
+    margin: 5px;
+}
