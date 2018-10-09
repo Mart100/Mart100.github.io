@@ -32,6 +32,18 @@ class Window {
             'width': '400px',
             'height': '500px',
         })
+        this.applyHeadCss()
+
+        // id draggable. Add drag ability
+        if(this.drag.enabled) setTimeout(() => { this.enableDraggable() }, 10)
+    }
+    setHtml(html) {
+        $('#'+this.id).html(`<div id="${this.id+'-head'}">${this.title}</div>`)
+        this.applyHeadCss()
+        $('#'+this.id).append(html)
+
+    }
+    applyHeadCss() {
         // set css of windowHead
         $('#'+this.id+'-head').css({
             'position': 'relative',
@@ -45,21 +57,17 @@ class Window {
             'text-align': 'center',
             'padding': '15px 0px 15px 0px',
         })
-
-        // id draggable. Add drag ability
-        if(this.drag.enabled) {
-            this.drag.enabled = false
-            this.enableDraggable()
-        }
     }
-    setHtml(html) {
-        $('#'+this.id).append(html)
+    getHtml() {
+        $('#'+this.id).html()
     }
     elemToNum(elem) {
         return Number(elem.replace('px', ''))
     }
+    remove() {
+        $('#'+this.id).remove()
+    }
     enableDraggable() {
-        if(this.drag.enabled) return 
         this.drag.enabled = true
 
         // on mouseDown

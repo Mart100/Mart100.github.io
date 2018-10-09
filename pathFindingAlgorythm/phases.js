@@ -3,63 +3,139 @@ async function nextPhase(ToPhase) {
     phase = ToPhase
     switch(ToPhase) {
         case('settings'): {
-            $('body').append(`
-            <div id="settingsWindow" style="left: ${screen.width/2-200}px; top: ${screen.height/2-250}px;">
-                <div id="settingsWindowHead">Settings</div>
-
-                <form id="settings-form">
-                    <div>
-                        <label for="settings-maxtime">maxTime (ms): </label>
-                        <input type="number" id="settings-maxtime" min="1000" step="1000" value="8000"/>
-                        <span class="validity"></span>
-                    </div>
-                    <div>
-                        <label for="settings-population">population: </label>
-                        <input type="number" id="settings-population" min="100" max="5000" step="100" value="400"/>
-                        <span class="validity"></span>
-                    </div>
-                    
-                    <input type="submit" id="settingsWindowSubmit">
-                </form>
-            </div>`)
-            $('#settingsWindowHeadMap').css('background-color', '#b7b7b7')
+            // some stuff
+            $('#nextButton').remove()
+            $('#canvas').css('cursor', 'default')
             $('#phaseMenu').html('<center>Settings</center>')
 
-            // on settingsWindowHead grabber
-            $('#settingsWindowHead').on('mousedown', () => {  
-                $('body').css('cursor', 'grabbing')
-                settings.window.offset = {x: elemToNum($('#settingsWindow').css('left'))-input.mouse.pos.x, y: elemToNum($('#settingsWindow').css('top'))-input.mouse.pos.y}
-                settings.window.drag = true
-            })
-            $('#settingsWindowHead').on('mouseup', () => {    
-                $('body').css('cursor', 'grab')
-                settings.window.drag = false
-            
-            })
-            $('#settingsWindowHead').on('mouseenter', () => { $('body').css('cursor', 'grab') })
-            $('#settingsWindowHead').on('mouseleave', () => { $('body').css('cursor', 'default') })
+            // create settings window
+            let settingsWindow = new Window({id:'settingsWindow', title: 'Settings'})
+            // add form
+            settingsWindow.setHtml(`
+            <form id="settings-form">
+                <div>
+                    <label for="settings-population">population: </label>
+                    <input type="number" id="settings-population" min="200" max="5000" step="200" value="400"/>
+                    <span class="validity"></span>
+                </div>
+                
+                <input type="submit" id="settingsWindowSubmit">
+            </form>
+            `)
 
             // on settings submit
-            $('#settings-form').submit((e) => { 
+            $('#settings-form').submit((e) => {
                 e.preventDefault()
                 // set all settings
-                $('#settings-maxtime')
+                algorithm.populationSize = Number($('#settings-population').val())
 
                 // remove settings page
-                $('#settingsWindow').remove()
+                settingsWindow.remove()
                 nextPhase('loading')
 
             })
+            break
         }
         case('loading'): {
+            //canvasFastReload = false
+            // loading phaseMenu
+            $('#phaseMenu').html('<center>Loading...</center>')
+
             // calculate Lines to pixels
             for(let num in drawing.lines) {
-                let distance = []
+                let line = drawing.lines[num]
+                let vector = {x: line.end.x-line.start.x, y: line.end.y-line.start.y }
+                let distance = Math.floor(Math.sqrt(Math.abs(vector.x*vector.x)+Math.abs(vector.y*vector.y)))
                 // loop trough distance
+                for(let i=0; i < distance; i++) {
+                    let whereOnVector = {x: vector.x/distance*i, y: vector.y/distance*i}
+                    let rotatedVector = {x: -whereOnVector.y/i, y: whereOnVector.x/i}
 
+                    pixels.push(Math.floor((line.start.x + whereOnVector.x)/10)+'|'+Math.floor((line.start.y + whereOnVector.y)/10))
+                }
             }
-        }
+            console.log('DONE: calculating lines into pixels')
+            // spread distance virus
 
+            // create grid
+            for(let x=0;x<canvas.width/10;x++) { 
+                distanceGrid[x] = []; 
+                for(let y=0;y<canvas.height/10;y++) distanceGrid[x][y] = 0
+            }
+            // begin virus
+            distanceGrid[3][3] = 1
+            
+            let stopLoop = false
+            let finishGeneration = 0
+            newGeneration(1)
+
+            // loop trough "generations"
+            function newGeneration(g) { //for(let g=0;g<1e3;g++) {
+                //if(g % 10 == 0) console.log('generation: '+g)
+                // if(stopLoop) break
+
+                let newGrid = distanceGrid.slice()
+                // loop trough pixels
+                for(let x=0; x<distanceGrid.length; x++) { 
+                    for(let y=0; y<distanceGrid[0].length; y++) { 
+                        if(distanceGrid[x][y] == 0) continue
+                        if(distanceGrid[x][y] != g-1) continue
+                        
+
+                        // only pixels that have been effected
+                        if(distanceGrid[x-1][y] == 0 && !pixels.includes((x-1)+'|'+(y))) newGrid[x-1][y] = g  // left
+                        if(distanceGrid[x][y-1] == 0 && !pixels.includes((x)+'|'+(y-1))) newGrid[x][y-1] = g // top
+                        if(distanceGrid[x+1][y] == 0 && !pixels.includes((x+1)+'|'+(y))) newGrid[x+1][y] = g // right
+                        if(distanceGrid[x][y+1] == 0 && !pixels.includes((x)+'|'+(y+1))) newGrid[x][y+1] = g // bottom
+                        //console.log(distanceGrid[x][y+1] == 0, !checkForPixels(x, y, 0, 10))
+
+                        // if pixel is at finish
+                        if(canvas.width-x*10 < 50 && canvas.height-y*10 < 50) {
+                            highestDistance = newGrid[x][y]
+                            finishGeneration = g
+                            setTimeout(() => { 
+                                stopLoop = true
+                                nextPhase('evolution')
+                                console.log('DONE: spreading distance Virus')
+                            }, 2000)
+                            
+                        }
+                    }
+                }
+                distanceGrid = newGrid.slice()
+                if(!stopLoop) {
+                    setTimeout(() => { newGeneration(g+1) }, 1)
+
+                }
+                
+            }
+            break
+        }
+        case('evolution'): {
+            $('#phaseMenu').html('<center>Evolution</center>')
+            createRandomPopulation()
+
+
+        }
 
     }
 }
+function checkForPixels(X, Y, plusX, plusY) {
+    for(let x=X*10+plusX; x<X*10+10+plusX; x++) { 
+        for(let y=Y*10+plusY; y<Y*10+10+plusY; y++) {
+            if(pixels.toString().includes(x+'|'+y)) return true
+        }
+    }
+    return false
+}
+/*async function effectNeighbourPixels(x, y, strength) {
+    return new Promise(async (resolve, reject) => {
+        distanceGrid[x][y] = strength
+        if(distanceGrid[x-1][y] == 0 && !pixels.toString().includes((x-1)+'|'+(y))) await effectNeighbourPixels(x-1, y, strength+1) // left
+        if(distanceGrid[x][y-1] == 0 && !pixels.toString().includes((x)+'|'+(y-1))) await effectNeighbourPixels(x, y-1, strength+1) // top
+        if(distanceGrid[x+1][y] == 0 && !pixels.toString().includes((x+1)+'|'+(y))) await effectNeighbourPixels(x+1, y, strength+1) // right
+        if(distanceGrid[x][y+1] == 0 && !pixels.toString().includes((x)+'|'+(y+1))) await effectNeighbourPixels(x, y+1, strength+1) // bottom
+        resolve()
+    })
+    return
+}*/
