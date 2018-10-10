@@ -12,10 +12,10 @@ function tick() {
 
             //if(Math.random() > 0.99) console.log('CurrentMove: '+algorithm.currentMove+'   nextMove: '+nextMove)
             if(nextMove != undefined) noneMoving = false
-            if(nextMove == 1) if(pixels.includes((cube.pos.x-1)+'|'+(cube.pos.y))) cube.died = true; else cube.pos.x -= 10
-            if(nextMove == 2) if(pixels.includes((cube.pos.x)+'|'+(cube.pos.y-1))) cube.died = true; else cube.pos.y -= 10
-            if(nextMove == 3) if(pixels.includes((cube.pos.x+1)+'|'+(cube.pos.y))) cube.died = true; else cube.pos.x += 10
-            if(nextMove == 4) if(pixels.includes((cube.pos.x)+'|'+(cube.pos.y+1))) cube.died = true; else cube.pos.y += 10;
+            if(nextMove == 1) if(pixels.includes(Math.floor(cube.pos.x/10-1)+'|'+Math.floor(cube.pos.y/10))) cube.died = true; else cube.pos.x -= 10
+            if(nextMove == 2) if(pixels.includes(Math.floor(cube.pos.x/10)+'|'+Math.floor(cube.pos.y/10-1))) cube.died = true; else cube.pos.y -= 10
+            if(nextMove == 3) if(pixels.includes(Math.floor(cube.pos.x/10+1)+'|'+Math.floor(cube.pos.y/10))) cube.died = true; else cube.pos.x += 10
+            if(nextMove == 4) if(pixels.includes(Math.floor(cube.pos.x/10)+'|'+Math.floor(cube.pos.y/10+1))) cube.died = true; else cube.pos.y += 10;
         }
         if(noneMoving) {
             newGeneration()

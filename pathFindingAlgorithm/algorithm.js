@@ -1,6 +1,6 @@
 function createRandomPopulation() {
     for (var i=0; i<algorithm.populationSize; i++) {
-        algorithm.population.push(new Cube(2000))
+        algorithm.population.push(new Cube(algorithm.totalMoves))
     }
     
 }
@@ -18,7 +18,6 @@ function newGeneration() {
     for(let i=0;i<algorithm.populationSize;i++) {
         totalFitness += algorithm.population[i].fitness
     }
-    console.log(algorithm.population)
     algorithm.averageFitness += -algorithm.averageFitness/10 + totalFitness/10
     console.log('Generation: '+algorithm.generation+'   TotalFitnness: '+totalFitness+'   Improvement: '+Math.round(totalFitness/algorithm.averageFitness*100-100)+'%   Best cube fitness: '+algorithm.population[0].fitness)
 
@@ -28,23 +27,33 @@ function newGeneration() {
     // create new population
     for(let i=0;i<algorithm.populationSize;i++) {
         // backup best cubes 10%
-        if(i < algorithm.populationSize*0.1) newPopulation.push(new Cube(algorithm.population[i].moves))
+        if(i < algorithm.populationSize*0.1) newPopulation.push(algorithm.population[i].clone())
 
-        // mutation of best cubes 70%
-        else if(i < algorithm.populationSize*0.8) {
-            let wich = Math.ceil(i % algorithm.populationSize*0.1)
-            let clone = new Cube()
-            algorithm.population[wich].mutate()
-            clone.moves = algorithm.population[wich].moves
+        // mutation of best cubes 80%
+        else if(i < algorithm.populationSize*0.9) {
+            let clone = algorithm.population[Math.ceil(i % (algorithm.populationSize*0.1))].clone()
+            clone.mutate(Math.random()*1)
             newPopulation.push(clone)
 
         } 
-        // totally random 20%
-        else newPopulation.push(new Cube(100))
+        // totally random 10%
+        else newPopulation.push(new Cube(algorithm.totalMoves+algorithm.plusMovesPerGen*algorithm.generation))
     }
 
-    
+    // add ... moves to cube
+    console.log(newPopulation)
+    for(let i=0;i<algorithm.populationSize;i++) {
+        for(let j=0;j<algorithm.plusMovesPerGen;j++) {
+            newPopulation[i].moves[algorithm.totalMoves+algorithm.plusMovesPerGen*algorithm.generation+j] = randomDirection()
+        }
+    }
+
+    console.log(algorithm.population[0])
     algorithm.population = newPopulation
+    console.log(algorithm.population[0])
 
 
+}
+function randomDirection() {
+    return Math.floor(Math.random()*5)
 }

@@ -93,7 +93,7 @@ async function nextPhase(ToPhase) {
                         if(canvas.width-x*10 < 50 && canvas.height-y*10 < 50) {
                             highestDistance = newGrid[x][y]
                             finishGeneration = g
-                            setTimeout(() => { 
+                            setTimeout(() => {
                                 stopLoop = true
                                 nextPhase('evolution')
                                 console.log('DONE: spreading distance Virus')

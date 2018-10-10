@@ -10,20 +10,22 @@ class Cube {
     }
     randomize(size) {
         for (var i=0;i<size;i++) {
-            let random = Math.floor(Math.random()*5)
-            this.moves[i] = random 
+            let random = randomDirection()
+            this.moves[i] = random
         }
     }
     calcFitness() {
-        if(this.pos.x < 1 || this.pos.y < 1) this.fitness = 0
+        if(this.died) this.fitness = distanceGrid[Math.floor(this.pos.x/10)][Math.floor(this.pos.y/10)]*0.8
         else this.fitness = distanceGrid[Math.floor(this.pos.x/10)][Math.floor(this.pos.y/10)]
     }
-    mutate() {
+    mutate(strength) {
         // loop trough moves
         for(let num in this.moves) {
-            if(Math.random() > 0.5) this.moves[num] = Math.floor(Math.random()*5)
-
+            if(Math.random() < strength) this.moves[num] = randomDirection()
         }
+    }
+    clone() {
+        return new Cube(this.moves)
     }
 }
 

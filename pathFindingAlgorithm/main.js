@@ -6,12 +6,15 @@ let distanceGrid = []
 let highestDistance = 1000
 let drawing = {lines: [], size: 10, line: {start: {x: 0, y: 0}, show: false}}
 let drawSpeed = 0
+let tickInterval
 let algorithm = {
     population: [],
     currentMove: 0,
     populationSize: 0,
     generation: 0,
-    averageFitness: 2000
+    averageFitness: 2000,
+    totalMoves: 400,
+    plusMovesPerGen: 10
 }
 let settings = {
     window: {
@@ -34,7 +37,7 @@ $(function() {
   canvas.width = window.innerWidth
   canvas.height = window.innerHeight
   window.requestAnimationFrame(frame)
-  setInterval(() => { tick() }, 5)
+  tickInterval = setInterval(() => { tick() }, 5)
 
   // prevent right click
   document.addEventListener('contextmenu', e => e.preventDefault());
@@ -45,3 +48,8 @@ $(function() {
   })
 
 })
+
+function changeSimulationSpeed(speed) {
+    clearInterval(tickInterval)
+    tickInterval = setInterval(() => { tick() }, speed)
+}
