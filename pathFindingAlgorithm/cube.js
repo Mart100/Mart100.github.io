@@ -15,14 +15,19 @@ class Cube {
         }
     }
     calcFitness() {
-        if(this.died) this.fitness = distanceGrid[Math.floor(this.pos.x/10)][Math.floor(this.pos.y/10)]*0.8
+        if(this.died) this.fitness = 0 //distanceGrid[Math.floor(this.pos.x/10)][Math.floor(this.pos.y/10)]*0.8
         else this.fitness = distanceGrid[Math.floor(this.pos.x/10)][Math.floor(this.pos.y/10)]
     }
     mutate(strength) {
-        // loop trough moves
-        for(let num in this.moves) {
-            if(Math.random() < strength) this.moves[num] = randomDirection()
-        }
+        return new Promise((resolve, reject) => {
+            let newMoves = []
+            // loop trough moves
+            for(let num in this.moves) {
+                if(Math.random() < strength) newMoves[num] = randomDirection()
+                else newMoves[num] = this.moves[num]
+            }
+            resolve(newMoves)
+        })
     }
     clone() {
         return new Cube(this.moves)

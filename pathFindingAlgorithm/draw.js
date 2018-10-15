@@ -52,11 +52,11 @@ function frame() {
         ctx.fillStyle = 'rgba(244, 26, 26, 1)'
         ctx.strokeStyle = 'rgba(0, 0, 0, 1)'
         ctx.lineWidth = 10
-        for (var i=algorithm.populationSize-1; i > 0; i--) {
-            if(i == 0) ctx.fillStyle = 'rgba(255, 255, 255, 0.6)'
-            else if(i < algorithm.populationSize*0.1) ctx.fillStyle = 'rgba(255, 0, 0, 0.2)'
-            else if(i < algorithm.populationSize*0.9) ctx.fillStyle = 'rgba(0, 255, 0, 0.2)'
-            else ctx.fillStyle = 'rgba(0, 0, 255, 0.2)'
+        for (var i=algorithm.populationSize-1; i >= 0; i--) {
+            if(i == 0) ctx.fillStyle = 'rgba(255, 255, 255, 1)'
+            else if(i < algorithm.populationSize*0.1) ctx.fillStyle = 'rgba(255, 0, 0, 1)'
+            else if(i < algorithm.populationSize*0.9) ctx.fillStyle = 'rgba(0, 255, 0, 1)'
+            else ctx.fillStyle = 'rgba(0, 0, 255, 1)'
 
             let cube = algorithm.population[i]
             ctx.beginPath()

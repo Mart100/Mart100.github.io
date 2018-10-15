@@ -37,7 +37,7 @@ $(function() {
   canvas.width = window.innerWidth
   canvas.height = window.innerHeight
   window.requestAnimationFrame(frame)
-  tickInterval = setInterval(() => { tick() }, 5)
+  tickInterval = setInterval(() => { tick() }, 1)
 
   // prevent right click
   document.addEventListener('contextmenu', e => e.preventDefault());

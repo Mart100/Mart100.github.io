@@ -128,14 +128,3 @@ function checkForPixels(X, Y, plusX, plusY) {
     }
     return false
 }
-/*async function effectNeighbourPixels(x, y, strength) {
-    return new Promise(async (resolve, reject) => {
-        distanceGrid[x][y] = strength
-        if(distanceGrid[x-1][y] == 0 && !pixels.toString().includes((x-1)+'|'+(y))) await effectNeighbourPixels(x-1, y, strength+1) // left
-        if(distanceGrid[x][y-1] == 0 && !pixels.toString().includes((x)+'|'+(y-1))) await effectNeighbourPixels(x, y-1, strength+1) // top
-        if(distanceGrid[x+1][y] == 0 && !pixels.toString().includes((x+1)+'|'+(y))) await effectNeighbourPixels(x+1, y, strength+1) // right
-        if(distanceGrid[x][y+1] == 0 && !pixels.toString().includes((x)+'|'+(y+1))) await effectNeighbourPixels(x, y+1, strength+1) // bottom
-        resolve()
-    })
-    return
-}*/
