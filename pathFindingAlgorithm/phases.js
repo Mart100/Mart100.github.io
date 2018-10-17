@@ -9,13 +9,23 @@ async function nextPhase(ToPhase) {
             $('#phaseMenu').html('<center>Settings</center>')
 
             // create settings window
-            let settingsWindow = new Window({id:'settingsWindow', title: 'Settings'})
+            let settingsWindow = new Window({id:'settingsWindow', title: 'Settings', size: {width: '300px', height: '500px'}, exitButton: false})
             // add form
             settingsWindow.setHtml(`
             <form id="settings-form">
                 <div>
-                    <label for="settings-population">population: </label>
-                    <input type="number" id="settings-population" min="200" max="5000" step="200" value="400"/>
+                    <label for="settings-population">population Size: </label>
+                    <input type="number" id="settings-population" min="1" max="5000" value="400" style="width: 50px;"/>
+                    <span class="validity"></span>
+                </div>
+                <div>
+                    <label for="settings-plusStepsPerGen">Extra Steps Per Generation: </label>
+                    <input type="number" id="settings-plusStepsPerGen" min="0" value="5" style="width: 50px;"/>
+                    <span class="validity"></span>
+                </div>
+                <div>
+                    <label for="settings-bestOfPrevious">Best of Previous Gen 0-1: </label>
+                    <input type="number" id="settings-bestOfPrevious" max="1" value="0.1" ste|style="width: 50px;"/>
                     <span class="validity"></span>
                 </div>
                 
@@ -63,16 +73,14 @@ async function nextPhase(ToPhase) {
                 for(let y=0;y<canvas.height/10;y++) distanceGrid[x][y] = 0
             }
             // begin virus
-            distanceGrid[3][3] = 1
+            distanceGrid[Math.round(canvas.width/10-10)][Math.round(canvas.height/10-10)] = 1
             
             let stopLoop = false
-            let finishGeneration = 0
+            let isDoingNothing = false
             newGeneration(1)
 
-            // loop trough "generations"
-            function newGeneration(g) { //for(let g=0;g<1e3;g++) {
-                //if(g % 10 == 0) console.log('generation: '+g)
-                // if(stopLoop) break
+            function newGeneration(g) {
+                isDoingNothing = true
 
                 let newGrid = distanceGrid.slice()
                 // loop trough pixels
@@ -81,41 +89,42 @@ async function nextPhase(ToPhase) {
                         if(distanceGrid[x][y] == 0) continue
                         if(distanceGrid[x][y] != g-1) continue
                         
-
-                        // only pixels that have been effected
-                        if(distanceGrid[x-1][y] == 0 && !pixels.includes((x-1)+'|'+(y))) newGrid[x-1][y] = g  // left
-                        if(distanceGrid[x][y-1] == 0 && !pixels.includes((x)+'|'+(y-1))) newGrid[x][y-1] = g // top
-                        if(distanceGrid[x+1][y] == 0 && !pixels.includes((x+1)+'|'+(y))) newGrid[x+1][y] = g // right
-                        if(distanceGrid[x][y+1] == 0 && !pixels.includes((x)+'|'+(y+1))) newGrid[x][y+1] = g // bottom
-                        //console.log(distanceGrid[x][y+1] == 0, !checkForPixels(x, y, 0, 10))
-
-                        // if pixel is at finish
-                        if(canvas.width-x*10 < 50 && canvas.height-y*10 < 50) {
-                            highestDistance = newGrid[x][y]
-                            finishGeneration = g
-                            setTimeout(() => {
-                                stopLoop = true
-                                nextPhase('evolution')
-                                console.log('DONE: spreading distance Virus')
-                            }, 2000)
-                            
-                        }
+                        // only pixels that have not been effected
+                        if(distanceGrid[x-1][y] == 0 && !pixels.includes((x-1)+'|'+(y))) { isDoingNothing = false; newGrid[x-1][y] = g }// left
+                        if(distanceGrid[x][y-1] == 0 && !pixels.includes((x)+'|'+(y-1))) { isDoingNothing = false; newGrid[x][y-1] = g }// top
+                        if(distanceGrid[x+1][y] == 0 && !pixels.includes((x+1)+'|'+(y))) { isDoingNothing = false; newGrid[x+1][y] = g }// right
+                        if(distanceGrid[x][y+1] == 0 && !pixels.includes((x)+'|'+(y+1))) { isDoingNothing = false; newGrid[x][y+1] = g }// bottom
                     }
                 }
-                distanceGrid = newGrid.slice()
-                if(!stopLoop) {
-                    setTimeout(() => { newGeneration(g+1) }, 1)
+                // if doing nothing
+                if(isDoingNothing && g > 10) {
+                    // set every pixel relative to lowest
+                    let startValue = distanceGrid[2][2]
+                    for(let x=0; x<distanceGrid.length; x++) { 
+                        for(let y=0; y<distanceGrid[0].length; y++) {
+                            newGrid[x][y] -= startValue
+                            newGrid[x][y] = Math.abs(newGrid[x][y])
 
+
+
+                        }
+                    }
+                    distanceGrid = newGrid.slice()
+
+                    nextPhase('evolution')
+                    console.log('DONE: spreading distance Virus')
+                } else {
+                    distanceGrid = newGrid.slice()
+                    setTimeout(() => { newGeneration(g+1) }, 1)
                 }
-                
             }
             break
         }
         case('evolution'): {
             $('#phaseMenu').html('<center>Evolution</center>')
             createRandomPopulation()
-
-
+            showSettingsButtons()
+            algorithm.startTime = Date.now()
         }
 
     }

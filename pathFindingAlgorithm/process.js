@@ -16,6 +16,8 @@ function tick() {
             if(nextMove == 2) if(pixels.includes(Math.floor(cube.pos.x/10)+'|'+Math.floor(cube.pos.y/10-1))) cube.died = true; else cube.pos.y -= 10
             if(nextMove == 3) if(pixels.includes(Math.floor(cube.pos.x/10+1)+'|'+Math.floor(cube.pos.y/10))) cube.died = true; else cube.pos.x += 10
             if(nextMove == 4) if(pixels.includes(Math.floor(cube.pos.x/10)+'|'+Math.floor(cube.pos.y/10+1))) cube.died = true; else cube.pos.y += 10;
+
+            if(cube.pos.x > algorithm.finishPos.x && cube.pos.y > algorithm.finishPos.y) cube.finished()
         }
         if(noneMoving) {
             newGeneration()

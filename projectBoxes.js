@@ -1,4 +1,4 @@
-let siteLink = location.href
+let siteLink = location.href.replace('index.html', '')
 // date is dd/mm/jjjj
 let projects = [
     {
@@ -106,8 +106,6 @@ $(() => {
         let totalB = Number(b[0]) + Number(b[1])*31 + Number(b[2])*12*31
         let totalA = Number(a[0]) + Number(a[1])*31 + Number(a[2])*12*31
 
-        console.log(totalA, a)
-        console.log(totalB, b)
         return totalB-totalA
         
     })

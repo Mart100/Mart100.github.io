@@ -20,6 +20,8 @@ async function newGeneration() {
     algorithm.population.sort((a,b) => b.fitness-a.fitness)
 
     console.log('Generation: '+algorithm.generation+'   TotalFitnness: '+totalFitness+'   Improvement: '+Math.round(totalFitness/algorithm.averageFitness*100-100)+'%   Best cube fitness: '+algorithm.population[0].fitness)
+    algorithm.history.push({totalFitness: Math.round(totalFitness), improvement: Math.round(totalFitness/algorithm.averageFitness*100-100), bestFitness: algorithm.population[0].fitness})
+    if($('#infoWindowGenerations')[0] != undefined) $('#infoWindowGenerations').prepend(JSON.stringify(algorithm.history[algorithm.history.length-1])+'<br>')
 
     // create new population
     for(let i=0;i<algorithm.populationSize;i++) {
@@ -50,5 +52,8 @@ function randomDirection() {
 }
 function mutateStrengthFunction() {
     let random = Math.random()
-    return Math.random()*0.05
+    if(random > 0.9) return Math.random()*0.5
+    else if(random > 0.7) return Math.random()*0.1
+    else if(random > 0.3) return Math.random()*0.05
+    else return Math.random()*0.02
 }

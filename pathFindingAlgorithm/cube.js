@@ -15,8 +15,8 @@ class Cube {
         }
     }
     calcFitness() {
-        if(this.died) this.fitness = 0 //distanceGrid[Math.floor(this.pos.x/10)][Math.floor(this.pos.y/10)]*0.8
-        else this.fitness = distanceGrid[Math.floor(this.pos.x/10)][Math.floor(this.pos.y/10)]
+        if(this.died) this.fitness = 0
+        else this.fitness = distanceGrid[Math.floor(this.pos.x/10)][Math.floor(this.pos.y/10)]-this.moves.length/50
     }
     mutate(strength) {
         return new Promise((resolve, reject) => {
@@ -31,6 +31,9 @@ class Cube {
     }
     clone() {
         return new Cube(this.moves)
+    }
+    finished() {
+        this.moves = this.moves.slice(0, algorithm.currentMove)
     }
 }
 

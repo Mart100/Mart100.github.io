@@ -14,7 +14,10 @@ let algorithm = {
     generation: 0,
     averageFitness: 2000,
     totalMoves: 400,
-    plusMovesPerGen: 10
+    plusMovesPerGen: 10,
+    finishPos: {},
+    history: [],
+    startTime: 0
 }
 let settings = {
     window: {
@@ -36,6 +39,7 @@ $(function() {
   ctx = canvas.getContext('2d')
   canvas.width = window.innerWidth
   canvas.height = window.innerHeight
+  algorithm.finishPos = {x: canvas.width-100, y: canvas.height-100}
   window.requestAnimationFrame(frame)
   tickInterval = setInterval(() => { tick() }, 1)
 
