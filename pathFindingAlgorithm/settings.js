@@ -8,10 +8,6 @@ $(() => {
             <span id="${window.getID()+'-time'}">time Running: ${(Date.now()-algorithm.startTime)/1000} Seconds</span><br>
             <span onclick="openGenHistory()"> Open Generation History Window</span>
         `)
-        // set generations
-        for(num in algorithm.history) {
-            $('#infoWindowGenerations').prepend(JSON.stringify(algorithm.history[num])+'<br>')
-        }
 
         //update data
         updateInfoInterval = setInterval(() => {
@@ -25,26 +21,45 @@ $(() => {
         
 
     })
-    $('#settingsButton').on('click', () => { 
-        let window = new Window({id: 'settingsWindow', title: 'settings'})
+    $('#settingsButton').on('click', () => {
+        openSettingsWindow()
     })
-    $('#viewButton').on('click', () => { 
-        let window = new Window({id: 'viewWindow', title: 'view'})
+    $('#viewButton').on('click', () => {
+        openViewWindow()
     })
 })
+
+
 function showSettingsButtons() {
     $('#windowButtons').css('display', 'block')
 }
 function openGenHistory() {
-    let window = new Window({id: 'infoWindow', title: 'info'})
+    let window = new Window({id: 'genHistoryWindow', title: 'Generation History'})
         // set html
         window.setHtml(`
-            <span id="${window.getID()+'-generation'}">generation: ${algorithm.generation}</span><br>
-            <span id="${window.getID()+'-time'}">time Running: ${(Date.now()-algorithm.startTime)/1000} Seconds</span><br>
-            Generations: <div id="infoWindowGenerations" style="overflow: auto; width: 100%; height: 200px; background-color: #f2f2f2;"></div><br>
+            <div id="infoWindowGenerations" style="overflow: auto; width: 100%; height: 200px; background-color: #f2f2f2; font-weight: bold;"></div><br>
         `)
         // set generations
-        for(num in algorithm.history) {
-            $('#infoWindowGenerations').prepend(JSON.stringify(algorithm.history[num])+'<br>')
-        }
+        for(num in algorithm.history) $('#infoWindowGenerations').prepend(num+': '+JSON.stringify(algorithm.history[num]).replace(/"|{|}|"/g, '').replace(/:/g, ': ').replace(/,/g, ';   ')+'<br>')
+}
+function openSettingsWindow() {
+    let window = new Window({id: 'settingsWindow', title: 'settings'})
+}
+function openViewWindow() {
+    let window = new Window({id: 'viewWindow', title: 'view'})
+    window.setHtml(`
+    Hide everything: <input type="checkbox" id="viewSettings-hideEverything"><br/>
+    Show FitnessGrid: <input type="checkbox" id="viewSettings-showFitnessGrid"><br/>
+    `)
+    // hide everything
+    $('#viewSettings-hideEverything').on('click', () => {
+        settings.view.hideEverything = $('#viewSettings-hideEverything').is(':checked')
+    })
+    // showFitnessGrid
+    $('#viewSettings-showFitnessGrid').on('click', () => {
+        settings.view.showFitnessGrid = $('#viewSettings-showFitnessGrid').is(':checked')
+    })
+
+
+
 }

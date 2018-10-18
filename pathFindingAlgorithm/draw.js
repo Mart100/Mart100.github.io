@@ -1,5 +1,6 @@
 function frame() {
     setTimeout(() => { requestAnimationFrame(frame) }, drawSpeed)
+    if(settings.view.hideEverything) return
     // clear screen
     ctx.clearRect(0, 0, canvas.width, canvas.height)
 
@@ -37,11 +38,11 @@ function frame() {
     }
 
     // draw fitnessdistance
-    if(phase == 'loading' && highestDistance != 0) {
+    if(phase == 'loading' || settings.view.showFitnessGrid) {
         for(let x=0;x<Math.round(canvas.width/10);x++) {
             for(let y=0;y<Math.round(canvas.height/10);y++) {
                 if(distanceGrid[x][y] == 0) continue
-                ctx.fillStyle = `rgba(${distanceGrid[x][y]/highestDistance*255}, 0, ${255-distanceGrid[x][y]/highestDistance*255}, 0.4)`
+                ctx.fillStyle = `rgba(${distanceGrid[x][y]/algorithm.topDistance*255}, 0, ${255-distanceGrid[x][y]/algorithm.topDistance*255}, 0.4)`
                 ctx.fillRect(x*10, y*10, 10, 10)
             }
         }

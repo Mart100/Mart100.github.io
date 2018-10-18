@@ -25,7 +25,7 @@ async function nextPhase(ToPhase) {
                 </div>
                 <div>
                     <label for="settings-bestOfPrevious">Best of Previous Gen 0-1: </label>
-                    <input type="number" id="settings-bestOfPrevious" max="1" value="0.1" ste|style="width: 50px;"/>
+                    <input type="number" id="settings-bestOfPrevious" max="1" value="0.1" style="width: 50px;"/>
                     <span class="validity"></span>
                 </div>
                 
@@ -109,6 +109,7 @@ async function nextPhase(ToPhase) {
 
                         }
                     }
+                    algorithm.topDistance = distanceGrid[Math.round(canvas.width/10-10)][Math.round(canvas.height/10-10)]
                     distanceGrid = newGrid.slice()
 
                     nextPhase('evolution')

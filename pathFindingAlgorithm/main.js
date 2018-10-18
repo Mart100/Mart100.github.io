@@ -17,12 +17,17 @@ let algorithm = {
     plusMovesPerGen: 10,
     finishPos: {},
     history: [],
-    startTime: 0
+    startTime: 0,
+    topDistance: 0
 }
 let settings = {
     window: {
         drag: false, 
         offset: {x: 0, y: 0}
+    },
+    view: {
+        hideEverything: false,
+        showFitnessGrid: false
     }
 }
 let phase = 'drawing'

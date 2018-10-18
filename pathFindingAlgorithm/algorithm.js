@@ -19,9 +19,8 @@ async function newGeneration() {
     // sort them by fitness
     algorithm.population.sort((a,b) => b.fitness-a.fitness)
 
-    console.log('Generation: '+algorithm.generation+'   TotalFitnness: '+totalFitness+'   Improvement: '+Math.round(totalFitness/algorithm.averageFitness*100-100)+'%   Best cube fitness: '+algorithm.population[0].fitness)
     algorithm.history.push({totalFitness: Math.round(totalFitness), improvement: Math.round(totalFitness/algorithm.averageFitness*100-100), bestFitness: algorithm.population[0].fitness})
-    if($('#infoWindowGenerations')[0] != undefined) $('#infoWindowGenerations').prepend(JSON.stringify(algorithm.history[algorithm.history.length-1])+'<br>')
+    if($('#infoWindowGenerations')[0] != undefined) logGenerationHistory()
 
     // create new population
     for(let i=0;i<algorithm.populationSize;i++) {
@@ -46,6 +45,12 @@ async function newGeneration() {
     }
 
     algorithm.population = newPopulation.slice()
+}
+function crossover() {
+
+}
+function logGenerationHistory() {
+    $('#infoWindowGenerations').prepend(algorithm.generation+': '+JSON.stringify(algorithm.history[algorithm.history.length-1]).replace(/"|{|}|"/g, '').replace(/:/g, ': ').replace(/,/g, ';   ')+'<br>')
 }
 function randomDirection() {
     return Math.floor(Math.random()*5)
