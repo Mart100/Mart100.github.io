@@ -50,20 +50,23 @@ function frame() {
 
     // draw cubes
     if(phase == 'evolution') {
-        ctx.fillStyle = 'rgba(244, 26, 26, 1)'
-        ctx.strokeStyle = 'rgba(0, 0, 0, 1)'
+        ctx.strokeStyle = `rgba(0, 0, 0, ${settings.view.cubeTrans})`
         ctx.lineWidth = 10
-        for (var i=algorithm.populationSize-1; i >= 0; i--) {
+        let viewAmount = algorithm.populationSize-1
+        if(settings.view.viewFirst) viewAmount = 0
+        for (var i=viewAmount; i >= 0; i--) {
             if(i == 0) ctx.fillStyle = 'rgba(255, 255, 255, 1)'
-            else if(i < algorithm.populationSize*0.1) ctx.fillStyle = 'rgba(255, 0, 0, 1)'
-            else if(i < algorithm.populationSize*0.9) ctx.fillStyle = 'rgba(0, 255, 0, 1)'
+            else if(i < algorithm.populationSize*algorithm.rates.best) ctx.fillStyle = `rgba(255, 0, 0, ${settings.view.cubeTrans})`
+            else if(i < algorithm.populationSize*algorithm.rates.best  +  algorithm.populationSize*algorithm.rates.mutation) ctx.fillStyle = `rgba(0, 255, 0, ${settings.view.cubeTrans})`
+            else if(i < algorithm.populationSize*algorithm.rates.best  +  algorithm.populationSize*algorithm.rates.mutation  +  algorithm.populationSize*algorithm.rates.crossover) ctx.fillStyle = `rgba(0, 165, 255, ${settings.view.cubeTrans})`
             else ctx.fillStyle = 'rgba(0, 0, 255, 1)'
+
 
             let cube = algorithm.population[i]
             ctx.beginPath()
             ctx.rect(cube.pos.x, cube.pos.y, 30, 30)
             ctx.fill()
-            ctx.stroke()
+            if(settings.view.cubeStroke) ctx.stroke()
         }
     }
 }

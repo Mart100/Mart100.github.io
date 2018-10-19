@@ -18,7 +18,13 @@ let algorithm = {
     finishPos: {},
     history: [],
     startTime: 0,
-    topDistance: 0
+    topDistance: 0,
+    rates: {
+        best: 0,
+        mutation: 0,
+        crossover: 0,
+        random: 0,
+    }
 }
 let settings = {
     window: {
@@ -27,7 +33,13 @@ let settings = {
     },
     view: {
         hideEverything: false,
-        showFitnessGrid: false
+        showFitnessGrid: false,
+        cubeTrans: 1,
+        cubeStroke: true,
+        viewFirst: false
+    },
+    algorithm: {
+        skipCollision: false
     }
 }
 let phase = 'drawing'

@@ -50,6 +50,9 @@ function openViewWindow() {
     window.setHtml(`
     Hide everything: <input type="checkbox" id="viewSettings-hideEverything"><br/>
     Show FitnessGrid: <input type="checkbox" id="viewSettings-showFitnessGrid"><br/>
+    Cube Trans: <input type="number" id="viewSettings-cubeTrans" min="0" step="0.1" max="1" value="0.5" style="width: 50px;"/><br/>
+    cubeStroke: <input type="checkbox" id="viewSettings-cubeStroke"><br/>
+    viewFirst: <input type="checkbox" id="viewSettings-viewFirst"><br/>
     `)
     // hide everything
     $('#viewSettings-hideEverything').on('click', () => {
@@ -59,6 +62,19 @@ function openViewWindow() {
     $('#viewSettings-showFitnessGrid').on('click', () => {
         settings.view.showFitnessGrid = $('#viewSettings-showFitnessGrid').is(':checked')
     })
+    // cube trans
+    $('#viewSettings-cubeTrans').on('change', () => {
+        settings.view.cubeTrans = $('#viewSettings-cubeTrans').val()
+    })
+    // cube stroke
+    $('#viewSettings-cubeStroke').on('click', () => {
+        settings.view.cubeStroke = $('#viewSettings-cubeStroke').is(':checked')
+    })
+    // viewFirst
+    $('#viewSettings-viewFirst').on('click', () => {
+        settings.view.viewFirst = $('#viewSettings-viewFirst').is(':checked')
+    })
+
 
 
 

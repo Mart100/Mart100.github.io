@@ -16,7 +16,7 @@ class Cube {
     }
     calcFitness() {
         if(this.died) this.fitness = 0
-        else this.fitness = distanceGrid[Math.floor(this.pos.x/10)][Math.floor(this.pos.y/10)]-this.moves.length/50
+        else this.fitness = distanceGrid[Math.floor(this.pos.x/10)][Math.floor(this.pos.y/10)]-this.moves.length/10
     }
     mutate(strength) {
         return new Promise((resolve, reject) => {

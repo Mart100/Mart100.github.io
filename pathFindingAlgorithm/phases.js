@@ -24,10 +24,23 @@ async function nextPhase(ToPhase) {
                     <span class="validity"></span>
                 </div>
                 <div>
-                    <label for="settings-bestOfPrevious">Best of Previous Gen 0-1: </label>
-                    <input type="number" id="settings-bestOfPrevious" max="1" value="0.1" style="width: 50px;"/>
+                    <label for="settings-bestRate">Best rate 0-1: </label>
+                    <input type="number" id="settings-bestRate" value="0.1" step="0.01" style="width: 50px;"/>
                     <span class="validity"></span>
                 </div>
+                <div>
+                    <label for="settings-mutationRate">Mutation rate 0-1: </label>
+                    <input type="number" id="settings-mutationRate" value="0.6" step="0.01" style="width: 50px;"/>
+                    <span class="validity"></span>
+                </div>
+                <div>
+                    <label for="settings-crossoverRate">Crossover rate 0-1: </label>
+                    <input type="number" id="settings-crossoverRate" value="0.3" step="0.01" style="width: 50px;"/>
+                    <span class="validity"></span>
+                </div>
+                </div>
+                    SkipCollision: <input type="checkbox" id="settings-skipCollision"><br/>
+                <div>
                 
                 <input type="submit" id="settingsWindowSubmit">
             </form>
@@ -38,6 +51,11 @@ async function nextPhase(ToPhase) {
                 e.preventDefault()
                 // set all settings
                 algorithm.populationSize = Number($('#settings-population').val())
+                algorithm.plusMovesPerGen = Number($('#settings-plusStepsPerGen').val())
+                algorithm.rates.best = Number($('#settings-bestRate').val())
+                algorithm.rates.mutation = Number($('#settings-mutationRate').val())
+                algorithm.rates.crossover = Number($('#settings-crossoverRate').val())
+                settings.algorithm.skipCollision = $('#settings-skipCollision').is(':checked')
 
                 // remove settings page
                 settingsWindow.remove()
@@ -102,6 +120,7 @@ async function nextPhase(ToPhase) {
                     let startValue = distanceGrid[2][2]
                     for(let x=0; x<distanceGrid.length; x++) { 
                         for(let y=0; y<distanceGrid[0].length; y++) {
+                            if(newGrid[x][y] == 0) continue
                             newGrid[x][y] -= startValue
                             newGrid[x][y] = Math.abs(newGrid[x][y])
 
