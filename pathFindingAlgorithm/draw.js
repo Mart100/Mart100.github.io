@@ -50,23 +50,48 @@ function frame() {
 
     // draw cubes
     if(phase == 'evolution') {
-        ctx.strokeStyle = `rgba(0, 0, 0, ${settings.view.cubeTrans})`
-        ctx.lineWidth = 10
-        let viewAmount = algorithm.populationSize-1
-        if(settings.view.viewFirst) viewAmount = 0
-        for (var i=viewAmount; i >= 0; i--) {
-            if(i == 0) ctx.fillStyle = 'rgba(255, 255, 255, 1)'
-            else if(i < algorithm.populationSize*algorithm.rates.best) ctx.fillStyle = `rgba(255, 0, 0, ${settings.view.cubeTrans})`
-            else if(i < algorithm.populationSize*algorithm.rates.best  +  algorithm.populationSize*algorithm.rates.mutation) ctx.fillStyle = `rgba(0, 255, 0, ${settings.view.cubeTrans})`
-            else if(i < algorithm.populationSize*algorithm.rates.best  +  algorithm.populationSize*algorithm.rates.mutation  +  algorithm.populationSize*algorithm.rates.crossover) ctx.fillStyle = `rgba(0, 165, 255, ${settings.view.cubeTrans})`
-            else ctx.fillStyle = 'rgba(0, 0, 255, 1)'
+        // normal theme
+        if(!settings.christmasTheme) {
+            ctx.strokeStyle = `rgba(0, 0, 0, ${settings.view.cubeTrans})`
+            ctx.lineWidth = 10
+            let viewAmount = algorithm.populationSize-1
+            if(settings.view.viewFirst) viewAmount = 0
+            for (var i=viewAmount; i >= 0; i--) {
+                if(i == 0) ctx.fillStyle = 'rgba(255, 255, 255, 1)'
+                else if(i < algorithm.populationSize*algorithm.rates.best) ctx.fillStyle = `rgba(255, 0, 0, ${settings.view.cubeTrans})`
+                else if(i < algorithm.populationSize*algorithm.rates.best  +  algorithm.populationSize*algorithm.rates.mutation) ctx.fillStyle = `rgba(0, 255, 0, ${settings.view.cubeTrans})`
+                else if(i < algorithm.populationSize*algorithm.rates.best  +  algorithm.populationSize*algorithm.rates.mutation  +  algorithm.populationSize*algorithm.rates.crossover) ctx.fillStyle = `rgba(0, 165, 255, ${settings.view.cubeTrans})`
+                else ctx.fillStyle = 'rgba(0, 0, 255, 1)'
 
 
-            let cube = algorithm.population[i]
-            ctx.beginPath()
-            ctx.rect(cube.pos.x, cube.pos.y, 30, 30)
-            ctx.fill()
-            if(settings.view.cubeStroke) ctx.stroke()
+                let cube = algorithm.population[i]
+                ctx.beginPath()
+                ctx.rect(cube.pos.x, cube.pos.y, 30, 30)
+                ctx.fill()
+                if(settings.view.cubeStroke) ctx.stroke()
+            }
+        }
+        // christmasTheme
+        else if(settings.christmasTheme) {
+            ctx.drawImage(images.sheep, 90, 130, 50, 60, 10, 10, 50, 60);
+            ctx.strokeStyle = `rgba(0, 0, 0, ${settings.view.cubeTrans})`
+            ctx.lineWidth = 10
+            let viewAmount = algorithm.populationSize-1
+            if(settings.view.viewFirst) viewAmount = 0
+            for (var i=viewAmount; i >= 0; i--) {
+                if(i == 0) ctx.fillStyle = 'rgba(255, 255, 255, 1)'
+                else if(i < algorithm.populationSize*algorithm.rates.best) ctx.fillStyle = `rgba(255, 0, 0, ${settings.view.cubeTrans})`
+                else if(i < algorithm.populationSize*algorithm.rates.best  +  algorithm.populationSize*algorithm.rates.mutation) ctx.fillStyle = `rgba(0, 255, 0, ${settings.view.cubeTrans})`
+                else if(i < algorithm.populationSize*algorithm.rates.best  +  algorithm.populationSize*algorithm.rates.mutation  +  algorithm.populationSize*algorithm.rates.crossover) ctx.fillStyle = `rgba(0, 165, 255, ${settings.view.cubeTrans})`
+                else ctx.fillStyle = 'rgba(0, 0, 255, 1)'
+
+
+                let cube = algorithm.population[i]
+                ctx.beginPath()
+                ctx.rect(cube.pos.x, cube.pos.y, 30, 30)
+                ctx.fill()
+                if(settings.view.cubeStroke) ctx.stroke()
+            }
         }
     }
 }

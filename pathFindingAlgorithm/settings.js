@@ -53,6 +53,7 @@ function openViewWindow() {
     Cube Trans: <input type="number" id="viewSettings-cubeTrans" min="0" step="0.1" max="1" value="0.5" style="width: 50px;"/><br/>
     cubeStroke: <input type="checkbox" id="viewSettings-cubeStroke"><br/>
     viewFirst: <input type="checkbox" id="viewSettings-viewFirst"><br/>
+    Christmas Theme: <input type="checkbox" id="christmasTheme-viewFirst"><br/>
     `)
     // hide everything
     $('#viewSettings-hideEverything').on('click', () => {
@@ -73,6 +74,10 @@ function openViewWindow() {
     // viewFirst
     $('#viewSettings-viewFirst').on('click', () => {
         settings.view.viewFirst = $('#viewSettings-viewFirst').is(':checked')
+    })
+    // christmasTheme
+    $('#viewSettings-christmasTheme').on('click', () => {
+        settings.view.christmasTheme = $('#viewSettings-christmasTheme').is(':checked')
     })
 
 

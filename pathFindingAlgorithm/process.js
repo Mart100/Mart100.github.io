@@ -1,5 +1,5 @@
 function tick() {
-    for (var i = 0, len = 5; i < len; i++) {
+    for (var i = 0, len = 1; i < len; i++) {
         if(phase == 'evolution') {
             let noneMoving = true
             // move cubes

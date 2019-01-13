@@ -7,6 +7,7 @@ let highestDistance = 1000
 let drawing = {lines: [], size: 10, line: {start: {x: 0, y: 0}, show: false}}
 let drawSpeed = 0
 let tickInterval
+let images = {}
 let algorithm = {
     population: [],
     currentMove: 0,

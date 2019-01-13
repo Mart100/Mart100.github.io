@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>PONG</title>
+    <meta charset="utf-8"/>
+    <!-- css -->
+    <link href="style.css" rel="stylesheet">
+    <!--scripts -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://www.gstatic.com/charts/loader.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/nicolaspanel/numjs@0.15.1/dist/numjs.min.js"></script>
+    <script src="scripts/brain.js"></script>
+    <script src="index.js"></script>
+    <script src="scripts/canvas.js"></script>
+    <script src="scripts/running.js"></script>
+    <script src="scripts/someFunctions.js"></script>
+    <script src="scripts/simpleBot.js"></script>
+  </head>
+  <body>
+    <canvas id="canvas"></canvas>
+    <div id="menu"></div>
+    <div id="options">
+      <div class="head">Options</div>
+      <div id="OPTIONspeedBOX">Speed: <input type="range" min="0" max="100" value="50" class="slider1" id="OPTIONspeedSLIDER"></div>
+      <div id="OPTIONisEvolving">
+        <label class="CHECKBOXcontainer">Evolving
+          <input type="checkbox" checked="checked">
+          <span class="CHECKBOXcheckmark"></span>
+        </label>
+      </div>
+    </div>
+    <div id="statics">
+      <div class="head">Statics</div>
+      <div id="STATICSgeneration">Generation: 0</div>
+    </div>
+    <div id="progress">
+      <div class="head">Progress</div>
+      <div id="PROGRESSchart"></div>
+    </div>
+    <div id="Visibility">
+      <div class="head">Visibility</div>
+      <div id="VisibilityContent">
+        <div id="GameVisibilityRADIOS">Games visible:
+          <label class="RADIOcontainer">All
+            <input type="radio" checked="checked" name="GameVisibilityRADIO">
+            <span class="RADIOcheckmark"></span>
+          </label>
+          <label class="RADIOcontainer">Best (score)
+            <input type="radio" name="GameVisibilityRADIO">
+            <span class="RADIOcheckmark"></span>
+          </label>
+          <label class="RADIOcontainer">Best (hits)
+            <input type="radio" name="GameVisibilityRADIO">
+            <span class="RADIOcheckmark"></span>
+          </label>
+          <label class="RADIOcontainer">Random
+            <input type="radio" name="GameVisibilityRADIO">
+            <span class="RADIOcheckmark"></span>
+          </label>
+          <label class="RADIOcontainer">Custom:
+            <input type="radio" name="GameVisibilityRADIO">
+            <input type="text" class="input1">
+            <span class="RADIOcheckmark"></span>
+          </label>
+          <label class="RADIOcontainer">None
+            <input type="radio" name="GameVisibilityRADIO">
+            <span class="RADIOcheckmark"></span>
+          </label>
+        </div>
+        <div id="BrainVisibilityRADIOS">Brains visible:
+          <label class="RADIOcontainer">Current Game
+            <input type="radio" name="BrainVisibilityRADIO">
+            <span class="RADIOcheckmark"></span>
+          </label>
+          <label class="RADIOcontainer">None
+            <input type="radio" checked="checked" name="BrainVisibilityRADIO">
+            <span class="RADIOcheckmark"></span>
+          </label>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

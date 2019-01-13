@@ -1,0 +1,326 @@
+body {
+  font-family: 'Lato', sans-serif;
+  color: #efefef;
+  background-color: #0f0f0f;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  padding: 20 0 0 0;
+  font-weight: 300;
+  background-image: url("https://i.gyazo.com/c5717187181f99e9a8e654a3d5b7b2c2.png");
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+#backgroundimage {
+  position: static;
+  z-index: 0;
+  background-image: url("https://i.imgur.com/91tqSOZ.png");
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+/*=======BUTTONS=======*/
+.button1 {
+  margin: 0 auto;
+  position: absolute;
+  width: 300px;
+  border: 4px dotted #efefef;
+  text-align: center;
+  padding: 25px 20px;
+  cursor: pointer;
+  font-size: 25px;
+}
+.middle {
+  left: 50%;
+  transform: translateX(-50%);
+}
+.right { right: 20%; }
+.left { left: 20%; }
+/*=======SELECT=======*/
+.select1 {
+  margin: 0 auto;
+  position: absolute;
+  width: 300px;
+  border: 4px dotted #efefef;
+  background-color: #0f0f0f;
+  text-align: center;
+  padding: 25px 20px;
+  cursor: pointer;
+  color: #efefef;
+  font-size: 20px;
+}
+/*=======CANVAS=======*/
+#canvas {
+  width: 1400px;
+  padding-left: 0;
+  padding-right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 40px;
+  display: block;
+  background-color: rgba(0,0,0,0.7);
+  z-index: 5;
+}
+/*=======INPUT=======*/
+.input1 {
+  position: absolute;
+  color: white;
+  border: 1px solid black;
+  text-align: center;
+  cursor: pointer;
+  font-size: 10px;
+}
+/*=======TEXT=======*/
+.text1 {
+  margin: 0 auto;
+  position: absolute;
+  width: 300px;
+  border: 4px dotted #efefef;
+  background-color: #0f0f0f;
+  text-align: center;
+  padding: 25px 20px;
+  color: #efefef;
+  font-size: 20px;
+}
+/*=======OTHERS=======*/
+#BUTTONmultiJoin {
+  text-align: left;
+}
+/*=======SLIDERS=======*/
+.slider1 {
+  -webkit-appearance: none;
+  width: 250px;
+  height: 15px;
+  border-radius: 5px;
+  background: #d3d3d3;
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+}
+
+.slider1::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background: #4CAF50;
+  cursor: pointer;
+}
+
+/*=======RADIO'S=======*/
+/* The container */
+.RADIOcontainer {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* Hide the browser's default radio button */
+.RADIOcontainer input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+/* Create a custom radio button */
+.RADIOcheckmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #eee;
+    border-radius: 50%;
+}
+
+/* On mouse-over, add a grey background color */
+.RADIOcontainer:hover input ~ .RADIOcheckmark {
+    background-color: #ccc;
+}
+
+/* When the radio button is checked, add a blue background */
+.RADIOcontainer input:checked ~ .RADIOcheckmark {
+    background-color: #2196F3;
+}
+
+/* Show the indicator (dot/circle) when checked */
+.RADIOcontainer input:checked ~ .RADIOcheckmark:after {
+  display: block;
+}
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.RADIOcheckmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+
+/* Style the indicator (dot/circle) */
+.RADIOcontainer .RADIOcheckmark:after {
+ 	top: 9px;
+	left: 9px;
+	width: 8px;
+	height: 8px;
+	border-radius: 50%;
+	background: white;
+}
+/*=======OPTIONS=======*/
+#options {
+  margin: 40px;
+  position: static;
+  display: inline-block;
+  width: 400px;
+  height: 400px;
+  background-color: rgba(0,0,0,0.7);
+  color: white;
+  font-size: 25px;
+}
+#OPTIONspeedBOX {
+  margin: 20px;
+  position: absolute;
+}
+#OPTIONisEvolving {
+  margin: 60px 20px 20px 20px;
+  position: absolute;
+}
+/*=======STATICS=======*/
+#statics {
+  margin: 40px;
+  position: static;
+  display: inline-block;
+  width: 240px;
+  height: 400px;
+  background-color: rgba(0,0,0,0.7);
+  color: white;
+  font-size: 25px;
+}
+#STATICSgeneration {
+  position: absolute;
+  margin: 20px;
+
+}
+/*=======PROGRESS=======*/
+#progress {
+  margin: 40px;
+  position: static;
+  display: inline-block;
+  width: 400px;
+  height: 400px;
+  background-color: rgba(0,0,0,0.7);
+  color: white;
+  font-size: 25px;
+}
+#PROGRESSchart {
+
+}
+/*=======Visibility=======*/
+#Visibility {
+  margin: 40px;
+  position: static;
+  display: inline-block;
+  width: 400px;
+  height: 700px;
+  background-color: rgba(0,0,0,0.7);
+  color: white;
+  font-size: 25px;
+}
+#VisibilityContent {
+  position: absolute;
+}
+#GameVisibilityRADIOS {
+  margin: 20px;
+}
+#BrainVisibilityRADIOS {
+  top: 100px;
+  margin: 20px;
+}
+
+/*=======BOXES=======*/
+.head {
+  position: relative;
+  padding: 20px 0px;
+  font-size: 30px;
+  text-align: center;
+  background-color: rgba(0,0,0,0.7);
+  width: auto;
+}
+
+/*=======CHECKBOXES=======*/
+/* The container */
+.CHECKBOXcontainer {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* Hide the browser's default checkbox */
+.CHECKBOXcontainer input[type="checkbox"] {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+/* Create a custom checkbox */
+.CHECKBOXcheckmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #eee;
+}
+
+/* On mouse-over, add a grey background color */
+.CHECKBOXcontainer:hover input ~ .CHECKBOXcheckmark {
+    background-color: #ccc;
+}
+
+/* When the checkbox is checked, add a blue background */
+.CHECKBOXcontainer input:checked ~ .CHECKBOXcheckmark {
+    background-color: #2196F3;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.CHECKBOXcheckmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+/* Show the checkmark when checked */
+.CHECKBOXcontainer input:checked ~ .CHECKBOXcheckmark:after {
+    display: block;
+}
+
+/* Style the checkmark/indicator */
+.CHECKBOXcontainer .CHECKBOXcheckmark:after {
+    left: 9px;
+    top: 5px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
