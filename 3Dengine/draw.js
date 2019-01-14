@@ -7,36 +7,27 @@ function frame() {
 	debugPanel.add('FPS', Math.round(1000/(performance.now()-lastFrame)))
 	lastFrame = performance.now()
 
-	// store every pixel that has been drawn to counter seeing trough walls
-	let pixelsDrawn = []
-
+	// drawList
+	let drawList = []
 	// clear screen
 	ctx.clearRect(-canvas.width/2, -canvas.height/2, canvas.width, canvas.height)
 
 
 	// loop trough objects
 	for(objectNum in World.objects) {
-		//console.log('--------------------------------------------------')
-		let object3D = World.objects[objectNum]
-		// loop trough faces
-		for(faceNum in object3D.faces) {
-			//console.log('--------------------------------------------------')
+
+		let object = World.objects[objectNum]
+
+		for(faceNum in object.faces) {
+
+			let drawFace = {corners: []}
 			let wholeFaceBehindCamera = true
-			resetCtx()
-			ctx.beginPath()
-			// give colors
-			let specialFaceColor = 8
-			if(object3D.settings.color == undefined) {
-				ctx.strokeStyle = '#22737c'
-				ctx.fillStyle = '#22737c'
 
-			} else {
-				ctx.strokeStyle = object3D.settings.color
-				ctx.fillStyle = object3D.settings.color
-			}
+			if(object.settings.color == undefined) drawFace.color = '#000000' 
+			else drawFace.color = object.settings.color 
 
 
-			let face = object3D.faces[faceNum]
+			let face = object.faces[faceNum]
 
 			// loop trough corners
 			for(cornerNum in face) {
@@ -45,29 +36,59 @@ function frame() {
 				// Translate 3D position to 2D
 				final2D = p3D_to_p2D(corner)
 
-				// if corner behind camera.
-				if(final2D.z < 0) {
-					final2D.x *= -1e5
-					final2D.y *= -1e5
-				} else {
-					wholeFaceBehindCamera = false
-				}
+				// if corner not on screen
+				if(Math.abs(final2D.x) > canvas.width/2 || Math.abs(final2D.y) > canvas.height/2) {}
+				else wholeFaceBehindCamera = false
 
-				// draw corner
-				ctx.lineWidth = (5000-final2D.z)/1000
-				if(object3D.axis != undefined) ctx.lineWidth = 5
-				if(cornerNum == 0) ctx.moveTo(final2D.x, final2D.y)
-				else ctx.lineTo(final2D.x, final2D.y)
+				drawFace.corners.push(final2D)
+
 			}
 
-			//console.log('----------------------------------------------------DRAWFACE-----------------------------------------------------')
-			ctx.closePath()
 			if(wholeFaceBehindCamera) continue
-
-			// if settings.fill == false. Only stroke. Else Fill
-			if(!object3D.settings.fill) ctx.stroke()
-			else ctx.fill()
+			drawList.push(drawFace)
 		}
+	}
+
+
+	// put every face in order
+	drawList.sort((a, b) => {
+		let A = 0
+		for(i of a.corners) A += i.getMagnitude()
+		A = A/a.corners.length
+
+		let B = 0
+		for(i of b.corners) B += i.getMagnitude()
+		B = B/b.corners.length
+
+		debugPanel.add('k', A+'[]'+B)
+		return A-B
+	})
+
+	// draw everything from drawList (all Faces)
+	for(objectNum in drawList) {
+
+		let face = drawList[objectNum]
+
+		resetCtx()
+		ctx.beginPath()
+
+		ctx.strokeStyle = face.color
+		ctx.fillStyle = face.color
+
+		// loop trough corners
+		for(cornerNum in face.corners) {
+			let corner = face.corners[cornerNum]
+
+			// draw corner
+			ctx.lineWidth = face.lineWidth
+			if(cornerNum == 0) ctx.moveTo(corner.x, corner.y)
+			else ctx.lineTo(corner.x, corner.y)
+		}
+
+		ctx.closePath()
+
+		if(face.fill == false) ctx.stroke()
+		else ctx.fill()
 	}
 }
 
@@ -84,30 +105,28 @@ function resetCtx() {
 }
 
 function p3D_to_p2D(corner) {
-	let final2D = {x: 0, y: 0}
+	let final2D = new Vector()
 	let VTTC = new Vector(corner.x, corner.y, corner.z) // VectorTranslatedToCamera
 
 
 	// position relative to camera
-	VTTC.edit('x', World.camera.pos.x - VTTC.x*2)
-	VTTC.edit('y', World.camera.pos.y - VTTC.y*2)
-	VTTC.edit('z', World.camera.pos.z - VTTC.z*2)
+	VTTC.edit('x', World.camera.pos.x - VTTC.x)
+	VTTC.edit('y', World.camera.pos.y - VTTC.y)
+	VTTC.edit('z', World.camera.pos.z - VTTC.z)
 
 	// rotate Relative to camera
 	VTTC.rotate('z', World.camera.rot.z)
 	VTTC.rotate('y', World.camera.rot.y)
 	VTTC.rotate('x', World.camera.rot.x)
 
-	
-
 	// view
 	if(settings.view == 'perspective') {
-		let PerspectiveNum = 200
-		let pr = PerspectiveNum / VTTC.z
-		final2D = {x: (pr*VTTC.x), y: (pr*VTTC.y), z: VTTC.z}
+		let d = 400
+		let r = d / VTTC.y
+		if(r < 0) r = 1e9
+		final2D = new Vector(r * VTTC.x, r * VTTC.z, VTTC.z)
 	} else if(settings.view == 'orthographic') {
-		final2D = {x: VTTC.x, y: VTTC.y, z: VTTC.z}
+		final2D = new Vector(VTTC.x, VTTC.y, VTTC.z)
 	}
-	
 	return final2D
 }

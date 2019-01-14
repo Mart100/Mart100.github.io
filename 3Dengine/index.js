@@ -1,6 +1,5 @@
 let ctx, canvas
 let input = {keys: {}, mouse: {movement: {x: 0, y: 0, latest: 0}, locked: false}}
-let scrollWheel = {down: false, start: {x: 0, y: 0}, currently: {x: 0, y: 0}}
 let debugPanel
 let settings = {}
 settings.view = 'perspective'
@@ -15,7 +14,7 @@ const World = {
     camera: {
         pos: new Vector(),
         rot: new Vector(),
-        mode: 'FirstPerson'
+        mode: 'firstPerson' // firstPerson / static / thirdperson
     },
     player: {
         height: 200,
@@ -25,9 +24,8 @@ const World = {
             speed: 1,
             walking: false
         },
-        pos: new Vector(-2000, 200, 0),
-        rot: new Vector(0, 0, 0),
-        cube: new Cube(new Vector(), new Vector(), {fill: true, color: '#000000'})
+        pos: new Vector(0, 200, -500),
+        rot: new Vector(0, 0, 0)
     }
 }
 
@@ -52,16 +50,21 @@ $(function() {
     inputHandler()
 
     // house
-    World.objects.push(new Cube(new Vector(-500, -1, -500), new Vector(500, 0, 500), {color: '#e00b0b'})) //Floor
-    World.objects.push(new Cube(new Vector(500, 0, 500), new Vector(500, 500, -500), {color: '#32a80b'})) //Back
-    World.objects.push(new Cube(new Vector(500, 0, -500), new Vector(-500, 500, -500), {color: '#0936bc'})) //Side Right
-    World.objects.push(new Cube(new Vector(500, 0, 500), new Vector(-500, 500, 500), {color: '#0936bc'})) //Side left
+    World.objects.push(new Cube(new Vector(-500, -1, -500), new Vector(500, 0, 500), {color: '#e00b0b', id: 'Floor'})) //Floor
+    World.objects.push(new Cube(new Vector(500, 0, 500), new Vector(500, 500, -500), {color: '#32a80b', id: 'Back'})) //Back
+    World.objects.push(new Cube(new Vector(500, 0, -500), new Vector(-500, 500, -500), {color: '#0936bc', id: 'SideR'})) //Side Right
+    World.objects.push(new Cube(new Vector(500, 0, 500), new Vector(-500, 500, 500), {color: '#0936bc', id: 'SideL'})) //Side left
+    
+    let playerBodySettings = {color: '#000000', id: 'playerBody', follow: {id: 'player', rot: {y: true}}}
+    World.objects.push(new Cube(new Vector(-50, 0, -50), new Vector(50, 200, 50), playerBodySettings)) //Player
+
 
 
     // Loop for testing
     setInterval(() => {
         debugPanel.add('Jumping', World.player.movement.jumping)
         debugPanel.add('CameraRot', JSON.stringify(World.camera.rot))
+        debugPanel.add('PlayerPos', World.player.pos)
     }, 10)
 
 
@@ -78,7 +81,7 @@ function inputHandler() {
     // when mouse move
     document.addEventListener("mousemove", (event) => {
         input.mouse.movement = {x: event.movementX, y: event.movementY, latest: 0}
-        debugPanel.add('MouseMov', event.movementX+' - '+event.movementY)
+        debugPanel.add('mouseMov', {x: event.movementX, y: event.movementY})
     })
 
     // on mouse lock and unlock
@@ -103,14 +106,14 @@ function inputHandler() {
         // keys
         // moving
         if(input.keys[87]) { // W
-            let rot = player.rot.y - Math.PI/2
+            let rot = player.rot.y + Math.PI/2
             let vec = new Vector(Math.cos(rot), 0, Math.sin(rot))
             vec.multiply(player.movement.speed)
             player.pos.plus(vec)
             player.movement.walking = true
         }
         if(input.keys[83]) { // S
-            let rot = player.rot.y + Math.PI/2
+            let rot = player.rot.y - Math.PI/2
             let vec = new Vector(Math.cos(rot), 0, Math.sin(rot))
             vec.multiply(player.movement.speed)
             player.pos.plus(vec)
@@ -159,8 +162,13 @@ function inputHandler() {
 
         // if mouse moved in last 10ms and mouse is locked: rotate player 
         if(mouseMov.latest < 10 && input.mouse.locked) {
-            player.rot.y = ((mouseMov.x)/-1000)+player.rot.y
-            player.rot.x = ((mouseMov.y)/1000)+player.rot.x
+            player.rot.y = ((mouseMov.x)/1000)+player.rot.y
+
+            // x rotation
+            if(mouseMov.y > 0 && player.rot.x > 0 ||
+               mouseMov.y < 0 && player.rot.x < Math.PI) {
+                player.rot.x = ((mouseMov.y)/-1000)+player.rot.x
+            }
         }
 
         // update latest mouse movement
@@ -169,6 +177,10 @@ function inputHandler() {
     }, 1)
 
 }
+function objectByID(id) {
+    return World.objects.find((a) => a.settings.id == id)
+}
 
 function testing() {
+    console.log(new Cube(new Vector(6,6,6), new Vector(-10,-10,-10)).getPos())
 }

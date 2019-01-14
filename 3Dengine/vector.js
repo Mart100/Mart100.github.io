@@ -46,7 +46,7 @@ class Vector {
         return this
       }
       // if its a number
-      else if(!isNaN(With)) {
+      else if(!isNaN(a)) {
         this.x -= a
         this.y -= a
         this.z -= a
@@ -73,6 +73,14 @@ class Vector {
     rotate(axis, angle) {
       // new rotated Vector coords
       let x1, y1, z1
+
+      // if all
+      if(axis == 'all') {
+        this.rotate('x', angle.x)
+        this.rotate('y', angle.y)
+        this.rotate('z', angle.z)
+        return this
+      }
 
       if(axis == 'x') {
         x1 = this.x
