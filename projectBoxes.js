@@ -96,6 +96,13 @@ let projects = [
         link: 'https://fuct.glitch.me',
         created: '3/3/2018',
         latestUpdate: '3/3/2018'
+    },
+    {
+        title: '3D engine',
+        image: 'https://i.imgur.com/3EJ8mUf.png',
+        link: siteLink+'3Dengine',
+        created: '15/1/2019',
+        latestUpdate: '15/1/2019'
     }
 ]
 $(() => {
