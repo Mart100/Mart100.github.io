@@ -6,11 +6,27 @@ function frame() {
 
 	debugPanel.add('FPS', Math.round(1000/(performance.now()-lastFrame)))
 	lastFrame = performance.now()
+	frameCount++
 
 	// drawList
 	let drawList = []
 	// clear screen
 	ctx.clearRect(-canvas.width/2, -canvas.height/2, canvas.width, canvas.height)
+
+	// put all objects in order
+	World.objects.sort((a, b) => {
+
+		let A = a.getPos()
+		A.minus(World.camera.pos)
+		A.rotate('all', World.camera.rot)
+
+		let B = b.getPos()
+		B.minus(World.camera.pos)
+		B.rotate('all', World.camera.rot)
+
+		return B.getMagnitude() - A.getMagnitude()
+
+	})
 
 
 	// loop trough objects
@@ -50,19 +66,19 @@ function frame() {
 	}
 
 
-	// put every face in order
+	/*// put every face in order
 	drawList.sort((a, b) => {
 		let A = 0
-		for(i of a.corners) A += i.getMagnitude()
+		for(i of a.corners) A += i.z
 		A = A/a.corners.length
 
 		let B = 0
-		for(i of b.corners) B += i.getMagnitude()
+		for(i of b.corners) B += i.z
 		B = B/b.corners.length
 
 		debugPanel.add('k', A+'[]'+B)
-		return A-B
-	})
+		return B-A
+	})*/
 
 	// draw everything from drawList (all Faces)
 	for(objectNum in drawList) {
@@ -87,8 +103,12 @@ function frame() {
 
 		ctx.closePath()
 
+
 		if(face.fill == false) ctx.stroke()
 		else ctx.fill()
+
+		ctx.strokeStyle = '#000000'
+		if(settings.strokeBlack) ctx.stroke()
 	}
 }
 
