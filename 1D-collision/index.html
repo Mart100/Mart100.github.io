@@ -3,6 +3,8 @@
     <link rel="stylesheet" href="style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="script.js"></script>
+    <script src="process.js"></script>
+    <script src="settings.js"></script>
   </head>
   <body>
     <div id="optionsBOX">
@@ -16,8 +18,22 @@
         speed: <input type="number" value="3" id="block1speed"><br>
         mass:  <input type="number" value="2" id="block1mass">
       </div>
+      <div id="optionWalls">
+        <b class="text1">  Walls:</b><br>
+        Right:<input type="checkbox" checked id="rightWall"><br>
+        Left:<input type="checkbox" checked id="leftWall">
+      </div>
+      <div id="infoBlock">
+        <b class="text1">  Info: </b><br>
+        collisions: <span id="collisionCount"></span><br>
+      </div>
+      <div id="optionProcess">
+        <b class="text1">  Process: </b><br>
+        setInterval: <input type="number" value="1" id="setInterval">
+        loopAmount: <input type="number" value="1" id="loopAmount">
+      </div>
       <div id="buttonREFRESH" class="button1" onclick="refresh()">Refresh</div>
-      <div id="buttonPAUSE" class="button1" onclick="pause()">Pause</div>
+      <div id="buttonPAUSE" class="button1" onclick="pause()">Unpause</div>
       
       
     </div>
