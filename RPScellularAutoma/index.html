@@ -1,0 +1,31 @@
+<html>
+  <head>
+      <title>RGB cellular automaton</title>
+      <meta charset="utf-8"/>
+      <link rel="stylesheet" type="text/css" href="style.css">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+      <script src="index.js"></script>
+      <script src="process.js"></script>
+      <script src="draw.js"></script>
+      <script src="settings.js"></script>
+  </head>
+  <body >
+      <canvas id="canvas"></canvas>
+      <div id="settings">
+        <button id="pause">Pause</button>
+        <button id="unpause">unpause</button>
+        <hr>
+        <button id="r">Red</button>
+        <button id="g">Green</button>
+        <button id="b">Blue</button>
+        <button id="n">None</button>
+        <hr>
+        Speed:<input type="number" id="speed" value="1" autocomplete=off><br>
+        brushSize:<input type="number" id="brushSize" value="50" autocomplete=off><br>
+        cellSize:<input type="number" id="cellSize" value="10" autocomplete=off>
+        <hr>
+        <button id="random">Random</button>
+        <button id="clear">Clear</button>
+      </div>
+  </body>
+</html>

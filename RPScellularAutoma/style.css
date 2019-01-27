@@ -1,0 +1,19 @@
+body {
+  background-color: #232323;
+  margin: 0;
+}
+
+#settings {
+  background-color: #151515;
+  width: auto;
+  height: auto;
+  position: absolute;
+  right: 0;
+  top: 0;
+  color: white;
+  padding: 10px;
+  text-align: center;
+}
+input {
+  width: 50px;
+}
