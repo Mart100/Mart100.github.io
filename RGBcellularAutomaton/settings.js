@@ -85,7 +85,7 @@ $(() => {
   $('#fill').on('click', () => {
     for(let x=0; x<grid.length; x++) {
       for(let y=0; y<grid[x].length; y++) {
-        grid[x][y] = 'r'
+        grid[x][y] = drawType
       }
     }
   })
