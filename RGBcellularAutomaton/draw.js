@@ -11,9 +11,9 @@ function frame() {
     for(let y=0; y<grid[x].length; y++) {
       let type = grid[x][y]
 
-      if(type == 'r') ctx.fillStyle = 'red'
-      if(type == 'g') ctx.fillStyle = 'green'
-      if(type == 'b') ctx.fillStyle = 'blue'
+      if(type == 'r') ctx.fillStyle = `rgb(${lsdLevel}, 0, 0`
+      if(type == 'g') ctx.fillStyle = `rgb(0, ${lsdLevel}, 0`
+      if(type == 'b') ctx.fillStyle = `rgb(0, 0, ${lsdLevel}`
       if(type == 'n') continue
 
       ctx.fillRect(x*cellSize, y*cellSize, cellSize, cellSize)

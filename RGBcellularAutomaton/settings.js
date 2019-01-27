@@ -40,6 +40,9 @@ $(() => {
   // brushSize
   $('#brushSize').on('change', () => { brushSize = Number($('#brushSize').val()) })
 
+  // lsdLevel
+  $('#lsdLevel').on('change', () => { lsdLevel = Number($('#lsdLevel').val()) })
+
   // cellSize
   $('#cellSize').on('change', () => {
 
@@ -76,5 +79,55 @@ $(() => {
       }
     }
     grid = JSON.parse(JSON.stringify(newGrid))
+  })
+
+  // fill
+  $('#fill').on('click', () => {
+    for(let x=0; x<grid.length; x++) {
+      for(let y=0; y<grid[x].length; y++) {
+        grid[x][y] = 'r'
+      }
+    }
+  })
+
+  // generator
+  $('#generator').on('click', () => {
+
+    // fill world
+    $('#fill').click()
+
+    // put none space in middle
+    let startx = Math.floor(canvas.width/2/cellSize - 30/cellSize)
+    let lenx = Math.floor(canvas.width/2/cellSize + 30/cellSize)
+    for(let x=startx; x<lenx; x++) {
+      let starty = Math.floor(canvas.height/2/cellSize - 30/cellSize)
+      let leny = Math.floor(canvas.height/2/cellSize + 30/cellSize)
+      for(let y=starty; y<leny; y++) {
+        grid[x][y] = 'n'
+      }
+    }
+
+
+    let b = {
+      x: Math.floor(canvas.width/2/cellSize - 30/cellSize),
+      y: Math.floor(canvas.height/2/cellSize - 30/cellSize)
+    }
+
+    // place 2x3 of blue
+    grid[b.x][b.y-1] = 'b'
+    grid[b.x][b.y-2] = 'b'
+    grid[b.x][b.y-3] = 'b'
+    grid[b.x+1][b.y-1] = 'b'
+    grid[b.x+1][b.y-2] = 'b'
+    grid[b.x+1][b.y-3] = 'b'
+
+    // place 2x3s of green
+    grid[b.x+2][b.y-1] = 'g'
+    grid[b.x+2][b.y-2] = 'g'
+    grid[b.x+2][b.y-3] = 'g'
+    grid[b.x+3][b.y-1] = 'g'
+    grid[b.x+3][b.y-2] = 'g'
+    grid[b.x+3][b.y-3] = 'g'
+
   })
 })

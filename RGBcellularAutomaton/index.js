@@ -4,6 +4,7 @@ let mouseDown = false
 let mousePos = {x: 0, y: 0}
 let cellSize = 10
 let brushSize = 50
+let lsdLevel = 100
 let drawType = 'n'
 let isPaused = true
 let speed = 1
