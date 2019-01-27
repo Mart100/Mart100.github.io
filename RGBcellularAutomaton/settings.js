@@ -130,4 +130,29 @@ $(() => {
     grid[b.x+3][b.y-3] = 'g'
 
   })
+
+  // Save
+  $('#save').on('click', () => {
+    //var content = content of file;
+    $('body').append('<textarea id="saveText" style="position: absolute; left: 0; top: 0; width: 100%; height: 100%;"></textarea>')
+    $('#saveText').html(JSON.stringify(grid))
+    $('#saveText').select()
+    document.execCommand("copy")
+    $('#saveText').remove()
+    
+  })
+
+  // Load
+  $('#load').on('click', () => {
+    //var content = content of file;
+    $('body').append('<textarea id="loadText" style="position: absolute; left: 0; top: 0; width: 100%; height: 100%;"></textarea>')
+    $('#loadText').select()
+    $('#loadText').on('paste', () => {
+      setTimeout(() => {
+        grid = JSON.parse($('#loadText').val())
+        if(grid != undefined) $('#loadText').remove()
+      }, 10)
+    })
+    
+  })
 })

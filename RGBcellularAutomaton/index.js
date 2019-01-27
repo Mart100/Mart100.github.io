@@ -41,14 +41,14 @@ $(() => {
     if(mouseDown) {
       // loop trough 10x10 pixels past mouse to fill
 
-      let lenx = Number(mousePos.x+brushSize/2)
-      let startx = Number(mousePos.x-brushSize/2)
+      let lenx = Math.floor(mousePos.x+brushSize/2)
+      let startx = Math.floor(mousePos.x-brushSize/2)
 
       for(let x=startx; x<lenx; x++) {
         if(grid[x/cellSize] == undefined) continue
 
-        let leny = Number(mousePos.y+brushSize/2)
-        let starty = Number(mousePos.y-brushSize/2)
+        let leny = Math.floor(mousePos.y+brushSize/2)
+        let starty = Math.floor(mousePos.y-brushSize/2)
 
         for(let y=starty; y<leny; y++) {
 
