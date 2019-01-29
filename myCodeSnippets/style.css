@@ -1,9 +1,12 @@
 body {
-  background-color: #191b1e;
+  background-color: rgb(25, 27, 30);
+  width: 100%;
+  height: 100%;
+  margin: 0px;
 }
 
 #search {
-  background-color: #141518;
+  background-color: rgb(20, 21, 24);
   border: 2px solid rgb(36, 36, 36);
   border-radius: 5px;
   position: absolute;
@@ -21,7 +24,7 @@ body {
   padding: 10px;
   font-size: 18px;
   border: none;
-  background-color: #141518;
+  background-color: rgb(20, 21, 24);
   position: absolute;
   top: 0px;
   bottom: 0px;
@@ -34,7 +37,7 @@ body {
 #searchSubmit {
   position: absolute;
   right: 0px;
-  background-color: #242424;
+  background-color: rgb(36, 36, 36);
   width: 44px;
   height: 100%;
   cursor: pointer;
@@ -50,4 +53,37 @@ body {
   margin: 11px;
   user-select: none;
   -moz-user-select: none;
+}
+
+#title {
+  position: absolute;
+  color: white;
+  position: absolute;
+  font-family: Arial;
+  left: 50%;
+  transform: translate(-50%);
+  top: 40%;
+  font-size: 30px;
+  user-select: none;
+  -moz-user-select: none;
+}
+
+#results {
+  position: absolute;
+  top: 100px;
+  left: 0px;
+  background-color: rgb(19, 20, 23);
+  width: 0px;
+  height: 0px;
+  padding: 0px;
+
+}
+.snippetCode {
+  color: white;
+  background-color: rgb(25, 27, 30);
+}
+.snippetTitle {
+  color: white;
+  font-family: Arial;
+  font-size: 30px;
 }
