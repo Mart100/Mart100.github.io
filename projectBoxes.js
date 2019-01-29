@@ -13,10 +13,11 @@ let projects = [
         link: siteLink+'galaxy',
         created: '.././2018'
     },
-      primeNumbers: {
+    {
         title: 'PrimeNumbers',
         image: 'https://image.prntscr.com/image/AXbYV1rFTPmBXfnAJLVi1A.png',
-        link: siteLink+'Priemnumbers'
+        link: siteLink+'PrimeNumbers',
+        created: '.././2017'
     },
     {
         title: 'Rocket Particles',
@@ -106,20 +107,22 @@ let projects = [
         title: 'My Code Snippets',
         image: 'https://i.imgur.com/kyDMRl9.png',
         link: siteLink+'myCodeSnippets',
-        created: '26/1/2019'
+        created: '29/1/2019'
     }
 ]
 $(() => {
-    projects.sort((a,b) => {
-        b = b.latestUpdate.replace(/\./g, '0').split('/')
-        a = a.latestUpdate.replace(/\./g, '0').split('/')
+    projects = projects.sort((a,b) => {
+        B = b.created.replace(/\./g, '0').split('/')
+        A = a.created.replace(/\./g, '0').split('/')
 
-        let totalB = Number(b[0]) + Number(b[1])*31 + Number(b[2])*12*31
-        let totalA = Number(a[0]) + Number(a[1])*31 + Number(a[2])*12*31
+        let totalB = Number(B[0]) + Number(B[1])*31 + Number(B[2])*12*31
+        let totalA = Number(A[0]) + Number(A[1])*31 + Number(A[2])*12*31
 
+        console.log('========\n', a.title, A, totalA, '\n', b.title, B, totalB)
         return totalB-totalA
         
     })
+    console.log(projects)
     for(projectNum in projects) {
         let project = projects[projectNum]
         $('.ProjectsWrapper').append(`<div class="ProjectBOX" onclick="window.location.href = '${project.link}'"><img src="${project.image}"/><span>${project.title}</span></div>`)
