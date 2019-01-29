@@ -7,6 +7,11 @@ $(() => {
   $('#searchSubmit').on('click', () => {
     search($('#searchField').val())
   })
+
+  // on enter
+  $('#search').on('keypress', (event) => {
+    if(event.key == 'Enter') search($('#searchField').val())
+  })
 })
 
 
