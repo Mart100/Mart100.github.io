@@ -16,14 +16,14 @@ function search(input) {
   $('#results').html('')
   
   // search and add new results
-  if(searchMiddle) setTimeout(() => { search(input) }, 700)
+  if(searchMiddle) setTimeout(() => { search(input) }, 800)
   else searchSnippets(input)
 }
 
 function searchAnimation() {
 
   // remove title
-  $('#title').animate({'top': '42%'}, 200, () => { $('#title').css('display', 'none')})
+  $('#title').animate({'top': '42%'}, 100, () => { $('#title').css('display', 'none')})
 
   // set search bar to corner
   $('#search').animate({'top': `-${window.innerHeight-100}px`, 'left': `-${window.innerWidth-600}px`}, 400, () => {
