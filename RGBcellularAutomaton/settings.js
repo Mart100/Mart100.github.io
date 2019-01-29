@@ -204,7 +204,7 @@ for(let i = 0; i < 4; i++) {
 let inverseCodings = swap(codings)
 
 function VKstringToGrid(gridString) {
-  let gridString = []
+  //let gridString = []
   for(let char in gridString.split('')) {
     gridString.push(inverseCodings[char])
   }
