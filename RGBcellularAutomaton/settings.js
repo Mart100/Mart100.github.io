@@ -94,7 +94,10 @@ $(() => {
   $('#generator').on('click', () => {
 
     // fill world
+    let temp = drawType
+    drawType = 'r'
     $('#fill').click()
+    drawType = temp
 
     // put none space in middle
     let startx = Math.floor(canvas.width/2/cellSize - 30/cellSize)
@@ -135,10 +138,13 @@ $(() => {
   $('#save').on('click', () => {
     //var content = content of file;
     $('body').append('<textarea id="saveText" style="position: absolute; left: 0; top: 0; width: 100%; height: 100%;"></textarea>')
-    $('#saveText').html(JSON.stringify(grid))
+    let gridString = gridToString()
+    $('#saveText').html(gridString)
     $('#saveText').select()
     document.execCommand("copy")
     $('#saveText').remove()
+    $('#save').html('Copied to clipboard')
+    setTimeout(() => { $('#save').html('Save')}, 1000)
     
   })
 
@@ -149,10 +155,88 @@ $(() => {
     $('#loadText').select()
     $('#loadText').on('paste', () => {
       setTimeout(() => {
-        grid = JSON.parse($('#loadText').val())
+
+        grid = stringToGrid($('#loadText').val())
         if(grid != undefined) $('#loadText').remove()
+
       }, 10)
     })
     
   })
 })
+
+
+function stringToGrid(gridString) {
+  
+  let newGrid = []
+  let i = 0
+  // create grid
+  for(let x=0; x<canvas.width/cellSize; x++) {
+    newGrid.push([])
+    for(let y=0; y<canvas.height/cellSize; y++) {
+      i++
+      newGrid[x].push(gridString[i])
+    }
+  }
+
+  return JSON.parse(JSON.stringify(newGrid))
+}
+
+function gridToString() {
+  return grid.flat(1).join().replace(/,/g, '')
+}
+
+//keys are possible combinations, and the values are the base64 character
+let codings = {}
+let colorArr = ['r', 'g', 'b', 'n']
+let base64chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789/+'
+
+let l = 0
+for(let i = 0; i < 4; i++) {
+  for(let j = 0; j < 4; j++) {
+    for(let k = 0; k < 4; k++) {
+      codings[i+j+k] = base64chars[l]
+      l++
+    }
+  }
+}
+
+let inverseCodings = swap(codings)
+
+function VKstringToGrid(gridString) {
+  let gridString = []
+  for(let char in gridString.split('')) {
+    gridString.push(inverseCodings[char])
+  }
+
+  let newGrid = []
+  let i = 0
+  // create grid
+  for(let x=0; x<canvas.width/cellSize; x++) {
+    newGrid.push([])
+    for(let y=0; y<canvas.height/cellSize; y++) {
+      i++
+      newGrid[x].push(gridString[i])
+    }
+  }
+  return JSON.parse(JSON.stringify(newGrid))
+}
+
+function VKgridToString() {
+  let gridStringBig = grid.flat(1).join().replace(/,/g, '')
+  let gridStringShort = []
+  for(let i = 0; i < gridString.length; i += 3) {
+    if(gridStringBig[i+1] == undefined) gridStringBig[i+1] = 'n'
+    if(gridStringBig[i+2] == undefined) gridStringBig[i+2] = 'n'
+    gridStringShort.push(codings[gridStringBig[i]+gridStringBig[i+1]+gridStringBig[i+2]])
+  }
+  return gridStringShort.join('')
+}
+
+function swap(json){
+  var ret = {};
+  for(var key in json){
+    ret[json[key]] = key;
+  }
+  return ret;
+}
