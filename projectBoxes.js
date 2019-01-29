@@ -103,6 +103,20 @@ let projects = [
         link: siteLink+'3Dengine',
         created: '15/1/2019',
         latestUpdate: '15/1/2019'
+    },
+    {
+        title: '3D multiplayer',
+        image: 'https://i.imgur.com/3EJ8mUf.png',
+        link: 'https://yeetoos3d.herokuapp.com/',
+        created: '25/1/2019',
+        latestUpdate: '25/1/2019'
+    },
+    {
+        title: 'Rock Paper Sciccors Cellular Automaton',
+        image: 'https://i.imgur.com/7OWUVhM.gif',
+        link: siteLink+'RGBcellularAutomaton',
+        created: '26/1/2019',
+        latestUpdate: '27/1/2019'
     }
 ]
 $(() => {
