@@ -36,22 +36,31 @@ function searchAnimation() {
     // make results appear
     $('#results').animate({'height': '10px'}, 100)
     $('#results').animate({'width': `${window.innerWidth-200}px`, 'padding': '0 100'}, 300)
-    $('#results').animate({'height': `${window.innerHeight-150}px`, 'padding': '50 100 0 100'}, 300)
+    $('#results').animate({'height': `${window.innerHeight-150}px`, 'padding': '50 100 0 100'}, 300, () => { 
+      $('#results').css('height', 'auto')
+      // if results does not reach bottom. Fill scren
+      if(Number($('#results').css('height').replace('px', '')) < window.innerHeight-150) {
+        $('#results').css('height', `${window.innerHeight-150}px`)
+      }
+    })
   })
 
   setTimeout(() => {searchMiddle = false}, 100)
 }
 
 function searchSnippets(input) {
+  input = input.toLowerCase()
   let sortedSnippets = []
   // loop trough snippets
   for(let snippet of snippets) {
     let score = 0
 
-    // loop trough keywords
+    // loop trough keywords and give score
     for(let keyword of snippet.keywords) {
       if(input.includes(keyword)) score++
     }
+    // give score if keywords include language
+    if(input.includes(snippet.language)) score++
     
     snippet.score = score
 
@@ -63,7 +72,7 @@ function searchSnippets(input) {
   sortedSnippets.sort((a, b) => b.score-a.score)
 
   // Send first 10
-  for(let i=0; i<10; i++) {
+  for(let i=0; i<100; i++) {
     if(sortedSnippets[i] == undefined) continue
     if(sortedSnippets[i].score == 0) continue
     sortedSnippets[i].num = i
@@ -86,7 +95,44 @@ function loadSnippet(snippet) {
   $('#results').append(`
   <div id="snippet-${snippet.num}">
     <span class="snippetTitle">${snippet.title}</span>
+    <img class="copy" src="https://i.imgur.com/foup2zJ.png"/>
     <pre class="prettyprint snippetCode">${snippet.code}</pre>
   </div>
   `)
+  let snippetCode = $(`#snippet-${snippet.num} > pre`)
+  let codeHeight = Number(snippetCode.css('height').replace('px', ''))
+
+  // if code too long. set height to 200px;
+  if(codeHeight > 200) {
+    snippetCode.css('height', '200px')
+
+    // add expand button
+    snippetCode.before('<img class="expand" src="https://i.imgur.com/tVKCyXJ.png"/>')
+
+    // on expand button click
+    $(`#snippet-${snippet.num} > .expand`).on('click', () => {
+      let button = $(`#snippet-${snippet.num} > .expand`)
+      // if already expanded. Collapse
+      if(button.hasClass('expanded')) {
+        button.removeClass('expanded')
+        button.css('transform', 'rotate(0deg)')
+        snippetCode.css('height', '200px')
+      }
+      // else expand
+      else {
+        button.css('transform', 'rotate(90deg)')
+        button.addClass('expanded')
+        snippetCode.css('height', 'auto')
+      }
+    })
+  }
+
+  // on copy button
+  $(`#snippet-${snippet.num} > .copy`).on('click', () => {
+    $('body').append(`<textarea id="temporarilyCopySpan">${snippet.code}</textarea>`)
+    $('#temporarilyCopySpan').select()
+    document.execCommand("copy")
+    $('#temporarilyCopySpan').remove()
+
+  })
 }
