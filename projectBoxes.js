@@ -108,6 +108,12 @@ let projects = [
         image: 'https://i.imgur.com/kyDMRl9.png',
         link: siteLink+'myCodeSnippets',
         created: '29/1/2019'
+    },
+    {
+        title: 'Mouse Light Shadows',
+        image: 'https://i.imgur.com/WWZDsGc.png',
+        link: siteLink+'mouseLight',
+        created: '3/2/2019'
     }
 ]
 $(() => {
