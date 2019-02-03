@@ -60,7 +60,7 @@ function searchSnippets(input) {
       if(input.includes(keyword)) score++
     }
     // give score if keywords include language
-    if(input.includes(snippet.language)) score++
+    if(input.includes(snippet.language)) score += 2
     
     snippet.score = score
 
