@@ -111,6 +111,7 @@ let projects = [
     }
 ]
 $(() => {
+    // sort projects
     projects = projects.sort((a,b) => {
         B = b.created.replace(/\./g, '0').split('/')
         A = a.created.replace(/\./g, '0').split('/')
@@ -118,13 +119,29 @@ $(() => {
         let totalB = Number(B[0]) + Number(B[1])*31 + Number(B[2])*12*31
         let totalA = Number(A[0]) + Number(A[1])*31 + Number(A[2])*12*31
 
-        console.log('========\n', a.title, A, totalA, '\n', b.title, B, totalB)
+        //console.log('========\n', a.title, A, totalA, '\n', b.title, B, totalB)
         return totalB-totalA
         
     })
-    console.log(projects)
+    
+    // add all projects
     for(projectNum in projects) {
         let project = projects[projectNum]
-        $('.ProjectsWrapper').append(`<div class="ProjectBOX" onclick="window.location.href = '${project.link}'"><img src="${project.image}"/><span>${project.title}</span></div>`)
+        $('.ProjectsWrapper').append(`
+        <div class="ProjectBOX">
+            <a href="${project.link}"><img class="thumbnail" src="${project.image}"/></a>
+            <div class="bar">
+                <span class="title">${project.title}</span>
+                <img class="infoButton" src="https://i.imgur.com/4fHs0Qk.png"/>
+            </div>
+        </div>`)
     }
+
+    // on info button click
+    $('.infoButton').on('click', () => {
+        console.log($(this).parent().attr('class'))
+        let projectTitle = $(this).parent().first().html()
+        console.log(projectTitle)
+    })
+
 })
