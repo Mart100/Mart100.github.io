@@ -1,6 +1,5 @@
 body {
-  /*background-image: url("https://i.imgur.com/91tqSOZ.png");*/
-  font-family: 'Lato', sans-serif;
+  font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif;
   margin: 0;
   font-weight: 300;
   background-color: #005144;
@@ -39,14 +38,12 @@ body {
   margin: 0;
   width: 370;
   height: 370;
-  font-size: 60px;
 
 }
 /*.projectBOX span {
   position: relative;
   top: -50%;
   transform: translateY(-50%);
-  font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif;
   color: #6ae8cf;
   text-shadow:
     3px 3px 0 #000,
@@ -56,10 +53,9 @@ body {
     1px 1px 0 #000;
 }*/
 .projectBOX .title {
-  position: relative;
-  bottom: 0px;
+  position: absolute;
   left: 5px;
-  font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif;
+  top: 5px;
   color: white;
   font-size: 15px;
 }
@@ -90,5 +86,54 @@ body {
 .projectsWrapper {
   margin: auto;
   width: 100%;
-  height: 80%;
+  height: auto;
+}
+
+.created {
+  position: absolute;
+  left: 5px;
+  bottom: 5px;
+  color: white;
+  font-size: 15px;
+}
+.splitter {
+  padding: 30px;
+  font-size: 30px;
+  text-align: center;
+  color: white;
+  font-weight: 1000;
+  user-select: none;
+  -moz-user-select: none;
+
+  background-color: rgba(0, 0, 0, 0.719);
+}
+#newsletter p {
+  color: white;
+  font-size: 25px;
+  text-align: center;
+}
+#newsletter input {
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 20px;
+}
+#links img {
+  cursor: pointer;
+  width: 150px;
+  height: 150px;
+  transition-property: width, height, padding;
+  transition-duration: .4s;
+  padding: 5px;
+
+
+}
+#links img:hover {
+  width: 160px;
+  height: 160px;
+  padding: 0px;
+
+}
+#links {
+  padding: 100px;
 }

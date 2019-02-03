@@ -133,21 +133,31 @@ $(() => {
     // add all projects
     for(projectNum in projects) {
         let project = projects[projectNum]
-        $('.ProjectsWrapper').append(`
-        <div class="ProjectBOX">
+        let title = project.title
+        $('.projectsWrapper').append(`
+        <div class="ProjectBOX" id="project-${projectNum}">
             <a href="${project.link}"><img class="thumbnail" src="${project.image}"/></a>
             <div class="bar">
                 <span class="title">${project.title}</span>
                 <img class="infoButton" src="https://i.imgur.com/4fHs0Qk.png"/>
             </div>
         </div>`)
+
+        // on info button click
+        $(`#project-${projectNum} .infoButton`).on('click', () => {
+            let num = projects.indexOf(projects.find((a) => a.title == title))
+
+            $(`#project-${num} .bar`).animate({'height': '100%', 'bottom': '100%'}, 500)
+            $(`#project-${num} .bar`).prepend(`<span class="created">Created on: ${project.created}</span>`)
+            
+            // animate back when mouse leave
+            $(`#project-${num}`).on('mouseleave', () => {
+                $(`#project-${num} .bar`).animate({'height': '25px', 'bottom': '25px'}, 1000)
+                $(`#project-${num} .created`).fadeOut(1000, () => { $(`#project-${num} .created`).remove() })
+                $(`#project-${num}`).off('mouseleave')
+            })
+        })
     }
 
-    // on info button click
-    $('.infoButton').on('click', () => {
-        console.log($(this).parent().attr('class'))
-        let projectTitle = $(this).parent().first().html()
-        console.log(projectTitle)
-    })
 
 })
