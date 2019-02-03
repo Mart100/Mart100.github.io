@@ -2,7 +2,7 @@ body {
   font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif;
   margin: 0;
   font-weight: 300;
-  background-color: #005144;
+  background-color: rgb(0, 81, 68);
 }
 /* ========== WhiteBOX ====== */
 .projectBOX {
@@ -38,7 +38,7 @@ body {
   margin: 0;
   width: 370;
   height: 370;
-
+  
 }
 /*.projectBOX span {
   position: relative;
@@ -84,9 +84,9 @@ body {
   
 }
 .projectsWrapper {
-  margin: auto;
   width: 100%;
   height: auto;
+  text-align: center;
 }
 
 .created {
@@ -107,6 +107,9 @@ body {
 
   background-color: rgba(0, 0, 0, 0.719);
 }
+
+
+/*======NEWSLETTER======*/
 #newsletter p {
   color: white;
   font-size: 25px;
@@ -117,23 +120,48 @@ body {
   left: 50%;
   transform: translateX(-50%);
   font-size: 20px;
+  width: 300px;
+  margin: 5px;
 }
+#newsletter #subscribe {
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 20px;
+  text-align: center;
+  width: 300px;
+  cursor: pointer;
+  border-radius: 5px;
+  background-color: rgb(45, 187, 192);
+  padding: 5px;
+  margin: 5px;
+  color: white;
+}
+#newsletter #subscribe:hover {
+  background-color: rgb(36, 136, 139);
+}
+
+/*======LINKS======*/
 #links img {
   cursor: pointer;
   width: 150px;
   height: 150px;
   transition-property: width, height, padding;
   transition-duration: .4s;
-  padding: 5px;
-
+  padding: 10px;
+  margin: 0 auto;
+  display: inline-block;
 
 }
 #links img:hover {
-  width: 160px;
-  height: 160px;
+  width: 170px;
+  height: 170px;
   padding: 0px;
 
 }
 #links {
-  padding: 100px;
+  padding: 50px;
+  align-items: center;
+  display: flex;
+  justify-content: center;
 }
