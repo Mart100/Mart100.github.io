@@ -48,9 +48,16 @@ $(() => {
         $.get('https://news-letter.herokuapp.com/email', email, (response) => {
             let del = false
 
-            if(response == 'SUCCESS') $('#newsletter > p').html('Succesfully subscribed to the newsletter!. Check email for a verification email'); del = true
-            else if(response == 'EMAIL_DUPLICATE') $('#newsletter > p').html('This email is already subscribed!'); del = true
-            else if(response == 'INVALID_EMAIL') $('#newsletter > p').html('Hmm. This email doesnt seem to be valid. Refresh and try again!'); del = false
+            if(response == 'SUCCESS') {
+                $('#newsletter > p').html('Succesfully subscribed to the newsletter!. Check email for a verification email'); =
+                del = true
+            } else if(response == 'EMAIL_DUPLICATE') {
+                $('#newsletter > p').html('This email is already subscribed!') 
+                del = true
+            } else if(response == 'INVALID_EMAIL') {
+                $('#newsletter > p').html('Hmm. This email doesnt seem to be valid. Refresh and try again!')
+                del = false
+            }
 
             if(del) {
                 $('#subscribe').remove()
