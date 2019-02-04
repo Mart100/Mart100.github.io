@@ -49,7 +49,7 @@ $(() => {
             let del = false
 
             if(response == 'SUCCESS') {
-                $('#newsletter > p').html('Succesfully subscribed to the newsletter!. Check email for a verification email'); =
+                $('#newsletter > p').html('Succesfully subscribed to the newsletter!. Check email for a verification email')
                 del = true
             } else if(response == 'EMAIL_DUPLICATE') {
                 $('#newsletter > p').html('This email is already subscribed!') 
