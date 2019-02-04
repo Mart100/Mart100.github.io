@@ -1,5 +1,10 @@
-// title fun
 $(() => {
+    titleFun()
+    rainbowBackground()
+    subscribe()
+})
+
+function titleFun() {
     let stateL = 0
     let stateR = 2
     let states = ['_--', '-_-', '--_', '-_-']
@@ -10,10 +15,9 @@ $(() => {
         if(stateL > 3) stateL = 0
         if(stateR > 3) stateR = 0
     }, 350)
-})
+}
 
-// rainbow background
-$(() => {
+function rainbowBackground() {
     let min = 10
     let max = 50
     let color = {r: 0, g: 0, b: 0}
@@ -39,13 +43,14 @@ $(() => {
         }
         $('body').css('background-color', `rgb(${color.r}, ${color.g}, ${color.b})`)
     }, 100)
-})
+}
 
-$(() => {
+function subscribe() {
     // subscribe button click
     $('#subscribe').on('click', () => {
         let email = $('#newsletter > input').val()
         $.get('https://news-letter.herokuapp.com/email', email, (response) => {
+            console.log(response)
             let del = false
 
             if(response == 'SUCCESS') {
@@ -66,4 +71,4 @@ $(() => {
 
         })
     })
-})
+}
