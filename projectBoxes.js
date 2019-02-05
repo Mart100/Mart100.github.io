@@ -1,5 +1,8 @@
 let siteLink = location.href.replace('index.html', '')
 let githubSiteLink = 'https://github.com/Mart100/Mart100.github.io/tree/master/'
+let sortBy = 'best'
+let test
+
 // date is dd/mm/jjjj
 let projects = [
     {
@@ -8,6 +11,7 @@ let projects = [
         link: siteLink+'Snake',
         code: githubSiteLink+'Snake',
         created: '2/2/2018',
+				score: 5,
         description: `
         Just a snake game.
         Interesting part is that its made of 400 div elements.
@@ -20,6 +24,7 @@ let projects = [
         link: siteLink+'galaxy',
         code: githubSiteLink+'galaxy',
         created: '.././2018',
+				score: 2,
         description: `
         Tried to recreate the start of the universe. 
         Was ment to work way more on this and add planets orbiting etc.
@@ -33,6 +38,7 @@ let projects = [
         link: siteLink+'PrimeNumbers',
         code: githubSiteLink+'PrimeNumbers',
         created: '../4/2017',
+				score: 2,
         description: `
         The very first project i made in javascript. 
         First made it in node.js few days later turned it into a website
@@ -44,6 +50,7 @@ let projects = [
         link: siteLink+'Kerstspel/Kerstboom.html',
         code: 'https://github.com/Mart100/Kerstspel',
         created: '25/11/2017',
+				score: 7,
         description: `
         A project i made to show off at my family's yearly christmas dinner.
         Only works on chrome currently.
@@ -57,6 +64,7 @@ let projects = [
         link: siteLink+'Particles',
         code: githubSiteLink+'Particles',
         created: '.././2018',
+				score: 3,
         description: `
         First real "animation" / "moving thing" i made.
         It used 100 div elements with "position absolute".
@@ -69,6 +77,7 @@ let projects = [
         link: siteLink+'TextStatics',
         code: githubSiteLink+'TextStatics',
         created: '.././2018',
+				score: 4,
         description: `
         Simple: Put in a long text. Hit submit. 
         And get some simple statistics about the text
@@ -80,6 +89,7 @@ let projects = [
         link: siteLink+'SecretCode',
         code: githubSiteLink+'SecretCode',
         created: '../5/2017',
+				score: 2,
         description: `
         The second website project i made
         `
@@ -90,6 +100,7 @@ let projects = [
         link: 'https://geschiedenis.glitch.me/',
         code: 'https://glitch.com/edit/#!/neuralnetpong',
         created: '.././2018',
+				score: 2,
         description: `
         A thing we have to learn at school.
         So my sister requested to make a website to learn it easier.
@@ -101,6 +112,7 @@ let projects = [
         link: siteLink+'1D-collision',
         code: githubSiteLink+'1D-collision',
         created: '25/4/2018',
+				score: 5,
         description: `
         I made this so it would be simpler to understand how to make the 2D-collisions.
         Later i added some more settings so it is able to recreate <a href="https://www.youtube.com/watch?v=HEfHFsfGXjs">this video</a>
@@ -112,6 +124,7 @@ let projects = [
         link: siteLink+'2D-collision',
         code: githubSiteLink+'2D-collision',
         created: '25/5/2018',
+				score: 10,
         description: `
         Random mass 2D balls. That collide with eachother and the wall.
 
@@ -123,6 +136,7 @@ let projects = [
         link: siteLink+'Waves',
         code: githubSiteLink+'Waves',
         created: '1/10/2018',
+				score: 9,
         description: `
         Not much to say about it. Just mess some with the settings in the corner
         `
@@ -133,6 +147,7 @@ let projects = [
         link: siteLink+'GameOfLife',
         code: githubSiteLink+'GameOfLife',
         created: '2/10/2018',
+				score: 10,
         description: `
         recreated the popular "Game of life" cellular automaton
         `
@@ -143,6 +158,7 @@ let projects = [
         link: siteLink+'analogClock',
         code: githubSiteLink+'analogClock',
         created: '3/10/2018',
+				score: 8,
         description: `
         Just an analog clock
         `
@@ -153,6 +169,7 @@ let projects = [
         link: siteLink+'pathFindingAlgorithm',
         code: githubSiteLink+'pathFindingAlgorithm',
         created: '10/5/2018',
+				score: 20,
         description: `
         So this was a really huge project of me.
         When your on the site. You can start by dragging your mouse to draw walls.
@@ -172,6 +189,7 @@ let projects = [
         link: 'https://fuct.glitch.me',
         code: 'https://github.com/Mart100/fuct',
         created: '3/3/2018',
+				score: 20,
         description: `
         An agar.io like game.
         Made it with a friend long time ago. And later added some more.
@@ -185,6 +203,7 @@ let projects = [
         link: siteLink+'3Dengine',
         code: githubSiteLink+'3Dengine',
         created: '15/1/2019',
+				score: 10,
         description: `
         A 3D-engine fully custom made uses html canvas.`
     },
@@ -194,6 +213,7 @@ let projects = [
         link: 'https://yeetoos3d.herokuapp.com/',
         code: 'https://github.com/Mart100/Yeetoos3D',
         created: '25/1/2019',
+				score: 8,
         description: `
         Copied the 3D-engine. And tried to make it into a 3D multiplayer shooter.
         Still working on this.`
@@ -204,6 +224,7 @@ let projects = [
         link: siteLink+'RGBcellularAutomaton',
         code: githubSiteLink+'RGBcellularAutomaton',
         created: '26/1/2019',
+				score: 10,
         description: `
         So i got the inspiration of this from <a href="https://www.youtube.com/watch?v=M4cV0nCIZoc">This video</a>
         But as you can see i changed it quite a lot. 
@@ -218,6 +239,7 @@ let projects = [
         link: siteLink+'myCodeSnippets',
         code: githubSiteLink+'myCodeSnippets',
         created: '29/1/2019',
+				score: 15,
         description: `
         Since i had a lot of instances where im trying to find a little piece of code.
         But have to search all over the internet to find it.
@@ -231,6 +253,7 @@ let projects = [
         link: siteLink+'mouseLight',
         code: githubSiteLink+'mouseLight',
         created: '3/2/2019',
+				score: 10,
         description: `
         A small project where your mouse is the light.
         And it draws shadows
@@ -244,6 +267,7 @@ let projects = [
         link: 'https://neuralnetpong.glitch.me/',
         code: 'https://glitch.com/edit/#!/neuralnetpong',
         created: '.././2018',
+				score: 10,
         description: `
         PONG singleplayer and multiplayer
         `
@@ -254,59 +278,103 @@ let projects = [
         link: 'https://github.com/Mart100/Mart100.github.io',
         code: 'https://github.com/Mart100/Mart100.github.io',
         created: '.././9999',
+				score: 999,
         description: `
         PONG singleplayer and multiplayer
         `
     }
 ]
+
+
 $(() => {
-    // sort projects
-    projects = projects.sort((a,b) => {
-        B = b.created.replace(/\./g, '0').split('/')
-        A = a.created.replace(/\./g, '0').split('/')
+	sortProjects()
+	addProjects()
 
-        let totalB = Number(B[0]) + Number(B[1])*31 + Number(B[2])*12*31
-        let totalA = Number(A[0]) + Number(A[1])*31 + Number(A[2])*12*31
+	// on sort by button click
+	$('#projectsSplitter .dropdown > button').on('click', () => {
+		$('#projectsSplitter #dropdown').toggle()
+	})
 
-        //console.log('========\n', a.title, A, totalA, '\n', b.title, B, totalB)
-        return totalB-totalA
-        
-    })
-    
-    // add all projects
-    for(projectNum in projects) {
-        let project = projects[projectNum]
-        let title = project.title
-        $('.projectsWrapper').append(`
-        <div class="ProjectBOX" id="project-${projectNum}">
-            <a href="${project.link}"><img class="thumbnail" src="${project.image}"/></a>
-            <div class="bar">
-                <span class="title">${project.title}</span>
-                <img class="infoButton" src="https://i.imgur.com/4fHs0Qk.png"/>
-                ${ project.code != undefined ? `<a href="${project.code}"><img class="codeButton" src="https://i.imgur.com/HAzpWfk.png"/></a>` : ''}
-            </div>
-        </div>`)
-
-        // on info button click
-        $(`#project-${projectNum} .infoButton`).on('click', () => {
-            let num = projects.indexOf(projects.find((a) => a.title == title))
-
-            $(`#project-${num} .bar`).animate({'height': '100%', 'bottom': '100%'}, 500)
-            $(`#project-${num} .bar`).prepend(`<span class="created">Created on: ${project.created}</span>`)
-            $(`#project-${num} .bar`).prepend(`<p class="description">${project.description}</p>`)
-            
-            // animate back when mouse leave
-            $(`#project-${num}`).on('mouseleave', () => {
-                $(`#project-${num} .bar`).animate({'height': '25px', 'bottom': '25px'}, 1000)
-                $(`#project-${num} .created`).fadeOut(1000, () => { $(`#project-${num} .created`).remove() })
-                $(`#project-${num} .description`).fadeOut(1000, () => { $(`#project-${num} .description`).remove() })
-                $(`#project-${num}`).off('mouseleave')
-            })
-        })
-
-        // on code button click
-
-    }
-
-
+	// on sort dropdown button click
+	$('#projectsSplitter .dropdown-content > button').on('click', (e) => { sortByChange(e)})
 })
+
+function sortByChange(e) {
+
+	sortBy = e.target.attributes.id.value
+
+	// hide dropdown
+	$('#projectsSplitter #dropdown').toggle()
+
+	// edit text of button
+	$('#projectsSplitter .dropdown > button').html(sortBy)
+
+	// refresh projects and sort
+	sortProjects()
+	$('#projectsWrapper').html('')
+	addProjects()
+
+
+}
+
+
+function addProjects() {
+	// add all projects
+	for(projectNum in projects) {
+		let project = projects[projectNum]
+		let title = project.title
+		$('#projectsWrapper').append(`
+		<div class="ProjectBOX" id="project-${projectNum}">
+			<a href="${project.link}"><img class="thumbnail" src="${project.image}"/></a>
+			<div class="bar">
+				<span class="title">${project.title}</span>
+				<img class="infoButton" src="https://i.imgur.com/4fHs0Qk.png"/>
+				${ project.code != undefined ? `<a href="${project.code}"><img class="codeButton" src="https://i.imgur.com/HAzpWfk.png"/></a>` : ''}
+			</div>
+		</div>`)
+
+		// on info button click
+		$(`#project-${projectNum} .infoButton`).on('click', () => {
+			let num = projects.indexOf(projects.find((a) => a.title == title))
+
+			$(`#project-${num} .bar`).animate({'height': '100%', 'bottom': '100%'}, 500)
+			$(`#project-${num} .bar`).prepend(`<span class="created">Created on: ${project.created}</span>`)
+			$(`#project-${num} .bar`).prepend(`<p class="description">${project.description}</p>`)
+			
+			// animate back when mouse leave
+			$(`#project-${num}`).on('mouseleave', () => {
+				$(`#project-${num} .bar`).animate({'height': '25px', 'bottom': '25px'}, 1000)
+				$(`#project-${num} .created`).fadeOut(1000, () => { $(`#project-${num} .created`).remove() })
+				$(`#project-${num} .description`).fadeOut(1000, () => { $(`#project-${num} .description`).remove() })
+				$(`#project-${num}`).off('mouseleave')
+			})
+		})
+
+	}
+}
+
+function sortProjects() {
+	switch(sortBy) {
+		case('newest'):
+			projects = projects.sort((a,b) => {
+				B = b.created.replace(/\./g, '0').split('/')
+				A = a.created.replace(/\./g, '0').split('/')
+
+				let totalB = Number(B[0]) + Number(B[1])*31 + Number(B[2])*12*31
+				let totalA = Number(A[0]) + Number(A[1])*31 + Number(A[2])*12*31
+
+				//console.log('========\n', a.title, A, totalA, '\n', b.title, B, totalB)
+				return totalB-totalA
+					
+			})
+			break
+		case('best'):
+			projects = projects.sort((a,b) => {
+				B = b.score
+				A = a.score
+				return B-A
+					
+			})
+			break
+	}
+}

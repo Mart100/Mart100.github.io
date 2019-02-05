@@ -106,7 +106,7 @@ body {
   font-size: 15px;
 }
 
-.projectsWrapper {
+#projectsWrapper {
   width: 100%;
   height: auto;
   text-align: center;
@@ -148,14 +148,14 @@ body {
   text-align: center;
   width: 300px;
   cursor: pointer;
-  border-radius: 5px;
-  background-color: rgb(45, 187, 192);
+  border-radius: 2px;
+  background-color: rgb(52, 152, 219);
   padding: 5px;
   margin: 5px;
   color: white;
 }
 #newsletter #subscribe:hover {
-  background-color: rgb(36, 136, 139);
+  background-color: rgb(41, 128, 185);
 }
 
 /*======LINKS======*/
@@ -183,3 +183,66 @@ body {
   display: flex;
   justify-content: center;
 }
+
+/*======About-ME======*/
+#about-me {
+  color: white;
+  text-align: center;
+}
+
+/*======Projects Sort by Dropdown======*/
+#sort {
+  width: 200px;
+  float: right;
+}
+#projectsSplitter > span {
+}
+#projectsSplitter #sort {
+  font-weight: 400;
+  font-size: 20px;
+  text-align: right;
+}
+#projectsSplitter .dropbtn {
+  background-color: rgb(51, 151, 219);
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  width: 105px;
+}
+
+#projectsSplitter .dropbtn:hover {
+  background-color: rgb(41, 128, 185);
+}
+
+#projectsSplitter .dropdown {
+  position: relative;
+  display: inline-block;
+  z-index: 10;
+}
+
+#projectsSplitter .dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: rgb(51, 151, 219);
+  width: 105px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  
+}
+
+#projectsSplitter .dropdown-content button {
+  border: none;
+  padding: 12px 16px;
+  display: block;
+  color: white;
+  background-color: rgb(41, 128, 185);
+  width: 100%;
+  cursor: pointer;
+}
+#projectsSplitter .dropdown-content button:hover {
+  background-color: rgb(44, 117, 165);
+
+}
+
+#projectsSplitter .show {display: block;}
