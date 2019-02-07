@@ -148,7 +148,7 @@ body {
   text-align: center;
   width: 300px;
   cursor: pointer;
-  border-radius: 2px;
+  border-radius: 1px;
   background-color: rgb(52, 152, 219);
   padding: 5px;
   margin: 5px;
@@ -208,6 +208,7 @@ body {
   padding: 16px;
   font-size: 16px;
   border: none;
+  border-radius: 1px;
   cursor: pointer;
   width: 105px;
 }
