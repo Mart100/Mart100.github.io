@@ -186,15 +186,23 @@ let projects = [
     {
         title: 'Multiplayer game',
         image: 'https://i.imgur.com/Oo4iZhF.png',
-        link: 'https://fuct.glitch.me',
+        link: 'https://fuct.herokuapp.com/',
         code: 'https://github.com/Mart100/fuct',
         created: '3/3/2018',
 				score: 20,
         description: `
-        An agar.io like game.
-        Made it with a friend long time ago. And later added some more.
-        Since its hosted on glitch ( a free hosting site) You will have to wait a while for it to start.
-        And if it doesnt load correctly. Just refresh
+        An agar.io-like game. <br>
+        My friend and I started this game a long time ago and later on we decided to continue. <br>
+        Since it's hosted on a free hosting site, you will have to wait a while for it to start. <br>
+        <br>
+        The goal is to defend your "core" with walls and turrets, which you can buy with coins. <br>
+        It is a multiplayer-game, so you have to destroy the "core" of other players. <br>
+        <br>
+        Controls: <br>
+        - WASD to move around <br>
+        - ENTER to chat <br>
+        - B to toggle build mode <br>
+        - F to open shop <br>
         `
     },
     {
@@ -271,17 +279,6 @@ let projects = [
         description: `
         PONG singleplayer and multiplayer
         `
-    },    
-    {
-        title: 'This Site!',
-        image: 'https://i.imgur.com/nKTfDvT.png',
-        link: 'https://github.com/Mart100/Mart100.github.io',
-        code: 'https://github.com/Mart100/Mart100.github.io',
-        created: '.././9999',
-				score: 999,
-        description: `
-        PONG singleplayer and multiplayer
-        `
     }
 ]
 
@@ -317,9 +314,8 @@ function sortByChange(e) {
 
 }
 
-
 function addProjects() {
-	// add all projects
+	// add all projects 
 	for(projectNum in projects) {
 		let project = projects[projectNum]
 		let title = project.title
