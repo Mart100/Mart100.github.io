@@ -334,10 +334,10 @@ overflow: hidden visible;`
     code: `transform: rotate(90deg);`,
   },
   {
-    title: 'template',
-    keywords: ['abc', 'test'],
-    language: 'scratch',
-    code: ``,
+    title: 'box-shadow',
+    keywords: ['box', 'shadow'],
+    language: 'css',
+    code: `box-shadow: 1px 2px 4px rgba(0, 0, 0, .5);`,
   },
   {
     title: 'template',
