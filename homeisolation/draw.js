@@ -11,11 +11,11 @@ function frame() {
   window.requestAnimationFrame(frame)
   
 	// clear screen
-	ctx.clearRect(-canvas.width/2, -canvas.height/2, canvas.width, canvas.height)
+	ctx.clearRect(0, 0, canvas.width, canvas.height)
 
   // draw house
   ctx.lineWidth = 10  
-  ctx.fillStyle = 'rgb(192, 149, 87)'
+  ctx.fillStyle = `rgba(192, 149, 87, ${(houseTemp-outsideTemp)/20})`
   ctx.beginPath()
   ctx.moveTo(midX-houseWidth, midY+300)
   ctx.lineTo(midX-houseWidth, midY-100)
