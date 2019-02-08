@@ -279,6 +279,17 @@ let projects = [
         description: `
         PONG singleplayer and multiplayer
         `
+    },
+    {
+      title: 'home Isolation',
+      image: 'https://i.imgur.com/1f8JBv9.png',
+      link: siteLink+'homeisolation',
+      code: githubSiteLink+'homeisolation',
+      created: '8/2/2019',
+      score: 10,
+      description: `
+      Home Isolation Simulation
+      `
     }
 ]
 
