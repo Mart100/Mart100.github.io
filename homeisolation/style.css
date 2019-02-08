@@ -1,0 +1,23 @@
+body {
+  background-color: #80b7be;
+  margin: 0;
+}
+
+#canvas {
+  position: absolute;
+}
+#settings {
+  position: absolute;
+  width: 250px;
+  padding: 0 20px;
+  right: 0px;
+  top: 0px;
+  height: 100%;
+  background-color: rgb(200, 200, 200)
+}
+
+#pause {
+  font-size: 50px;
+  padding: 10px;
+  margin-top: 20px;
+}
