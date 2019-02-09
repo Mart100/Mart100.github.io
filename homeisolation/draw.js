@@ -1,4 +1,5 @@
-let houseWidth = 300
+let houseWidth = window.innerWidth/6 //300
+let houseHeight = window.innerHeight/2.5 //400
 let seconds = 0
 
 
@@ -6,6 +7,8 @@ function frame() {
 
   let midX = canvas.width/2
   let midY = canvas.height/2
+  let width = canvas.width
+  let height = canvas.height
 
   // rerun frame
   window.requestAnimationFrame(frame)
@@ -14,14 +17,16 @@ function frame() {
 	ctx.clearRect(0, 0, canvas.width, canvas.height)
 
   // draw house
+  let HmX = midX+width/10 // house Mid X
+  let HmY = midY // house Mid Y
   ctx.lineWidth = 10  
   ctx.fillStyle = `rgba(192, 149, 87, ${(houseTemp-outsideTemp)/20})`
   ctx.beginPath()
-  ctx.moveTo(midX-houseWidth, midY+300)
-  ctx.lineTo(midX-houseWidth, midY-100)
-  ctx.lineTo(midX, midY-400)
-  ctx.lineTo(midX+houseWidth, midY-100)
-  ctx.lineTo(midX+houseWidth, midY+300)
+  ctx.moveTo(HmX-houseWidth, HmY+houseHeight/1.33)
+  ctx.lineTo(HmX-houseWidth, HmY-houseHeight/5)
+  ctx.lineTo(HmX, HmY-houseHeight)
+  ctx.lineTo(HmX+houseWidth, HmY-houseHeight/5)
+  ctx.lineTo(HmX+houseWidth, HmY+houseHeight/1.33)
   ctx.closePath()
   ctx.fill()
   ctx.stroke()
@@ -31,13 +36,13 @@ function frame() {
   ctx.fillStyle = 'rgb(0, 0, 0)'
   ctx.textAlign = 'center'
   let houseTempRounded = Math.round(houseTemp*10)/10
-  ctx.fillText(houseTempRounded+'°C', midX, midY)
+  ctx.fillText(houseTempRounded+'°C', HmX, midY)
 
   // draw outside Warmth
   ctx.font = "40px Arial"
   ctx.fillStyle = 'rgb(0, 0, 0)'
   ctx.textAlign = 'center'
-  ctx.fillText(outsideTemp+'°C', midX-600, midY)
+  ctx.fillText(outsideTemp+'°C', width/5, midY)
 
   // draw Time box
   ctx.fillStyle = 'rgb(200, 200, 200)'

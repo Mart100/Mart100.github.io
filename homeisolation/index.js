@@ -8,7 +8,7 @@ let isPaused = true
 $(function() {
   canvas = document.getElementById('canvas')
   ctx = canvas.getContext('2d')
-  canvas.width = window.innerWidth
+  canvas.width = window.innerWidth-250
   canvas.height = window.innerHeight
   frame()
   setInterval(() => { tick() }, 10)
