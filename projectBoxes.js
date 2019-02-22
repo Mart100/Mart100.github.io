@@ -171,16 +171,14 @@ let projects = [
         created: '10/5/2018',
 				score: 20,
         description: `
-        So this was a really huge project of me.
-        When your on the site. You can start by dragging your mouse to draw walls.
-        When you done, click on the arrow button in the corner.
-        Now you can change some settings. If its the first time trying it out. Just leave this as default.
-        Click submit to proceed. First you see a white thing Spreading from the corner. This is to calculate how far a cube gets to the finish.
-        It takes some time. But after a while you see the cubes start to head towards the finish.
-        So how this works: All of the cubes have a list of instructions example: (left, right, down, down, up, left). And move according those. 
-        But after a new generation. There will be mutations of the best 10% (green). Crossovers of the best 10% (blue) And the 10% themselfs (red)
-        This way the spiecies in a whole will evolve. How good a cube is calculated by how far it is and how many steps.
-        Click the buttons in the corner. To change some settings / get some info
+        This was a huge project of me.
+        When you're on the site, you can start by dragging your mouse to draw walls.
+        When you're done, click on the arrow button in the bottom-right corner.
+        After a while, you see the cubes start to head towards the finish.
+        All of the cubes have a list of instructions, for example: (left, right, down, down, up, left). And they move according those instructions. 
+        But after a new generation, there will be mutations of the best 10% of the previous generation (green), crossovers of the best 10% (blue) and the 10% themselves (red).
+        This way, the spiecies in a whole will evolve. 
+        How good a cube is, is calculated by how nearby it is from the finish and how many steps has it taken.
         `
     },
     {
@@ -189,7 +187,7 @@ let projects = [
         link: 'https://fuct.herokuapp.com/',
         code: 'https://github.com/Mart100/fuct',
         created: '3/3/2018',
-				score: 20,
+				score: 25,
         description: `
         An agar.io-like game. <br>
         My friend and I started this game a long time ago and later on we decided to continue. <br>
@@ -249,10 +247,10 @@ let projects = [
         created: '29/1/2019',
 				score: 15,
         description: `
-        Since i had a lot of instances where im trying to find a little piece of code.
-        But have to search all over the internet to find it.
-        So i made a little website where i store all my most used code snippets.
-        The animations are pretty if i do say so myself
+        Since, it happens to me many times that when I'm trying to find a little piece of code,
+        but have to search all over the internet to find it.
+        So, I made a page where I store all my most-used-code-snippets.
+        The animations are 👌 if I do say so myself.
         `
     },
     {
