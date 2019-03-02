@@ -18,6 +18,8 @@ function draw() {
 
   window.requestAnimationFrame(draw)
 
+
+  // some vars
   let side1 = game.side1, side2 = game.side2
   let ball = game.ball
   ctx.fillStyle = '#FFF'
@@ -42,6 +44,7 @@ function draw() {
   ctx.fill()
 
   // draw score
+  ctx.font = "30px Arial"
   ctx.textAlign='right'
   ctx.fillText(side1.goals, 675, 40)
   ctx.textAlign='left'

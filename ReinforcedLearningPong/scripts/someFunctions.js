@@ -21,6 +21,7 @@ function sigmoid_derivative(x) {
 }
 
 function info_to_brain_input() {
+  
   //Normalize Data
   let ballX = game.ball.pos.x/1400+0.5
   let ballY = game.ball.pos.y/900+0.5
