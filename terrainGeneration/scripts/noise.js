@@ -11,7 +11,7 @@
 
   var grad3 = [new Grad(1,1,0),new Grad(-1,1,0),new Grad(1,-1,0),new Grad(-1,-1,0),
                new Grad(1,0,1),new Grad(-1,0,1),new Grad(1,0,-1),new Grad(-1,0,-1),
-               new Grad(0,1,1),new Grad(0,-1,1),new Grad(0,1,-1),new Grad(0,-1,-1)];
+               new Grad(0,1,1),new Grad(0,-1,1),new Grad(0,1,-1),new Grad(0,-1,-1)]
 
   var p = [151,160,137,91,90,15,
   131,13,201,95,96,53,194,233,7,225,140,36,103,30,69,142,8,99,37,240,21,10,23,
@@ -26,6 +26,7 @@
   251,34,242,193,238,210,144,12,191,179,162,241, 81,51,145,235,249,14,239,107,
   49,192,214, 31,181,199,106,157,184, 84,204,176,115,121,50,45,127, 4,150,254,
   138,236,205,93,222,114,67,29,24,72,243,141,128,195,78,66,215,61,156,180];
+
   // To remove the need for index wrapping, double the permutation table length
   var perm = new Array(512);
   var gradP = new Array(512);
@@ -138,31 +139,5 @@
   function lerp(a, b, t) {
     return (1-t)*a + t*b;
   }
-
-  // 2D Perlin Noise
-  module.perlin2 = function(x, y) {
-    // Find unit grid cell containing point
-    var X = Math.floor(x), Y = Math.floor(y);
-    // Get relative xy coordinates of point within that cell
-    x = x - X; y = y - Y;
-    // Wrap the integer cells at 255 (smaller integer period can be introduced here)
-    X = X & 255; Y = Y & 255;
-
-    // Calculate noise contributions from each of the four corners
-    var n00 = gradP[X+perm[Y]].dot2(x, y);
-    var n01 = gradP[X+perm[Y+1]].dot2(x, y-1);
-    var n10 = gradP[X+1+perm[Y]].dot2(x-1, y);
-    var n11 = gradP[X+1+perm[Y+1]].dot2(x-1, y-1);
-
-    // Compute the fade curve value for x
-    var u = fade(x);
-
-    // Interpolate the four results
-    return lerp(
-        lerp(n00, n10, u),
-        lerp(n01, n11, u),
-       fade(y));
-  };
-
 
 })(this);

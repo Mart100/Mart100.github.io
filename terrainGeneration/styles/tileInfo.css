@@ -1,0 +1,10 @@
+#tileInfo {
+  position: absolute;
+  left: 0px;
+  bottom: 0px;
+  width: auto;
+  height: auto;
+  color: white;
+  padding: 5px;
+  background-color: rgba(0,0,0,0.2);
+}

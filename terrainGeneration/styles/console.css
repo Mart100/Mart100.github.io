@@ -1,0 +1,52 @@
+body {
+  background-color: #232323;
+  margin: 0;
+  overflow: hidden;
+}
+
+#console {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  background-color: black;
+  color: #00ff00;
+  border-radius: 0px 0px 0px 5px;
+  transition-duration: .2s;
+  width: 100px;
+  height: 20px;
+  cursor: pointer;
+  font-family: monospace;
+  padding: 10;
+}
+
+#console.expanded {
+  cursor: default;
+  height: 924;
+  width: 300px;
+}
+#console.expanded #output {
+  height: 97%;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+#console.fullscreen {
+  width: 1900;
+}
+#console-input {
+  position: absolute;
+  display: none;
+  bottom: 5px;
+  width: 300px;
+  right: 5px;
+  color: #00af00;
+  background-color: black;
+  border: none;
+
+}
+#console:hover:not(.expanded) {
+  width: 110px;
+  height: 30px;
+}
+#console .markdown {
+  color: #029102;
+}
