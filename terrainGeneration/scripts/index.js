@@ -1,13 +1,23 @@
 let canvas, ctx
 let world = []
 let keys = {}
+let mouse = {
+  pos: {},
+  down: false
+}
 let worldSize = 1e3
 let totalTilesLoaded = 0
 let fps = 0
-let loadTilesPerSec = 100000
+let loadTilesPerSec = 500000
 let camera = {
   pos: {x: 0, y: 0},
-  zoom: 50
+  zoom: 0.01,
+  speed: 2
+}
+let settings = {
+  pixelated: true,
+  detail: 5
+
 }
 let debugPanel
 
