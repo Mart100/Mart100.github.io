@@ -9,12 +9,13 @@ function loadTile(x, y) {
   // biomes
   let biomes = {}
 
-  biomes['ocean'] = getTileFromSeed(x, y, 'ocean')
-  biomes['forest'] = getTileFromSeed(x, y, 'forest')
+  for(let seedName in seeds) {
+    biomes[seedName] = getTileFromSeed(x, y, seedName)
+  }
 
   let biomesArray = []
   for (let biome in biomes) biomesArray.push([biome, biomes[biome]])
-  biomesArray.sort((a,b) => a[1]-b[1])
+  biomesArray.sort((a,b) => b[1]-a[1])
   
   tile.biome = biomesArray[0][0]
   tile.biomes = biomes
@@ -28,7 +29,13 @@ function loadTile(x, y) {
 function getTileFromSeed(x, y, seedName) {
   let seed = seeds[seedName]
   noise.seed(seed.seed)
-  return (noise.simplex2(x/seed.size, y/seed.size)+seed.plus)*seed.times
+  let Snoise = (noise.simplex2(x/seed.size, y/seed.size)+seed.plus)*seed.times
+  if(seed.split) {
+    if(Snoise > seed.split.at) Snoise += seed.split.plus
+    if(Snoise < seed.split.at) Snoise -= seed.split.plus
+  }
+  return Snoise
+
 }
 function resetWorld() {
   world = []
