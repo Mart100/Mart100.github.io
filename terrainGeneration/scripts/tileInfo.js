@@ -1,44 +1,35 @@
-$(() => {
-  $(document).on('mousemove', (event) => {
 
-    // Get tile
-    let mx = event.clientX
-    let my = event.clientY
-    let cz = camera.zoom
-    let cpx = camera.pos.x
-    let cpy = camera.pos.y
+function displayTileInfo() {
+  let pos = getTileUnderMouse(mouse.pos.x, mouse.pos.y)
+  let x = pos.x
+  let y = pos.y
 
-    let x = mx*(1/cz) + cpx
-    let y = my*(1/cz) + cpy
+  if(!world[x] || !world[x][y]) loadTile(x, y)
 
-    x = Math.round(x)
-    y = Math.round(y)
+  let tile = world[x][y]
 
-    // if undefined. try find it    
-    if(!world[x] || !world[x][y]) {
-      // if zoom is too small. Give up.
-      if(camera.zoom < 0.0001) $('#tileInfo').html('<b>Zoom in, To be able to see tile Info</b>')
+  let html = `
+  <b>
+    PosX: ${x}<br>
+    PosY: ${y}<br>
+    Biome: ${tile.biome}<br>
+    Biomes: ${JSON.stringify(tile.biomes)}<br>
+  </b>
+  `
+  $('#tileInfo').html(html)
+}
 
-      for(let i=0;i<100;i++) {
-        x += Math.round(Math.random()*4)
-        y += Math.round(Math.random()*4)
-        if(world[x] && world[x][y]) i = 100
-      }
-    }
 
-    if(!world[x] || !world[x][y]) return
 
-    let tile = world[x][y]
+function getTileUnderMouse(mx, my) {
+  // Get tile
+  mx /= settings.detail
+  my /= settings.detail
 
-    let html = `
-    <b>
-      PosX: ${x}<br>
-      PosY: ${y}<br>
-      Biome: ${tile.biome}<br>
-      Biomes: ${JSON.stringify(tile.biomes)}<br>
-    </b>
-    `
-    $('#tileInfo').html(html)
+  let x = mx/camera.zoom + camera.pos.x
+  let y = my/camera.zoom + camera.pos.y
 
-  })
-})
+  x = Math.round(x)
+  y = Math.round(y)
+  return {x: x, y: y}
+}
