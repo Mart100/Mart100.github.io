@@ -100,8 +100,36 @@ const commands = {
     appendOutput('Console closed!')
   },
 
+  speed(args) {
+    let oldSpeed = camera.speed
+    let newSpeed = Number(args[0])
+    if(isNaN(newSpeed)) return appendOutput('ERR: Speed must be a number')
+    camera.speed = newSpeed
+    appendOutput(`Set speed from [(${oldSpeed})] to [(${newSpeed})]`)
+
+
+  },
+
+  pixelated(args) {
+    let pix = args[0]
+    if(pix != 'false' && pix != 'true') return appendOutput(`Please enter [true] or [false]`)
+    if(pix == 'true') pix = true
+    if(pix == 'false') pix = false
+    settings.pixelated = pix
+    appendOutput(`Set pixelated to [${pix}]`)
+  },
+
+  detail(args) {
+    let num = Number(args[0])
+    if(isNaN(num)) return appendOutput('ERR: Must be a number')
+    settings.detail = num
+    appendOutput(`Detail set to [${num}]`)
+  },
+
   help(args) {
+    appendOutput(`
     
+    `)
   }
 
 }
