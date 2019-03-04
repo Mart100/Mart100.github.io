@@ -41,3 +41,33 @@ function resetWorld() {
   world = []
   totalTilesLoaded = 0
 }
+
+/*
+  // some variables
+  let tile = {}
+
+  // create x if undefined
+  if(world[x] == undefined) world[x] = []
+
+  // biomes
+  let noiseLayers = {}
+
+  for(let seedName in seeds) {
+    noiseLayers[seedName] = getTileFromSeed(x, y, seedName)
+  }
+
+  let biomes = []
+  for (let layer in noiseLayers) {
+    if(!seeds[layer].biome) continue
+    biomes.push([biome, biomes[layer]])
+  }
+  biomesArray.sort((a,b) => b[1]-a[1])
+  
+  tile.biome = biomes[0][0]
+  tile.noise = biomes
+  
+
+  // add tile to world
+  world[x][y] = tile
+  totalTilesLoaded++
+*/

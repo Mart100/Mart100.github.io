@@ -10,7 +10,7 @@ let totalTilesLoaded = 0
 let fps = 0
 let loadTilesPerSec = 500000
 let camera = {
-  pos: {x: 0, y: 0},
+  pos: {x: 1, y: 1},
   zoom: 0.01,
   speed: 2
 }

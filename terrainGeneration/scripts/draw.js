@@ -65,6 +65,7 @@ const draw = {
       if(tile.biome == 'ocean') rgb = [10, 10, 200]
       else if(tile.biome == 'forest') rgb = [10, 50, 10]
       else if(tile.biome == 'grassland') rgb = [10, 120, 10]
+      else if(tile.biome == 'desert') rgb = [194, 178, 128]
 
       imgData.data[i] = rgb[0]
       imgData.data[i+1] = rgb[1]
