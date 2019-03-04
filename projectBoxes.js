@@ -185,7 +185,6 @@ let projects = [
         title: 'Multiplayer game',
         image: 'https://i.imgur.com/Oo4iZhF.png',
         link: 'https://fuct.herokuapp.com/',
-        code: 'https://github.com/Mart100/fuct',
         created: '3/3/2018',
 				score: 25,
         description: `
@@ -287,6 +286,18 @@ let projects = [
       score: 10,
       description: `
       Home Isolation Simulation
+      `
+    },
+    {
+      title: 'Terrain Generation',
+      image: 'https://i.imgur.com/ptZ03rB.png',
+      link: siteLink+'terrainGeneration',
+      code: githubSiteLink+'terrainGeneration',
+      created: '4/3/2019',
+      score: 15,
+      description: `
+      a random terrain generator.<br>
+      That makes use of multiple noise layers onto eachother
       `
     }
 ]
