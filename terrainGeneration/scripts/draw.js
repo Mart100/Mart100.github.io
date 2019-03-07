@@ -1,10 +1,10 @@
-let previousImgData = []
 let averageFrameTime = 0
+let loadTileWorker = new Worker('loadTile.js')
 
 function frame() {
 
   // rerun frame
-   window.requestAnimationFrame(frame)
+  requestAnimationFrame(frame)
   
 	// clear screen
 	ctx.clearRect(0, 0, canvas.width, canvas.height)
@@ -18,19 +18,7 @@ function frame() {
   // DRAW
     
   // some vars
-  let cz = camera.zoom
-  let ch = canvas.height
-  let cw = canvas.width
-  let cpx = camera.pos.x
-  let cpy = camera.pos.y
-  let r = 0
-  let b = 30
   let loadedTiles = 0
-
-  let xStart = Math.round(cpx - cw/cz)
-  let xEnd = Math.round(cpx + cw/cz)
-  let yStart = Math.round(cpy - ch/cz)
-  let yEnd = Math.round(cpy + ch/cz)
 
   let skips = []
   let ySkips = {}
@@ -38,7 +26,7 @@ function frame() {
 
 
   let plus = 1
-  plus = Math.ceil(10/cz)
+  plus = Math.ceil(10/camera.zoom)
 
   let c1 = document.createElement("canvas")
   var ctx1 = c1.getContext("2d")
@@ -133,8 +121,6 @@ function frame() {
 
   ctx1.putImageData(imgData, 0, 0)
 
-  previousImgData = imgData
-
   if(settings.pixelated) {
     ctx.mozImageSmoothingEnabled = false
     ctx.imageSmoothingEnabled = false
@@ -145,12 +131,12 @@ function frame() {
 
   ctx.drawImage(c1, 0, 0, canvas.width, canvas.height)
 
+  let timeAlpha = (Math.sin(Math.PI*0.5+((time/3600/24)*Math.PI*2))+1)/2  //Math.sin((time/86400)*Math.PI)
+  ctx.fillStyle = `rgba(0, 0, 0, ${timeAlpha-0.1})`
+  
+  if(settings.timeEnabled) ctx.fillRect(0, 0, canvas.width, canvas.height)
+
   averageFrameTime += (performance.now()-frameTimeStart)/20
   averageFrameTime *= 0.8
   debugPanel.add('AverageFrameTime', averageFrameTime)
-}
-
-
-function getTileColor() {
-
 }

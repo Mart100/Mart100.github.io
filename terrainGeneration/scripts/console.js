@@ -72,8 +72,14 @@ const suggestions = {
   'seed': {},
   'help': {},
   'detail': {},
-  'speed': {}
+  'speed': {},
+  'time': {
+    'speed': {},
+    'false': {},
+    'true': {}
+  }
 }
+
 function expandConsole() {
   $('#console #output').show()
   $('#console').addClass('expanded')
@@ -224,8 +230,29 @@ const commands = {
       `)
     }
   },
+  time(args) {
+    if(args[0] == 'speed') {
+      let num = Number(args[1])
+      if(isNaN(num)) return appendOutput('ERR: Must be a number')
+      settings.timeSpeed = num
+    }
+    else if(args[0] == 'false') {
+      settings.timeEnabled = false
+      appendOutput('Time disabled!')
+    }
+    else if(args[0] == 'true') {
+      settings.timeEnabled = true
+      appendOutput('Time enabled!')
+    } else {
+            appendOutput(`
+      -time [speed <num>]    <br>
+      -time [<true/false>]<br>
+      `)
+    }
+  },
   help(args) {
-    appendOutput(` 
+    appendOutput(`
+    List of commands: <br>
     -[reset]<br>
     -[seed]<br>
     -[clear]<br>
@@ -234,6 +261,7 @@ const commands = {
     -[pixelated] <true/false><br>
     -[detail <1-100>]<br>
     -[drawskips]<br>
+    -[time]<br>
     `)
   }
 

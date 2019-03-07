@@ -9,6 +9,7 @@ let worldSize = 1e3
 let totalTilesLoaded = 0
 let fps = 0
 let loadTilesPerSec = 10000
+let time = 43200
 let camera = {
   pos: {x: 1, y: 1},
   zoom: 0.01,
@@ -21,7 +22,9 @@ let settings = {
     enabled: true,
     strength: 5,
     view: false
-  }
+  },
+  timeSpeed: 50,
+  timeEnabled: true
 
 }
 let debugPanel

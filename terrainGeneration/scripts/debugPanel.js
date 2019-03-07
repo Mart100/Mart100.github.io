@@ -7,25 +7,29 @@ class DebugPanel {
   add(name, value) {
     // if name not in debugPanel. Add it 
     if($(`#debugPanel #DP-${name}`)[0] == undefined) {
-      $(`#debugPanel`).append(`<span id="DP-${name}"></span><br>`)
+      $(`#debugPanel`).append(`<span id="DP-${name}"><br></span>`)
     }
 
     // format value
     if(typeof value != 'number' && typeof value != 'string') value = JSON.stringify(value)
     // update value
-    $(`#debugPanel #DP-${name}`).html(name+': '+value)
+    $(`#debugPanel #DP-${name}`).html(name+': '+value+'<br>')
   }
   ping(name) {
     // if name not in debugPanel. Add it 
-    if($(`#debugPanel #DP-${name}`)[0] == undefined) $(`#debugPanel`).append(`<span name="${new Date().getTime()}" id="DP-${name}"></span><br>`)
+    if($(`#debugPanel #DP-${name}`)[0] == undefined) $(`#debugPanel`).append(`<span name="${new Date().getTime()}" id="DP-${name}"><br></span><br>`)
 
     // update value
     let lastDate = Number($(`#debugPanel #DP-${name}`).attr('name'))
 
-    $(`#debugPanel #DP-${name}`).html(name+( Math.random() > 0.5 ? ':  ' : ';  ')+(new Date().getTime() - lastDate))
+    $(`#debugPanel #DP-${name}`).html(name+( Math.random() > 0.5 ? ':  ' : ';  ')+(new Date().getTime() - lastDate)+'<br>')
     $(`#debugPanel #DP-${name}`).attr('name', new Date().getTime())
   }
   textColor(color) {
     $('#debugPanel').css('color', color)
+  }
+  remove(name) {
+    if($(`#debugPanel #DP-${name}`) == undefined) return
+    $(`#debugPanel #DP-${name}`).remove()
   }
 }

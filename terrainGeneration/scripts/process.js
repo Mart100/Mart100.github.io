@@ -1,6 +1,12 @@
 function tick() {
   moving()
   
+  if(settings.timeEnabled) {
+    time += settings.timeSpeed
+    if(time > 86400) time = 0
+    debugPanel.add('Time', Math.floor(time/3600)+' Hours')
+  } else debugPanel.remove('Time')
+
 }
 
 function moving() {
