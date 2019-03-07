@@ -19,7 +19,6 @@ $(() => {
       camera.zoom -= zoomChange
 
       let c = camera.pos
-      let p = zoomChange
       let t = getTileUnderMouse(mouse.pos.x, mouse.pos.y) // tile
       let tcX = t.x-c.x
       let tcY = t.y-c.y
@@ -39,7 +38,6 @@ $(() => {
       camera.zoom += zoomChange
 
       let c = camera.pos
-      let p = zoomChange
       let t = getTileUnderMouse(mouse.pos.x, mouse.pos.y) // tile
       let tcX = t.x-c.x
       let tcY = t.y-c.y

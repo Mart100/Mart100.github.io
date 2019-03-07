@@ -13,7 +13,8 @@ function displayTileInfo() {
     PosX: ${x}<br>
     PosY: ${y}<br>
     Biome: ${tile.biome}<br>
-    Biomes: ${JSON.stringify(tile.biomes)}<br>
+    Biomes: ${JSON.stringify(tile.noiseLayers)}<br>
+    Diff: ${tile.diff}
   </b>
   `
   $('#tileInfo').html(html)

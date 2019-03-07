@@ -8,7 +8,7 @@ let mouse = {
 let worldSize = 1e3
 let totalTilesLoaded = 0
 let fps = 0
-let loadTilesPerSec = 500000
+let loadTilesPerSec = 10000
 let camera = {
   pos: {x: 1, y: 1},
   zoom: 0.01,
@@ -16,7 +16,12 @@ let camera = {
 }
 let settings = {
   pixelated: true,
-  detail: 5
+  detail: 5,
+  drawSkips: {
+    enabled: true,
+    strength: 5,
+    view: false
+  }
 
 }
 let debugPanel
@@ -31,8 +36,10 @@ $(() => {
   debugPanel.textColor('#FFFFFF')
 
   // calling some funcitons
-  frame()
-  setInterval(() => { tick() }, 10)
+  setTimeout(() => {
+    frame()
+    setInterval(() => { tick() }, 10)
+  }, 1000)
 
 })
 

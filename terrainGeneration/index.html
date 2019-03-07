@@ -8,10 +8,14 @@
     <link rel="stylesheet" type="text/css" href="styles/console.css">
     <link rel="stylesheet" type="text/css" href="styles/tileInfo.css">
 
+    <!-- JIMP -->
+    <script src="https://cdn.rawgit.com/oliver-moran/jimp/v0.2.27/browser/lib/jimp.min.js"></script>
+
     <!-- Jquery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
     <!-- Own scripts -->
+    <script src="scripts/loadImages.js"></script>
     <script src="scripts/debugPanel.js"></script>
     <script src="scripts/index.js"></script>
     <script src="scripts/process.js"></script>
@@ -29,6 +33,7 @@
     <div id="console">
       <div id="output"></div>
     </div>
+    <span id="console-autosuggest"></span>
     <input id="console-input" type="text">
 
     <div id="tileInfo"></div>

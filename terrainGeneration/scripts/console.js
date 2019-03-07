@@ -1,9 +1,79 @@
+let commandHistory = []
+let commandHistoryAt = 0
+
 $(() => {
   $('#console-input').val('')
   $('#console').on('click', expandConsole)
-  $('#console-input').on('keydown', (event) => { if(event.key == 'Enter') enterConsole() })
+  $('#console-input').on('keydown', (event) => {
+    if(event.key == 'Enter') enterConsole()
+    console.log(event.key)
+    if(event.key == 'Tab') {
+      event.preventDefault()
+      applySuggestion()
+    }
+    if(event.key == 'ArrowUp') {
+      if(commandHistoryAt > 0) commandHistoryAt--
+      $('#console-input').val(commandHistory[commandHistoryAt])
+    }
+    if(event.key == 'ArrowDown') {
+      if(commandHistoryAt < commandHistory.length) commandHistoryAt++
+      $('#console-input').val(commandHistory[commandHistoryAt])
+    }
+    setTimeout(autoSuggest, 100)
+  })
 })
 
+function autoSuggest() {
+  let input = $('#console-input').val()
+  console.log(input)
+  let args = input.toLowerCase().split(' ')
+  let t = suggestions
+  let sugg = ''
+  let sugi = 0
+  for(let i=0;i<args.length; i++) {
+    for(let sug in t) {
+      if(args[i].length == 0) continue
+      if(sug.startsWith(args[i])) {
+        if(t[sug] == undefined) continue
+        t = t[sug]
+        sugg = sug
+        sugi = i
+      }
+    }
+  }
+
+
+  let finishedArgs = args
+  finishedArgs.pop()
+
+  console.log(sugi, finishedArgs.length)
+  if(sugi != finishedArgs.length) return $('#console-autosuggest').html('')
+
+  let suggestText = finishedArgs.join(' ')+' '+sugg
+
+  console.log(sugg, finishedArgs, sugi)
+  $('#console-autosuggest').html(suggestText)
+}
+
+function applySuggestion() {
+  $('#console-input').val($('#console-autosuggest').html().trim())
+  setTimeout(() => { $('#console-input').focus() }, 1000)
+}
+const suggestions = {
+  'drawskips': {
+    'view': {'true': {}, 'false': {} },
+    'strength': {},
+    'false': {},
+    'true': {}
+  },
+  'pixelated': {'false': {}, 'true': {}},
+  'clear': {},
+  'reset': {},
+  'seed': {},
+  'help': {},
+  'detail': {},
+  'speed': {}
+}
 function expandConsole() {
   $('#console #output').show()
   $('#console').addClass('expanded')
@@ -13,13 +83,8 @@ function expandConsole() {
   }, 200)
 }
 
-function fullscreenConsole() {
-  $('#console').addClass('fullscreen')
-}
-
 function shrinkConsole() {
   $('#console').removeClass('expanded')
-  $('#console').removeClass('fullscreen')
   $('#console-input').hide()
   setTimeout(() => { $('#console #output').hide() }, 200)
 }
@@ -36,6 +101,8 @@ function enterConsole() {
   $('#console #output').append(`<span style="color:#00af00;">> ${input}</span><br>`)
   consoleCommand(input)
   $('#console #output').scrollTop($('#console #output').height())
+  commandHistory.push(input)
+  commandHistoryAt = commandHistory.length
 }
 
 function consoleCommand(input) {
@@ -85,11 +152,6 @@ const commands = {
     }
   },
 
-  fullscreen(args) {
-    fullscreenConsole()
-    appendOutput('Fullscreen!')
-  },
-
   clear(args) {
     $('#console #output').html('')
     appendOutput('Cleared closed!')
@@ -125,10 +187,53 @@ const commands = {
     settings.detail = num
     appendOutput(`Detail set to [${num}]`)
   },
-
+  drawskips(args) {
+    if(args[0] == 'strength') {
+      let num = Number(args[1])
+      if(isNaN(num)) return appendOutput('ERR: Must be a number')
+      settings.drawSkips.strength = num
+      appendOutput(`drawSkip strength set to [${num}]`)
+    }
+    else if(args[0] == 'view') {
+      let k = false
+      if(args[1] == 'false') {
+        k = false
+        appendOutput(`drawSkip view Disabled!`)
+      }
+      else if(args[1] == 'true') {
+        k = true
+        appendOutput(`drawSkip view Enabled!`)
+      }
+      else {
+        appendOutput(`ERR: Must be true/false`)
+      }
+      settings.drawSkips.view = k
+    }
+    else if(args[0] == 'false') {
+      settings.drawSkips.enabled = false
+      appendOutput('drawSkips disabled!')
+    }
+    else if(args[0] == 'true') {
+      settings.drawSkips.enabled = true
+      appendOutput('drawSkips enabled!')
+    } else {
+      appendOutput(`
+      -drawskips [strength <num>]    <br>
+      -drawskips [view <true/false>] <br>
+      -drawskips [<true/false>]      <br>
+      `)
+    }
+  },
   help(args) {
-    appendOutput(`
-    
+    appendOutput(` 
+    -[reset]<br>
+    -[seed]<br>
+    -[clear]<br>
+    -[close]<br>
+    -[speed <1-100> ]<br>
+    -[pixelated] <true/false><br>
+    -[detail <1-100>]<br>
+    -[drawskips]<br>
     `)
   }
 
