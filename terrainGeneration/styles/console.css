@@ -19,6 +19,9 @@ body {
   padding: 10;
 }
 
+#console #output {
+  display: none;
+}
 #console.expanded {
   cursor: default;
   height: 924;

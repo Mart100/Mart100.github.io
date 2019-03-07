@@ -14,7 +14,7 @@ let seeds = {
     color: [10, 10, 200]
   },
   'forest': {
-    seed: cap(mainSeed+0.0002),
+    seed: cap(mainSeed+0.002),
     size: 500,
     plus: 2,
     times: 200,
@@ -22,7 +22,7 @@ let seeds = {
     color: [10, 50, 10]
   },
   'grassland': {
-    seed: cap(mainSeed+0.0003),
+    seed: cap(mainSeed+0.003),
     size: 500,
     plus: 2,
     times: 200,
@@ -30,7 +30,7 @@ let seeds = {
     color: [10, 120, 10]
   },
   'desert': {
-    seed: cap(mainSeed+0.0004),
+    seed: cap(mainSeed+0.004),
     size: 5000,
     plus: 1,
     times: 220,
@@ -42,14 +42,14 @@ let seeds = {
     color: [194, 178, 128]
   },
   'tree': {
-    seed: cap(mainSeed+0.0005),
+    seed: cap(mainSeed+0.005),
     size: 5,
     plus: 1,
     times: 200,
     switch: 300,
   },
   'cactus': {
-    seed: cap(mainSeed+0.0005),
+    seed: cap(mainSeed+0.005),
     size: 1,
     plus: 1,
     times: 160,

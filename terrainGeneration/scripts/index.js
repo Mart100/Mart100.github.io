@@ -24,7 +24,7 @@ let settings = {
     view: false
   },
   timeSpeed: 50,
-  timeEnabled: true
+  timeEnabled: false
 
 }
 let debugPanel

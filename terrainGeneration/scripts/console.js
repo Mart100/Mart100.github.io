@@ -6,7 +6,6 @@ $(() => {
   $('#console').on('click', expandConsole)
   $('#console-input').on('keydown', (event) => {
     if(event.key == 'Enter') enterConsole()
-    console.log(event.key)
     if(event.key == 'Tab') {
       event.preventDefault()
       applySuggestion()
@@ -25,7 +24,6 @@ $(() => {
 
 function autoSuggest() {
   let input = $('#console-input').val()
-  console.log(input)
   let args = input.toLowerCase().split(' ')
   let t = suggestions
   let sugg = ''
@@ -46,12 +44,10 @@ function autoSuggest() {
   let finishedArgs = args
   finishedArgs.pop()
 
-  console.log(sugi, finishedArgs.length)
   if(sugi != finishedArgs.length) return $('#console-autosuggest').html('')
 
   let suggestText = finishedArgs.join(' ')+' '+sugg
 
-  console.log(sugg, finishedArgs, sugi)
   $('#console-autosuggest').html(suggestText)
 }
 
@@ -76,6 +72,8 @@ const suggestions = {
   'time': {
     'speed': {},
     'false': {},
+    'day': {},
+    'night': {},
     'true': {}
   }
 }
@@ -243,8 +241,16 @@ const commands = {
     else if(args[0] == 'true') {
       settings.timeEnabled = true
       appendOutput('Time enabled!')
+    }
+    else if(args[0] == 'day') {
+      time = 43200
+      appendOutput('Time set to Day!')
+    }
+    else if(args[0] == 'night') {
+      time = 0
+      appendOutput('Time set to Night!')
     } else {
-            appendOutput(`
+      appendOutput(`
       -time [speed <num>]    <br>
       -time [<true/false>]<br>
       `)

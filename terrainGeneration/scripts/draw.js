@@ -84,20 +84,33 @@ function frame() {
     imgData.data[i+3] = 255
 
     // calc skips
-    if(settings.drawSkips.enabled) {
-      let dif = Math.floor(tile.diff*camera.zoom/settings.drawSkips.strength)
+    if(settings.drawSkips.enabled && camera.zoom < 1) {
+      let dif = Math.floor(tile.diff*(camera.zoom*2)/settings.drawSkips.strength)
       if(dif != 0) {
         skips = dif
         let col = tile.color
         if(settings.drawSkips.view) col = [0,0,0]
-        ySkips[x] = {s: dif, c: col}
+        for(let j=0;j<skips;j++) ySkips[x+j] = {s: dif, c: col}
         if(skips > swidth-x) skips = swidth-x
         skipCol = col
       }
+
+    }
+
+    // skips. If zoomed in much
+    if(camera.zoom > 1) {
+
+      skips = camera.zoom - ((((x/camera.zoom + camera.pos.x)+0.5)%1) * camera.zoom)
+      let col = tile.color
+      if(settings.drawSkips.view) col = [0,0,0]
+      let yS = camera.zoom - ((((y/camera.zoom + camera.pos.y)+0.5)%1) * camera.zoom)
+      for(let j=0;j<skips;j++) ySkips[x+j] = {s: yS, c: col}
+      if(skips > swidth-x) skips = swidth-x
+      skipCol = col
     }
 
     // if zoomed in enough. Draw props in tiles
-    if(camera.zoom > 0.1) {
+    if(camera.zoom > 1) {
       let rawTX = Math.abs(Math.round((x/camera.zoom + camera.pos.x)*16)-8) % 16
       let rawTY = Math.abs(Math.round((y/camera.zoom + camera.pos.y)*16)-8) % 16
       let idx = rawTY*16*4 + rawTX*4
@@ -112,9 +125,12 @@ function frame() {
         imgData.data[i+1] = image.bitmap.data[idx+1]
         imgData.data[i+2] = image.bitmap.data[idx+2]
         imgData.data[i+3] = image.bitmap.data[idx+3]
-        skips = 0
-        skips[x] = undefined
       }
+      if(image != undefined) {
+        for(let j=0;j<skips;j++) ySkips[x+j] = undefined
+        skips = 0
+      }
+
 
     }
   }
@@ -136,7 +152,7 @@ function frame() {
   
   if(settings.timeEnabled) ctx.fillRect(0, 0, canvas.width, canvas.height)
 
-  averageFrameTime += (performance.now()-frameTimeStart)/20
-  averageFrameTime *= 0.8
-  debugPanel.add('AverageFrameTime', averageFrameTime)
+  averageFrameTime += (performance.now()-frameTimeStart)/100
+  averageFrameTime -= averageFrameTime/100
+  debugPanel.add('AverageFrameTime', Math.round(averageFrameTime*100)/100)
 }
