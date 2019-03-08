@@ -299,6 +299,17 @@ let projects = [
       a random terrain generator.<br>
       That makes use of multiple noise layers onto eachother
       `
+    },
+    {
+      title: 'Rain',
+      image: 'https://i.imgur.com/Z2DGfS6.jpg',
+      link: siteLink+'Rain',
+      code: githubSiteLink+'Rain',
+      created: '8/3/2019',
+      score: 12,
+      description: `
+      Rain simulation
+      `
     }
 ]
 
