@@ -1,18 +1,4 @@
 body {
-  background-color: #1b1b1c;
-}
-.particle {
-  position: absolute;
-  left: 50%;
-  top: 230px;
-  height: 8px;
-  width: 8px;
-  transform: translateX(-50%);
-}
-#rocket {
-  position: absolute;
-  left: 50%;
-  top: 50px;
-  height: 200px;
-  transform: translateX(-50%);
+  background-color: #111111;
+  margin: 0;
 }
