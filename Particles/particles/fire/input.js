@@ -2,7 +2,8 @@ $(() => {
   // on click
   $('#canvas').on('mousedown', (event) => {
     let gridPos = grid.windowToGridPos(event.clientX, event.clientY)
-    grid.setTile(gridPos.x, gridPos.y, 'temperature', 500)
+    $('#tip-fire').remove()
+    grid.setTile(gridPos.x, gridPos.y, 'temperature', 1000)
   })
 
   // on mousemove

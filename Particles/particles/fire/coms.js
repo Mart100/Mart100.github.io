@@ -23,6 +23,7 @@ class ComsConsole {
       </div>
       <span id="ComsConsole-autosuggest"></span>
       <input id="ComsConsole-input" type="text">
+      <div id="tip-console">Click here to change settings -></div>
     `)
   }
   createCSS() {
@@ -95,6 +96,11 @@ class ComsConsole {
       #ComsConsole .markdown {
         color: #029102;
       }
+      #tip-console {
+        position: absolute;
+        top: 20px;
+        right: 150px;
+      }
       </style>
     `)
   }
@@ -131,6 +137,7 @@ class ComsConsole {
   }
 
   expandConsole() {
+    $('#tip-console').remove()
     $('#ComsConsole-output').show()
     $('#ComsConsole').addClass('expanded')
     setTimeout(() => { 
@@ -233,7 +240,10 @@ class ComsConsole {
     let html = 'List of commands:<br>'
 
     for(let command in this.commands) {
-      html += `-[${command}]<br>`
+      let type = this.commands[command].type
+      if(type == 'boolean') type = 'true/false'
+      if(type != 'none') html += `-[${command}] &lt[${type}]&gt <br>`
+      else html += `-[${command}]<br>`
     }
 
     return html

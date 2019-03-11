@@ -5,6 +5,10 @@ function frame() {
 	// clear screen
 	ctx.clearRect(0, 0, canvas.width, canvas.height)
 
+  // draw grid
+  grid.draw()
+
+  let pstart = performance.now()
   // draw particles
   for(let p of particles) {
     ctx.beginPath()
@@ -13,7 +17,6 @@ function frame() {
     ctx.fillRect(PaP.x, PaP.y, p.shape.x, p.shape.y)
   }
 
-  // draw grid
-  grid.draw()
+  debugPanel.add('ParticleFrameTime', performance.now()-pstart)
 
 }

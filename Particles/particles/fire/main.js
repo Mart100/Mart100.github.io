@@ -2,9 +2,10 @@ let canvas, ctx
 let mouse = {pos: {x:0,y:0}, down: false, cursor: 'default'}
 let settings = {
   show: 'wood', // wood - temperature
-  speed: 100,
+  speed: 50,
   detail: 5,
-  isPaused: false
+  isPaused: false,
+  particles: true
 }
 let coms = new ComsConsole()
 let grid
@@ -24,7 +25,12 @@ $(() => {
   grid = new Grid(window.innerWidth/settings.detail, window.innerHeight/settings.detail)
   debugPanel.textColor('#FFFFFF')
   frame()
-  setInterval(tick, 1)
+  setInterval(tick, 10)
+
+  // other things
+  setInterval(() => {
+    debugPanel.add('Particles', particles.length)
+  }, 100)
 })
 
 function randomRange(min, max) {
@@ -36,6 +42,8 @@ function randomRange(min, max) {
 // show
 coms.addCommand('show', 'string', {options: ['wood', 'temperature', 'durability']}, (string) => {
   settings.show = string
+  if(string == 'wood') settings.particles = true
+  else settings.particles = false
   grid.completeImgDataCalc()
   return 'Now showing: '+string
 })
@@ -65,4 +73,17 @@ coms.addCommand('pause', 'none', {}, () => {
   settings.isPaused = to
   if(to) return 'Paused!'
   else return 'Unpaused!'
+})
+
+// particles
+coms.addCommand('particles', 'boolean', {}, (bool) => {
+  settings.particles = bool
+  if(bool) return 'Particles Enabled!'
+  else return 'Particles Disabled!'
+})
+
+// monitor
+coms.addCommand('monitor', 'boolean', {}, (bool) => {
+  if(bool) $('body').css('background-image', "url('https://i.imgur.com/CMRGrIz.jpg')")
+  else $('body').css('background-image', "")
 })
