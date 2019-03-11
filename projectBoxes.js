@@ -301,14 +301,14 @@ let projects = [
       `
     },
     {
-      title: 'Rain',
+      title: 'Particles',
       image: 'https://i.imgur.com/Z2DGfS6.jpg',
-      link: siteLink+'Rain',
-      code: githubSiteLink+'Rain',
-      created: '8/3/2019',
-      score: 12,
+      link: siteLink+'Particles',
+      code: githubSiteLink+'Particles',
+      created: '10/3/2019',
+      score: 15,
       description: `
-      Rain simulation
+      All sorts of particles.
       `
     }
 ]
