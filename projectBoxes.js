@@ -59,19 +59,6 @@ let projects = [
         `
     },
     {
-        title: 'Rocket Particles',
-        image: 'https://i.imgur.com/JGyrggs.png',
-        link: siteLink+'Particles',
-        code: githubSiteLink+'Particles',
-        created: '.././2018',
-				score: 3,
-        description: `
-        First real "animation" / "moving thing" i made.
-        It used 100 div elements with "position absolute".
-        Not the greated choice. But at the time i didnt know of html canvas.
-        `
-    },
-    {
         title: 'TextStatics',
         image: 'https://i.imgur.com/3Gjk3bv.png',
         link: siteLink+'TextStatics',
