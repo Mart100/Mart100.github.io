@@ -1,0 +1,26 @@
+body {
+  background-color: rgb(2, 2, 2);
+  margin: 0;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  font-family: Arial;
+}
+
+#tileInfo {
+  position: absolute;
+  left: 0px;
+  bottom: 0px;
+  width: auto;
+  height: auto;
+  color: white;
+  padding: 5px;
+  background-color: rgba(0,0,0,0.2);
+}
+
+#tip-fire {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
