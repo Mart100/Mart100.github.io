@@ -71,7 +71,10 @@ const buttons = {
   },
   snow: {
     color: 'rgb(7, 168, 193)',
-    text: 'Snow'
+    text: 'Snow',
+    clicked() {
+      
+    }
   },
   fire: {
     color: 'rgb(255, 28, 0)',
@@ -113,21 +116,21 @@ const buttons = {
       setTimeout(() => { window.location.href = "particles/fire/index.html" }, 3000)
     }
   },
-  raint: {
-    color: 'rgb(15, 56, 168)',
-    text: 'Rain'
+  commingSoon1: {
+    color: 'rgb(10, 10, 10)',
+    text: 'Soon'
   },
-  rockett: {
-    color: 'rgb(15, 56, 168)',
-    text: 'Rocket'
+  commingSoon2: {
+    color: 'rgb(10, 10, 10)',
+    text: 'Soon'
   },
-  snowt: {
-    color: 'rgb(15, 56, 168)',
-    text: 'Snow'
+  commingSoon3: {
+    color: 'rgb(10, 10, 10)',
+    text: 'Soon'
   },
-  firet: {
-    color: 'rgb(15, 56, 168)',
-    text: 'Fire'
+  commingSoon4: {
+    color: 'rgb(10, 10, 10)',
+    text: 'Soon'
   }
 }
 
