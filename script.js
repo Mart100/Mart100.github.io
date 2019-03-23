@@ -20,7 +20,7 @@ function titleFun() {
 function rainbowBackground() {
     let min = 10
     let max = 50
-    let color = {r: 0, g: 0, b: 0}
+    let color = {r: 30, g: 30, b: 30}
     let crrntCol = 'r'
     setInterval(() => {
         if(crrntCol == 'r') {
