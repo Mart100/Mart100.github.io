@@ -195,10 +195,12 @@ body {
   width: 200px;
   float: right;
 }
-#projectsSplitter > span {
-}
+
 #projectsSplitter #sort {
   font-weight: 400;
+  position: absolute;
+  right: 20px;
+  transform: translateY(-45px);
   font-size: 20px;
   text-align: right;
 }
