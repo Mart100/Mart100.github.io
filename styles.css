@@ -191,12 +191,11 @@ body {
 }
 
 /*======Projects Sort by Dropdown======*/
-#sort {
-  width: 200px;
-  float: right;
-}
 
 #projectsSplitter #sort {
+  width: 200px;
+  z-index: 15;
+  float: right;
   font-weight: 400;
   position: absolute;
   right: 20px;
