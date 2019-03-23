@@ -195,7 +195,7 @@ let projects = [
         link: siteLink+'3Dengine',
         code: githubSiteLink+'3Dengine',
         created: '15/1/2019',
-				score: 10,
+				score: 16,
         description: `
         A 3D-engine fully custom made uses html canvas.`
     },
@@ -231,7 +231,7 @@ let projects = [
         link: siteLink+'myCodeSnippets',
         code: githubSiteLink+'myCodeSnippets',
         created: '29/1/2019',
-				score: 15,
+				score: 10,
         description: `
         Since, it happens to me many times that when I'm trying to find a little piece of code,
         but have to search all over the internet to find it.
@@ -289,13 +289,23 @@ let projects = [
     },
     {
       title: 'Particles',
-      image: 'https://i.imgur.com/Z2DGfS6.jpg',
+      image: 'https://i.imgur.com/X2krS2O.png',
       link: siteLink+'Particles',
       code: githubSiteLink+'Particles',
       created: '10/3/2019',
       score: 15,
       description: `
       All sorts of particles.
+      `
+    },
+    {
+      title: 'Chatty',
+      image: 'https://i.imgur.com/KttOXSN.png',
+      link: 'https://chatty1.herokuapp.com/',
+      created: '23/3/2019',
+      score: 15,
+      description: `
+      A simple chatApp made with socket.io and firebase
       `
     }
 ]
