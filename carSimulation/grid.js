@@ -52,10 +52,11 @@ class Grid {
   zoom(zoom) {
     let imgData = ctx.getImageData(0, 0, window.innerWidth, window.innerHeight)
     ctx.clearRect(0, 0, window.innerWidth, window.innerHeight)
+    ctx.scale(zoom, zoom)
     ctx.putImageData(imgData, 0, 0)
     ctx.drawImage(canvas, 0, 0, window.innerWidth, window.innerHeight)
-    ctx.scale(zoom, zoom)
     this.imgData = ctx.getImageData(0, 0, window.innerWidth, window.innerHeight)
+    ctx.scale(1, 1)
 
     this.camera.zoom += zoom
   }
