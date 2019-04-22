@@ -15,7 +15,7 @@ $(() => {
 
     // zoom out
     if(event.originalEvent.detail > 0 || event.originalEvent.wheelDelta < 0) {
-      grid.zoom(1.1)
+      grid.zoom(0.9)
       /*
       let zoomChange = camera.zoom/10
       camera.zoom -= zoomChange
@@ -34,7 +34,7 @@ $(() => {
       debugPanel.add('posY', camera.pos.y)*/
     } 
     else {
-      grid.zoom(0.9)
+      grid.zoom(1.1)
     }
   })
 })

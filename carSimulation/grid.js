@@ -41,7 +41,7 @@ class Grid {
     }
   }
   move(to) {
-    let imgData = ctx.getImageData(0, 0, window.innerWidth, window.innerHeight)
+    let imgData = this.imgData
     ctx.clearRect(0, 0, window.innerWidth, window.innerHeight)
     ctx.putImageData(imgData, to.x, to.y)
     this.imgData = ctx.getImageData(0, 0, window.innerWidth, window.innerHeight)
@@ -50,14 +50,17 @@ class Grid {
     this.camera.pos.y += to.y
   }
   zoom(zoom) {
-    let imgData = ctx.getImageData(0, 0, window.innerWidth, window.innerHeight)
-    ctx.clearRect(0, 0, window.innerWidth, window.innerHeight)
-    ctx.scale(zoom, zoom)
-    ctx.putImageData(imgData, 0, 0)
-    ctx.drawImage(canvas, 0, 0, window.innerWidth, window.innerHeight)
-    this.imgData = ctx.getImageData(0, 0, window.innerWidth, window.innerHeight)
-    ctx.scale(1, 1)
-
+    let imageObject = new Image()
+    imageObject.src=canvas.toDataURL()
+    imageObject.onload=() => {
+            
+      ctx.clearRect(0, 0, canvas.width, canvas.height)
+      ctx.scale(zoom, zoom)
+      ctx.drawImage(imageObject, 0, 0)
+            
+    }
+    this.imgData = ctx.getImageData(0, 0, canvas.width, canvas.height)
+      
     this.camera.zoom += zoom
   }
   getTile(x, y) {

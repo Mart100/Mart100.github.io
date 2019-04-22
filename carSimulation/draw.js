@@ -4,7 +4,7 @@ function frame() {
   window.requestAnimationFrame(frame)
   
 	// clear screen
-	//ctx.clearRect(0, 0, canvas.width, canvas.height)
+	ctx.clearRect(0, 0, canvas.width, canvas.height)
 
   // draw grid
   grid.draw()
