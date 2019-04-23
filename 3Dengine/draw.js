@@ -10,6 +10,7 @@ function frame() {
 
 	// drawList
 	let drawList = []
+
 	// clear screen
 	ctx.clearRect(-canvas.width/2, -canvas.height/2, canvas.width, canvas.height)
 
@@ -64,21 +65,6 @@ function frame() {
 			drawList.push(drawFace)
 		}
 	}
-
-
-	/*// put every face in order
-	drawList.sort((a, b) => {
-		let A = 0
-		for(i of a.corners) A += i.z
-		A = A/a.corners.length
-
-		let B = 0
-		for(i of b.corners) B += i.z
-		B = B/b.corners.length
-
-		debugPanel.add('k', A+'[]'+B)
-		return B-A
-	})*/
 
 	// draw everything from drawList (all Faces)
 	for(objectNum in drawList) {
