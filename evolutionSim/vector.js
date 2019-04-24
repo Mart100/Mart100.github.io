@@ -76,6 +76,7 @@ class Vector {
   }
   setMagnitude(a) {
     let magnitude = this.getMagnitude()
+    if(magnitude == 0) return this
 
     let x = (this.x/magnitude)*a
     let y = (this.y/magnitude)*a
