@@ -1,9 +1,6 @@
 // declare variables
 let coms = new ComsConsole()
 
-// add commands
-
-
 // killall
 coms.addCommand('killall', 'none', {}, () => {
   cells = {}
@@ -22,6 +19,13 @@ coms.addCommand('draw', 'boolean', {}, (bool) => {
   settings.draw = bool
   if(bool) return 'Drawing enabled'
   else return 'Drawing disabled' 
+})
+
+// collision
+coms.addCommand('collision', 'boolean', {}, (bool) => {
+  settings.cellCollision = bool
+  if(bool) return 'Cell to Cell collision enabled'
+  else return 'Cell to Cell disabled' 
 })
 
 // average
