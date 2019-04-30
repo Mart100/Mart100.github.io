@@ -5,7 +5,9 @@ function decideState(cell) {
 }
 
 function getPareReady(cell) {
-  let pareReady = 200
+  let pareReady = 150
+
+  if(tickCount-cell.lastPare < 500) pareReady = 0
   if(cell.age < 1000) pareReady = 0
   return pareReady
 }
@@ -19,7 +21,7 @@ function stateEating(cell) {
   // find target to eat
   let target = cell.stateInfo.target
   if(target == undefined) {
-    target = foods.sort((a, b) => b.pos.clone().minus(cell.pos) - a.pos.clone().minus(cell.pos))[0]
+    target = foods.sort((a, b) => a.pos.clone().minus(cell.pos).getMagnitude() - b.pos.clone().minus(cell.pos).getMagnitude())[0]
     if(target == undefined) return
     cell.stateInfo.target = target
   }
@@ -69,6 +71,7 @@ function stateParing(cell) {
     let genetics = crossover(cell, target)
     if(Math.random() > 0.99) genetics = undefined
     new Cell(genetics)
+    cell.lastPare = tickCount
     cell.state = 'none'
     target.state = 'none'
   }

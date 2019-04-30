@@ -5,7 +5,7 @@ function tick() {
   tickCount++
 
   // spawn food
-  if(tickCount % 150 == 0) {
+  if(tickCount % 50 == 0) {
     foods.push({
       pos: new Vector(randomRange(0, window.innerWidth), randomRange(0, window.innerHeight)),
       amount: 500
@@ -39,7 +39,7 @@ function cellTick(cell) {
   if(cell.saturation < 0) cell.die()
 
   // move cell
-  cell.pos.plus(cell.moving.setMagnitude(20))
+  cell.pos.plus(cell.moving.setMagnitude(cell.speed * 10))
 
   // decompose
   if(cell.dead) cell.decomposing -= 0.1
@@ -57,12 +57,13 @@ function cellTick(cell) {
 }
 
 function cellToCellCollision(cell) {
+  if(!settings.cellCollision) return
   for(let cellID in cells) {
     if(cellID == cell.id) continue
     let cell1 = cells[cellID]
     let vec = cell.pos.clone().minus(cell1.pos)
     let distance = vec.getMagnitude()
-    if(distance < 10) cell.pos.minus(new Vector(10, 10).minus(vec))
+    if(distance < 10) cell.pos.minus(new Vector(1, 1).minus(vec))
   }
 }
 
@@ -80,4 +81,5 @@ function debugPanelInfo() {
     cellAmount++
   })
   debugPanel.add('Cells', cellAmount)
+  debugPanel.add('TickCount', tickCount)
 }

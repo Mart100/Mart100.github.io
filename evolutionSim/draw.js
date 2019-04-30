@@ -2,11 +2,19 @@ function frame() {
 
   // rerun frame
   window.requestAnimationFrame(frame)
+
+  if(!settings.draw) return
   
 	// clear screen
 	ctx.clearRect(0, 0, canvas.width, canvas.height)
 
-  // loop trough cells
+  // functions
+  drawFood()
+  drawCells()
+
+}
+
+function drawCells() {
   ctx.lineWidth = 3
   for(let cellID in cells) {
     let cell = cells[cellID]
@@ -20,8 +28,9 @@ function frame() {
     ctx.stroke()
 
   }
+}
 
-  // draw food
+function drawFood() {
   for(let food of foods) {
     ctx.beginPath()
     ctx.lineWidth = 5
@@ -31,5 +40,4 @@ function frame() {
     ctx.fill()
     ctx.stroke()
   }
-
 }

@@ -6,6 +6,7 @@ class Cell {
       this.brain = genetics.brain
       this.color = genetics.color
       this.pos = genetics.pos
+      this.speed = genetics.speed
     }
 
     this.state = 'none'
@@ -13,6 +14,7 @@ class Cell {
     this.dead = false
     this.id = randomToken(10)
     this.age = 0
+    this.lastPare = 0
     this.pareReady = 0
     this.moving = new Vector(0, 0)
     this.gender = Math.round(Math.random())
@@ -25,6 +27,7 @@ class Cell {
       eating: Math.random()*100,
       run: Math.random(),
     }
+    this.speed = Math.random()
     this.color = randomRGB()
     this.pos = new Vector(randomRange(0, window.innerWidth), randomRange(0, window.innerHeight))
   }

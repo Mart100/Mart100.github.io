@@ -1,6 +1,10 @@
 let canvas, ctx
 let cells = {}
 let foods = []
+let settings = {
+  draw: true,
+  cellCollision: true
+}
 
 
 $(() => {
@@ -14,7 +18,14 @@ $(() => {
 
   startCells()
   frame()
-  setInterval(() => { tick() }, 10)
+  setInterval(() => { tick() }, 1)
+
+  // ticks per second
+  let lastTickCount = 0
+  setInterval(() => {
+    debugPanel.add('TicksPerSec', tickCount-lastTickCount)
+    lastTickCount = tickCount
+  }, 1000)
 })
 
 
@@ -74,9 +85,17 @@ function findCell(sortfunc, cell, func) {
 function crossover(cell1, cell0) {
   let genetics = {}
 
+  // average genetics
   genetics.pos = cell0.pos.clone()
   genetics.color = [((cell1.color[0]+cell0.color[0])/2), ((cell1.color[1]+cell0.color[1])/2), ((cell1.color[2]+cell0.color[2])/2)]
   genetics.brain = cell0.brain
+  genetics.speed = (cell0.speed + cell1.speed)/2
+
+  // mutate genetics small bit
+  genetics.speed += (Math.random()-0.5)/10
+  genetics.color[0] += (Math.random()-0.5)*2
+  genetics.color[1] += (Math.random()-0.5)*2
+  genetics.color[2] += (Math.random()-0.5)*2
 
   return genetics
 }
@@ -86,4 +105,27 @@ function cellsFunc(func) {
     let cell = cells[cellID]
     func(cell)
   }
+}
+
+function getCellAverage() {
+
+  // declare average
+  let average = {
+    speed: 0
+  }
+
+  // get cellCount
+  let cellCount = Object.keys(cells).length
+
+  // loop trough cells
+  for(let cellID in cells) {
+    let cell = cells[cellID]
+    average.speed += cell.speed
+
+  }
+
+  // divide
+  average.speed /= cellCount
+
+  return average
 }

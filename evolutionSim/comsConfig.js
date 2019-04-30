@@ -16,3 +16,19 @@ coms.addCommand('randomcells', 'number', {}, (num) => {
   for(let i=0;i<num;i++) new Cell()
   return `Added ${num} random cells` 
 })
+
+// draw
+coms.addCommand('draw', 'boolean', {}, (bool) => {
+  settings.draw = bool
+  if(bool) return 'Drawing enabled'
+  else return 'Drawing disabled' 
+})
+
+// average
+coms.addCommand('average', 'none', {}, () => {
+  let average = getCellAverage()
+
+  return `
+  speed: ${average.speed}
+  `
+})
