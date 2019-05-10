@@ -7,6 +7,7 @@ class Cell {
       this.color = genetics.color
       this.pos = genetics.pos
       this.speed = genetics.speed
+      this.strength = genetics.strength
     }
 
     this.state = 'none'

@@ -90,9 +90,11 @@ function crossover(cell1, cell0) {
   genetics.color = [((cell1.color[0]+cell0.color[0])/2), ((cell1.color[1]+cell0.color[1])/2), ((cell1.color[2]+cell0.color[2])/2)]
   genetics.brain = cell0.brain
   genetics.speed = (cell0.speed + cell1.speed)/2
+  genetics.strength = (cell0.strength + cell1.strength)/2
 
   // mutate genetics small bit
   genetics.speed += (Math.random()-0.5)/10
+  genetics.strength += (Math.random()-0.5)/10
   genetics.color[0] += (Math.random()-0.5)*2
   genetics.color[1] += (Math.random()-0.5)*2
   genetics.color[2] += (Math.random()-0.5)*2
