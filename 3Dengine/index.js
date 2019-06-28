@@ -76,6 +76,12 @@ $(() => {
 	// image cube
 	new Cube(new Vector(-1000, 0, 0), new Vector(-500, 500, 500), {id: 'imageCube', fill: false})
 		.setFaceImage(0, 'https://i.imgur.com/NN8Llob.jpg')
+		.setFaceImage(1, 'https://i.imgur.com/NN8Llob.jpg')
+		.setFaceImage(2, 'https://i.imgur.com/NN8Llob.jpg')
+		.setFaceImage(3, 'https://i.imgur.com/NN8Llob.jpg')
+		.setFaceImage(4, 'https://i.imgur.com/npFmcRo.png')
+		.setFaceImage(5, 'https://i.imgur.com/npFmcRo.png')
+		.setFaceImage(6, 'https://i.imgur.com/npFmcRo.png')
 
 	
 

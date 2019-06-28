@@ -196,5 +196,6 @@ class Object3D {
 		let face = this.faces[faceNum]
 		face.image = new Image()
 		face.image.src = image
+		return this
 	}
 }

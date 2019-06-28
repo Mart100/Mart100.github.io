@@ -43,6 +43,8 @@ function frame() {
 			if(object.settings.color == undefined) drawFace.color = '#000000' 
 			else drawFace.color = object.settings.color
 
+			drawFace.object = object
+
 			let face = object.faces[faceNum]
 
 			if(face.image) drawFace.image = face.image
@@ -74,8 +76,15 @@ function frame() {
 		if(face.image) {
 			let firstC = face.corners[0]
 			let lastC = face.corners[face.corners.length-2]
-			ctx.drawImage(face.image, firstC.x, firstC.y, lastC.x-firstC.x, lastC.y-firstC.y)
-			face.color = 'rgb(255, 0, 0)'
+			//ctx.drawImage(face.image, firstC.x, firstC.y, lastC.x-firstC.x, lastC.y-firstC.y)
+			let vectorBetween = face.object.getPos().minus(World.player.pos)
+			let dontDraw = false
+			let distanceBetween = vectorBetween.getMagnitude()
+			if(Math.abs(face.corners[1].x - face.corners[0].x) < 50) dontDraw = true
+			let step = (distanceBetween)/100
+			if(step < 20) step = 20
+			if(step > 100) step = 100
+			if(!dontDraw) render3Dimage(face.image, face.corners, step)
 		}
 
 		resetCtx()
@@ -96,9 +105,9 @@ function frame() {
 
 		ctx.closePath()
 
-
+		if(face.image) continue
 		if(face.fill == false) ctx.stroke()
-		//else ctx.fill()
+		else ctx.fill()
 
 		ctx.strokeStyle = '#000000'
 		if(settings.strokeBlack) ctx.stroke()
@@ -142,4 +151,37 @@ function p3D_to_p2D(corner) {
 		final2D = new Vector(VTTC.x, VTTC.y, VTTC.z)
 	}
 	return final2D
+}
+
+// render image to quad using current settings
+function render3Dimage(img, corners, step=10) {
+	
+	var p1, p2, p3, p4, y1c, y2c, y1n, y2n,
+			w = img.width - 1,         // -1 to give room for the "next" points
+			h = img.height - 1;
+
+	for(y = 0; y < h; y += step) {
+		for(x = 0; x < w; x += step) {
+			y1c = lerp(corners[0], corners[3],  y / h);
+			y2c = lerp(corners[1], corners[2],  y / h);
+			y1n = lerp(corners[0], corners[3], (y + step) / h);
+			y2n = lerp(corners[1], corners[2], (y + step) / h);
+
+			// corners of the new sub-divided cell p1 (ul) -> p2 (ur) -> p3 (br) -> p4 (bl)
+			p1 = lerp(y1c, y2c,  x / w);
+			p2 = lerp(y1c, y2c, (x + step) / w);
+			p3 = lerp(y1n, y2n, (x + step) / w);
+			p4 = lerp(y1n, y2n,  x / w);
+
+			ctx.drawImage(img, x, y, step, step,  p1.x, p1.y, // get most coverage for w/h:
+					Math.ceil(Math.max(step, Math.abs(p2.x - p1.x), Math.abs(p4.x - p3.x))) + 1,
+					Math.ceil(Math.max(step, Math.abs(p1.y - p4.y), Math.abs(p2.y - p3.y))) + 1)
+		}
+	}
+}
+
+function lerp(p1, p2, t) {
+	return {
+		x: p1.x + (p2.x - p1.x) * t, 
+		y: p1.y + (p2.y - p1.y) * t}
 }
