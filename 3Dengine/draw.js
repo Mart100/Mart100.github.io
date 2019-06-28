@@ -41,14 +41,15 @@ function frame() {
 			let wholeFaceBehindCamera = true
 
 			if(object.settings.color == undefined) drawFace.color = '#000000' 
-			else drawFace.color = object.settings.color 
-
+			else drawFace.color = object.settings.color
 
 			let face = object.faces[faceNum]
 
+			if(face.image) drawFace.image = face.image
+
 			// loop trough corners
-			for(cornerNum in face) {
-				let corner = face[cornerNum]
+			for(cornerNum in face.corners) {
+				let corner = face.corners[cornerNum]
 
 				// Translate 3D position to 2D
 				final2D = p3D_to_p2D(corner)
@@ -70,6 +71,12 @@ function frame() {
 	for(objectNum in drawList) {
 
 		let face = drawList[objectNum]
+		if(face.image) {
+			let firstC = face.corners[0]
+			let lastC = face.corners[face.corners.length-2]
+			ctx.drawImage(face.image, firstC.x, firstC.y, lastC.x-firstC.x, lastC.y-firstC.y)
+			face.color = 'rgb(255, 0, 0)'
+		}
 
 		resetCtx()
 		ctx.beginPath()
@@ -91,7 +98,7 @@ function frame() {
 
 
 		if(face.fill == false) ctx.stroke()
-		else ctx.fill()
+		//else ctx.fill()
 
 		ctx.strokeStyle = '#000000'
 		if(settings.strokeBlack) ctx.stroke()

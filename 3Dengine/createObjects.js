@@ -137,7 +137,8 @@ class Ball {
 class Object3D {
 	constructor(faces, corners, settings) {
 		this.corners = corners
-		this.faces = faces
+		this.faces = []
+		for(let face of faces) this.faces.push({corners: face})
 
 		if(settings == undefined) settings = {}
 		this.settings = settings
@@ -190,5 +191,10 @@ class Object3D {
 			i.minus(currentPos).rotate('all', this.rot.clone().minus(rot)).plus(currentPos)
 		}
 		this.rot = rot.clone()
+	}
+	setFaceImage(faceNum, image) {
+		let face = this.faces[faceNum]
+		face.image = new Image()
+		face.image.src = image
 	}
 }

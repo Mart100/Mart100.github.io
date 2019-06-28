@@ -73,6 +73,10 @@ $(() => {
 
 	new Cube(new Vector(-510, 300, -100), new Vector(-500, 500, -300), {color: '#05e7fc', id: 'Front3'}) //Part above door
 
+	// image cube
+	new Cube(new Vector(-1000, 0, 0), new Vector(-500, 500, 500), {id: 'imageCube', fill: false})
+		.setFaceImage(0, 'https://i.imgur.com/NN8Llob.jpg')
+
 	
 
 	// Player cube
