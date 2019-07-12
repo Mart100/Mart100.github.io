@@ -307,6 +307,26 @@ let projects = [
       description: `
       A simple chatApp made with socket.io and firebase
       `
+    },
+    {
+      title: 'Toorney',
+      image: 'https://i.imgur.com/oUKLIXv.png',
+      link: 'https://toorney.xyz',
+      created: '7/6/2019',
+      score: 16,
+      description: `
+      A discord bot and site using challonge for easy tournament hosting.
+      `
+    },
+    {
+      title: 'QuizByte',
+      image: 'https://i.imgur.com/WNcRONc.png',
+      link: 'http://quizbyte.co',
+      created: '7/7/2019',
+      score: 10,
+      description: `
+      A site where everyone can create and play quizzes
+      `
     }
 ]
 
