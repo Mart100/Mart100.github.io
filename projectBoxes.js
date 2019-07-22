@@ -323,9 +323,27 @@ let projects = [
       image: 'https://i.imgur.com/WNcRONc.png',
       link: 'http://quizbyte.co',
       created: '7/7/2019',
-      score: 10,
+      score: 8,
       description: `
       A site where everyone can create and play quizzes
+      `
+    },
+    {
+      title: 'MouseStrat',
+      image: 'https://i.imgur.com/fY9ZPs1.png',
+      link: 'https://mousestrat.herokuapp.com/',
+      created: '7/22/2019',
+      score: 14,
+      description: `
+        MouseStrat is an online 2D strategy game. 
+        With a plottwist... You can't see any of your opponents buildings. Only with the use of an ability.
+        The goal of the game is to find where your opponent is hiding and destroy your opponents core.
+        To achieve this you can use buildings and abilities. Altough these do cost energy.
+        An important part of the game is that the opponent will be able to see your mouse.
+        Knowing your opponent is able to see the position of your mouse, You are able to use this to lead your opponent to fake paths.
+        Also make sure to manage your electricity, You can spend electricity on Power Towers to increase your electricity income. 
+        But if you spend too much time focussing on this, Your opponent might have already found your core
+        Will you be able to find and destroy your opponent before your opponent finds you?
       `
     }
 ]
