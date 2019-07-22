@@ -332,7 +332,7 @@ let projects = [
       title: 'MouseStrat',
       image: 'https://i.imgur.com/fY9ZPs1.png',
       link: 'https://mousestrat.herokuapp.com/',
-      created: '7/22/2019',
+      created: '7/16/2019',
       score: 14,
       description: `
         MouseStrat is an online 2D strategy game. 
