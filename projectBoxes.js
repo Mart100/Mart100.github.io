@@ -320,7 +320,7 @@ let projects = [
     },
     {
       title: 'QuizByte',
-      image: 'https://i.imgur.com/WNcRONc.png',
+      image: 'https://i.imgur.com/8lFdph4.png',
       link: 'http://quizbyte.co',
       created: '7/7/2019',
       score: 8,
