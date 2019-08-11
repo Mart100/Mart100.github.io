@@ -85,3 +85,11 @@ body {
   cursor: pointer;
   margin-top: 25px;
 }
+
+#getExample {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 20px;
+  top: 20%;
+}

@@ -34,4 +34,9 @@ $(() => {
       $('#compiledOutput').remove()
     })
   })
+
+  $('#getExample').on('click', () => {
+    let exampleDext = getExampleDext()
+    $('#input').val(exampleDext)
+  })
 })
