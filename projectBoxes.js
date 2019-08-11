@@ -1,5 +1,6 @@
 let siteLink = location.href.replace('index.html', '')
 let githubSiteLink = 'https://github.com/Mart100/Mart100.github.io/tree/master/'
+let projectsShown = 14
 let sortBy = 'best'
 let test
 
@@ -331,8 +332,9 @@ let projects = [
     {
       title: 'MouseStrat',
       image: 'https://i.imgur.com/fY9ZPs1.png',
-      link: 'https://mousestrat.herokuapp.com/',
-      created: '7/16/2019',
+      link: siteLink+'evolutionSim',
+      code: githubSiteLink+'evolutionSim',
+      created: '13/7/2019',
       score: 14,
       description: `
         MouseStrat is an online 2D strategy game. 
@@ -345,7 +347,56 @@ let projects = [
         But if you spend too much time focussing on this, Your opponent might have already found your core
         Will you be able to find and destroy your opponent before your opponent finds you?
       `
-    }
+    },
+    {
+      title: 'EvolutionSimulator',
+      image: 'https://i.imgur.com/5gPDWwt.png',
+      link: 'https://mousestrat.herokuapp.com/',
+      created: '24/4/2019',
+      score: 13,
+      description: `
+        Trying to make a simulation using cells that reproduce eat food and move.
+        Slight chance of mutation. And new crossover cells between 2 parents
+      `
+    },
+    {
+      title: 'Cufix',
+      image: 'https://i.imgur.com/lq2okCi.png',
+      link: 'https://cufix.herokuapp.com',
+      created: '25/7/2019',
+      score: 13,
+      description: `
+        Yet another game. With simple rules
+        You win when you reach the side of your opponent.
+        You can capture cells when you click on them
+        But you can only capture a cell when you have more neighbors that are claimed by you then the opponent has of that cell.
+      `
+    },
+    {
+      title: 'brainTrain',
+      image: 'https://i.imgur.com/WGtAnWc.png',
+      link: siteLink+'brainTrain',
+      code: 'https://github.com/Mart100/brainTrain',
+      created: '14/7/2019',
+      score: 8,
+      description: `
+        Simple project with my dad. Where you have to remember numbers. 
+      `
+    },
+    {
+      title: 'Dext',
+      image: 'https://i.imgur.com/VUbnjov.png',
+      link: siteLink+'Dext',
+      code: githubSiteLink+'brainTrain',
+      created: '11/8/2019',
+      score: 12,
+      description: `
+        An own programming language that compiles back to javascript
+        The programming language called Dext ( dutch text). Is basically fully text, so no symbols
+        And in dutch. And that is about it
+      `
+    },
+    
 ]
 
 
@@ -381,23 +432,46 @@ function sortByChange(e) {
 }
 
 function addProjects() {
+
+  // limit projects shown
+  let splicedProjects = JSON.parse(JSON.stringify(projects)).slice(0, projectsShown)
+  console.log(splicedProjects)
+  if(projectsShown < projects.length) {
+    splicedProjects.push({
+      title: 'Click to see more projects',
+      image: 'https://i.imgur.com/5vFFuv1.jpg'
+    })
+  }
+
+
 	// add all projects 
-	for(projectNum in projects) {
-		let project = projects[projectNum]
+	for(projectNum in splicedProjects) {
+		let project = splicedProjects[projectNum]
 		let title = project.title
 		$('#projectsWrapper').append(`
 		<div class="ProjectBOX" id="project-${projectNum}">
 			<a href="${project.link}"><img class="thumbnail" src="${project.image}"/></a>
 			<div class="bar">
 				<span class="title">${project.title}</span>
-				<img class="infoButton" src="https://i.imgur.com/4fHs0Qk.png"/>
+				${ project.description != undefined ? `<img class="infoButton" src="https://i.imgur.com/4fHs0Qk.png"/>` : ''}
 				${ project.code != undefined ? `<a href="${project.code}"><img class="codeButton" src="https://i.imgur.com/HAzpWfk.png"/></a>` : ''}
 			</div>
 		</div>`)
 
+    if(project.title == 'Click to see more projects') {
+      $(`#project-${projectNum} a`).attr('href', 'See_More_Projects')
+      $(`#project-${projectNum}`).on('click', (event) => {
+        event.preventDefault()
+        projectsShown += 5
+        $('#projectsWrapper').html('')
+	      addProjects()
+      })
+
+    }
+
 		// on info button click
 		$(`#project-${projectNum} .infoButton`).on('click', () => {
-			let num = projects.indexOf(projects.find((a) => a.title == title))
+			let num = splicedProjects.indexOf(splicedProjects.find((a) => a.title == title))
 
 			$(`#project-${num} .bar`).animate({'height': '100%', 'bottom': '100%'}, 500)
 			$(`#project-${num} .bar`).prepend(`<span class="created">Created on: ${project.created}</span>`)
