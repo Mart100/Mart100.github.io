@@ -1,5 +1,5 @@
 const PrimeNumbers = [2]
-let i = 1e11
+let i = 1
 $(Calculate())
 
 async function Calculate() {

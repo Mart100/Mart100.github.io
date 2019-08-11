@@ -1,30 +1,41 @@
 <html>
-    <head>
-        <title>Midoxus</title>
-        <link rel="stylesheet" type="text/css" href="main.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        <script src="main.js"></script>
-        <script src="process.js"></script>
-        <script src="draw.js"></script>
-        <script src="hud.js"></script>
-    </head>
-    <body>
-        <canvas id="canvas"></canvas>
-        <div id="hud">
-            <div id="AllSettings">
-                <div id="settings">
-                    Speed: <input type="number" id="settingsSpeed" value="100" step="10" style="width: 50px;">
-                </div>
-                <hr>
-                <div id="buttons">
-                    Draw: <button id="buttonsDraw" onclick="toggleDraw()">Disabled</button>
-                    <hr>
-                    <button onclick="refresh()">Refresh</button>
-                    <button id="buttonsPause" onclick="pause()">Pause</button>
-                    <button onclick="clearAll()">Clear</button>
-                    <button id="buttonsGrid" onclick="toggleGrid()">Grid</button>
-                </div>
-            </div>
-        </div>
-    </body>
+	<head>
+		<title>Midoxus</title>
+		<link rel="stylesheet" type="text/css" href="main.css">
+
+		<!-- Global site tag (gtag.js) - Google Analytics -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-140200727-6"></script>
+		<script>
+			window.dataLayer = window.dataLayer || [];
+			function gtag(){dataLayer.push(arguments);}
+			gtag('js', new Date());
+
+			gtag('config', 'UA-140200727-6');
+		</script>
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<script src="main.js"></script>
+		<script src="process.js"></script>
+		<script src="draw.js"></script>
+		<script src="hud.js"></script>
+	</head>
+	<body>
+		<canvas id="canvas"></canvas>
+		<div id="hud">
+			<div id="AllSettings">
+				<div id="settings">
+					Speed: <input type="number" id="settingsSpeed" value="100" step="10" style="width: 50px;">
+				</div>
+				<hr>
+				<div id="buttons">
+					Draw: <button id="buttonsDraw" onclick="toggleDraw()">Disabled</button>
+					<hr>
+					<button onclick="refresh()">Refresh</button>
+					<button id="buttonsPause" onclick="pause()">Pause</button>
+					<button onclick="clearAll()">Clear</button>
+					<button id="buttonsGrid" onclick="toggleGrid()">Grid</button>
+				</div>
+			</div>
+		</div>
+	</body>
 </html>
