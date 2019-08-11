@@ -36,3 +36,8 @@ coms.addCommand('average', 'none', {}, () => {
   speed: ${average.speed}
   `
 })
+
+// speed
+coms.addCommand('speed', 'number', {}, (num) => {
+  setSpeed(num)
+})

@@ -1,6 +1,9 @@
 let canvas, ctx
 let cells = {}
 let foods = []
+let tickInterval
+let TicksPerSec
+let processSpeed
 let settings = {
   draw: true,
   cellCollision: true
@@ -18,11 +21,12 @@ $(() => {
 
   startCells()
   frame()
-  setInterval(() => { tick() }, 1)
+  setSpeed(1)
 
   // ticks per second
   let lastTickCount = 0
   setInterval(() => {
+    TicksPerSec = tickCount-lastTickCount
     debugPanel.add('TicksPerSec', tickCount-lastTickCount)
     lastTickCount = tickCount
   }, 1000)
@@ -130,4 +134,26 @@ function getCellAverage() {
   average.speed /= cellCount
 
   return average
+}
+
+function setSpeed(num) {
+  clearInterval(tickInterval)
+
+  processSpeed = num
+
+  if(num == 0) num = 1
+
+  tickInterval = setInterval(() => {
+
+    let loopCount = 1
+
+    if(processSpeed == 0) {
+      loopCount = (TicksPerSec/100)
+      debugPanel.add('TicksPerRound', loopCount)
+    }
+
+    for(let i=0;i<loopCount;i++) { 
+      tick() 
+    } 
+  }, processSpeed)
 }
