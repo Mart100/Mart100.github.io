@@ -1,0 +1,55 @@
+<html>
+  <title>Dext</title>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-140200727-6"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-140200727-6');
+  </script>
+
+  <!-- scripts -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="main.js"></script>
+
+  <script src="./compiler/is.js"></script>
+  <script src="./compiler/als.js"></script>
+  <script src="./compiler/anders.js"></script>
+  <script src="./compiler/compileLine.js"></script>
+  <script src="./compiler/vertaalType.js"></script>
+  <script src="./compiler/variabeles/maak_variabele.js"></script>
+  <script src="./compiler/variabeles/zet_variabele.js"></script>
+  <script src="./compiler/math/bereken.js"></script>
+  <script src="./compiler/math/gedeeld_door.js"></script>
+  <script src="./compiler/math/keer.js"></script>
+  <script src="./compiler/math/min.js"></script>
+  <script src="./compiler/math/plus.js"></script>
+  <script src="./compiler/lus/lus.js"></script>
+  <script src="./compiler/lus/stop_lus.js"></script>
+  <script src="./compiler/global_functions/print.js"></script>
+  <script src="./compiler/functies/begin_functie.js"></script>
+  <script src="./compiler/functies/eindig_functie.js"></script>
+  <script src="./compiler/functies/maak_functie.js"></script>
+
+  <!-- css -->
+  <link href="style.css" rel="stylesheet">
+
+  <head>
+
+  </head>
+  <body>
+    <span id="input-title">INPUT:</span>
+    <textarea id="input"></textarea>
+
+    <span id="output-title">OUTPUT:</span>
+    <textarea id="output"></textarea>
+    
+    <button id="run">COMPILE & RUN</button>
+    <button id="seeCompiled">SEE COMPILED JAVASCRIPT</button>
+  </body>
+</html>

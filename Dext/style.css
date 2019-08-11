@@ -1,0 +1,87 @@
+body {
+  margin: 0px;
+  background-color: rgb(50, 50, 50);
+  color: white;
+}
+
+#input {
+  height: 92%;
+  position: absolute;
+  width: 40%;
+  background-color: rgb(30, 30, 30);
+  margin: 2%;
+  left: 10px;
+  color: white;
+  border: white 2px solid;
+  padding: 5px;
+  resize: none;
+}
+
+#input-title {
+  position: absolute;
+  left: 50px;
+  font-size: 30px;
+}
+
+#output {
+  height: 92%;
+  right: 10px;
+  position: absolute;
+  width: 40%;
+  background-color: rgb(30, 30, 30);
+  margin: 2%;
+  color: white;
+  border: white 2px solid;
+  padding: 5px;
+  resize: none;
+}
+
+#output-title {
+  position: absolute;
+  right: 50px;
+  text-align: left;
+  font-size: 30px;
+}
+
+#run {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 25px;
+  top: 10%;
+}
+
+#seeCompiled {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 20px;
+  top: 15%;
+}
+
+#compiledOutput {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-color: rgb(20, 20, 20);
+}
+#compiledOutput textarea {
+  height: 80%;
+  width: 80%;
+  margin: 10%;
+  resize: none;
+  margin-top: 5%;
+  position: absolute;
+  background-color: rgb(30, 30, 30);
+  color: white;
+  border: white 2px solid;
+  padding: 5px;
+}
+
+#compiledOutput div {
+  color: white;
+  font-size: 35px;
+  text-align: center;
+  cursor: pointer;
+  margin-top: 25px;
+}
