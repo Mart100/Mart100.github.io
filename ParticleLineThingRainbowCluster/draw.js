@@ -42,8 +42,8 @@ function frame() {
 
       if(distance > 150) continue
 
-      if(distance > 100) p1.velocity = p2.velocity.clone().plus(new Vector().randomize().minus(0.5).multiply(distance/50)).setMagnitude(10)
-  
+      if(distance > 100) p1.velocity = p2.velocity.clone()
+      
       ctx.lineWidth = (150 - distance)/150
 
       let betweenZ = (p1.position.z+p2.position.z)/2

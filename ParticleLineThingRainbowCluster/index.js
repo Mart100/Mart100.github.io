@@ -15,7 +15,7 @@ $(() => {
 })
 
 function createParticles() {
-  for(let i=0;i<500;i++) {
+  for(let i=0;i<400;i++) {
     let p = new Particle()
     
     p.position.x = Math.random()*canvas.width
