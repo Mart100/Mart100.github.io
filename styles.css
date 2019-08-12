@@ -9,8 +9,10 @@ body {
 .projectBOX {
   vertical-align: top;
   display: inline-block;
-  width: 350px;
-  height: 350px;
+  max-width: 350px;
+  max-height: 350px;
+  width: 90%;
+  height: auto;
   border-radius: 2px;
   margin: 10;
   cursor: pointer;

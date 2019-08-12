@@ -411,6 +411,11 @@ $(() => {
 
 	// on sort dropdown button click
 	$('#projectsSplitter .dropdown-content > button').on('click', (e) => { sortByChange(e)})
+
+  // on resize. Resize projectBoxes
+  $(window).on('resize', () => {
+    $(`.projectBOX`).css('height', $(`.projectBOX`).width())
+  })
 })
 
 function sortByChange(e) {
@@ -435,7 +440,6 @@ function addProjects() {
 
   // limit projects shown
   let splicedProjects = JSON.parse(JSON.stringify(projects)).slice(0, projectsShown)
-  console.log(splicedProjects)
   if(projectsShown < projects.length) {
     splicedProjects.push({
       title: 'Click to see more projects',
@@ -457,6 +461,8 @@ function addProjects() {
 				${ project.code != undefined ? `<a href="${project.code}"><img class="codeButton" src="https://i.imgur.com/HAzpWfk.png"/></a>` : ''}
 			</div>
 		</div>`)
+
+    $(`#project-${projectNum}`).css('height', $(`#project-${projectNum}`).width())
 
     if(project.title == 'Click to see more projects') {
       $(`#project-${projectNum} a`).attr('href', 'See_More_Projects')
