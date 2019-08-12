@@ -161,6 +161,14 @@ body {
 }
 
 /*======LINKS======*/
+#linksCont {
+  max-width: 1500px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin: auto;
+  text-align: center;
+}
 #links img {
   cursor: pointer;
   width: 150px;
@@ -180,10 +188,11 @@ body {
 }
 #links {
   overflow: auto;
+  width: auto;
+  margin: auto;
   padding: 50px;
   align-items: center;
   display: flex;
-  justify-content: center;
 }
 
 /*======About-ME======*/
