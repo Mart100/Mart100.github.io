@@ -332,8 +332,7 @@ let projects = [
     {
       title: 'MouseStrat',
       image: 'https://i.imgur.com/fY9ZPs1.png',
-      link: siteLink+'evolutionSim',
-      code: githubSiteLink+'evolutionSim',
+      link: 'https://mousestrat.herokuapp.com/',
       created: '13/7/2019',
       score: 14,
       description: `
@@ -351,7 +350,8 @@ let projects = [
     {
       title: 'EvolutionSimulator',
       image: 'https://i.imgur.com/5gPDWwt.png',
-      link: 'https://mousestrat.herokuapp.com/',
+      link: siteLink+'evolutionSim',
+      code: githubSiteLink+'evolutionSim',
       created: '24/4/2019',
       score: 13,
       description: `
