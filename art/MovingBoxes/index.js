@@ -29,7 +29,7 @@ function createBoxes() {
     let b = new Box()
     
     b.position.x = Math.random()*canvas.width
-    b.position.y = Math.round(Math.random()*canvas.height/50)*canvas.height/20
+    b.position.y = Math.round(Math.random()*canvas.height/50)*50
 
     b.z = Math.random()*100
 
@@ -37,7 +37,7 @@ function createBoxes() {
 
     //b.velocity.y = (Math.random()-0.5)
 
-    b.size.x = Math.round((Math.random()-0.5)*10)*200
+    b.size.x = Math.round((Math.random()-0.5)*100)*20
     b.size.y = (Math.random()-0.5)*400
 
     if(b.size.x < 300) b.size.x = 300
