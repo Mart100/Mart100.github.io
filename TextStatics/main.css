@@ -20,6 +20,7 @@ body {
   top: 8%;
   width: 80%;
   height: 70%;
+  font-size: 20;
 }
 #Submit {
   position: absolute;
@@ -32,6 +33,7 @@ body {
   top: 1%;
   width: 10%;
   height: 5%;
+  font-size: 20px;
 }
 #Statics {
   position: absolute;
