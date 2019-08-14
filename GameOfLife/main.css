@@ -17,4 +17,5 @@ body {
     height: 200px;
     border-radius: 0px 0px 0px 10px;
     user-select: none;
+    font-size: 25px;
   }
