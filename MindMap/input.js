@@ -82,6 +82,9 @@ $(() => {
 
   $(document).on('keydown', (event) => {
 
+    // stop going to previous page when backspace
+    if(event.keyCode == 8) event.preventDefault()
+
     if(selected == 'none') return
 
     if(selected.split('-')[0] == 'text') {
