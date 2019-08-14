@@ -1,41 +1,42 @@
 $(() => {
 
+  if(db == undefined) db = firebase.firestore()
+
   // load save
   let urlParams = new URLSearchParams(location.search)
   if(urlParams.has('save')) loadSave(urlParams.get('save'))
 
 
   // on save button
-  $('#save-button').on('click', () => {
-
-    let compressedSave = getCompressedSave()
-    location.href = `?save=${compressedSave}`
-
-  })
+  $('#save-button').on('click', () => { saveMap() })
 })
 
-function getCompressedSave() {
-  let data = {
-    lines: map.lines,
-    texts: map.texts
-  }
+function saveMap() {
 
-  console.log(data)
+  $('#save-button').html('Saving...')
 
-  let compressed = JSONC.pack(data) 
+  let token = randomToken(10)
 
-  console.log(compressed)
-  
+  db.collection("mindMap").doc(token).set({
+    'lines': JSON.parse(JSON.stringify(map.lines)),
+    'texts': JSON.parse(JSON.stringify(map.texts))
+  })
+  .then(() => {
+    $('#save-button').html('Saved!')
 
-  return compressed
+    location = '?save='+token
+    
+    setTimeout(() => {
+      $('#save-button').html('Save')
+    }, 3000)
+  })
 }
 
-function loadSave(compressedSave) {
-  console.log(compressedSave)
-  let save = JSONC.unpack(compressedSave)
+function loadSave(token) {
+  db.collection("mindMap").doc(token).get().then((doc) => {
+    let save = doc.data()
 
-  console.log(save)
-
-  map.lines = save.lines
-  map.texts = save.texts
+    map.lines = save.lines
+    map.texts = save.texts
+  })
 }

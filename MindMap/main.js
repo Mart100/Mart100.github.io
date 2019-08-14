@@ -3,6 +3,7 @@ let map = {
   texts: [],
   offset: new Vector(),
 }
+let db
 let selected = 'none'
 let mode = 'none'
 
@@ -14,6 +15,9 @@ let modes = {
 }
 
 $(() => {
+
+  if(db == undefined) db = firebase.firestore()
+
   canvas = document.getElementById('canvas')
   ctx = canvas.getContext('2d')
 

@@ -27,6 +27,7 @@
     <script src="draw.js"></script>
     <script src="selector.js"></script>
     <script src="main.js"></script>
+    
 
   </head>
   <body>
@@ -39,4 +40,22 @@
       <div id="save-button">Save</div>
     </div>
   </body>
+
+  <!-- Firebase -->
+  <script src="https://www.gstatic.com/firebasejs/6.3.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.3.0/firebase-firestore.js"></script>
+  <script>
+    // Your web app's Firebase configuration
+    var firebaseConfig = {
+      apiKey: "AIzaSyC_aHKYFGGEZ_dShlVukoYmlR1ZufAIbzA",
+      authDomain: "flatearthbot-89399.firebaseapp.com",
+      databaseURL: "https://flatearthbot-89399.firebaseio.com",
+      projectId: "flatearthbot-89399",
+      storageBucket: "flatearthbot-89399.appspot.com",
+      messagingSenderId: "749286173436",
+      appId: "1:749286173436:web:0d2cb303bd31bf7d"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+  </script>
 </html>
