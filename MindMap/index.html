@@ -1,0 +1,42 @@
+<html>
+  <head>
+    <title>MindMap</title>
+    <meta charset="utf-8"/>
+
+    <!-- Styleset -->
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-140200727-6"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-140200727-6');
+    </script>
+
+    <!-- Jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <!-- Scripts -->
+    <script src="JSONcompresser.js"></script>
+    <script src="vector.js"></script>
+    <script src="input.js"></script>
+    <script src="save.js"></script>
+    <script src="draw.js"></script>
+    <script src="selector.js"></script>
+    <script src="main.js"></script>
+
+  </head>
+  <body>
+    <canvas id="canvas"></canvas>
+    <div id="sidePanel">
+      <div class="mode-button" id="line-button"><img src="https://i.imgur.com/hOw7IGS.png"/><div class="text"><span>Line</span></div></div>
+      <div class="mode-button" id="text-button"><img src="https://i.imgur.com/dL9Ai0c.png"/><div class="text"><span>Text</span></div></div>
+      <div class="mode-button" id="pan-button"><img src="https://i.imgur.com/Y6jJ1oZ.png"/><div class="text"><span>Pan</span></div></div>
+      <div class="mode-button" id="selector-button"><img src=""/><div class="text"><span>Selector</span></div></div>
+      <div id="save-button">Save</div>
+    </div>
+  </body>
+</html>
