@@ -11,6 +11,9 @@ let modes = {
   pan: {
     start: new Vector(),
     previousOffset: new Vector(),
+  },
+  line: {
+    dragging: 0
   }
 }
 
@@ -69,4 +72,8 @@ function setMode(to) {
 
 function getMouseVector(event) {
   return new Vector(event.clientX, event.clientY)
+}
+
+function getSelectedType() {
+  return selected.split('-')[0]
 }

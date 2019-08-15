@@ -1,6 +1,12 @@
 let mouseDown = false
+let rightMouseDown = false
+let mousePos = new Vector(0, 0)
 
 $(() => {
+
+  // disable right click
+  document.addEventListener('contextmenu', event => event.preventDefault());
+  
   $('#canvas').on('click', (event) => {
 
     if(mode == 'text') {
@@ -23,7 +29,9 @@ $(() => {
   })
 
   $('#canvas').on('mousedown', (event) => {
-    mouseDown = true
+    
+    if(event.which == 1) mouseDown = true
+    if(event.which == 3) rightMouseDown = true
 
     if(mode == 'line') {
       let id = randomToken(10)
@@ -37,9 +45,11 @@ $(() => {
         pos2: pos.clone(),
         id: id
       })
+
+      modes.line.dragging = 2
     }
 
-    if(mode == 'pan') {
+    if(mode == 'pan' || rightMouseDown) {
       modes.pan.previousOffset.x = map.offset.x
       modes.pan.previousOffset.y = map.offset.y
 
@@ -51,32 +61,50 @@ $(() => {
   })
 
   $('#canvas').on('mouseup', () => {
-    mouseDown = false
 
-    if(mode == 'pan') {
-      $('#canvas').css('cursor', 'grab')
+    let selectedType = getSelectedType()
+
+    if(mode == 'pan' || rightMouseDown) {
+      setMode(mode)
     }
+
+    if(selectedType == 'line') {
+      modes.line.dragging = 0
+    }
+
+    if(event.which == 1) mouseDown = false
+    if(event.which == 3) rightMouseDown = false
   })
 
   $('#canvas').on('mousemove', (event) => {
-    if(selected.split('-')[0] == 'line') {
 
-      if(!mouseDown) return
+    mousePos.x = event.clientX
+    mousePos.y = event.clientY
+
+    if(mode == 'pan' || rightMouseDown) {
+
+      if(!mouseDown && !rightMouseDown) return
+
+      map.offset.x = modes.pan.previousOffset.x + (modes.pan.start.x - mousePos.x)
+      map.offset.y = modes.pan.previousOffset.y + (modes.pan.start.y - mousePos.y)
+    }
+
+    if(selected.split('-')[0] == 'line') {
 
       let l = getSelected()
 
-      let mousePos = getMouseVector(event)
-      let pos = mousePos.plus(map.offset)
+      let mouseMapPos = mousePos.plus(map.offset)
 
-      l.pos2 = pos.clone()
-    }
+      let disPos1 = l.pos1.clone().minus(mouseMapPos).getMagnitude()
+      let disPos2 = l.pos2.clone().minus(mouseMapPos).getMagnitude()
 
-    if(mode == 'pan') {
+      if(mouseDown && disPos1 < 10) modes.line.dragging = 1
+      if(mouseDown && disPos2 < 10) modes.line.dragging = 2
+      
+      
+      if(modes.line.dragging == 1) l.pos1 = mouseMapPos.clone()
+      if(modes.line.dragging == 2) l.pos2 = mouseMapPos.clone()
 
-      if(!mouseDown) return
-
-      map.offset.x = modes.pan.previousOffset.x + (modes.pan.start.x - event.clientX)
-      map.offset.y = modes.pan.previousOffset.y + (modes.pan.start.y - event.clientY)
     }
   })
 
