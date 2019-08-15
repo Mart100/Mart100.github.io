@@ -86,6 +86,9 @@ class Vector {
     let magnitude = Math.sqrt(this.x*this.x + this.y*this.y)
     return magnitude
   }
+  getAngle() {
+    return Math.atan2(this.y, this.x)
+  }
   clone() {
     return new Vector(this.x, this.y)
   }
