@@ -14,6 +14,10 @@ let modes = {
   },
   line: {
     dragging: 0
+  },
+  text: {
+    lastCursorMove: 0,
+    dragging: 0
   }
 }
 

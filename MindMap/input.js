@@ -10,19 +10,12 @@ $(() => {
   $('#canvas').on('click', (event) => {
 
     if(mode == 'text') {
+      if(modes.text.dragging) return
 
-      let id = randomToken(10)
-      selected = `text-${id}`
-
-      let mousePos = getMouseVector(event)
       let pos = mousePos.plus(map.offset)
+      let newText = new Text(pos)
+      selected = `text-${newText.id}`
 
-      map.texts.push({
-        text: '',
-        id: id,
-        size: 25,
-        position: pos.clone()
-      })
     }
 
     if(mode == 'selector') select(event.clientX, event.clientY)
@@ -34,17 +27,13 @@ $(() => {
     if(event.which == 3) rightMouseDown = true
 
     if(mode == 'line') {
-      let id = randomToken(10)
-      selected = `line-${id}`
 
       let mousePos = getMouseVector(event)
       let pos = mousePos.plus(map.offset)
 
-      map.lines.push({
-        pos1: pos.clone(),
-        pos2: pos.clone(),
-        id: id
-      })
+      let newLine = new Line(pos, pos)
+
+      selected = `line-${newLine.id}`
 
       modes.line.dragging = 2
     }
@@ -72,6 +61,15 @@ $(() => {
       modes.line.dragging = 0
     }
 
+    if(selectedType == 'text') {
+      if(modes.text.dragging) {
+        setTimeout(() => {
+          modes.text.dragging = false
+          $('#canvas').css('cursor', 'text')
+        }, 10)
+      }
+    }
+
     if(event.which == 1) mouseDown = false
     if(event.which == 3) rightMouseDown = false
   })
@@ -81,15 +79,17 @@ $(() => {
     mousePos.x = event.clientX
     mousePos.y = event.clientY
 
+    let selectedType = getSelectedType()
+
     if(mode == 'pan' || rightMouseDown) {
 
-      if(!mouseDown && !rightMouseDown) return
-
-      map.offset.x = modes.pan.previousOffset.x + (modes.pan.start.x - mousePos.x)
-      map.offset.y = modes.pan.previousOffset.y + (modes.pan.start.y - mousePos.y)
+      if(mouseDown || rightMouseDown) {  
+        map.offset.x = modes.pan.previousOffset.x + (modes.pan.start.x - mousePos.x)
+        map.offset.y = modes.pan.previousOffset.y + (modes.pan.start.y - mousePos.y)
+      }
     }
 
-    if(selected.split('-')[0] == 'line') {
+    if(selectedType == 'line') {
 
       let l = getSelected()
 
@@ -105,6 +105,32 @@ $(() => {
       if(modes.line.dragging == 1) l.pos1 = mouseMapPos.clone()
       if(modes.line.dragging == 2) l.pos2 = mouseMapPos.clone()
 
+    }
+
+    if(selectedType == 'text') {
+      
+      let t = getSelected()
+
+      let mouseMapPos = mousePos.clone().plus(map.offset)
+
+      if(mouseMapPos.x < t.position.x+7 &&
+         mouseMapPos.x > t.position.x-7 &&
+         mouseMapPos.y < t.position.y-16 && 
+         mouseMapPos.y > t.position.y-30) {
+          if(mouseDown) modes.text.dragging = true
+
+          $('#canvas').css('cursor', 'pointer')
+        }
+      else if($('#canvas').css('cursor') == 'pointer') $('#canvas').css('cursor', 'text')
+
+      if(modes.text.dragging) {
+        $('#canvas').css('cursor', 'pointer')
+        let offset = new Vector(0, -23)
+        console.log(offset)
+
+        t.position.x = mouseMapPos.x-offset.x
+        t.position.y = mouseMapPos.y-offset.y
+      }
     }
   })
 
@@ -126,8 +152,32 @@ $(() => {
       if(event.key == 'Control') return
       if(event.key == 'OS') return
       if(event.key == 'Tab') return
+
+      modes.text.lastCursorMove = Date.now()
+
+      if(event.key == 'ArrowLeft') {
+        if(t.cursorPosition > 0) t.cursorPosition -= 1
+        return
+      }
+
+      if(event.key == 'ArrowRight') {
+        if(t.cursorPosition < t.text.length) t.cursorPosition += 1
+        return
+      }
+
+      if(t.cursorPosition == t.text.length) {
+        t.cursorPosition = t.text.length+1
+        t.text += event.key
+      }
+      else {
+        let newText = t.text
+        newText = newText.split('')
+        newText.splice(t.cursorPosition, 0, event.key)
+        newText = newText.join('')
+        t.text = newText
+        t.cursorPosition += 1
+      }
       
-      t.text += event.key
     }
 
   })

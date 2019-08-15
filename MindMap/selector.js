@@ -49,17 +49,12 @@ function findAtMouse(x, y) {
     let mousePosRot = mousePosRel.clone().plus(l.pos1)
     let lineRot = lineVec.clone().plus(l.pos1)
 
-    if(Math.random() > 0.99) console.log(mouseMapPos)
-    if(Math.random() > 0.99) console.log(l.pos1, l.pos2)
-
     if(mousePosRot.x < l.pos1.x) continue
     if(mousePosRot.x > lineRot.x) continue
     if(mousePosRot.y < lineRot.y-10) continue
     if(mousePosRot.y > lineRot.y+10) continue
 
     found = `line-${l.id}`
-
-
 
   }
 
