@@ -1,5 +1,4 @@
 TEXT:
-  font size setting
   color setting
 
 LINES:
@@ -7,9 +6,12 @@ LINES:
   thickness setting
   arrow at end / different types of lines
 
+SHAPES:
+  Circle
+  Rectangle
+
 PAN:
   zooming in and out
 
-SELECTOR:
-  Delete
-  Move text
+OTHER:
+  view only mode

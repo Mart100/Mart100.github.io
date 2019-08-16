@@ -68,7 +68,7 @@ body {
     padding: 10px 0;
     margin: 10px;
     font-size: 20px;
-    border-radius: 25px 25px 25px 25px;
+    border-radius: 25px;
     position: absolute;
     bottom: 0px;
     @include user-select(none);
@@ -78,6 +78,50 @@ body {
 
     &:hover {
       background-color: rgb(210, 210, 210);
+    }
+  }
+  #settings {
+    position: absolute;
+    background-color: rgb(240, 240, 240);
+    border-radius: 25px;
+    bottom: 50px;
+    margin: 10px;
+    width: 90%;
+    height: auto;
+    @include user-select(none);
+
+    .title {
+      font-size: 30px;
+      text-align: center;
+    }
+    
+    .setting {
+      display: none;
+    }
+    
+    #setting-delete {
+      text-align: center;
+      width: 140px;
+      padding: 5px 0;
+      margin: 10px 20px;
+      font-size: 20px;
+      border-radius: 25px;
+      position: relative;
+      bottom: 0px;
+      background-color: rgb(210, 210, 210);
+      transition-duration: 0.5s;
+      cursor: pointer;
+
+      &:hover {
+        background-color: rgb(180, 180, 180);
+      }
+    }
+
+    #setting-font_size {
+
+      input {
+        width: 50px;
+      }
     }
   }
 }

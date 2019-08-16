@@ -2,6 +2,7 @@ let map = {
   lines: [],
   texts: [],
   offset: new Vector(),
+  zoom: 1
 }
 let db
 let selected = 'none'
@@ -17,7 +18,10 @@ let modes = {
   },
   text: {
     lastCursorMove: 0,
-    dragging: 0
+    dragging: 0,
+    settings: {
+
+    }
   }
 }
 
@@ -34,6 +38,8 @@ $(() => {
   ctx.translate(0.5, 0.5)
 
   frame()
+
+  settingChanges()
 
   $('#sidePanel .mode-button').on('click', (event) => {
 
@@ -71,6 +77,8 @@ function setMode(to) {
   if(mode == 'line') $('#canvas').css('cursor', 'default')
   if(mode == 'pan') $('#canvas').css('cursor', 'grab')
   if(mode == 'selector') $('#canvas').css('cursor', 'default')
+
+  showSettings(mode)
 
 }
 

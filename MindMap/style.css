@@ -60,7 +60,7 @@ body {
   padding: 10px 0;
   margin: 10px;
   font-size: 20px;
-  border-radius: 25px 25px 25px 25px;
+  border-radius: 25px;
   position: absolute;
   bottom: 0px;
   user-select: none;
@@ -71,6 +71,43 @@ body {
 }
 #sidePanel #save-button:hover {
   background-color: #d2d2d2;
+}
+#sidePanel #settings {
+  position: absolute;
+  background-color: #f0f0f0;
+  border-radius: 25px;
+  bottom: 50px;
+  margin: 10px;
+  width: 90%;
+  height: auto;
+  user-select: none;
+  -moz-user-select: none;
+}
+#sidePanel #settings .title {
+  font-size: 30px;
+  text-align: center;
+}
+#sidePanel #settings .setting {
+  display: none;
+}
+#sidePanel #settings #setting-delete {
+  text-align: center;
+  width: 140px;
+  padding: 5px 0;
+  margin: 10px 20px;
+  font-size: 20px;
+  border-radius: 25px;
+  position: relative;
+  bottom: 0px;
+  background-color: #d2d2d2;
+  transition-duration: 0.5s;
+  cursor: pointer;
+}
+#sidePanel #settings #setting-delete:hover {
+  background-color: #b4b4b4;
+}
+#sidePanel #settings #setting-font_size input {
+  width: 50px;
 }
 
 /*# sourceMappingURL=style.css.map */

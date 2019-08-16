@@ -1,6 +1,8 @@
 function select(x, y) {
 
   selected = findAtMouse(x, y)
+
+  showSettings(getSelectedType())
 }
 
 function findAtMouse(x, y) {
@@ -22,6 +24,8 @@ function findAtMouse(x, y) {
     if(y > posY+(t.size/2)) continue
 
     found = `text-${t.id}`
+
+    t.cursorPosition = t.text.length
 
   }
 

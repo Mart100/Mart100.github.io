@@ -1,5 +1,6 @@
 let mouseDown = false
 let rightMouseDown = false
+let viewMode = false
 let mousePos = new Vector(0, 0)
 
 $(() => {
@@ -14,6 +15,8 @@ $(() => {
 
       let pos = mousePos.plus(map.offset)
       let newText = new Text(pos)
+
+      newText.size = Number($('#setting-font_size input').val())
       selected = `text-${newText.id}`
 
     }
@@ -74,10 +77,12 @@ $(() => {
     if(event.which == 3) rightMouseDown = false
   })
 
-  $('#canvas').on('mousemove', (event) => {
+  $(document).on('mousemove', (event) => {
 
     mousePos.x = event.clientX
     mousePos.y = event.clientY
+
+    if(mousePos.x < 200) return
 
     let selectedType = getSelectedType()
 
@@ -126,7 +131,6 @@ $(() => {
       if(modes.text.dragging) {
         $('#canvas').css('cursor', 'pointer')
         let offset = new Vector(0, -23)
-        console.log(offset)
 
         t.position.x = mouseMapPos.x-offset.x
         t.position.y = mouseMapPos.y-offset.y
@@ -136,6 +140,13 @@ $(() => {
 
   $(document).on('keydown', (event) => {
 
+    if(mousePos.x < 200) return
+
+    if($('input').is(':focus')) {
+      if(event.key == 'Enter') $('input').blur()
+      return
+    }
+
     // stop going to previous page when backspace
     if(event.keyCode == 8) event.preventDefault()
 
@@ -144,41 +155,66 @@ $(() => {
     if(selected.split('-')[0] == 'text') {
       let t = getSelected()
 
-      if(event.key == 'Backspace') return t.text = t.text.slice(0, -1)
-      if(event.key == 'Enter') return selected = 'none'
-      if(event.key == 'CapsLock') return
-      if(event.key == 'Shift') return
-      if(event.key == 'Alt') return
-      if(event.key == 'Control') return
-      if(event.key == 'OS') return
-      if(event.key == 'Tab') return
+      if(event.key == 'Backspace') {
+        let newText = t.text.split('')
+        newText.splice(t.cursorPosition-1, 1)
+        t.text = newText.join('')
+        t.cursorPosition -= 1
+        return
+      }
 
-      modes.text.lastCursorMove = Date.now()
+      if(event.key == 'Enter') return selected = 'none'
 
       if(event.key == 'ArrowLeft') {
         if(t.cursorPosition > 0) t.cursorPosition -= 1
+        modes.text.lastCursorMove = Date.now()
         return
       }
 
       if(event.key == 'ArrowRight') {
         if(t.cursorPosition < t.text.length) t.cursorPosition += 1
+        modes.text.lastCursorMove = Date.now()
         return
       }
 
-      if(t.cursorPosition == t.text.length) {
+      if(event.key.length > 1) return
+
+      modes.text.lastCursorMove = Date.now()
+
+      if(t.cursorPosition >= t.text.length) {
         t.cursorPosition = t.text.length+1
         t.text += event.key
       }
       else {
-        let newText = t.text
-        newText = newText.split('')
+        let newText = t.text.split('')
         newText.splice(t.cursorPosition, 0, event.key)
-        newText = newText.join('')
-        t.text = newText
+        t.text = newText.join('')
         t.cursorPosition += 1
       }
       
     }
 
+  })
+
+  // listen for zooming
+  $('#canvas').on('DOMMouseScroll mousewheel', (event) => {
+
+    if(!viewMode) return
+
+    // zoom out
+    if(event.originalEvent.detail > 0 || event.originalEvent.wheelDelta < 0) {
+      let zoomChange = map.zoom / 10
+      map.zoom -= zoomChange
+      ctx.scale(1-zoomChange, 1-zoomChange)
+
+    }
+
+    // zoom in
+    else {
+      let zoomChange = map.zoom / 10
+      map.zoom += zoomChange
+      ctx.scale(zoomChange+1, zoomChange+1)
+
+    }
   })
 })
