@@ -39,6 +39,7 @@ function settingChanges() {
 
     if(selectedType == 'text') map.texts.splice(map.texts.indexOf(selectedE), 1)
     if(selectedType == 'line') map.lines.splice(map.lines.indexOf(selectedE), 1)
+    if(selectedType == 'shape') map.shapes.splice(map.shapes.indexOf(selectedE), 1)
 
     selected = 'none'
     showSettings('none')

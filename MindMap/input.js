@@ -19,6 +19,8 @@ $(() => {
       newText.size = Number($('#setting-font_size input').val())
       selected = `text-${newText.id}`
 
+      saveHistory(getSelected())
+
     }
 
     if(mode == 'selector') select(event.clientX, event.clientY)
@@ -38,6 +40,8 @@ $(() => {
 
       selected = `line-${newLine.id}`
 
+      saveHistory(getSelected())
+
       modes.line.dragging = 2
     }
 
@@ -49,6 +53,8 @@ $(() => {
       let newShape = new Shape(pos, pos)
 
       selected = `shape-${newShape.id}`
+
+      saveHistory(getSelected())
 
       modes.shape.dragging = 2
     }
@@ -67,6 +73,7 @@ $(() => {
   $('#canvas').on('mouseup', () => {
 
     let selectedType = getSelectedType()
+    let element = getSelected()
 
     if(mode == 'pan' || rightMouseDown) {
       setMode(mode)
@@ -82,6 +89,7 @@ $(() => {
 
     if(selectedType == 'text') {
       if(modes.text.dragging) {
+        saveHistory(element)
         setTimeout(() => {
           modes.text.dragging = false
           $('#canvas').css('cursor', 'text')
@@ -119,9 +127,11 @@ $(() => {
       let disPos1 = l.pos1.clone().minus(mouseMapPos).getMagnitude()
       let disPos2 = l.pos2.clone().minus(mouseMapPos).getMagnitude()
 
-      if(mouseDown && disPos1 < 10) modes.line.dragging = 1
-      if(mouseDown && disPos2 < 10) modes.line.dragging = 2
-      
+      if(mouseDown && disPos1 < 10 && modes.line.dragging == 0) { modes.line.dragging = 1; saveHistory(l) }
+      if(mouseDown && disPos2 < 10 && modes.line.dragging == 0) { modes.line.dragging = 2; saveHistory(l) }
+
+      if(disPos1 < 10 || disPos2 < 10) $('#canvas').css('cursor', 'pointer')
+      else $('#canvas').css('cursor', 'default')
       
       if(modes.line.dragging == 1) l.pos1 = mouseMapPos.clone()
       if(modes.line.dragging == 2) l.pos2 = mouseMapPos.clone()
@@ -135,14 +145,28 @@ $(() => {
       let mouseMapPos = mousePos.plus(map.offset)
 
       let disPos1 = s.pos1.clone().minus(mouseMapPos).getMagnitude()
-      let disPos2 = s.pos2.clone().minus(mouseMapPos).getMagnitude()
+      let disPos2 = new Vector(s.pos2.x, s.pos1.y).minus(mouseMapPos).getMagnitude()
+      let disPos3 = s.pos2.clone().minus(mouseMapPos).getMagnitude()
+      let disPos4 = new Vector(s.pos1.x, s.pos2.y).minus(mouseMapPos).getMagnitude()
 
-      if(mouseDown && disPos1 < 10) modes.shape.dragging = 1
-      if(mouseDown && disPos2 < 10) modes.shape.dragging = 2
-      
+      if(mouseDown && disPos1 < 10 && modes.shape.dragging == 0) { modes.shape.dragging = 1; saveHistory(s) }
+      if(mouseDown && disPos2 < 10 && modes.shape.dragging == 0) { modes.shape.dragging = 2; saveHistory(s) }
+      if(mouseDown && disPos3 < 10 && modes.shape.dragging == 0) { modes.shape.dragging = 3; saveHistory(s) }
+      if(mouseDown && disPos4 < 10 && modes.shape.dragging == 0) { modes.shape.dragging = 4; saveHistory(s) }
+
+      if(disPos1 < 10 || disPos2 < 10 || disPos3 < 10 || disPos4 < 10) $('#canvas').css('cursor', 'pointer')
+      else $('#canvas').css('cursor', 'default')
       
       if(modes.shape.dragging == 1) s.pos1 = mouseMapPos.clone()
-      if(modes.shape.dragging == 2) s.pos2 = mouseMapPos.clone()
+      if(modes.shape.dragging == 2) {
+        s.pos2.x = mousePos.x
+        s.pos1.y = mousePos.y
+      }
+      if(modes.shape.dragging == 3) s.pos2 = mouseMapPos.clone()
+      if(modes.shape.dragging == 4) {
+        s.pos2.y = mousePos.y
+        s.pos1.x = mousePos.x 
+      }
 
     }
 
@@ -173,6 +197,19 @@ $(() => {
   })
 
   $(document).on('keydown', (event) => {
+
+    // ctrl z
+    if(event.keyCode == 90 && event.ctrlKey) {
+      let lastSave = history.pop()
+      if(lastSave == undefined) return
+
+      selected = lastSave.what+'-'+lastSave.id
+      let element = getSelected()
+      element.import(lastSave)
+
+      return
+
+    }
 
     if(mousePos.x < 200) return
 

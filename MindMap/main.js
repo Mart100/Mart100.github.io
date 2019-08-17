@@ -5,6 +5,7 @@ let map = {
   offset: new Vector(),
   zoom: 1
 }
+let history = []
 let db
 let selected = 'none'
 let mode = 'none'
@@ -92,4 +93,9 @@ function getMouseVector(event) {
 
 function getSelectedType() {
   return selected.split('-')[0]
+}
+
+function saveHistory(element) {
+  console.log(element)
+  history.push(element.export({id: true, what: true}))
 }

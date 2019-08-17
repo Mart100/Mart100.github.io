@@ -1,11 +1,12 @@
 class Text {
   constructor(pos) {
 
-    this.position = new Vector(pos.x, pos.y)
+    if(pos) this.position = new Vector(pos.x, pos.y)
     this.size = 20
     this.color = '#000000'
     this.text = ''
     this.cursorPosition = 0
+    this.what = 'text'
 
     this.id = randomToken(10)
 
@@ -61,7 +62,7 @@ class Text {
       ctx.stroke()
     }
   }
-  export() {
+  export(settings={}) {
 
     let text =  {
       position: {
@@ -73,6 +74,16 @@ class Text {
       color: this.color
     }
 
+    if(settings.id) text.id = this.id
+    if(settings.what) text.what = this.what
+
     return text
+  }
+  import(data) {
+    this.position = new Vector(data.position.x, data.position.y)
+    this.text = data.text
+    this.size = data.size
+    this.color = data.color
+    if(data.id) this.id = data.id
   }
 }

@@ -90,23 +90,9 @@ function loadSave(token) {
     map.texts = []
     map.shapes = []
 
-    for(let l of save.lines) {
-      let newLine = new Line(l.pos1, l.pos2)
-      newLine.color =  l.color
-    }
-
-    for(let t of save.texts) {
-      let newText = new Text(t.position)
-      newText.text = t.text
-      newText.size = t.size
-      newText.color =  t.color
-    }
-
-    for(let s of save.shapes) {
-      let newShape = new Shape(s.pos1, s.pos2)
-      newShape.color = s.color
-      newShape.type = s.type
-    }
+    for(let l of save.lines) new Line().import(l)
+    for(let t of save.texts) new Text().import(t)
+    for(let s of save.shapes) new Shape().import(s)
 
   })
 }

@@ -1,11 +1,12 @@
 class Shape {
   constructor(pos1, pos2) {
 
-    this.pos1 = new Vector(pos1.x, pos1.y)
-    this.pos2 = new Vector(pos2.x, pos2.y)
+    if(pos1) this.pos1 = new Vector(pos1.x, pos1.y)
+    if(pos2) this.pos2 = new Vector(pos2.x, pos2.y)
     this.color = '#000000'
     this.fill = true
     this.type = 'rectangle'
+    this.what = 'shape'
 
     this.id = randomToken(10)
 
@@ -73,8 +74,28 @@ class Shape {
 
     ctx.beginPath()
     ctx.strokeRect(pos1X, pos1Y, width, height)
+
+    // draw grab circles
+    ctx.strokeStyle = '#000000'
+    ctx.lineWidth = 2
+
+    ctx.beginPath()
+    ctx.arc(pos1X, pos1Y, 8, 0, 2*Math.PI)
+    ctx.stroke()
+
+    ctx.beginPath()
+    ctx.arc(pos2X, pos1Y, 8, 0, 2*Math.PI)
+    ctx.stroke()
+
+    ctx.beginPath()
+    ctx.arc(pos1X, pos2Y, 8, 0, 2*Math.PI)
+    ctx.stroke()
+
+    ctx.beginPath()
+    ctx.arc(pos2X, pos2Y, 8, 0, 2*Math.PI)
+    ctx.stroke()
   }
-  export() {
+  export(settings={}) {
 
     let shape = {
       pos1: {
@@ -90,6 +111,17 @@ class Shape {
       fill: this.fill
     }
 
+    if(settings.id) shape.id = this.id
+    if(settings.what) shape.what = this.what
+
     return shape
+  }
+  import(data) {
+    this.pos1 = new Vector(data.pos1.x, data.pos1.y)
+    this.pos2 = new Vector(data.pos2.x, data.pos2.y)
+    this.type = data.type
+    this.fill = data.fill
+    this.color = data.color
+    if(data.id) this.id = data.id
   }
 }
