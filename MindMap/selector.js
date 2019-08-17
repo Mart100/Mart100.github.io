@@ -62,5 +62,30 @@ function findAtMouse(x, y) {
 
   }
 
+  // check if shape
+  for(let s of map.shapes) {
+
+    let mouseMapPos = mousePos.clone().plus(map.offset)
+
+
+    if(s.type == 'rectangle') {
+      if(mouseMapPos.x < s.pos1.x) continue
+      if(mouseMapPos.x > s.pos2.x) continue
+      if(mouseMapPos.y < s.pos1.y) continue
+      if(mouseMapPos.y > s.pos2.y) continue
+    }
+
+    if(s.type == 'ellipse') {
+      let ellipseVec = s.pos2.clone().minus(s.pos1)
+      let mid = s.pos1.clone().plus(ellipseVec.clone().divide(2))
+      let dist = mid.clone().minus(mouseMapPos).getMagnitude()
+
+      if(dist > ellipseVec.x/2) continue
+    }
+
+
+    found = `shape-${s.id}`
+  }
+
   return found
 }

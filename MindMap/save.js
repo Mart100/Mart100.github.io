@@ -17,7 +17,8 @@ function saveMap() {
 
   let data = {
     lines: [],
-    texts: []
+    texts: [],
+    shapes: []
   }
 
   // add lines
@@ -50,6 +51,23 @@ function saveMap() {
     data.texts.push(t.export())
   }
 
+  // add Shapes
+  for(let s of map.shapes) {
+
+    // check if is duplicate
+    let isDuplicate = false
+    for(let s1 of data.shapes) if(s1.pos1.x == s.pos1.x && s1.pos1.y == s.pos1.y && s1.pos2.x == s.pos2.x && s1.pos2.y == s.pos2.y) isDuplicate = true
+    if(isDuplicate) continue
+
+    // if pos1 == pos2. 
+    if(s.pos1.clone().minus(s.pos2).getMagnitude() == 0) continue
+
+    // push to data
+    data.shapes.push(s.export())
+  }
+
+  console.log(data)
+
   let token = randomToken(10)
 
   db.collection("mindMap").doc(token).set(data)
@@ -70,15 +88,24 @@ function loadSave(token) {
 
     map.lines = []
     map.texts = []
+    map.shapes = []
 
     for(let l of save.lines) {
       let newLine = new Line(l.pos1, l.pos2)
+      newLine.color =  l.color
     }
 
     for(let t of save.texts) {
       let newText = new Text(t.position)
       newText.text = t.text
       newText.size = t.size
+      newText.color =  t.color
+    }
+
+    for(let s of save.shapes) {
+      let newShape = new Shape(s.pos1, s.pos2)
+      newShape.color = s.color
+      newShape.type = s.type
     }
 
   })

@@ -109,5 +109,24 @@ body {
 #sidePanel #settings #setting-font_size input {
   width: 50px;
 }
+#sidePanel #settings #setting-shape .dropright-button {
+  width: 100px;
+}
+#sidePanel #settings #setting-shape .dropright {
+  display: none;
+  position: absolute;
+  background-color: #d2d2d2;
+  left: 200px;
+  border-radius: 15px;
+  margin-top: -22px;
+  padding: 10px;
+}
+#sidePanel #settings #setting-shape .dropright div {
+  padding: 3px;
+  cursor: pointer;
+}
+#sidePanel #settings #setting-shape .dropright div:hover {
+  background-color: #b4b4b4;
+}
 
 /*# sourceMappingURL=style.css.map */

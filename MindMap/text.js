@@ -3,6 +3,7 @@ class Text {
 
     this.position = new Vector(pos.x, pos.y)
     this.size = 20
+    this.color = '#000000'
     this.text = ''
     this.cursorPosition = 0
 
@@ -14,6 +15,7 @@ class Text {
   }
   draw() {
     ctx.font = `${this.size}px Arial`
+    ctx.fillStyle = this.color
     ctx.textAlign = 'center'
     ctx.textBaseline = 'middle'
 
@@ -23,6 +25,7 @@ class Text {
     ctx.fillText(this.text, posX, posY)
   }
   drawSelected() {
+    ctx.strokeStyle = '#000000'
     ctx.font = `${this.size}px Arial`
     let textWidth = ctx.measureText(this.text).width
 
@@ -66,7 +69,8 @@ class Text {
         y: this.position.y,
       },
       text: this.text,
-      size: this.size
+      size: this.size,
+      color: this.color
     }
 
     return text

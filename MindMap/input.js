@@ -41,6 +41,18 @@ $(() => {
       modes.line.dragging = 2
     }
 
+    if(mode == 'shape') {
+
+      let mousePos = getMouseVector(event)
+      let pos = mousePos.plus(map.offset)
+
+      let newShape = new Shape(pos, pos)
+
+      selected = `shape-${newShape.id}`
+
+      modes.shape.dragging = 2
+    }
+
     if(mode == 'pan' || rightMouseDown) {
       modes.pan.previousOffset.x = map.offset.x
       modes.pan.previousOffset.y = map.offset.y
@@ -62,6 +74,10 @@ $(() => {
 
     if(selectedType == 'line') {
       modes.line.dragging = 0
+    }
+
+    if(selectedType == 'shape') {
+      modes.shape.dragging = 0
     }
 
     if(selectedType == 'text') {
@@ -109,6 +125,24 @@ $(() => {
       
       if(modes.line.dragging == 1) l.pos1 = mouseMapPos.clone()
       if(modes.line.dragging == 2) l.pos2 = mouseMapPos.clone()
+
+    }
+
+    if(selectedType == 'shape') {
+
+      let s = getSelected()
+
+      let mouseMapPos = mousePos.plus(map.offset)
+
+      let disPos1 = s.pos1.clone().minus(mouseMapPos).getMagnitude()
+      let disPos2 = s.pos2.clone().minus(mouseMapPos).getMagnitude()
+
+      if(mouseDown && disPos1 < 10) modes.shape.dragging = 1
+      if(mouseDown && disPos2 < 10) modes.shape.dragging = 2
+      
+      
+      if(modes.shape.dragging == 1) s.pos1 = mouseMapPos.clone()
+      if(modes.shape.dragging == 2) s.pos2 = mouseMapPos.clone()
 
     }
 

@@ -123,5 +123,29 @@ body {
         width: 50px;
       }
     }
+
+    #setting-shape {
+      .dropright-button {
+        width: 100px;
+      }
+      .dropright {
+        display: none;
+        position: absolute;
+        background-color: rgb(210, 210, 210);
+        left: 200px;
+        border-radius: 15px;
+        margin-top: -22px;
+        padding: 10px;
+        
+        div {
+          padding: 3px;
+          cursor: pointer;
+
+          &:hover {
+            background-color: rgb(180, 180, 180);
+          }
+        }
+      }
+    }
   }
 }

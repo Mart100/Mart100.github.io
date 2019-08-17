@@ -24,6 +24,7 @@
     <script src="JSONcompresser.js"></script>
     <script src="settings.js"></script>
     <script src="line.js"></script>
+    <script src="shape.js"></script>
     <script src="text.js"></script>
     <script src="vector.js"></script>
     <script src="input.js"></script>
@@ -39,12 +40,21 @@
     <div id="sidePanel">
       <div class="mode-button" id="line-button"><img src="https://i.imgur.com/hOw7IGS.png"/><div class="text"><span>Line</span></div></div>
       <div class="mode-button" id="text-button"><img src="https://i.imgur.com/dL9Ai0c.png"/><div class="text"><span>Text</span></div></div>
+      <div class="mode-button" id="shape-button"><img src="https://i.imgur.com/Z576D2L.png"/><div class="text"><span>Shapes</span></div></div>
       <div class="mode-button" id="pan-button"><img src="https://i.imgur.com/Y6jJ1oZ.png"/><div class="text"><span>Pan</span></div></div>
       <div class="mode-button" id="selector-button"><img src=""/><div class="text"><span>Selector</span></div></div>
       <div id="settings">
         <div class="title">Settings:</div>
         <div class="index">
           <div class="setting" id="setting-font_size">Font Size: <input type="number" value="20"/></div>
+          <div class="setting" id="setting-color">Color: <input type="color" value="#000000"/></div>
+          <div class="setting" id="setting-shape">
+            Shape: <button class="dropright-button">Rectangle</button>
+            <div class="dropright">
+              <div id="shape-setting-rectangle">Rectangle</div>
+              <div id="shape-setting-ellipse">Ellipse</div>
+            </div>
+          </div>
           <div class="setting" id="setting-delete">Delete</div>
         </div>
       </div>

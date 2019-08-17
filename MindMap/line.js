@@ -4,6 +4,8 @@ class Line {
     this.pos1 = new Vector(pos1.x, pos1.y)
     this.pos2 = new Vector(pos2.x, pos2.y)
 
+    this.color = '#000000'
+
     this.id = randomToken(10)
 
     map.lines.push(this)
@@ -11,6 +13,9 @@ class Line {
     return this
   }
   draw() {
+    ctx.strokeStyle = this.color
+    ctx.lineWidth = 2
+    
     ctx.beginPath()
     let pos1X = this.pos1.x - map.offset.x
     let pos1Y = this.pos1.y - map.offset.y
@@ -22,6 +27,8 @@ class Line {
     ctx.stroke()
   }
   drawSelected() {
+
+    ctx.strokeStyle = '#000000'
     
     let pos1X = this.pos1.x - map.offset.x
     let pos1Y = this.pos1.y - map.offset.y
@@ -47,7 +54,8 @@ class Line {
       pos2: {
         x: this.pos2.x,
         y: this.pos2.y,
-      }
+      },
+      color: this.color
     }
 
     return line

@@ -1,6 +1,7 @@
 let map = {
   lines: [],
   texts: [],
+  shapes: [],
   offset: new Vector(),
   zoom: 1
 }
@@ -19,9 +20,10 @@ let modes = {
   text: {
     lastCursorMove: 0,
     dragging: 0,
-    settings: {
-
-    }
+  },
+  shape: {
+    type: 'rectangle',
+    dragging: 0
   }
 }
 
@@ -61,6 +63,7 @@ function getSelected() {
 
   if(type == 'line') return map.lines.find((t) => t.id == id)
   if(type == 'text') return map.texts.find((t) => t.id == id)
+  if(type == 'shape') return map.shapes.find((t) => t.id == id)
 
   return 'none'
 }
@@ -75,6 +78,7 @@ function setMode(to) {
   
   if(mode == 'text') $('#canvas').css('cursor', 'text')
   if(mode == 'line') $('#canvas').css('cursor', 'default')
+  if(mode == 'shape') $('#canvas').css('cursor', 'default')
   if(mode == 'pan') $('#canvas').css('cursor', 'grab')
   if(mode == 'selector') $('#canvas').css('cursor', 'default')
 
