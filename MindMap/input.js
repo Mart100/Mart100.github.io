@@ -89,7 +89,6 @@ $(() => {
 
     if(selectedType == 'text') {
       if(modes.text.dragging) {
-        saveHistory(element)
         setTimeout(() => {
           modes.text.dragging = false
           $('#canvas').css('cursor', 'text')
@@ -180,7 +179,10 @@ $(() => {
          mouseMapPos.x > t.position.x-7 &&
          mouseMapPos.y < t.position.y-16 && 
          mouseMapPos.y > t.position.y-30) {
-          if(mouseDown) modes.text.dragging = true
+          if(mouseDown && !modes.text.dragging) {
+            modes.text.dragging = true
+            saveHistory(t)
+          }
 
           $('#canvas').css('cursor', 'pointer')
         }
@@ -209,6 +211,12 @@ $(() => {
 
       return
 
+    }
+
+    // delete
+    if(event.key == 'Delete' || event.key == 'Backspace') {
+      saveHistory(getSelected())
+      $('#setting-delete').click()
     }
 
     if(mousePos.x < 200) return

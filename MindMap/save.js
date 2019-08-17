@@ -80,12 +80,24 @@ function saveMap() {
       $('#save-button').html('Save')
     }, 3000)
   })
+
+  let cookieSaves = getCookie('saves')
+  if(cookieSaves == "") cookieSaves = []
+  else cookieSaves = JSON.parse(cookieSaves)
+
+  cookieSaves.push({date: Date.now(), token: token })
+
+  cookieSaves = JSON.stringify(cookieSaves)
+
+  setCookie('saves', cookieSaves)
+
 }
 
 function loadSave(token) {
   db.collection("mindMap").doc(token).get().then((doc) => {
     let save = doc.data()
 
+    selected = 'none'
     map.lines = []
     map.texts = []
     map.shapes = []

@@ -5,11 +5,14 @@ LINES:
   arrow at end / different types of lines
 
 SHAPES:
-  Circle
-  Rectangle
 
 PAN:
   zooming in and out
 
 OTHER:
   view only mode
+  export as image
+  Options
+  Load
+
+Image importing
