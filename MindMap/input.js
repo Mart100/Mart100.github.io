@@ -6,7 +6,13 @@ let mousePos = new Vector(0, 0)
 $(() => {
 
   // disable right click
-  document.addEventListener('contextmenu', event => event.preventDefault());
+  document.addEventListener('contextmenu', event => {
+
+    if(event.target.id == 'ctx-image') return
+    
+    event.preventDefault()
+    
+  })
   
   $('#canvas').on('click', (event) => {
 
