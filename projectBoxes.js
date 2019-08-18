@@ -157,7 +157,7 @@ let projects = [
         link: siteLink+'pathFindingAlgorithm',
         code: githubSiteLink+'pathFindingAlgorithm',
         created: '10/5/2018',
-				score: 20,
+				score: 15,
         description: `
         This was a huge project of me.
         When you're on the site, you can start by dragging your mouse to draw walls.
@@ -196,7 +196,7 @@ let projects = [
         link: siteLink+'3Dengine',
         code: githubSiteLink+'3Dengine',
         created: '15/1/2019',
-				score: 16,
+				score: 15,
         description: `
         A 3D-engine fully custom made uses html canvas.`
     },
@@ -387,7 +387,7 @@ let projects = [
       title: 'Dext',
       image: 'https://i.imgur.com/VUbnjov.png',
       link: siteLink+'Dext',
-      code: githubSiteLink+'brainTrain',
+      code: githubSiteLink+'Dext',
       created: '11/8/2019',
       score: 12,
       description: `
@@ -398,11 +398,11 @@ let projects = [
     },
     {
       title: 'Mindmap tool',
-      image: 'https://i.imgur.com/VUbnjov.png',
-      link: siteLink+'Dext',
-      code: githubSiteLink+'brainTrain',
-      created: '11/8/2019',
-      score: 15,
+      image: 'https://i.imgur.com/b6JhQHV.jpg',
+      link: siteLink+'MindMap',
+      code: githubSiteLink+'MindMap',
+      created: '13/8/2019',
+      score: 16,
       description: `
         A tool to make mind maps!
       `
