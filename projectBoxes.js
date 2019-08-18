@@ -396,6 +396,17 @@ let projects = [
         And in dutch. And that is about it
       `
     },
+    {
+      title: 'Mindmap tool',
+      image: 'https://i.imgur.com/VUbnjov.png',
+      link: siteLink+'Dext',
+      code: githubSiteLink+'brainTrain',
+      created: '11/8/2019',
+      score: 15,
+      description: `
+        A tool to make mind maps!
+      `
+    },
     
 ]
 

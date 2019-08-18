@@ -220,12 +220,13 @@ $(() => {
     }
 
     // delete
-    if(event.key == 'Delete' || event.key == 'Backspace') {
-      saveHistory(getSelected())
-      $('#setting-delete').click()
+    if(event.key == 'Delete') {
+      let selectedType = getSelectedType()
+      if(selectedType != 'none' && selectedType != 'text') {
+        saveHistory(getSelected())
+        $('#setting-delete').click()
+      }
     }
-
-    if(mousePos.x < 200) return
 
     if($('input').is(':focus')) {
       if(event.key == 'Enter') $('input').blur()
@@ -234,6 +235,8 @@ $(() => {
 
     // stop going to previous page when backspace
     if(event.keyCode == 8) event.preventDefault()
+
+    if(mousePos.x < 200) return
 
     if(selected == 'none') return
 
