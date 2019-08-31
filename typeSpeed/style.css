@@ -1,6 +1,11 @@
+@font-face {
+	font-family: roboto-thin;
+	src: url('roboto-thin.ttf');
+}
+
+@import url("https://fonts.googleapis.com/css?family=Roboto&display=swap");
 body {
   margin: 0px;
-  font-family: Arial, Helvetica, sans-serif;
 }
 
 #typeBar {
@@ -10,11 +15,13 @@ body {
   background-color: white;
   top: 50%;
   transform: translateY(-50%);
+  font-family: 'Roboto', sans-serif;
 }
 #typeBar #text {
   position: absolute;
   width: 50%;
   overflow-x: hidden;
+  overflow-y: hidden;
   height: 30px;
   padding-top: 5px;
   padding-bottom: 5px;
@@ -30,6 +37,7 @@ body {
   right: 50%;
   height: 30px;
   overflow-x: hidden;
+  overflow-y: hidden;
   padding-top: 5px;
   padding-bottom: 5px;
   transform: translateY(-50%);
@@ -48,6 +56,8 @@ body {
   left: 50%;
   top: 25%;
   transform: translateX(-50%);
+  font-weight: 100;
+  font-family: "roboto-thin";
   text-shadow: 0px 0px 3px white;
   text-align: center;
 }
@@ -59,6 +69,7 @@ body {
 }
 #stats .stat .num {
   font-size: 50px;
+  font-weight: 100;
 }
 
 /*# sourceMappingURL=style.css.map */

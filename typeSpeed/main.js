@@ -20,6 +20,9 @@ function onLoad() {
 
 function inputHandler() {
   $(document).on('keydown', (event) => {
+    
+    if(event.key == 'Backspace') event.preventDefault()
+
     if(endTime != 0) return
     let input = $('#input').html()
     let char = event.key
