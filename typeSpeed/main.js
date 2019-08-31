@@ -89,8 +89,8 @@ function drawGradient() {
   c.height = window.innerHeight
 
   let grd = ctx.createLinearGradient(0, 0, c.width, c.height)
-  grd.addColorStop(0, 'rgb(100, 50, 255)')
-  grd.addColorStop(1, "rgb(50, 255, 100)")
+  grd.addColorStop(0, 'rgb(60, 35, 150)')
+  grd.addColorStop(1, "rgb(35, 150, 60)")
 
   ctx.fillStyle = grd
   ctx.fillRect(0, 0, c.width, c.height)

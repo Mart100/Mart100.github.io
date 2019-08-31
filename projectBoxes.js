@@ -407,6 +407,17 @@ let projects = [
         A tool to make mind maps!
       `
     },
+    {
+      title: 'Type Speed',
+      image: 'https://i.imgur.com/KKTNlnh.png',
+      link: siteLink+'typeSpeed',
+      code: githubSiteLink+'typeSpeed',
+      created: '31/8/2019',
+      score: 12,
+      description: `
+        A tool to test your typing speed!
+      `
+    },
     
 ]
 

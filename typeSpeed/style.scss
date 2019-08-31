@@ -7,15 +7,19 @@
 
 body {
   margin: 0px;
+  background-color: rgb(20, 20, 20);
 }
 
 #typeBar {
   position: absolute;
   height: 100px;
-  width: 100%;
-  background-color: rgb(255, 255, 255);
+  width: 90%;
+  border-radius: 20px;
+  left: 50%;
+  background-color: rgba(200, 200, 200, 1);
   top: 50%;
-  transform: translateY(-50%);
+  transform: translate(-50%, -50%);
+  overflow-x: hidden;
   font-family: 'Roboto', sans-serif;
 
   #text {

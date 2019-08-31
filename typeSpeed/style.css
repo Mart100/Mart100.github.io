@@ -5,15 +5,19 @@
 }
 body {
   margin: 0px;
+  background-color: #141414;
 }
 
 #typeBar {
   position: absolute;
   height: 100px;
-  width: 100%;
-  background-color: white;
+  width: 90%;
+  border-radius: 20px;
+  left: 50%;
+  background-color: #c8c8c8;
   top: 50%;
-  transform: translateY(-50%);
+  transform: translate(-50%, -50%);
+  overflow-x: hidden;
   font-family: "Roboto", sans-serif;
 }
 #typeBar #text {
