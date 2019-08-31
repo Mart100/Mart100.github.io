@@ -1,7 +1,7 @@
 let startTime = 0
 let endTime = 0
 let wordsCount = 0
-let totalWords = 10
+let totalWords = 50
 
 let intervalLoop
 

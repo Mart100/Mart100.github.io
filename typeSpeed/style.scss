@@ -1,8 +1,12 @@
+@font-face {
+	font-family: roboto-thin;
+	src: url('roboto-thin.ttf');
+}
+
 @import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
 
 body {
   margin: 0px;
-  font-family: 'Roboto';
 }
 
 #typeBar {
@@ -12,27 +16,28 @@ body {
   background-color: rgb(255, 255, 255);
   top: 50%;
   transform: translateY(-50%);
+  font-family: 'Roboto', sans-serif;
 
   #text {
     position: absolute;
     width: 50%;
     overflow-x: hidden;
     overflow-y: hidden;
-    height: 30px;
+    height: 40px;
     padding-top: 5px;
     padding-bottom: 5px;
     white-space: nowrap;
     left: 50%;
     top: 50%;
     transform: translateY(-50%);
-    font-size: 30px;
+    font-size: 40px;
   }
 
   #input {
     position: absolute;
     top: 50%;
     right: 50%;
-    height: 30px;
+    height: 40px;
     overflow-x: hidden;
     overflow-y: hidden;
     padding-top: 5px;
@@ -40,7 +45,7 @@ body {
     transform: translateY(-50%);
     white-space: nowrap;
     border: none;
-    font-size: 30px;
+    font-size: 40px;
     text-align: right;
     color: rgb(50, 155, 50);
   }
@@ -54,6 +59,8 @@ body {
   left: 50%;
   top: 25%;
   transform: translateX(-50%);
+  font-family: "roboto-thin";
+  text-shadow: 0px 0px 3px white;
   font-weight: 100;
   text-align: center;
 
