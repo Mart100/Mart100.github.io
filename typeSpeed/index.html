@@ -1,0 +1,39 @@
+<html>
+  <head>
+    <title>TypeSpeed</title>
+    <meta charset="utf-8"/>
+
+    <!-- Styleset -->
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-140200727-6"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-140200727-6');
+    </script>
+
+    <!-- Jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <!-- Scripts -->
+    <script src="words.js"></script>
+    <script src="main.js"></script>
+
+  </head>
+  <body>
+    <canvas id="canvas"></canvas>
+    <div id="stats">
+      <div class="stat" id="wordsPerMin"><span class="num">0</span><br><span class="txt">Words Per Minute</span></div>
+      <div class="stat" id="wordCount"><span class="num">0</span><br><span class="txt">Words</span></div>
+      <div class="stat" id="timeElapsed"><span class="num">0</span><br><span class="txt">Time elapsed</span></div>
+    </div>
+    <div id="typeBar">
+      <div id="text"></div>
+      <div id="input" type="text"></div>
+    </div>
+  </body>
+</html>

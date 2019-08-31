@@ -1,0 +1,69 @@
+body {
+  margin: 0px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+#typeBar {
+  position: absolute;
+  height: 100px;
+  width: 100%;
+  background-color: rgb(255, 255, 255);
+  top: 50%;
+  transform: translateY(-50%);
+
+  #text {
+    position: absolute;
+    width: 50%;
+    overflow-x: hidden;
+    height: 30px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    white-space: nowrap;
+    left: 50%;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 30px;
+  }
+
+  #input {
+    position: absolute;
+    top: 50%;
+    right: 50%;
+    height: 30px;
+    overflow-x: hidden;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    transform: translateY(-50%);
+    white-space: nowrap;
+    border: none;
+    font-size: 30px;
+    text-align: right;
+    color: rgb(50, 155, 50);
+  }
+}
+
+#stats {
+  position: absolute;
+  width: 1000px;
+  height: 250px;
+  color: white;
+  left: 50%;
+  top: 25%;
+  transform: translateX(-50%);
+  text-shadow: 0px 0px 3px white;
+  text-align: center;
+
+  .stat {
+    text-align: center;
+    margin: 25px;
+    width: 200px;
+    display: inline-block;
+
+    .num {
+      font-size: 50px;
+    }
+    .txt {
+      
+    }
+  }
+}
