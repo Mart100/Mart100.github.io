@@ -1,0 +1,154 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+
+body {
+  margin: 0px;
+  background-color: rgb(34, 38, 41);
+  font-family: 'Roboto', sans-serif;
+  color: white;
+  height: 100%;
+}
+
+a {
+  color: white;
+  text-decoration: none;
+}
+
+a.link {
+  text-decoration: underline;
+}
+
+nav {
+  padding: 10px;
+  padding-left: 250px;
+  height: 50px;
+  padding-right: 250px;
+}
+nav .logo {
+  cursor: pointer;
+}
+nav .logo img {
+  float: left;
+  width: 50px;
+  height: 50px;
+}
+nav .logo span {
+  font-size: 30px;
+  float: left;
+  margin: 7.5px;
+  color: white;
+  text-decoration: none;
+}
+nav .link {
+  float: right;
+  padding-left: 100px;
+  color: white;
+  margin: 17px;
+  font-size: 16px;
+  text-decoration: none;
+}
+#download {
+  background-color: rgb(34, 38, 41);
+  text-align: center;
+  height: calc(100% - 170px);
+  padding-top: 100px;
+}
+#download .title {
+  font-size: 45px;
+}
+#download .desc {
+  color: rgb(200, 200, 200);
+  font-size: 25px;
+  width: 800px;
+  margin: auto;
+  margin-top: 40px;
+}
+#download .download-button {
+  width: 300px;
+  height: 80px;
+  margin: auto;
+  margin-top: 50px;
+  cursor: pointer;
+}
+#download .download-button a {
+  text-decoration: none;
+}
+#download .download-button div {
+  padding: 25px;
+  width: 250px;
+  border-radius: 5px;
+  font-size: 25px;
+  background-color: rgb(200, 60, 70);
+  color: white;
+  transition-duration: 0.4s;
+}
+#download .download-button:hover div {
+  background-color: rgb(255, 0, 0);
+}
+#download .buttonsRow {
+  width: 500px;
+  margin: auto;
+  margin-top: 200px;
+}
+#download .see-features {
+  padding: 10px;
+  width: 150px;
+  border-radius: 5px;
+  font-size: 20px;
+  background-color: black;
+  color: white;
+  margin: auto;
+  margin-top: 100px;
+  cursor: pointer;
+}
+#features {
+  background-color: rgb(38, 42, 45);
+  height: auto;
+  padding-top: 100px;
+  padding-bottom: 100px;
+}
+#features .feature {
+  margin-top: 100px;
+  padding-right: 25%;
+  padding-left: 25%;
+  height: 600px;
+}
+#features .feature .text {
+  width: 500px;
+  float: right;
+  padding-top: 200px;
+  height: 200px;
+}
+#features .feature .title {
+  font-size: 45px;
+}
+#features .feature .desc {
+  color: rgb(150, 150, 150);
+  font-size: 23px;
+  width: 800px;
+  margin: auto;
+  margin-top: 40px;
+}
+#features .feature img {
+  box-shadow: 5px 10px 10px rgba(0, 0, 0, 0.4);
+  width: 300px;
+  height: 600px;
+}
+
+#features .contR img {
+  float: right;
+}
+#features .contR .text {
+  float: left;
+}
+#FAQ {
+  padding-left: 250px;
+  padding-right: 250px;
+}
+#FAQ .faq .q {
+  font-size: 30px;
+  padding-top: 100px;
+}
+#FAQ .faq .a {
+  font-size: 20px;
+  color: rgb(200, 200, 200);
+}
