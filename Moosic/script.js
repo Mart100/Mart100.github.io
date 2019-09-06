@@ -1,5 +1,5 @@
 $(() => {
-  var $root = $('html, body');
+  var $root = $('html, body')
 
   $('a[href^="#"]').click((event) => {
     let href = $($(event.target).attr('href'))
