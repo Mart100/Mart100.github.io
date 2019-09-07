@@ -40,7 +40,7 @@ nav .logo span {
 }
 nav .link {
   float: right;
-  padding-left: 100px;
+  padding-left: 5%;
   color: white;
   margin: 17px;
   font-size: 16px;
@@ -108,8 +108,9 @@ nav .link {
 }
 #features .feature {
   margin-top: 100px;
-  padding-right: 25%;
-  padding-left: 25%;
+  margin-right: auto;
+  margin-left: auto;
+  width: 900px;
   height: 600px;
 }
 #features .feature .text {
@@ -130,8 +131,8 @@ nav .link {
 }
 #features .feature img {
   box-shadow: 5px 10px 10px rgba(0, 0, 0, 0.4);
-  width: 300px;
-  height: 600px;
+  max-width: 300px;
+  width: 90%;
 }
 
 #features .contR img {
@@ -161,7 +162,7 @@ nav .link {
   color: rgb(200, 200, 200);
 }
 #footer {
-  height: 250px;
+  height: 100px;
   background-color: rgb(20, 20, 20);
   padding-left: 400px;
   padding-right: 400px;
@@ -182,16 +183,22 @@ nav .link {
   margin: 10px;
   float: right;
 }
-#footer .contact {
+#footer #contact {
   float: right;
   width: 50px;
   position: relative;
   transform: translateY(-100%);
 
 }
+#footer #contact a {
+  color: rgb(200, 200, 200);
+}
+#footer #contact a:hover {
+  color: rgb(255, 255, 255);
+}
 #footer .copyright {
   width: 300px;
 }
-#footer .contact .title {
+#footer #contact .title {
   font-size: 25px;
 }
