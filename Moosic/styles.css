@@ -144,11 +144,54 @@ nav .link {
   padding-left: 250px;
   padding-right: 250px;
 }
+#FAQ .title {
+  text-align: center;
+  font-size: 40px;
+  padding-top: 50px;
+}
+#FAQ .faq {
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
 #FAQ .faq .q {
   font-size: 30px;
-  padding-top: 100px;
 }
 #FAQ .faq .a {
   font-size: 20px;
   color: rgb(200, 200, 200);
+}
+#footer {
+  height: 250px;
+  background-color: rgb(20, 20, 20);
+  padding-left: 400px;
+  padding-right: 400px;
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+#footer .logo {
+  width: 175px;
+  height: 50px;
+}
+#footer .logo img {
+  width: 50px;
+  height: 50px;
+  float: left;
+}
+#footer .logo span {
+  font-size: 30px;
+  margin: 10px;
+  float: right;
+}
+#footer .contact {
+  float: right;
+  width: 50px;
+  position: relative;
+  transform: translateY(-100%);
+
+}
+#footer .copyright {
+  width: 300px;
+}
+#footer .contact .title {
+  font-size: 25px;
 }
