@@ -1,5 +1,8 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
 
+html {
+  scroll-behavior: smooth;
+}
 body {
   margin: 0px;
   background-color: rgb(34, 38, 41);
@@ -83,22 +86,6 @@ nav .link {
 }
 #download .download-button:hover div {
   background-color: rgb(255, 0, 0);
-}
-#download .buttonsRow {
-  width: 500px;
-  margin: auto;
-  margin-top: 200px;
-}
-#download .see-features {
-  padding: 10px;
-  width: 150px;
-  border-radius: 5px;
-  font-size: 20px;
-  background-color: black;
-  color: white;
-  margin: auto;
-  margin-top: 100px;
-  cursor: pointer;
 }
 #features {
   background-color: rgb(38, 42, 45);
