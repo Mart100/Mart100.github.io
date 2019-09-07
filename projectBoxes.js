@@ -402,7 +402,7 @@ let projects = [
       link: siteLink+'MindMap',
       code: githubSiteLink+'MindMap',
       created: '13/8/2019',
-      score: 16,
+      score: 15,
       description: `
         A tool to make mind maps!
       `
@@ -416,6 +416,17 @@ let projects = [
       score: 12,
       description: `
         A tool to test your typing speed!
+      `
+    },
+    {
+      title: 'Moosic',
+      image: 'https://i.imgur.com/F4kbBJz.png',
+      link: siteLink+'Moosic',
+      code: githubSiteLink+'Moosic',
+      created: '7/9/2019',
+      score: 16,
+      description: `
+        A music player which uses youtube.
       `
     },
     

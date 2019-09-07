@@ -20,6 +20,7 @@ body {
   transition-property: width, height, margin, filter, opacity, font-size;
   transition-duration: .2s;
   transition-timing-function: linear;
+  background-color: rgb(40, 40, 40);
 }
 .projectBOX .thumbnail {
   border-radius: 2px;
