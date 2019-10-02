@@ -502,8 +502,11 @@ function addProjects() {
       $(`#project-${projectNum}`).on('click', (event) => {
         event.preventDefault()
         projectsShown += 5
+        let scroll = $('#body')[0].scrollTop
+        console.log(scroll)
         $('#projectsWrapper').html('')
 	      addProjects()
+        $('#body')[0].scrollTop = scroll
       })
 
     }
