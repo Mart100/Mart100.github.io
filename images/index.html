@@ -1,0 +1,42 @@
+<html>
+  <head>
+    <title>Martve Images</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <style>
+      body {
+        margin: 0px;
+        background-color: rgb(20, 20, 20);
+      }
+      #images {
+        padding: 100px;
+      }
+      #images img {
+        width: 250px;
+        height: 250px;
+        margin: 20px;
+        cursor: pointer;
+        transition-duration: .5s;
+        border: 2px solid black;
+      }
+      #images img:hover {
+        border: 2px solid red;
+      }
+
+    </style>
+  </head>
+  <body>
+    <div id="images"></div>
+  </body>
+</html>
+
+<script>
+const images = [
+  "https://i.imgur.com/5o2jOe0.png", 
+]
+
+for(let image of images) {
+  $('#images').append(`<a href="${image}"><img src="${image}"/></a>`)
+}
+</script>
