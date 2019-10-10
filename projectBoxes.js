@@ -429,6 +429,17 @@ let projects = [
         A music player which uses youtube.
       `
     },
+    {
+      title: 'StickyParticles',
+      image: 'https://i.imgur.com/Z9uLRW9.png',
+      link: siteLink+'StickyParticles',
+      code: githubSiteLink+'StickyParticles',
+      created: '4/10/2019',
+      score: 14,
+      description: `
+        Simple particles with gravity
+      `
+    },
     
 ]
 
