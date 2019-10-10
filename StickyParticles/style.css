@@ -14,8 +14,9 @@ body {
   top: 0px;
   right: 0px;
   width: 200px;
-  height: 100px;
+  height: 150px;
   border-radius: 0px 0px 0px 2px;
+  padding-top: 10px;
   text-align: center;
 
 }
@@ -23,4 +24,5 @@ body {
 #HUD button {
   width: 150px;
   margin: auto;
+  margin-top: 5px;
 }

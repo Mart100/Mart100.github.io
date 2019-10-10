@@ -1,5 +1,8 @@
 let canvas 
 let ctx
+let ballSize = 0
+let drawGravity = false
+let isPaused = false
 let particles = []
 
 $(() => {
@@ -8,6 +11,8 @@ $(() => {
 
   canvas.width = window.innerWidth
   canvas.height = window.innerHeight
+
+  ballSize = canvas.width/200
 
   createParticles(150)
 
@@ -19,6 +24,31 @@ $(() => {
   // HUD
   $('#spawn10').on('click', () => {
     createParticles(10)
+  })
+
+  $('#drawGravity').on('click', () => {
+    if(drawGravity) {
+      drawGravity = false
+      $('#drawGravity').html('Draw gravity')
+    } else {
+      drawGravity = true
+      $('#drawGravity').html('Hide gravity')
+    }
+  })
+
+  $('#restart').on('click', () => {
+    particles = []
+    createParticles(150)
+  })
+
+  $('#pause').on('click', () => {
+    if(isPaused) {
+      isPaused = false
+      $('#pause').html('Pause')
+    } else {
+      isPaused = true
+      $('#pause').html('UnPause')
+    }
   })
 })
 
@@ -36,6 +66,8 @@ function createParticle() {
 }
 
 function tick() {
+  if(isPaused) return
+  
   for(let particle of particles) {
     particle.move()
     particle.bounceWalls()
@@ -49,6 +81,7 @@ function frame() {
 
   ctx.clearRect(0, 0, canvas.width, canvas.height)
 
+  if(drawGravity) for(let particle of particles) particle.drawGravity()
   for(let particle of particles) particle.draw()
 
 }
