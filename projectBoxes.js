@@ -171,7 +171,7 @@ let projects = [
     },
     {
         title: 'Multiplayer game',
-        image: 'https://i.imgur.com/Oo4iZhF.png',
+        image: 'https://i.imgur.com/M5DH0yq.png',
         link: 'https://fuct.herokuapp.com/',
         created: '3/3/2018',
 				score: 25,
