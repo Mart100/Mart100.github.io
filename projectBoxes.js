@@ -440,9 +440,72 @@ let projects = [
         Simple particles with gravity
       `
     },
-    
+    {
+      title: 'Blonk',
+      image: 'https://i.imgur.com/a7vX7bb.png',
+      link: 'http://zrn.xyz',
+      created: '20/11/2019',
+      score: 16,
+      description: `
+        A 2D topdown multiplayer shooter
+      `
+    },
+    {
+      title: 'Dualistic',
+      image: 'https://i.imgur.com/CgK2g64.png',
+      link: siteLink+'dualistic',
+      created: '2/11/2018',
+      score: 14,
+      description: `
+        A game ment for Game off 2018. But never finished
+      `
+    },
+    {
+      title: 'Platformer',
+      image: 'https://i.imgur.com/bpbHSPs.png',
+      link: siteLink+'Platformer',
+      created: '17/1/2018',
+      score: 5,
+      description: `
+        Some platformer I never finished
+      `
+    },
+    {
+      title: 'Aimbot using screencapture',
+      image: 'https://i.imgur.com/aS1X5bU.png',
+      link: siteLink+'ZombsRoyaleAimbot2',
+      code: githubSiteLink+'ZombsRoyaleAimbot2',
+      created: '6/6/2019',
+      score: 10,
+      description: `
+        An aimbot for a game named ZombsRoyale.
+        It doesn't actually work good
+      `
+    },
+    {
+      title: '3D terrain',
+      image: 'https://i.imgur.com/TFbs0Xt.png',
+      link: siteLink+'3DterrainNoise',
+      code: githubSiteLink+'3DterrainNoise',
+      created: '6/6/2019',
+      score: 10,
+      description: `
+        Some random terrain noise height. With fully custom made 3D engine
+      `
+    },
+    {
+      title: 'Trashcan Projects',
+      image: 'https://i.imgur.com/KAvEc2C.png',
+      link: siteLink+'trashcan',
+      created: '0/0/0000',
+      score: 0,
+      description: `
+        All other projects I've made that don't deserve a place here
+      `
+    },
 ]
 
+https://i.imgur.com/qeaP8I5.png
 
 $(() => {
 	sortProjects()
@@ -504,7 +567,22 @@ function addProjects() {
 				${ project.description != undefined ? `<img class="infoButton" src="https://i.imgur.com/4fHs0Qk.png"/>` : ''}
 				${ project.code != undefined ? `<a href="${project.code}"><img class="codeButton" src="https://i.imgur.com/HAzpWfk.png"/></a>` : ''}
 			</div>
-		</div>`)
+    </div>`)
+    
+    $(`#project-${projectNum} > a`).on('click', (event) => {
+      
+      event.preventDefault()
+
+      if(!project.link) return
+      let num = splicedProjects.indexOf(splicedProjects.find((a) => a.title == title))
+      $(`#project-${num} .thumbnail`).attr('src', 'https://i.imgur.com/dwb4jC1.gif')
+      $(`#project-${num} .title`).html('Loading...')
+      console.log('YEET')
+      setTimeout(() => {
+        location.href = project.link
+      }, 100)
+      return false
+    })
 
     $(`#project-${projectNum}`).css('height', $(`#project-${projectNum}`).width())
 
@@ -512,7 +590,7 @@ function addProjects() {
       $(`#project-${projectNum} a`).attr('href', 'See_More_Projects')
       $(`#project-${projectNum}`).on('click', (event) => {
         event.preventDefault()
-        projectsShown += 5
+        projectsShown += 10
         let scroll = $('#body')[0].scrollTop
         console.log(scroll)
         $('#projectsWrapper').html('')

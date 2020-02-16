@@ -1,0 +1,41 @@
+body {
+  background-color: #232323;
+  margin: 0;
+  overflow: hidden;
+}
+
+#tileinfo {
+  position: absolute;
+  left: 0px;
+  top: 150px;
+  width: auto;
+  height: auto;
+  color: white;
+  padding: 5px;
+  background-color: rgba(0,0,0,0.2);
+  font-weight: bold;
+}
+
+#connectoninfo {
+  position: absolute;
+  left: 0px;
+  top: 300px;
+  width: auto;
+  height: auto;
+  color: white;
+  padding: 5px;
+  background-color: rgba(0,0,0,0.2);
+  font-weight: bold;
+}
+
+#pausedAlert {
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  font-weight: bold;
+  color: red;
+  font-size: 20px;
+  padding: 5px;
+  display: none;
+  background-color: rgba(0,0,0,0.2);
+}

@@ -1,6 +1,6 @@
 <html>
   <head>
-    <title>CarSimulation</title>
+    <title>TSCPY-1</title>
     <meta charset="utf-8"/>
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
@@ -15,15 +15,22 @@
     
     <link rel="stylesheet" type="text/css" href="style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="grid.js"></script>
+    <script src="connecton.js"></script>
+    <script src="world.js"></script>
     <script src="index.js"></script>
+    <script src="room.js"></script>
     <script src="process.js"></script>
     <script src="draw.js"></script>
-    <script src="grid.js"></script>
+    <script src="noise.js"></script>
     <script src="input.js"></script>
     <script src="tileInfo.js"></script>
-    <script src="debugPanel.js"></script>
+    <script src="infoPanel.js"></script>
   </head>
-  <body>
+  <body id="body">
     <canvas id="canvas"></canvas>
+    <div id="tileinfo"></div>
+    <div id="connectoninfo"></div>
+    <div id="pausedAlert">PAUSED</div>
   </body>
 </html>

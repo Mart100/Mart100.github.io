@@ -2,6 +2,8 @@ $(() => {
     titleFun()
     rainbowBackground()
     subscribe()
+
+    console.log('Ehhh')
 })
 
 function titleFun() {

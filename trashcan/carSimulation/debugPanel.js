@@ -1,7 +1,17 @@
 class DebugPanel {
   constructor() {
     $('body').prepend(`<div id="debugPanel"></div>`)
-    $('#debugPanel').css({'position': 'absolute', 'height': 'auto', 'width': 'auto', 'background-color': 'rgba(0, 0, 0, 0.2)', 'user-select': 'none'})
+    let style = {
+      'position': 'absolute', 
+      'height': 'auto', 
+      'width': 'auto', 
+      'background-color': 'rgba(0, 0, 0, 0.4)', 
+      'user-select': 'none', 
+      'color': 'white',
+      'padding': '5px',
+      'pointer-events': 'none'
+    }
+    $('#debugPanel').css(style)
   }
 
   add(name, value) {
@@ -24,9 +34,6 @@ class DebugPanel {
 
     $(`#debugPanel #DP-${name}`).html(name+( Math.random() > 0.5 ? ':  ' : ';  ')+(new Date().getTime() - lastDate)+'<br>')
     $(`#debugPanel #DP-${name}`).attr('name', new Date().getTime())
-  }
-  textColor(color) {
-    $('#debugPanel').css('color', color)
   }
   remove(name) {
     if($(`#debugPanel #DP-${name}`) == undefined) return
