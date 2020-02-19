@@ -24,8 +24,11 @@ function showSelectedConnectonInfo() {
   - name: ${c.name}<br>
   - hunger: ${c.hungerAmount}<br>
   - sleep: ${c.sleepAmount}<br>
-  - balance: ${c.balance}<br>
+  - path: ${c.path.length}<br>
   `
+
+  if(c.home) html += `- balance: ${c.balance}<br>`
+  if(c.married) html += `- married: ${c.married.id}<br>`
 
   $('#connectoninfo').html(html)
 }

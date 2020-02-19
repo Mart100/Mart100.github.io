@@ -23,6 +23,12 @@ $(() => {
     displayTileInfo()
   })
 
+  $('#connectoninfo').on('click', () => {
+    let connecton = selectedConnecton
+    if(connecton == undefined) return
+    console.log(connecton)
+  })
+
   $('#canvas').on('click', () => {
     let mouseGridPos = world.grid.windowToGridPos(mouse.pos.x, mouse.pos.y)
     selectedConnecton = undefined

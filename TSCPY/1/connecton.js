@@ -17,8 +17,8 @@ class Connecton {
     this.gender = Math.round(Math.random())
     this.balance = 0
     this.age = 0
-    this.sleepAmount = 2000
-    this.hungerAmount = 2000
+    this.sleepAmount = 5000
+    this.hungerAmount = 5000
     this.path = []
     this.paths = []
     this.home
@@ -44,13 +44,15 @@ class Connecton {
     if(currentTile && currentTile.roomType) {
       roomType = currentTile.roomType
       if(roomType == 'restaurant') {
-        if(this.balance > 0) {
+        if(this.balance > 0 && this.hungerAmount < 10000) {
           this.balance -= 5
           this.hungerAmount += 50
         }
       }
       if(roomType == 'house') {
-        this.sleepAmount += 3
+        if(this.sleepAmount < 10000) {
+          this.sleepAmount += 5
+        }
       }
       if(roomType == 'work') {
         this.balance += 1
@@ -78,10 +80,10 @@ class Connecton {
 
 
     // Tasks
-    if(time >4 && time <8 && sleep>2000 && roomType!='work') this.go('work')
-    if(time>8 && time<9 && roomType!='restaurant') this.go('restaurant')
-    if(time>8 && time<9.9 && hunger>2500 && roomType!='home') this.go('home')
-
+    if(time>6 && time<10 && sleep>5000 && roomType!='work') this.go('work')
+    if(time>16 && time<18 && roomType!='restaurant') this.go('restaurant')
+    if(time>18 && time<20 && hunger>5000 && roomType!='home') this.go('home')
+    if(time<6 && roomType!='home') this.go('home')
     
   }
   die() {
@@ -100,6 +102,7 @@ class Connecton {
   }
   async go(room) {
 
+    console.log('GO: ', room)
     if(this.path.length != 0) return
     if(this.findRecursion && this.findRecursion.searching) return
     if(room == 'home') {
@@ -115,7 +118,7 @@ class Connecton {
 
     let possiblePath = this.paths.find(p => p.from.x == startPosition.x && p.from.y == startPosition.y && p.to.id == room.id)
     if(possiblePath) {
-      this.path = possiblePath.path
+      this.path = JSON.parse(JSON.stringify(possiblePath.path))
       return 'SUCCESS'
     }
 
@@ -149,7 +152,9 @@ class Connecton {
           path: JSON.parse(JSON.stringify(this.path))
         }
         if(this.paths.find(p => p.from.x == startPosition.x && p.from.y == startPosition.y && p.to.id == room.id) == undefined) {
-          this.paths.push(pathDetails)
+          if(pathDetails.path.length > 0) {
+            this.paths.push(pathDetails)
+          }
         }
       }
 

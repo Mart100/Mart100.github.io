@@ -37,9 +37,15 @@ class Room {
     if(this.type == 'house') {
 
       // marrying
-      if(!connecton.married && !this.married) {
-        if(connecton.gender == this.gender) return false
-        //if(connecton)
+      if(!connecton.married && !this.married && this.connectons.length == 1) {
+        let owner = this.connectons[0]
+        if(connecton.gender == owner.gender) return false
+        if(connecton.age < 20 && owner.age < 20) return false
+        if(Math.abs(connecton.age-owner.age) > 10) return false
+        if(Math.random() > 0.9) return false
+        connecton.married = owner
+        owner.married = connecton
+        return true
       }
 
       if(!connecton.parents) return false

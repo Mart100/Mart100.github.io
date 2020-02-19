@@ -24,7 +24,7 @@ class World {
     let timeFormatted = Math.floor(this.time) + ':' + Math.floor((this.time % 1)*100)
     infoPanel.add('Time', timeFormatted)
 
-    if(this.time > 10) {
+    if(this.time > 20) {
       this.time = 0
       this.day++
       infoPanel.add('Day', this.day)
