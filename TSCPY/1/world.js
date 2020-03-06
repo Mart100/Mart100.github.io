@@ -4,13 +4,13 @@ class World {
     this.day = 0
     this.connectons = []
     this.isPaused = false
-    this.tickSpeed = 1000
+    this.tickSpeed = settings.speed
     this.tickCount = 0
     this.rooms = []
     this.grid = new Grid()
 
     setInterval(() => { 
-      for(let i=0;i<2; i++) this.tick() 
+      for(let i=0;i<settings.speedS; i++) this.tick() 
     }, 1000/this.tickSpeed)
 
   }

@@ -1,22 +1,7 @@
 let canvas, ctx
 let keys = {}
+let grid
 let mouse = {pos:{x:0,y:0}}
-let world
-let isPaused = false
-let infoPanel
-let settings = {
-  drawConnectonSearch: true,
-  spawnTool: {
-    amount: 1,
-    radius: 10
-  },
-  speed: 1000,
-  speedS: 20
-}
-
-/*====KEYBINDS====
-p: spawn connectons
-================*/
 
 $(() => {
   // prepare canvas
@@ -25,13 +10,12 @@ $(() => {
   canvas.width = window.innerWidth
   canvas.height = window.innerHeight
 
-  infoPanel = new InfoPanel()
-  world = new World()
-  world.grid.loadScreen()
+  grid = new Grid()
+  grid.loadScreen()
 
   // call functions
   frame()
-  setInterval(() => { tick() }, 10)
+  setInterval(() => { tick() }, 100)
 })
 
 function randomRGB() {

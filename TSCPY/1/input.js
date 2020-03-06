@@ -7,7 +7,7 @@ $(() => {
 
     // 1
     let mouseGridPos = world.grid.windowToGridPos(mouse.pos.x, mouse.pos.y)
-    if(event.keyCode == 49) world.placeRandomConnectons({x:mouseGridPos.x,y:mouseGridPos.y}, 10, 100)
+    if(event.keyCode == 49) world.placeRandomConnectons({x:mouseGridPos.x,y:mouseGridPos.y}, settings.spawnTool.amount, settings.spawnTool.radius)
 
     // P
     if(event.keyCode == 80) world.isPaused = !world.isPaused

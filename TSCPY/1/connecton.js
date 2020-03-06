@@ -82,7 +82,7 @@ class Connecton {
     // Tasks
     if(time>6 && time<10 && sleep>5000 && roomType!='work') this.go('work')
     if(time>16 && time<18 && roomType!='restaurant') this.go('restaurant')
-    if(time>18 && time<20 && hunger>5000 && roomType!='home') this.go('home')
+    if(time>19 && time<20 && hunger>5000 && roomType!='home') this.go('home')
     if(time<6 && roomType!='home') this.go('home')
     
   }

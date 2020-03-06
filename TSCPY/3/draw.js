@@ -1,3 +1,4 @@
+
 function frame() {
 
   // rerun frame
@@ -7,7 +8,6 @@ function frame() {
 	ctx.clearRect(0, 0, canvas.width, canvas.height)
 
   // draw grid
-  world.grid.draw()
+  grid.draw()
 
-  //world.grid.fillScreenSpots()
 }
