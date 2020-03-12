@@ -503,6 +503,36 @@ let projects = [
         All other projects I've made that don't deserve a place here
       `
     },
+    {
+      title: 'TSCPY-1',
+      image: 'https://i.imgur.com/5FlTFLd.png',
+      link: siteLink+'TSCPY/1',
+      created: '15/2/2020',
+      score: 15,
+      description: `
+        TSCPY-1 is a "simulation" of an infinite world with rooms and connectons living a daily life.
+      `
+    },
+    {
+      title: 'TSCPY-2',
+      image: 'https://i.imgur.com/u4aKXiY.png',
+      link: siteLink+'TSCPY/2',
+      created: '18/2/2020',
+      score: 13,
+      description: `
+      TSCPY-2 is an own cellular automaton that I created with specific rules.
+      `
+    },
+    {
+      title: 'Virus spread',
+      image: 'https://i.imgur.com/BSIRuni.png',
+      link: siteLink+'TSCPY/2',
+      created: '6/3/2020',
+      score: 14,
+      description: `
+      Trying to simulate a virus
+      `
+    },
 ]
 
 https://i.imgur.com/qeaP8I5.png

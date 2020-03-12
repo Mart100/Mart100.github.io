@@ -7,11 +7,11 @@ let infoPanel
 let settings = {
   drawConnectonSearch: true,
   spawnTool: {
-    amount: 1,
-    radius: 10
+    amount: 10,
+    radius: 100
   },
   speed: 1000,
-  speedS: 20
+  speedS: 10
 }
 
 /*====KEYBINDS====
