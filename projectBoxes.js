@@ -526,7 +526,7 @@ let projects = [
     {
       title: 'Virus spread',
       image: 'https://i.imgur.com/BSIRuni.png',
-      link: siteLink+'TSCPY/2',
+      link: siteLink+'spreadingVirus',
       created: '6/3/2020',
       score: 14,
       description: `
