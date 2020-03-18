@@ -92,4 +92,11 @@ class Vector {
   clone() {
     return new Vector(this.x, this.y)
   }
+  compare(vec) {
+    if(vec.x == this.x && vec.y == this.y) return true
+    else return false
+  }
+  getDistanceTo(vec1) {
+    return this.clone().minus(vec1).getMagnitude()
+  }
 }

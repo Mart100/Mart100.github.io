@@ -535,8 +535,6 @@ let projects = [
     },
 ]
 
-https://i.imgur.com/qeaP8I5.png
-
 $(() => {
 	sortProjects()
 	addProjects()
