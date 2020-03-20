@@ -21,7 +21,10 @@ function tick() {
     console.timeEnd('nearbyPuppets')
     console.log('calculated count: ', i)
   }
-  for(let puppet of puppets) puppet.move()
+  for(let puppet of puppets) {
+    if(puppet.health < 0) continue
+    puppet.move()
+  }
 
   if(tickCount % 10 == 0) {
     infectedPuppets = []

@@ -48,6 +48,7 @@ function restart() {
   datarecords = []
   day = 0
   options.amount = (options.size*options.size) * (options.density/(300*100))
+  clearScreen()
   createRandomPuppets(options.amount)
 }
 

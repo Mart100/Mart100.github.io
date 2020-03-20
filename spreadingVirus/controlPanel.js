@@ -31,14 +31,20 @@ function sliderListener() {
   $('#controlPanel .slider').on('change', (event) => {
     let elem = $(event.target)
     let pelem = elem.parent()
-    let val = elem.val()
+    let val = Number(elem.val())
     if(pelem.hasClass("mapsize")) {
-      options.size = (val*100)+1000
+      options.size = (val*50)+1000
+      pelem.find('.value').html(options.size)
       restart()
     }
     if(pelem.hasClass("popdensity")) {
       options.density = (val)
+      pelem.find('.value').html(options.density)
       restart()
+    }
+    if(pelem.hasClass("deathrate")) {
+      options.surviveChance = 100-val
+      pelem.find('.value').html(val)
     }
   })
 }
