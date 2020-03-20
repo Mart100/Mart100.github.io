@@ -14,7 +14,7 @@ $(() => {
       let puppetv = puppet.getWindowLocation()
       let distance = puppetv.clone().minus(mouse).getMagnitude()
       if(distance < puppet.radius) {
-        puppet.health = 99
+        puppet.infect()
       }
     }
   })

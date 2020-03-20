@@ -8,15 +8,39 @@ class Puppet {
     this.radius = 5
     this.immunity = 0
     this.nearbyPuppets = []
+    this.nearbyPuppetsBig = []
     this.target = null
+    this.targetVel = null
   }
   move() {
-    if(this.target == null) return this.findTarget()
-    let vec = this.target.clone().minus(this.pos)
-    let dist = vec.getMagnitude()
-    if(dist < 5) this.target = null
-    let move = vec.setMagnitude(1)
-    this.pos.plus(move)
+    if(this.target == null) {
+      // walking
+      if(Math.random() < 0.99) {
+        if(!options.lockdown) this.findTarget()
+        else if(Math.random() > 0.999) this.findTarget()
+      } 
+      // flight
+      else {
+        if(this.health == 100) return
+        let pos = new Vector(Math.random()*options.size, Math.random()*options.size)
+        this.pos = pos.clone()
+        this.anchor = pos.clone()
+        this.getNearbyPuppetsBig()
+      }
+
+
+      return
+    }
+
+    if(this.pos.getDistanceTo(this.target) < 5) this.target = null
+
+    this.pos.x += this.targetVel.x
+    this.pos.y += this.targetVel.y
+  }
+  infect() {
+    if(this.health == 100) this.getNearbyPuppetsBig()
+    this.health -= 1
+    
   }
   findTarget() {
     if(this.pos.getDistanceTo(this.anchor) < 5) {
@@ -27,20 +51,32 @@ class Puppet {
     } else {
       this.target = this.anchor.clone()
     }
+
+    this.targetVel = this.target.clone().minus(this.pos).setMagnitude(options.moveSpeed)
   }
   getNearbyPuppets() {
-    this.nearbyPuppets = puppets.filter((p) => {
-      let radius = 5
-      if(Math.abs(this.pos.x-p.pos.x) > options.infectDistance*radius) return false
-      if(Math.abs(this.pos.y-p.pos.y) > options.infectDistance*radius) return false
-      return this.pos.clone().minus(p.pos).getMagnitude() < options.infectDistance*radius
-    })
-    /*
-    for(let puppet of puppets) {
-      let distance = this.pos.clone().minus(puppet.pos).getMagnitude()
-      if(distance < options.infectChance*2) this.nearbyPuppets.push(puppet)
-    }*/
+    let radius = 2
+    let a = options.infectDistance*radius
+    this.nearbyPuppets = []
+    for(let p of this.nearbyPuppetsBig) {
+      if(Math.abs(this.pos.x-p.pos.x) > a) continue
+      if(Math.abs(this.pos.y-p.pos.y) > a) continue
+      let vec = {x: this.pos.x-p.pos.x, y: this.pos.y-p.pos.y}
+      if(Math.sqrt(vec.x*vec.x + vec.y*vec.y) < a) this.nearbyPuppets.push(p)
+    }
     return this.nearbyPuppets
+  }
+  getNearbyPuppetsBig() {
+    let radius = 50
+    let a = options.infectDistance*radius
+    this.nearbyPuppetsBig = []
+    for(let p of puppets) {
+      if(Math.abs(this.pos.x-p.pos.x) > a) continue
+      if(Math.abs(this.pos.y-p.pos.y) > a) continue
+      let vec = {x: this.pos.x-p.pos.x, y: this.pos.y-p.pos.y}
+      if(Math.sqrt(vec.x*vec.x + vec.y*vec.y) < a) this.nearbyPuppetsBig.push(p)
+    }
+    return this.nearbyPuppetsBig
   }
   getWindowLocation() {
     let x = (this.pos.x - camera.x)*camera.zoom

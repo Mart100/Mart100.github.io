@@ -6,4 +6,79 @@ $(() => {
     $('#controlPanel div .content').hide()
     elem.find('.content').show()
   })
+
+  buttonListener()
+  sliderListener()
 })
+
+function buttonListener() {
+  $('#controlPanel .button').on('click', (event) => {
+    let elem = $(event.target)
+    if(elem.hasClass("toggle")) {
+      elem.toggleClass("toggled")
+      let toggled = elem.hasClass("toggled")
+      
+      if(elem.hasClass("lockdown")) options.lockdown = toggled
+      if(elem.hasClass("pause")) options.paused = toggled
+    }
+    else {
+      if(elem.hasClass("restart")) restart()
+    }
+  })
+}
+
+function sliderListener() {
+  $('#controlPanel .slider').on('change', (event) => {
+    let elem = $(event.target)
+    let pelem = elem.parent()
+    let val = elem.val()
+    if(pelem.hasClass("mapsize")) {
+      options.size = (val*100)+1000
+      restart()
+    }
+    if(pelem.hasClass("popdensity")) {
+      options.density = (val)
+      restart()
+    }
+  })
+}
+
+function createDatarecord() {
+  let total = 0
+  let dead = 0
+  let alife = 0
+  let healthy = 0
+  let immune = 0
+  let infected = 0
+  for(let p of puppets) {
+    total++
+    if(p.health < 0) dead++
+    if(p.health > 0) alife++
+    if(p.health == 100) healthy++
+    if(p.immunity > 0) immune++
+    if(p.health < 100 && p.health > 0) infected++
+  }
+
+  let datarecord = {
+    time: Date.now(),
+    total,
+    dead,
+    alife,
+    immune,
+    infected,
+    healthy
+  }
+
+  datarecords.push(datarecord)
+}
+function updateInfoTab() {
+  let lastDataRecord = datarecords[datarecords.length-1]
+  $('#info > .content > .total > .value').html(lastDataRecord.total)
+  $('#info > .content > .dead > .value').html(lastDataRecord.dead)
+  $('#info > .content > .alife > .value').html(lastDataRecord.alife)
+  $('#info > .content > .healthy > .value').html(lastDataRecord.healthy)
+  $('#info > .content > .immune > .value').html(lastDataRecord.immune)
+  $('#info > .content > .infected > .value').html(lastDataRecord.infected)
+  $('#info > .content > .tickcount > .value').html(tickCount)
+  $('#info > .content > .day > .value').html(day)
+}

@@ -1,20 +1,26 @@
 let canvas, ctx
 let puppets = []
+let datarecords = []
 let camera = {
   x: 0,
   y: 0,
   zoom: 1
 }
+let day = 0
 let options = {
-  infectDistance: 100,
+  infectDistance: 50,
   amount: 10000,
   checkOverlap: false,
-  infectChance: 5,
+  infectChance: 10,
   surviveChance: 98,
-  size: 3000,
+  size: 2500,
+  density: 50,
   noisePopulation: true,
   clearScreen: true,
-  moveRange: 100
+  moveRange: 200,
+  moveSpeed: 4,
+  lockdown: false,
+  paused: false
 }
 let seed = Math.random()
 
@@ -25,10 +31,31 @@ $(() => {
   canvas.width = window.innerWidth
   canvas.height = window.innerHeight
   frame()
-  setInterval(() => { tick() }, 10)
+  setInterval(() => { 
+    tick() 
+  }, 100)
 
-  createRandomPuppets(options.amount)
+  setInterval(() => {
+    createDatarecord()
+    updateInfoTab()
+  }, 1000)
+
+  restart()
 })
+
+function restart() {
+  puppets = []
+  datarecords = []
+  day = 0
+  options.amount = (options.size*options.size) * (options.density/(300*100))
+  createRandomPuppets(options.amount)
+}
+
+function ptest() {
+  options.size = 10000
+  options.density = 50
+  restart()
+}
 
 
 function createRandomPuppets(amount) {
@@ -64,4 +91,12 @@ function createRandomPuppets(amount) {
 
     
   }
+}
+
+async function sleep(ms) {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve()
+    }, 10)
+  })
 }

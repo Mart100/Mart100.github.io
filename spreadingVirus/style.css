@@ -1,6 +1,7 @@
 body {
   background-color: rgb(214, 214, 214);
   margin: 0;
+  user-select: none;
 }
 
 #canvas {
@@ -16,17 +17,78 @@ body {
   position: absolute;
 }
 
-#controlPanel div {
+#controlPanel > div {
   width: 100%;
-  text-align: center;
+  
 }
 
-#controlPanel div .title {
+#controlPanel > div .title {
   font-size: 25px;
   padding: 10px 0px;
   background-color: rgb(228, 228, 228);
   user-select: none;
+  text-align: center;
 }
-#controlPanel div .title:hover {
+#controlPanel > div .content {
+  display: none;
+  padding: 20px;
+}
+#controlPanel > div .title:hover {
   background-color: rgb(210, 210, 210);
+}
+
+#controlPanel > div .content .data {
+  font-size: 18px;
+}
+#controlPanel > div .content .data .value {
+  font-weight: bold;
+}
+
+#controlPanel > div .content .button {
+  text-align: center;
+  font-size: 20px;
+  background-color: rgb(210, 210, 210);
+  padding: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+#controlPanel > div .content .button:hover { background-color: rgb(200, 200, 200); }
+#controlPanel > div .content .button:active { background-color: rgb(120, 120, 120); }
+#controlPanel > div .content .button.toggled { background-color: rgb(150, 150, 150); }
+#controlPanel > div .content .button.toggled:hover { background-color: rgb(140, 140, 140); }
+#controlPanel > div .content .button.toggled:active { background-color: rgb(120, 120, 120); }
+
+#controlPanel > div .content .slider {
+  text-align: center;
+  font-size: 18px;
+}
+
+#controlPanel > div .content .slider .input {
+  -webkit-appearance: none;
+  width: 250px;
+  height: 15px;
+  border-radius: 5px;
+  background: #d3d3d3;
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+}
+
+#controlPanel > div .content .slider .input::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: rgb(0, 0, 0);
+  cursor: pointer;
+}
+
+#controlPanel > div .content .slider .input::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  background: rgb(0, 0, 0);
+  cursor: pointer;
 }
