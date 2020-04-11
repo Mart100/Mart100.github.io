@@ -1,8 +1,9 @@
+
+
 body {
-  font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif;
+  font-family: 'Quicksand';
   margin: 0;
-  font-weight: 300;
-  background-color: rgb(51, 63, 172) /* rgb(0, 81, 68);*/
+  background-color: rgb(46, 47, 52) /*rgb(0, 81, 68);*/
 }
 
 /* ========== projectBOX ====== */
@@ -17,7 +18,7 @@ body {
   margin: 10;
   cursor: pointer;
   border-radius: 10px;
-  transition-property: width, height, margin, filter, opacity, font-size;
+  transition-property: width, height, max-width, max-height, margin, filter, opacity, font-size;
   transition-duration: .2s;
   transition-timing-function: linear;
   background-color: rgb(40, 40, 40);
@@ -27,7 +28,7 @@ body {
   position: relative;
   width: 100%;
   height: 100%;
-  filter: grayscale(70%);
+  filter: grayscale(80%);
   opacity: 0.9;
   transition: opacity .2s linear;
   transition: filter .2s linear;
@@ -39,9 +40,11 @@ body {
 }
 
 .projectBOX:hover {
-  margin: 0;
-  width: 370;
-  height: 370;
+  margin: 0px;
+  width: 370px !important;
+  height: 370px !important;
+  max-width: 370px;
+  max-height: 370px;
   
 }
 
@@ -118,14 +121,14 @@ body {
 
 .splitter {
   padding: 30px;
-  font-size: 30px;
+  font-size: 62px;
   text-align: center;
   color: white;
-  font-weight: 1000;
   user-select: none;
   -moz-user-select: none;
 
-  background-color: rgba(0, 0, 0, 0.719);
+  background-color: rgb(28, 29, 32); /* rgba(0, 0, 0, 0.719); */
+  box-shadow: 0 0px 20px rgba(0,0,0,0.4);
 }
 
 

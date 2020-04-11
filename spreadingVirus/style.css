@@ -92,3 +92,15 @@ body {
   background: rgb(0, 0, 0);
   cursor: pointer;
 }
+
+#controlPanel > div .content > .graph {
+  background-color: white;
+}
+#controlPanel > div .content > .graph.expanded {
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  width: 600px;
+  height: 600px;
+  transition-duration: 0.5s;
+}

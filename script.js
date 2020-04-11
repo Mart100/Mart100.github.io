@@ -1,6 +1,6 @@
 $(() => {
     titleFun()
-    rainbowBackground()
+    //rainbowBackground()
     subscribe()
 
     console.log('Ehhh')

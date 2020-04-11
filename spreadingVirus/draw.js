@@ -6,6 +6,8 @@ function frame() {
 
   // rerun frame
   window.requestAnimationFrame(frame)
+
+  if(!options.drawing) return
   
 	// clear screen
   if(options.clearScreen == true) clearScreen()

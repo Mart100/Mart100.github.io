@@ -73,8 +73,9 @@ class Puppet {
     for(let p of puppets) {
       if(Math.abs(this.pos.x-p.pos.x) > a) continue
       if(Math.abs(this.pos.y-p.pos.y) > a) continue
-      let vec = {x: this.pos.x-p.pos.x, y: this.pos.y-p.pos.y}
-      if(Math.sqrt(vec.x*vec.x + vec.y*vec.y) < a) this.nearbyPuppetsBig.push(p)
+      //let vec = {x: this.pos.x-p.pos.x, y: this.pos.y-p.pos.y}
+      //if(Math.sqrt(vec.x*vec.x + vec.y*vec.y) < a) 
+      this.nearbyPuppetsBig.push(p)
     }
     return this.nearbyPuppetsBig
   }

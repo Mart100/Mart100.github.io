@@ -1,4 +1,5 @@
 let tickCount = 0
+let tickArray = []
 let infectedPuppets = []
 
 function tick() {
@@ -6,8 +7,8 @@ function tick() {
   if(options.paused) return
 
   tickCount += 1
-  
-  day = Math.floor(tickCount/50)
+  tickArray.push(Date.now())
+  day = Math.floor(tickCount/20)
 
   
   if(tickCount % 10 == 0) {

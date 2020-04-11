@@ -4,6 +4,7 @@
       <meta charset="utf-8"/>
       <link rel="stylesheet" type="text/css" href="style.css">
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
       <script src="index.js"></script>
       <script src="controlPanel.js"></script>
       <script src="noise.js"></script>
@@ -12,6 +13,7 @@
       <script src="puppet.js"></script>
       <script src="vector.js"></script>
       <script src="input.js"></script>
+      <script src="graphs.js"></script>
   </head>
   <body>
       <canvas id="canvas"></canvas>
@@ -26,6 +28,7 @@
             <div class="data infected">Infected: <span class="value">0</span></div>
             <div class="data immune">Immune: <span class="value">0</span></div>
             <div class="data tickcount">Tick count: <span class="value">0</span></div>
+            <div class="data tps">TPS: <span class="value">0</span></div>
             <div class="data day">Day: <span class="value">0</span></div>
           </div>
         </div>
@@ -48,7 +51,7 @@
         <div id="graphs">
           <div class="title">Graphs</div>
           <div class="content">
-
+            <div class="graph infections"><canvas width="400" height="400"></canvas></div>
           </div>
         </div>
       </div>

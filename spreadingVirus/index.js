@@ -7,6 +7,7 @@ let camera = {
   zoom: 1
 }
 let day = 0
+let firstInfection = 0
 let options = {
   infectDistance: 50,
   amount: 10000,
@@ -20,7 +21,8 @@ let options = {
   moveRange: 200,
   moveSpeed: 4,
   lockdown: false,
-  paused: false
+  paused: false,
+  drawing: true
 }
 let seed = Math.random()
 
@@ -32,11 +34,14 @@ $(() => {
   canvas.height = window.innerHeight
   frame()
   setInterval(() => { 
-    tick() 
-  }, 100)
+    tick()
+  }, 50)
+
+  setInterval(() => { 
+    createDatarecord()
+  }, 500)
 
   setInterval(() => {
-    createDatarecord()
     updateInfoTab()
   }, 1000)
 

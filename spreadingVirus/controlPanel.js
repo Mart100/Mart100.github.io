@@ -9,8 +9,22 @@ $(() => {
 
   buttonListener()
   sliderListener()
+  graphListener()
 })
 
+function graphListener() {
+  $('#controlPanel > div > .content > .graph').on('click', (event) => {
+    let elem = $(event.currentTarget)
+    elem.addClass('expanded')
+  })
+  $('#canvas').on('click', () => {
+    $('#controlPanel > div > .content > .graph').removeClass('expanded')
+  })
+  $('#controlPanel').on('click', (event) => {
+    if($(event.target).is("canvas")) return
+    $('#controlPanel > div > .content > .graph').removeClass('expanded')
+  })
+}
 function buttonListener() {
   $('#controlPanel .button').on('click', (event) => {
     let elem = $(event.target)
@@ -66,7 +80,7 @@ function createDatarecord() {
   }
 
   let datarecord = {
-    time: Date.now(),
+    time: tickCount,
     total,
     dead,
     alife,
@@ -77,6 +91,8 @@ function createDatarecord() {
 
   datarecords.push(datarecord)
 }
+
+let TPS = 0
 function updateInfoTab() {
   let lastDataRecord = datarecords[datarecords.length-1]
   $('#info > .content > .total > .value').html(lastDataRecord.total)
@@ -86,5 +102,9 @@ function updateInfoTab() {
   $('#info > .content > .immune > .value').html(lastDataRecord.immune)
   $('#info > .content > .infected > .value').html(lastDataRecord.infected)
   $('#info > .content > .tickcount > .value').html(tickCount)
+  let newtps = tickArray.filter(a => a+1000>Date.now()).length
+  TPS = Math.round(((newtps+TPS)/2)*100)/100
+  $('#info > .content > .tps > .value').html(TPS)
   $('#info > .content > .day > .value').html(day)
+  updateGraphs()
 }

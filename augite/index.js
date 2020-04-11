@@ -3,9 +3,9 @@ let player = {
   pos: new Vector(),
   size: 10
 }
-let walls = [10, 10, 10, 10]
+let walls = [0, 0, 0, 0]
 
-const synth = new Tone.PolySynth(4, Tone.MonoSynth).toMaster()
+const synth = new Tone.PolySynth(2, Tone.MonoSynth).toMaster()
 const synth1 = new Tone.Synth().toMaster()
 $(() => {
   canvas = document.getElementById('canvas')

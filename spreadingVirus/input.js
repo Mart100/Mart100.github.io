@@ -15,6 +15,7 @@ $(() => {
       let distance = puppetv.clone().minus(mouse).getMagnitude()
       if(distance < puppet.radius) {
         puppet.infect()
+        if(datarecords[datarecords.length-1].infected == 0) firstInfection = tickCount
       }
     }
   })
