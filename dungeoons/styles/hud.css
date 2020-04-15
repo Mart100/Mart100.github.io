@@ -1,0 +1,16 @@
+#HUD #healthbar {
+  position: absolute;
+  bottom: 0px;
+  width: 250px;
+  height: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: black;
+  border: white 2px solid;
+}
+#HUD #healthbar .health {
+  position: absolute;
+  background-color: rgb(130, 0, 0);
+  height: 100%;
+  width: 100%;
+}

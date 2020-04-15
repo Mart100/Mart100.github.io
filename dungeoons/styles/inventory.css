@@ -1,0 +1,76 @@
+#inventory {
+  width: 960px;
+  height: 640px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(0,0,0,0.8);
+  border-radius: 50px;
+}
+
+#inventory .background {
+  width: 960px;
+  height: 640px;
+  image-rendering: crisp-edges;
+  user-select: none;
+  pointer-events: none;
+  z-index: 10;
+  position: absolute;
+  
+}
+
+#inventory .playerCapture {
+  position: absolute;
+  top: 40px;
+  left: 40px;
+  width: 190px;
+  height: 190px;
+  z-index: 5;
+}
+
+#inventory .itemSlots {
+  position: absolute;
+  left: 90px;
+  right: 90px;
+  width: auto;
+  bottom: 80px;
+  height: 248px;
+  padding-top: 11px;
+  padding-bottom: 11px;
+  padding-left: 18px;
+  padding-right: 18px;
+}
+
+#inventory .itemSlots .item {
+  height: 64px;
+  width: 64px;
+  padding: 23px;
+  margin: 5px;
+  border: white 2px solid;
+  display: inline-block;
+}
+
+#inventory .itemSlots .item .container {
+  position: absolute;
+  width: 64px;
+  height: 64px;
+}
+
+#inventory .itemSlots .item .amount {
+  position: absolute;
+  font-weight: 600;
+  color: white;
+  right: -5px;
+  bottom: -5px;
+  font-size: 25px;
+}
+
+#inventory .itemSlots .item img {
+  height: 64px;
+  width: 64px;
+  image-rendering: crisp-edges;
+  user-select: none;
+  pointer-events: none;
+  position: absolute;
+}
