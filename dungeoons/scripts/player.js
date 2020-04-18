@@ -5,7 +5,9 @@ class Player {
 		this.facing = 'right'
 		this.weapon = 'katana'
 		this.coins = 0
-		this.inventory = []
+		this.effects = []
+		this.hotbar = []
+		this.inventory = ['bandages', 'speed-potion', 'bandages', 'speed-potion', 'grenade', 'grenade']
 		this.maxHealth = 100
 		this.health = this.maxHealth
 	}
@@ -21,7 +23,16 @@ class Player {
 	damage(dmg) {
 		let newHealth = this.health-dmg
 		this.setHealth(newHealth)
-		assets.sounds.damage.volume(0.4)
+		assets.sounds.damage.volume(0.2)
 		assets.sounds.damage.play()
+	}
+	applyEffect(type, strength, time) {
+		if(this.effects.find(e => e.type == type)) return 0
+		let effect = this.effects.push({type, strength, time})
+		setTimeout(() => {
+			let idx = this.effects.indexOf(effect)
+			this.effects.splice(idx, 1)
+		}, time)
+		return 1
 	}
 }

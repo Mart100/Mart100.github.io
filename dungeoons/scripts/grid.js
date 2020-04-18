@@ -1,14 +1,8 @@
 class Grid {
 	constructor(world) {
-		this.camera = {
-			zoom: 6,
-			pos: {
-				x: 0,
-				y: 0
-			}
-		}
 		this.data = []
 		this.world = world
+		this.rooms = []
 	}
 	forEveryTile(func) {
 		for(let x=0;x<this.width;x++) {

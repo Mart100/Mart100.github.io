@@ -2,6 +2,7 @@ function createTile(x, y) {
 	let seeds = []
 	for(let i=0;i<100;i++) seeds.push(world.seed+i)
 	let pos = new Vector(x, y)
+	let gd = world.grid.data
 	let tile = {
 		x: x,
 		y: y,
@@ -25,14 +26,25 @@ function createTile(x, y) {
 		tile.objectType = 'chest'
 	}
 
+	// bossroom
+	if(Math.random() > 0.999) {
+		tile.ground = 'mossystoneFlowers'
+		let notLoadedSpot = new Vector(0, 0)
+		if(!gd[x] || !gd[x][y+1]) notLoadedSpot.y += 1
+		if(!gd[x] || !gd[x][y-1]) notLoadedSpot.y -= 1
+		if(!gd[x+1]) notLoadedSpot.x += 1
+		if(!gd[x-1]) notLoadedSpot.x -= 1
+		let bossRoomMiddle = pos.clone().plus(notLoadedSpot.clone().multiply(10))
+		new Room(bossRoomMiddle, 'boss1')
+	}
+
 	// spawn enemy
 	let enemyTypes = ['zombie', 'spider', 'goblin']
-	if(Math.random() > 0.98 && tile.ground != 'empty') {
+	if(Math.random() > 0.98 && tile.ground != 'empty' && !settings.noEnemies) {
 		new Enemy(pos, {type: 'zombie'})
 	}
 
 	// walls
-	let gd = world.grid.data
 	let tw = tile.walls
 	let tg = tile.ground
 	let ge = 'empty'

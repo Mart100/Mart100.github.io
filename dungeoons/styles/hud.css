@@ -1,6 +1,10 @@
+#HUD {
+  user-select: none;
+}
+
 #HUD #healthbar {
   position: absolute;
-  bottom: 0px;
+  bottom: 75px;
   width: 250px;
   height: 30px;
   left: 50%;

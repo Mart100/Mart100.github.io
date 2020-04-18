@@ -6,7 +6,7 @@ class Enemy {
 		this.path = null
 		this.pathTarget = null
 
-		this.entity = new Entity({pos: pos, hittable: true, maxhealth: 40, bound: this})
+		this.entity = new Entity({pos: pos, hittable: true, maxhealth: 40, bound: this, bloodParticles: true})
 
 		this.pathfinder = new Pathfinder()
 		this.noticeRange = 8
@@ -74,6 +74,11 @@ class Enemy {
 
 		if(enemyToPlayerMagnitude < 0.3) movement = new Vector(0,0)
 
+		if(movement.y > this.speed/2) this.facing = 'down'
+    if(movement.y < -this.speed/2) this.facing = 'up'
+    if(movement.x > this.speed/2) this.facing = 'right'
+		if(movement.x < -this.speed/2) this.facing = 'left'
+		
 		this.pos.x += movement.x
 		this.pos.y += movement.y
 

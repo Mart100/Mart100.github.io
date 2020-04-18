@@ -2,6 +2,7 @@ let assets = {
   images: {
     ground: {
       mossystone1: 'assets/ground/mossystone1.jpg',
+      mossystoneFlowers: 'assets/ground/mossystone2.jpg',
       wall: 'assets/walls/brickwall.png'
     },
     walls: {
@@ -21,11 +22,15 @@ let assets = {
     },
     objects: {
       chest: 'assets/objects/chest/closed.png',
-      torch: 'assets/objects/torch/north/1.png'
+      torch: {
+        0: 'assets/objects/torch/north/0.png',
+        1: 'assets/objects/torch/north/1.png'
+      }
     },
     items: {
       'speed-potion': 'assets/items/speed-potion.png',
-      bandages: 'assets/items/bandages.png'
+      bandages: 'assets/items/bandages.png',
+      grenade: 'assets/items/grenade.png'
     },
     enemies: {
       zombie: {
@@ -41,7 +46,12 @@ let assets = {
     swordswing: './assets/sounds/sword-swing.mp3',
     swordhit: './assets/sounds/sword-hit.mp3',
     pickup: './assets/sounds/pickup.mp3',
-    damage: './assets/sounds/damage.mp3'
+    damage: './assets/sounds/damage.mp3',
+    background: './assets/sounds/background.mp3',
+    potion: './assets/sounds/potion.mp3',
+    bandage: './assets/sounds/bandage.mp3',
+    explosion: './assets/sounds/explosion.mp3',
+    grenadeland: './assets/sounds/grenadeland.mp3'
   }
 }
 

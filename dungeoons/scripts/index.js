@@ -10,6 +10,8 @@ let settings = {
   gridLines: false,
   tileInfoText: false,
   drawPathfinding: false,
+  noEnemies: false,
+  drawEntityBox: false,
   zoom: 96
 }
 let debugMode = false
@@ -19,6 +21,7 @@ if(debugMode) {
   settings.gridLines = true
   settings.tileInfoText = true
   settings.drawPathfinding = true
+  settings.drawEntityBox = true
 }
 
 
@@ -31,6 +34,12 @@ $(() => {
   let statsDom = $(stats.dom)
   statsDom.css({'position': 'absolute', 'left': '350px'})
   $('body').append(statsDom)
+
+  assets.sounds.background.volume(0.5)
+  assets.sounds.background.play()
+  assets.sounds.background.loop(true)
+
+  updateHotbar()
 })
 
 
@@ -40,4 +49,8 @@ async function sleep(ms) {
       resolve()
     }, ms)
   })
+}
+
+function getRandom(min, max) {
+  return Math.random() * (max - min) + min
 }

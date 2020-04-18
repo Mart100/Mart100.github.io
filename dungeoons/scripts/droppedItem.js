@@ -12,9 +12,10 @@ class DroppedItem {
   }
   pickup() {
     assets.sounds.pickup.play()
-    new Particle(this.pos.clone().minus(new Vector(0, 0.4)), {text: `+ ${this.itemType}`, color: 'rgb(50, 255, 50)'})
+    new Particle(this.pos.clone().minus(new Vector(0, 0.4)), {text: `+ ${this.itemType}`, color: [50, 255, 50, 1]})
     world.player.inventory.push(this.itemType)
     this.delete()
+    updateHotbar()
   }
   delete() {
     let idx = world.droppedItems.indexOf(this)

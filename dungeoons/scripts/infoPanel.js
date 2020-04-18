@@ -13,8 +13,19 @@ class InfoPanel {
       'font-weight': 'bold'
     }
     $('#infoPanel').css(style)
+    this.hidden = false
+  }
+  hide() {
+    this.hidden = true
+    $('#infoPanel').hide()
+  }
+  show() {
+    this.hidden = false
+    $('#infoPanel').show()
   }
   add(name, value) {
+    if(this.hidden) return
+
     // if name not in infoPanel. Add it 
     if($(`#infoPanel #DP-${name}`)[0] == undefined) {
       $(`#infoPanel`).append(`<span id="DP-${name}"><br></span>`)

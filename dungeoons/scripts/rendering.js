@@ -38,14 +38,34 @@ class RenderEngine {
 			this.drawPlayer()
 		}
 
+		if(settings.drawEntityBox) this.drawEntityBoxes()
+
 		this.drawParticles() 
 		this.drawHitmarkers()
+		this.drawInMouseHand()
 
 		stats.end()
 
 		// rerun frame
 		window.requestAnimationFrame(() => { this.drawFrame() })
 		
+	}
+	drawEntityBoxes() {
+		let pp = this.world.player.pos
+		this.ctx.strokeStyle = 'rgb(0, 255, 0)'
+		for(let e of world.entities) {
+			let size = e.size
+			if(!size) size = 20
+			let posx = (((e.pos.x)-pp.x)*this.zoom)+this.windowSize.x/2
+			let posy = (((e.pos.y)-pp.y)*this.zoom)+this.windowSize.y/2
+			this.ctx.strokeRect(posx-size/2, posy-size/2, size, size)
+		}
+	}
+	drawInMouseHand() {
+		if(inMouseHand == 'none') return
+		let itempos = mousePos.clone()
+		let itemImage = assets.images.items[inMouseHand] || assets.images.weapons[inMouseHand]
+		this.ctx.drawImage(itemImage, itempos.x-16, itempos.y-16, 32, 32)
 	}
 	drawDroppedItems() {
 		this.ctx.save()
@@ -124,7 +144,7 @@ class RenderEngine {
 		let pp = this.world.player.pos
 		for(let p of this.world.particles) {
 			this.ctx.beginPath()
-			this.ctx.fillStyle = p.color || 'rgb(255, 0, 0)'
+			this.ctx.fillStyle = `rgba(${p.color[0]}, ${p.color[1]}, ${p.color[2]}, ${p.color[3]})` || 'rgb(255, 0, 0)'
 			let posx = (((p.pos.x)-pp.x)*this.zoom)+this.windowSize.x/2
 			let posy = (((p.pos.y)-pp.y)*this.zoom)+this.windowSize.y/2
 			if(p.text) {
@@ -133,8 +153,18 @@ class RenderEngine {
 				this.ctx.textBaseline = "middle"
 				
 				this.ctx.fillText(`${p.text}`, posx-p.size/2, posy-p.size/2)
+			} else if(p.image != undefined) {
+				this.ctx.drawImage(p.image, posx-p.size/2, posy-p.size/2, p.size, p.size)
+				if(Math.random() > 0.99) console.log(p.image, posx-p.size/2, posy-p.size/2)
+			
 			} else {
 				this.ctx.fillRect(posx-p.size/2, posy-p.size/2, p.size, p.size)
+			}
+
+			
+
+			if(p.extraRenderingFunc) {
+				p.extraRenderingFunc(this, p, new Vector(posx, posy))
 			}
 			
 		}
@@ -144,8 +174,8 @@ class RenderEngine {
 		let weapon = this.world.player.weapon
 		let weaponImage = assets.images.weapons[weapon]
 
-		let w = this.canvas.width
-		let h = this.canvas.height
+		let w = this.windowSize.x
+		let h = this.windowSize.y
 
 		let katanaPos = new Vector(w/2, h/2)
 		let rotate = 0
@@ -259,12 +289,16 @@ class RenderEngine {
 				if(tile.objectType) {
 					let imageName = ''
 					let objSize = 1
+					let animation = false
 					if(tile.objectType == 'chest') imageName = 'chest'
 					if(tile.objectType == 'torch') {
 						imageName = 'torch'
 						objSize = 2
+						animation = true
 					}
 					let objectImage = assets.images.objects[imageName]
+		
+					if(animation) objectImage = objectImage[world.animationTickTwo]
 					let posX = (((tile.x-pp.x)*size)-size/objSize)+this.canvas.width/2
 					let posY = (((tile.y-pp.y)*size)-size/objSize)+this.canvas.height/2
 					this.ctx.drawImage(objectImage, posX+(size/2/objSize)-0.5, posY+(size/2/objSize)-0.5, (size+1)/objSize, (size+1)/objSize)
