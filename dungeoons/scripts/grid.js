@@ -3,6 +3,7 @@ class Grid {
 		this.data = []
 		this.world = world
 		this.rooms = []
+		this.roomTiles = []
 	}
 	forEveryTile(func) {
 		for(let x=0;x<this.width;x++) {

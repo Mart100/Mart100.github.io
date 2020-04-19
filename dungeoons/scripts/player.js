@@ -20,9 +20,13 @@ class Player {
 		if(newHealth > this.maxHealth) newHealth = this.maxHealth
 		this.setHealth(newHealth)
 	}
+	death() {
+		this.health = 0
+	}
 	damage(dmg) {
 		let newHealth = this.health-dmg
 		this.setHealth(newHealth)
+		if(this.health <= 0) this.death()
 		assets.sounds.damage.volume(0.2)
 		assets.sounds.damage.play()
 	}

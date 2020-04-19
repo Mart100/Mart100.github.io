@@ -20,6 +20,13 @@ function createTile(x, y) {
 		tile.ground = 'empty'
 	}
 
+	if(world.grid.roomTiles[x] && world.grid.roomTiles[x][y]) {
+		//console.log('yaaas', world.grid.roomTiles[x][y])
+		tile.room = world.grid.roomTiles[x][y]
+		tile = tile.room.createRoomTile(tile)
+		console.log(tile)
+	}
+
 	// calculate chest locations
 	if(Math.random() > 0.995 && tile.ground != 'empty') {
 		tile.object = new Chest(pos)
@@ -27,15 +34,11 @@ function createTile(x, y) {
 	}
 
 	// bossroom
-	if(Math.random() > 0.999) {
-		tile.ground = 'mossystoneFlowers'
-		let notLoadedSpot = new Vector(0, 0)
-		if(!gd[x] || !gd[x][y+1]) notLoadedSpot.y += 1
-		if(!gd[x] || !gd[x][y-1]) notLoadedSpot.y -= 1
-		if(!gd[x+1]) notLoadedSpot.x += 1
-		if(!gd[x-1]) notLoadedSpot.x -= 1
-		let bossRoomMiddle = pos.clone().plus(notLoadedSpot.clone().multiply(10))
-		new Room(bossRoomMiddle, 'boss1')
+	if(Math.random() > 0.9999 || (x==-10 && y==-10) ) {
+		if(!tile.room) {
+			tile.ground = 'mossystoneFlowers'
+			new Room(pos.clone(), 'boss1')
+		}
 	}
 
 	// spawn enemy
@@ -49,22 +52,23 @@ function createTile(x, y) {
 	let tg = tile.ground
 	let ge = 'empty'
 	let gms = 'mossystone1'
-	if(gd[x]&&gd[x][y+1]&&gd[x][y+1].ground==gms&&tg==ge&&!tw.includes('north')) { tw.push('north'); updateTileNorthWall(tile) }
-	if(gd[x]&&gd[x][y-1]&&gd[x][y-1].ground==ge &&tg==gms&&!gd[x][y-1].walls.includes('north')) { gd[x][y-1].walls.push('north'); updateTileNorthWall(gd[x][y-1]) }
+	if(gd[x]&&gd[x][y+1]&&gd[x][y+1].ground!=ge&&tg==ge&&!tw.includes('north')) { tw.push('north'); updateTileNorthWall(tile) }
+	if(gd[x]&&gd[x][y-1]&&gd[x][y-1].ground==ge&&tg!=ge&&!gd[x][y-1].walls.includes('north')) { gd[x][y-1].walls.push('north'); updateTileNorthWall(gd[x][y-1]) }
 
-	if(gd[x]&&gd[x][y-1]&&gd[x][y-1].ground==gms&&tg==ge&&!tw.includes('north')) tw.push('south')
-	if(gd[x]&&gd[x][y+1]&&gd[x][y+1].ground==ge&&tg==gms&&!gd[x][y+1].walls.includes('north')) gd[x][y+1].walls.push('south')
+	if(gd[x]&&gd[x][y-1]&&gd[x][y-1].ground!=ge&&tg==ge&&!tw.includes('north')) tw.push('south')
+	if(gd[x]&&gd[x][y+1]&&gd[x][y+1].ground==ge&&tg!=ge&&!gd[x][y+1].walls.includes('north')) gd[x][y+1].walls.push('south')
 
-	if(gd[x-1]&&gd[x-1][y]&&gd[x-1][y].ground==gms&&tg==ge&&!tw.includes('north')) tw.push('west')
-	if(gd[x+1]&&gd[x+1][y]&&gd[x+1][y].ground==ge&&tg==gms&&!gd[x+1][y].walls.includes('north')) gd[x+1][y].walls.push('west')
+	if(gd[x-1]&&gd[x-1][y]&&gd[x-1][y].ground!=ge&&tg==ge&&!tw.includes('north')) tw.push('west')
+	if(gd[x+1]&&gd[x+1][y]&&gd[x+1][y].ground==ge&&tg!=ge&&!gd[x+1][y].walls.includes('north')) gd[x+1][y].walls.push('west')
 
-	if(gd[x+1]&&gd[x+1][y]&&gd[x+1][y].ground==gms&&tg==ge&&!tw.includes('north')) tw.push('east')
-	if(gd[x-1]&&gd[x-1][y]&&gd[x-1][y].ground==ge&&tg==gms&&!gd[x-1][y].walls.includes('north')) gd[x-1][y].walls.push('east')
+	if(gd[x+1]&&gd[x+1][y]&&gd[x+1][y].ground!=ge&&tg==ge&&!tw.includes('north')) tw.push('east')
+	if(gd[x-1]&&gd[x-1][y]&&gd[x-1][y].ground==ge&&tg!=ge&&!gd[x-1][y].walls.includes('north')) gd[x-1][y].walls.push('east')
 
 
 	if(gd[x-1]&&gd[x-1][y]&&gd[x-1][y].walls.includes('north')&&tg==ge&&!tw.includes('north')) tw.push('west')
 	if(gd[x+1]&&gd[x+1][y]&&gd[x+1][y].walls.includes('north')&&tg==ge&&!tw.includes('north')) tw.push('east')
 
+	//console.log(tile)
 	return tile
 }
 

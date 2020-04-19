@@ -15,7 +15,7 @@ class Pathfinder {
 		this.pathFindStart = Date.now()
 		let path = await this.checkNeighborsRecursion(from, 0)
 		let reversedPath = path.reverse()
-		console.log(`Found Path between`, from, 'and', to, `. within ${Date.now()-this.pathFindStart} ms. Path length: ${path.length}. Tiles: ${this.exploredTiles.length}`)
+		//console.log(`Found Path between`, from, 'and', to, `. within ${Date.now()-this.pathFindStart} ms. Path length: ${path.length}. Tiles: ${this.exploredTiles.length}`)
 		this.foundEnd = true
 		return reversedPath
 	}

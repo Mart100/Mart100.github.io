@@ -19,9 +19,10 @@ let debugMode = false
 if(debugMode) {
   settings.tilePositions = true
   settings.gridLines = true
-  settings.tileInfoText = true
+  settings.tileInfoText = false
   settings.drawPathfinding = true
   settings.drawEntityBox = true
+  settings.noEnemies = true
 }
 
 
