@@ -1,0 +1,157 @@
+<html>
+  <head>
+    <title>HFF maps</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <style>
+      body {
+        margin: 0px;
+				background-color: rgb(15, 15, 15);
+				color: white;
+				font-size: 25px;
+      }
+      #maps {
+				position: absolute;
+				width: 100%;
+				text-align: center;
+			}
+
+			#maps > a {
+				width: 0px;
+				height: 0px;
+				font-size: 0px;
+				user-select: none;
+			}
+			.map {
+				display: inline-block;
+				height: 280px;
+				width: 400px;
+				padding: 25px;
+				margin: 25px;
+				text-align: left;
+				border-radius: 10px;
+				transition-duration: 0.5s;
+				user-select: none;
+				cursor: pointer;
+				color: white;
+				font-size: 25px;
+				
+			}
+			.map:hover {
+				background-color: rgb(50, 50, 50);
+			}
+			.map .downloads {
+				text-align: center;
+				display: flex;
+				float: right;
+				margin-right: 20px;
+			}
+			.map .title {
+				text-align: center;
+				display: flex;
+				float: left;
+				margin-left: 20px;
+			}
+			.map img {
+				height: 220px;
+				width: 400px;
+			}
+			.splitter {
+				padding: 30px;
+				font-size: 62px;
+				text-align: center;
+				color: white;
+				user-select: none;
+				-moz-user-select: none;
+
+				background-color: rgb(28, 29, 32); /* rgba(0, 0, 0, 0.719); */
+				box-shadow: 0 0px 20px rgba(0,0,0,0.4);
+			}
+
+    </style>
+  </head>
+  <body>
+		<div class="splitter">Human Fall Flat Maps</div>
+    <div id="maps">
+		</div>
+  </body>
+</html>
+
+<script>
+let maps = [
+	{
+		image: "https://i.imgur.com/vdr1kJ6.png",
+		name: "Bridge 1v1",
+		subscribers: "17K+",
+		link: "https://steamcommunity.com/sharedfiles/filedetails/?id=1703155725"
+	},
+	{
+		image: "https://i.imgur.com/CRRq9bn.png",
+		name: "Disco",
+		subscribers: "95K+",
+		link: "https://steamcommunity.com/sharedfiles/filedetails/?id=1705370948"
+	},
+	{
+		image: "https://i.imgur.com/1M0jzgP.png",
+		name: "Battle",
+		subscribers: "7K+",
+		link: "https://steamcommunity.com/sharedfiles/filedetails/?id=1704928222"
+	},
+	{
+		image: "https://i.imgur.com/kr3goDR.png",
+		name: "A Bit of everything",
+		subscribers: "14K+",
+		link: "https://steamcommunity.com/sharedfiles/filedetails/?id=1715488324"
+	},
+	{
+		image: "https://i.imgur.com/vv6vK0H.png",
+		name: "Ice Parkour",
+		subscribers: "23K+",
+		link: "https://steamcommunity.com/sharedfiles/filedetails/?id=1709806228"
+	},
+	{
+		image: "https://i.imgur.com/AI4u0B1.png",
+		name: "TNT-RUN",
+		subscribers: "12K+",
+		link: "https://steamcommunity.com/sharedfiles/filedetails/?id=1707208522"
+	},
+	{
+		image: "https://i.imgur.com/k8mPEMP.png",
+		name: "Sumo Wrestling",
+		subscribers: "13K+",
+		link: "https://steamcommunity.com/sharedfiles/filedetails/?id=1704002412"
+	},
+	{
+		image: "https://i.imgur.com/QFA49Av.png",
+		name: "Elevator",
+		subscribers: "69K+",
+		link: "https://steamcommunity.com/sharedfiles/filedetails/?id=1703883120"
+	},
+	{
+		image: "https://i.imgur.com/blsH9ho.png",
+		name: "WaterSlide v2",
+		subscribers: "61K+",
+		link: "https://steamcommunity.com/sharedfiles/filedetails/?id=1703814118"
+	},
+	{
+		image: "https://i.imgur.com/HPKuXo6.png",
+		name: "big Slide",
+		subscribers: "23K+",
+		link: "https://steamcommunity.com/sharedfiles/filedetails/?id=1702933022"
+	}
+]
+
+let subToNum = (a) => Number(a.subscribers.replace('K+', ''))
+
+maps.sort((a, b) => subToNum(b)-subToNum(a))
+for(let map of maps) {
+	$('#maps').append(`
+	<a href="${map.link}"><div class="map">
+		<img src="${map.image}">
+		<div class="title">Title:<br>${map.name}</div>
+		<div class="downloads">Downloads:<br>${map.subscribers}</div>
+	</div></a>
+	`)
+}
+</script>

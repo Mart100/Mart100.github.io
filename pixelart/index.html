@@ -23,17 +23,29 @@
 			#images img:hover {
 				border: 2px solid red;
 			}
+			.splitter {
+				padding: 30px;
+				font-size: 62px;
+				text-align: center;
+				color: white;
+				user-select: none;
+				-moz-user-select: none;
+
+				background-color: rgb(28, 29, 32); /* rgba(0, 0, 0, 0.719); */
+				box-shadow: 0 0px 20px rgba(0,0,0,0.4);
+			}
 
 		</style>
 	</head>
 	<body>
+		<div class="splitter">Pixelart</div>
 		<div id="images"></div>
 	</body>
 </html>
 
 <script>
 const images = [
-	"https://i.imgur.com/5o2jOe0.png", 
+	"https://i.imgur.com/nXTOOOf.png", 
 ]
 
 for(let image of images) {

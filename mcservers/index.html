@@ -1,0 +1,109 @@
+<html>
+  <head>
+    <title>HFF maps</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <style>
+      body {
+        margin: 0px;
+				background-color: rgb(15, 15, 15);
+				color: white;
+				font-size: 25px;
+      }
+      #servers {
+				position: absolute;
+				width: 100%;
+				text-align: center;
+			}
+
+			#servers > a {
+				width: 0px;
+				height: 0px;
+				font-size: 0px;
+				user-select: none;
+			}
+			.server {
+				display: inline-block;
+				height: 450px;
+				width: 400px;
+				padding: 25px;
+				margin: 25px;
+				text-align: left;
+				border-radius: 10px;
+				transition-duration: 0.5s;
+				user-select: none;
+				cursor: pointer;
+				color: white;
+				font-size: 25px;
+				
+			}
+			.server:hover {
+				background-color: rgb(50, 50, 50);
+			}
+			.server .players {
+				text-align: center;
+				display: flex;
+				float: right;
+				margin-right: 20px;
+			}
+			.server .name {
+				text-align: center;
+				display: flex;
+				float: left;
+				margin-left: 20px;
+			}
+			.server img {
+				height: 400px;
+				width: 400px;
+			}
+			.splitter {
+				padding: 30px;
+				font-size: 62px;
+				text-align: center;
+				color: white;
+				user-select: none;
+				-moz-user-select: none;
+
+				background-color: rgb(28, 29, 32); /* rgba(0, 0, 0, 0.719); */
+				box-shadow: 0 0px 20px rgba(0,0,0,0.4);
+			}
+
+    </style>
+  </head>
+  <body>
+		<div class="splitter">Minecraft servers</div>
+    <div id="servers">
+		</div>
+  </body>
+</html>
+
+<script>
+let servers = [
+	{
+		image: "https://i.imgur.com/CgYrCp5.png",
+		name: "Stranted",
+		players: "5000+",
+		code: "https://github.com/Mart100/stranted"
+	},
+	{
+		image: "https://i.imgur.com/pdzq12P.png",
+		name: "Minetagger",
+		players: "3000+",
+		code: "https://github.com/Mart100/minetagger"
+	},
+]
+
+let playersToNum = (a) => Number(a.players.replace('+', ''))
+
+servers.sort((a, b) => playersToNum(b)-playersToNum(a))
+for(let server of servers) {
+	$('#servers').append(`
+	<a href="${server.code}"><div class="server">
+		<img src="${server.image}">
+		<div class="name">Name:<br>${server.name}</div>
+		<div class="players">Total Players:<br>${server.players}</div>
+	</div></a>
+	`)
+}
+</script>
