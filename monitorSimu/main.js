@@ -53,7 +53,7 @@ $(() => {
 		}
 
 
-		let playerSpeed = 3
+		let playerSpeed = 2
 		let moved = false
 	
 		if(keys[87] || keys[38]) { // north
@@ -78,7 +78,7 @@ $(() => {
 
 		updateCanvas()
 
-	}, 35)
+	}, 10)
 
 })
 
@@ -95,7 +95,7 @@ function createEnemy() {
 }
 function start() {
 
-	for(let i=0;i<40;i++) createEnemy()
+	for(let i=0;i<30;i++) createEnemy()
 
 	//bg = randomColor()
 	//bg[0] /= 10
