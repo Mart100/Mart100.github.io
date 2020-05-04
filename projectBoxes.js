@@ -611,6 +611,17 @@ let projects = [
 			An application that extracts statistics from a discord server and makes handy graphs
 			`
 		},
+		{
+			title: 'MonitorSim',
+			image: 'https://i.imgur.com/JUObzyx.png',
+			link: siteLink+'dungeoons',
+			code: githubSiteLink+'dungeoons',
+			created: '2/5/2020',
+			score: 13,
+			description: `
+			It simulates how a monitor works. And has a grid system with each cell being 3x3. with one row for red, green and blue.
+			`
+		},
 ]
 
 $(() => {
