@@ -1,0 +1,48 @@
+
+body {
+	margin: 0px;
+	text-align: center;
+	background-color: rgb(238, 238, 238);
+	padding:0 10px;
+	font-size: 18px;
+	color: rgb(69, 69, 69);
+	font-family: Arial, Helvetica, sans-serif;
+}
+.highlight {
+	background-color: rgb(200, 200, 200);
+	padding: 2px;
+	font-size: 16px;
+}
+#content {
+	width: 100%;
+	max-width: 650px;
+	margin: auto;
+	line-height: 1.6;
+	padding: 0 10px;
+	text-align: left;
+
+}
+
+pre.prettyprint {
+	line-height: 1.2;
+	font-size: 14px;
+	padding: 10px;
+	letter-spacing: -0.7px;
+	font-size-adjust: 5px;
+	overflow-x: auto;
+	tab-size: 2;
+	-moz-tab-size: 2;
+}
+
+img {
+	max-width: 650px;
+	width: 90%;
+}
+h1, h2, h3 {
+	line-height: 1.2;
+}
+
+li.L0, li.L1, li.L2, li.L3,
+li.L5, li.L6, li.L7, li.L8 {
+  list-style-type: decimal !important;
+}

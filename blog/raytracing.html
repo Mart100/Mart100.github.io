@@ -1,0 +1,132 @@
+<html>
+	<head>
+		<title>Raytracing</title>
+		<meta charset="utf-8"/>
+
+		<!-- code-prettify -->
+		<script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+
+		<!-- jQuery -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+		<link type="text/css" rel="stylesheet" href="style.css">
+		<script src="main.js"></script>
+	</head>
+	<body id="body">
+		<div id="content">
+			<h1>Programming a raytracing engine</h1>
+			<p>
+				In this "blog" or whatever this is. I will write down my challenges and how I solved them while trying to make a custom raytracing engine in javascript
+			</p>
+			<h2>Some info</h2>
+			<p>
+				To start off with some information about this project.<br>
+				I used <b>Backward Ray Tracing</b>, which means the lightrays will emit from the camera. Instead from the light sources.
+				It has it ups and downs and you can find more information about the different types 
+				<a href="https://cs.stanford.edu/people/eroberts/courses/soco/projects/1997-98/ray-tracing/types.html">Here</a>
+				<br><br>
+				The whole source code of this project can be found 
+				<a href="https://github.com/Mart100/Mart100.github.io/tree/master/raytracing">Here</a>
+			</p>
+			<h2>Settings up</h2>
+			<p>
+				I started setting up basic things:
+				<ul>
+					<li>Buttons to spawn a ball</li>
+					<li>Simple html canvas that renders objects</li>
+					<li>A world class</li>
+					<li>A renderer class</li>
+					<li>An object class</li>
+					<li>And some other setup things</li>
+				</ul>
+			</p>
+			<h2>Some simple raytracing</h2>
+			<p>
+				It was time to work on the first prototype of raytracing.
+				The first thing I did is create a ray class. 
+				The next step would be to have a method in the ray class that can detect when it hits a ball.
+				But this was more complicated then I thought it would be.
+			</p>
+			<h3>Detecting if a ray intersects a ball</h3>
+			<p>
+				First of all, This <a href="https://tmcw.github.io/literate-raytracer/">simular tutorial</a> helped me quite a lot.<br>
+				So I had to somehow detect which objects a vector (the ray) is intersecting with.
+				<img src="https://i.imgur.com/EYRIpSw.png"><br>
+				So the first thing to do is calculate <span class="highlight">v</span><br>
+				To do this I used the <a href="https://www.mathsisfun.com/algebra/vectors-dot-product.html">Dot product</a>. Here the code:<br>
+				<pre class="prettyprint">
+let eye_to_centerBall = object.pos.clone().subtract(this.pos);
+let rayLength = eye_to_centerBall.dotProduct(this.vel);</pre><br>
+
+				But I still used multiple functions here which are part of my 
+				<a href="https://github.com/Mart100/Mart100.github.io/blob/master/raytracing/scripts/vector.js">3D Vector class</a><br>
+				The bare Dot product function is just:<br> <code>vec1.x*vec2.x + vec1.y*vec2.y + vec1.z*vec2.z</code><br>
+				The result of that dot product is <span class="highlight">v</span><br><br>
+				So now using <span class="highlight">v</span> and the direction of the ray we can calculate <span class="highlight">b</span><br>
+				Here is the code I used to do that
+
+				<pre class="prettyprint">
+let rayClosestToBall = this.pos.clone().plus(this.vel.clone().setMagnitude(rayLength))</pre>
+
+				It simply takes the location of the ray (or eye) and adds up the rays direction with as length <span class="highlight">v</span>.<br><br>
+				Now we have the location of <span class="highlight">b</span> 
+				the last thing to do is calculating the distance between <span class="highlight">b</span> and the ball center:<br>
+
+				<pre class="prettyprint">
+let rayDistanceToBall = rayClosestToBall.clone().subtract(object.pos).getMagnitude()</pre>
+
+				Now this length is the length between the sphere center and the position of the ray where its closest to the sphere. 
+				If this length is smaller then the radius of the sphere we know the ray intersects with the sphere.
+				<br><br>
+				The last thing to finish this part off was to get the first object a ray would collide with.
+				To accomplish this I looped trough the array of objects, and stored every object that intersected with the ray. 
+				Togheter with the <span class="highlight">v</span> which says how far away that interaction happened.
+				And after that you simply sort the array and take the first value:
+				<pre class="prettyprint">
+let intersectsOrdered = intersects.sort((a, b) => a[1]-b[1])
+let firstIntersect = intersectsOrdered[0]
+if(firstIntersect) firstIntersect = firstIntersect[0]
+return firstIntersect</pre><br>
+
+				This explenation was a bit 2D mixed with 3D, But the idea is the same and both should work if you edit the formula's a little bit.<br>
+				Now this is all it takes to detect which ball a ray is going to hit. Detecting collisions with cubes will come later
+
+			</p>
+			<h3>Getting results on canvas</h3>
+			<p>
+				Now the next step is using the rays to actually get results on the canvas.<br>
+				I started to simply cast the rays parralel to each other ( which is not recommended. I explain here how to cast the rays more realistically)<br>
+				So to start off I created a simple raycasting function
+				<pre class="prettyprint linenums">
+sendCameraRay(x, y) {
+	let rayPos = this.camera.pos.clone().plus(new Vector(x, y)).subtract(new Vector(this.canvas.width/2, this.canvas.height/2))
+	let rayVec = this.camera.direction.setMagnitude(1)
+	let ray = new Ray(rayPos, rayVec)
+	let object = ray.getFirstIntersect()
+	let color = [0, 0, 0]
+	if(object) color = object.color
+	return color
+}</pre>
+				And to fill the whole screen using this function I simply made a for loop that loops over every pixel on the canvas:<br>
+				<pre class="prettyprint linenums">
+let fov_rad = dgr_to_rad(this.camera.fov)
+for(let x=offset.x;x&lt;this.canvas.width;x+=roughness) {
+	for(let y=offset.y;y&lt;this.canvas.height;y+=roughness) {
+		let color = this.sendCameraRay(x, y)
+		if(color[0] == 0 && color[1] == 0 && color[2] == 0) { this.setCanvasPixel(x, y, [0,0,0,0]); continue }
+
+		for(let x1=-roughness/2;x1&lt;roughness/2;x1++) {
+			for(let y1=-roughness/2;y1&lt;roughness/2;y1++) {
+				this.setCanvasPixel(x1+x, y1+y, color)
+			}
+		}
+		this.setCanvasPixel(x, y, color)</pre>
+				Now since trying to raycast every pixel at once takes a long time. I here use a variable <span class="highlight">roughness</span>.
+				Which indicates how much pixels to skip each time. And I later fill in these pixels to not leave gaps.<br>
+				<br><img src="https://i.imgur.com/HLnp7MZ.png"><br><br>
+				As you see in the image above, a simple raycasting engine was working.
+			</p>
+			<h2>Casting the rays outwards</h2>
+		</div>
+	</body>
+</html>
