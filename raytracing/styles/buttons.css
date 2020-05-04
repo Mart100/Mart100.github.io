@@ -1,0 +1,15 @@
+.button {
+  text-align: center;
+  font-size: 18px;
+  background-color: rgb(210, 210, 210);
+  padding: 10px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+	cursor: pointer;
+	border: none;
+}
+.button:hover { background-color: rgb(180, 180, 180); }
+.button:active { background-color: rgb(120, 120, 120); }
+.button.toggled { background-color: rgb(150, 150, 150); }
+.button.toggled:hover { background-color: rgb(140, 140, 140); }
+.button.toggled:active { background-color: rgb(120, 120, 120); }
