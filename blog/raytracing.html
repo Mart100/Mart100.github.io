@@ -128,6 +128,29 @@ for(let x=offset.x;x&lt;this.canvas.width;x+=roughness) {
 				As you see in the image above, a simple raycasting engine was working.
 			</p>
 			<h2>Casting the rays outwards</h2>
+			So currently light rays are emitted parralel from a plane while that is not realistic.
+			The problem that occurs when using this is that objects that are further away will still be the same size.
+			This would be called an Orthographic view, but we want a perspective view:<br>
+			<img src="https://i.imgur.com/QDyDu0g.png"><br>
+			^ Here you can see the differences.<br>
+			So to do this, I implemented an FOV ( Field Of View ). which is the angle of how much the camera can see.
+			And casted all rays out with different directions according to this FOV. And have the angle between every emitted light ray be the same:<br>
+			<div class="center"><img src="https://i.imgur.com/5AZukNB.png" class="smaller"></div>
+			So to get this working correctly I editted the code from before a bit:
+			<pre class="prettyprint linenums">
+for(let x=offset.x;x&lt;this.canvas.width;x+=roughness) {
+	let angleA = (((x/this.canvas.width)*fov_rad)-(fov_rad/2))/(this.canvas.height/this.canvas.width)
+	for(let y=offset.y;y&lt;this.canvas.height;y+=roughness) {
+		let angleB = ((y/this.canvas.height)*fov_rad)-(fov_rad/2)
+		let vec = new Vector(Math.sin(angleA), Math.sin(angleB), 0)
+		let rayVec = this.camera.direction.clone().plus(vec).setMagnitude(1)
+		let color = this.sendCameraRay(x, y, rayVec)
+	}
+}</pre>
+			(Notice that the sendCameraRay method now takes the rayVec as argument)<br>
+			(And that the ray position is always set to the camera position in the sendCameraRay method)<br>
+			Now using this new bit of code the balls should now have perspective and appear smaller when further away
+			
 		</div>
 	</body>
 </html>
