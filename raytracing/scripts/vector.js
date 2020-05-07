@@ -27,6 +27,54 @@ class Vector {
 	dotProduct(vec1) {
 		return this.x*vec1.x + this.y*vec1.y + this.z*vec1.z
 	}
+	getAngles() {
+		let x = this.x
+		let y = this.y
+		let z = this.z
+	
+		let angles = new Vector()
+
+		angles.x = Math.atan2(Math.sqrt(y^2+z^2),x),
+		angles.y = Math.atan2(Math.sqrt(z^2+x^2),y),
+		angles.z = Math.atan2(Math.sqrt(x^2+y^2),z)
+		
+		return angles
+	}
+	rotate(axis, angle) {
+
+		let x1, y1, z1
+
+		if(axis == 'all') {
+			
+			this.rotate('z', angle.z)
+			this.rotate('x', angle.x)
+			this.rotate('y', angle.y)
+
+			return this
+		}
+
+		if(axis == 'x') {
+			x1 = this.x
+			y1 = this.y * Math.cos(angle) - this.z * Math.sin(angle)
+			z1 = this.y * Math.sin(angle) + this.z * Math.cos(angle)
+		}
+		if(axis == 'y') {
+			x1 = this.x * Math.cos(angle) + this.z * Math.sin(angle)
+			y1 = this.y
+			z1 =-this.x * Math.sin(angle) + this.z * Math.cos(angle)
+		}
+		if(axis == 'z') {
+			x1 = this.x * Math.cos(angle) - this.y * Math.sin(angle)
+			y1 = this.x * Math.sin(angle) + this.y * Math.cos(angle)
+			z1 = this.z
+		}
+
+		this.x = x1
+		this.y = y1
+		this.z = z1
+		
+		return this
+	}
 	plus(a) {
 		// if its another vector
 		if(a.x != undefined) {

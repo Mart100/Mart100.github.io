@@ -15,8 +15,9 @@ class Renderer {
 		this.rayTracingRoughness = 4
 		this.camera = {
 			pos: new Vector(0, 0, 1500),
-			fov: 45,
-			direction: new Vector(0, 0, -1)
+			fov: 90,
+			rot: new Vector(0, 0, 0), // https://en.wikipedia.org/wiki/Euler_angles
+			speed: 40
 		}
 
 		this.lastCameraMovement = Date.now()
@@ -24,7 +25,7 @@ class Renderer {
 		let autoFillSize = 10
 		this.autoFill = false
 		setInterval(() => {
-			if(Date.now()-this.lastCameraMovement < 2000) return
+			if(Date.now()-this.lastCameraMovement < 500) return
 			if(!this.autoFill) return
 			tickAmount++
 			this.getRaytracingView(autoFillSize, {offset: {x: tickAmount%autoFillSize, y: Math.floor((tickAmount%(autoFillSize*autoFillSize))/autoFillSize) }, fill: false})
@@ -70,12 +71,14 @@ class Renderer {
 			let drawn = false
 			for(let y=offset.y;y<this.canvas.height;y+=roughness) {
 				let currentPix = this.getCanvasPixel(x, y)
+				if(currentPix[3] == 255) continue 
 				let angleB = ((y/this.canvas.height)*fov_rad)-(fov_rad/2)
-				let vec = new Vector(Math.sin(angleA), Math.sin(angleB), 0)
-				let rayVec = this.camera.direction.clone().plus(vec).setMagnitude(1)
-				//if(Math.random() > 0.9999) console.log(x, y, angleA, angleB, rayVec)
+				let vec = new Vector(Math.sin(angleA), Math.sin(angleB), -1)
+				let rayVec = vec.clone().rotate('all', this.camera.rot)
+				//if(Math.random() > 0.99999) console.log(x, y, angleA, angleB, rayVec)
 				let color = this.sendCameraRay(x, y, rayVec)
 				if(color[0] == 0 && color[1] == 0 && color[2] == 0) { this.setCanvasPixel(x, y, [0,0,0,0]); continue }
+				color[3] = 254
 				if(fillRoughness) {
 					for(let x1=-roughness/2;x1<roughness/2;x1++) {
 						for(let y1=-roughness/2;y1<roughness/2;y1++) {
@@ -83,6 +86,7 @@ class Renderer {
 						}
 					}
 				}
+				color[3] = 255
 				this.setCanvasPixel(x, y, color)
 				drawn = true
 
@@ -96,9 +100,8 @@ class Renderer {
 		let rayVec = vel //this.camera.direction.setMagnitude(1)
 		let ray = new Ray(rayPos, rayVec)
 		ray.bounce = 5
-		let object = ray.getFirstIntersect()
-		let color = [0, 0, 0]
-		if(object) color = object.color
+		let color = ray.getColor()
+		//if(Math.random() > 0.99999) console.log(color)
 		return color
 	}
 	clearCanvas() {

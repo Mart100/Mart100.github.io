@@ -37,9 +37,9 @@ class World {
 		pos.y = Math.floor(Math.random()*1000)-500
 		pos.z = Math.floor(Math.random()*1000)-500
 
-		let size = Math.floor(Math.random()*50)
+		let size = 50
 
-		let color = randomRGB()
+		let color = [255, 255, 255]
 
 		let object = new Object()
 
@@ -47,7 +47,7 @@ class World {
 		object.size = size
 		object.color = color
 		object.shape = 'ball'
-		object.light = 10
+		object.light = 30
 
 		object.load()		
 	}
@@ -57,7 +57,7 @@ class World {
 		pos.y = Math.floor(Math.random()*1000)-500
 		pos.z = Math.floor(Math.random()*1000)-500
 
-		let size = 50 //Math.floor(Math.random()*100)
+		let size = Math.floor(Math.random()*100)+50
 
 		let color = randomRGB()
 

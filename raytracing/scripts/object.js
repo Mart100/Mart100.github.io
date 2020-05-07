@@ -3,7 +3,7 @@ class Object {
 		this.pos = new Vector(0, 0, 0)
 		this.color = [0, 0, 0]
 		this.reflection = 0.5
-		this.shape = 'cube'
+		this.shape = 'ball'
 		this.size = new Vector(100, 100, 100)
 	}
 	load() {
