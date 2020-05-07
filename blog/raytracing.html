@@ -1,7 +1,8 @@
 <html>
 	<head>
-		<title>Raytracing</title>
+		<title>Blog - Raytracing</title>
 		<meta charset="utf-8"/>
+		<link rel="icon" href="https://i.imgur.com/4FnSd4Q.png" type="image/x-icon">
 
 		<!-- code-prettify -->
 		<script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
@@ -19,6 +20,7 @@
 			<p>
 				In this "blog" or whatever this is. I will write down my challenges and how I solved them while trying to make a custom raytracing engine in javascript
 			</p>
+
 			<h2>Some info</h2>
 			<p>
 				To start off with some information about this project.<br>
@@ -29,6 +31,7 @@
 				The whole source code of this project can be found 
 				<a href="https://github.com/Mart100/Mart100.github.io/tree/master/raytracing">Here</a>
 			</p>
+			
 			<h2>Settings up</h2>
 			<p>
 				I started setting up basic things:
@@ -41,6 +44,7 @@
 					<li>And some other setup things</li>
 				</ul>
 			</p>
+
 			<h2>Some simple raytracing</h2>
 			<p>
 				It was time to work on the first prototype of raytracing.
@@ -48,6 +52,7 @@
 				The next step would be to have a method in the ray class that can detect when it hits a ball.
 				But this was more complicated then I thought it would be.
 			</p>
+
 			<h3>Detecting if a ray intersects a ball</h3>
 			<p>
 				First of all, This <a href="https://tmcw.github.io/literate-raytracer/">simular tutorial</a> helped me quite a lot.<br>
@@ -92,7 +97,8 @@ return firstIntersect</pre><br>
 				This explenation was a bit 2D mixed with 3D, But the idea is the same and both should work if you edit the formula's a little bit.<br>
 				Now this is all it takes to detect which ball a ray is going to hit. Detecting collisions with cubes will come later
 
-			</p>
+			</p><br>
+
 			<h3>Getting results on canvas</h3>
 			<p>
 				Now the next step is using the rays to actually get results on the canvas.<br>
@@ -124,33 +130,170 @@ for(let x=offset.x;x&lt;this.canvas.width;x+=roughness) {
 		this.setCanvasPixel(x, y, color)</pre>
 				Now since trying to raycast every pixel at once takes a long time. I here use a variable <span class="highlight">roughness</span>.
 				Which indicates how much pixels to skip each time. And I later fill in these pixels to not leave gaps.<br>
-				<br><img src="https://i.imgur.com/HLnp7MZ.png"><br><br>
+				<br><img src="https://i.imgur.com/HTLKVZU.png"><br><br>
 				As you see in the image above, a simple raycasting engine was working.
-			</p>
-			<h2>Casting the rays outwards</h2>
-			So currently light rays are emitted parralel from a plane while that is not realistic.
-			The problem that occurs when using this is that objects that are further away will still be the same size.
-			This would be called an Orthographic view, but we want a perspective view:<br>
-			<img src="https://i.imgur.com/QDyDu0g.png"><br>
-			^ Here you can see the differences.<br>
-			So to do this, I implemented an FOV ( Field Of View ). which is the angle of how much the camera can see.
-			And casted all rays out with different directions according to this FOV. And have the angle between every emitted light ray be the same:<br>
-			<div class="center"><img src="https://i.imgur.com/5AZukNB.png" class="smaller"></div>
-			So to get this working correctly I editted the code from before a bit:
-			<pre class="prettyprint linenums">
+			</p><br><br>
+
+			<h2>Some improvements</h2>
+			<p>
+				The next "chapter" or however people do writing. Is about a few things to make small/medium improvements to the engine. I don't know how to group these headers okay...
+			</p><br>
+
+			<h3>Casting the rays outwards</h3>
+			<p>
+				So currently light rays are emitted parralel from a plane while that is not realistic.
+				The problem that occurs when using this is that objects that are further away will still be the same size.
+				This would be called an Orthographic view, but we want a perspective view:<br>
+				<img src="https://i.imgur.com/QDyDu0g.png"><br>
+				^ Here you can see the differences.<br>
+				So to do this, I implemented an FOV ( Field Of View ). which is the angle of how much the camera can see.
+				And casted all rays out with different directions according to this FOV. And have the angle between every emitted light ray be the same:<br>
+				<div class="center"><img src="https://i.imgur.com/5AZukNB.png" class="smaller"></div>
+				So to get this working correctly I editted the code from before a bit:
+				<pre class="prettyprint linenums">
 for(let x=offset.x;x&lt;this.canvas.width;x+=roughness) {
 	let angleA = (((x/this.canvas.width)*fov_rad)-(fov_rad/2))/(this.canvas.height/this.canvas.width)
 	for(let y=offset.y;y&lt;this.canvas.height;y+=roughness) {
 		let angleB = ((y/this.canvas.height)*fov_rad)-(fov_rad/2)
 		let vec = new Vector(Math.sin(angleA), Math.sin(angleB), 0)
-		let rayVec = this.camera.direction.clone().plus(vec).setMagnitude(1)
-		let color = this.sendCameraRay(x, y, rayVec)
+		let color = this.sendCameraRay(x, y, vec)
 	}
 }</pre>
-			(Notice that the sendCameraRay method now takes the rayVec as argument)<br>
-			(And that the ray position is always set to the camera position in the sendCameraRay method)<br>
-			Now using this new bit of code the balls should now have perspective and appear smaller when further away
-			
+				(Notice that the sendCameraRay method now takes the rayVec as argument)<br>
+				(And that the ray position is always set to the camera position in the sendCameraRay method)<br>
+				Now using this new bit of code the balls should now have perspective and appear smaller when further away<br><br>
+			</p>
+
+			<h3>Movement and rotation of the camera</h3>
+			<p>
+				Moving the camera isn't that hard. You add a number to the x y or z position of the camera. And have each ray emit from the position of the camera.<br>
+				But when talking about rotation it gets a bit trickier<br><br>
+				Now it seems there are many ways to define the rotation of an object.
+				In this engine I use the <b>Euler Angle Sequence (xyz) / a Tait-Bryan rotation</b>. And using extrinsic rotation.
+				More info about that <a href="https://www.cs.utexas.edu/~theshark/courses/cs354/lectures/cs354-14.pdf">Here</a>.
+				(Hope I'm saying this right, I still hardly understand it)<br><br>
+				Many expensive words, But simply said it uses yaw pitch and roll. which say how much radians it rotated on a specific axis.<br><br>
+				I think this image below can help visualize it:<img src="https://i.imgur.com/c2UAiDz.png"><br><br>
+				I first had the problem that I used a direction vector to define where the camera was pointing towards. This wasn't easy to calculate with
+				So now the camera has a rotation, In the controls you can simple add up to the x or y rotation to rotate the camera. 
+				And in the code where I cast the rays I rotate every ray with the camera's rotation.<br>
+				Here is the function to apply the rotation of the camera to the rays that I used:
+				<pre class="prettyprint linenums">
+rotate(axis, angle) {
+	let x1, y1, z1
+	if(axis == 'all') {
+		this.rotate('z', angle.z)
+		this.rotate('x', angle.x)
+		this.rotate('y', angle.y)
+		return this
+	}
+	if(axis == 'x') {
+		x1 = this.x
+		y1 = this.y * Math.cos(angle) - this.z * Math.sin(angle)
+		z1 = this.y * Math.sin(angle) + this.z * Math.cos(angle)
+	}
+	if(axis == 'y') {
+		x1 = this.x * Math.cos(angle) + this.z * Math.sin(angle)
+		y1 = this.y
+		z1 =-this.x * Math.sin(angle) + this.z * Math.cos(angle)
+	}
+	if(axis == 'z') {
+		x1 = this.x * Math.cos(angle) - this.y * Math.sin(angle)
+		y1 = this.x * Math.sin(angle) + this.y * Math.cos(angle)
+		z1 = this.z
+	}
+	this.x = x1
+	this.y = y1
+	this.z = z1
+	return this
+}</pre><br>
+				Also an important part is that you want the camera to move relative to its own rotation. So forward stays forward even after you rotated the camera.
+				To do that I used this bit of code:
+				<pre class="prettyprint linenums">
+let speed = 40
+if(keys[87]) renderer.camera.pos.plus(new Vector(0,0,-speed).rotate('all', renderer.camera.rot))
+if(keys[68]) renderer.camera.pos.plus(new Vector(0,0,speed).rotate('all', renderer.camera.rot).rotate('y', Math.PI/2))
+if(keys[83]) renderer.camera.pos.plus(new Vector(0,0,speed).rotate('all', renderer.camera.rot).rotate('x', Math.PI*2))
+if(keys[65]) renderer.camera.pos.plus(new Vector(0,0,speed).rotate('all', renderer.camera.rot).rotate('y', -Math.PI/2))</pre><br>
+
+				So luckily after a lot of struggeling I got the movement and rotation of the camera correctly working
+			</p>
+
+			<h3>And then there was light!</h3>
+			<p>
+				So currently you can view balls and move around a bit. But REALLLY slow. A traditional rendering engine could do the same but way faster.
+				So this is the part where raytracing becomes more special. <b>Lighting</b>.
+				We have to add some light and shadows the the objects in our world!
+				<br>
+				So now we will turn the rather flat looking objects into cool 3D looking objects like this:
+				<br><img src="https://i.imgur.com/ZkJWCHO.png"><br>
+				<br><br>
+				So traditionally you would send millions of rays from the light source to each object, But as you can imagine that tends to be a bit slow.<br>
+				So instead, Each time an object comes in contact with our camera rays we check if that point comes in contact with a light source:
+				<br><img src="https://i.imgur.com/t9uuUmK.png"><br><br>
+				But the first thing we need to do that is to calculate the point where the ray hits the ball. Since if we take this previous picture back again:
+				<img src="https://i.imgur.com/KV0KXMR.png"><br>
+				Since we calculated <span class="highlight">b</span> to calculate if the ray hit the ball. 
+				But now we have to calculate <span class="highlight">c</span>:<br>
+				I'm not great at math, but the way I calculated <span class="highlight">c</span> is first calculating the length of <span class="highlight">cb</span>
+				So I can get <span class="highlight">V - cb</span>, which I can then use togheter with the ray's direction to calculate the position of <span class="highlight">c</span>.
+				To get <span class="highlight">cb</span> i just used the pythagorean theorem. 
+				Since I know <span class="highlight">r</span> (the radius), 
+				and I can calculate the length between <span class="highlight">b</span> and the <span class="highlight">sphere center</span>.<br>
+				Heres the code that I've used for calculating <span class="highlight">c</span>:
+				<pre class="prettyprint">
+let rayDistanceToBall = rayClosestToBall.clone().subtract(object.pos).getMagnitude()
+let dist1 = rayLength-Math.sqrt((object.size/2)**2 - rayDistanceToBall**2)
+let intersectPos = this.pos.clone().plus(this.vel.clone().setMagnitude(dist1))</pre>
+				Okay so now we have the position where the ray hits the surface of the ball.
+				From here on we can send out different rays to each light source.<br>
+				We then check if that ray hits the light source it was send to, or if there is another object blocking its way. Or if the ray is blocked by the ball itself.<br>
+				So this creates shadows, But it doesn't create the smooth lighting effect yet.<br>
+				To do that I use a rather hacky trick:
+				<br><img src="https://i.imgur.com/KH0pTbz.png"><br>
+				Here is <span class="highlight">b</span> a line between the ball center and the light center.<br>
+				And <span class="highlight">a</span> is a line between the light center and the ray interact position (or previously called <span class="highlight">c</span>)
+				<br><br>
+				With that if we do <span class="highlight">(b-a)/r</span> (<span class="highlight">r</span> being the radius of the ball).<br>
+				We get a number from 0 to 1 (I know its not perfect).<br>
+				We can then multiply this number with the brightness of the light. And that returns a value which says how much light we should apply to the pixel.<br>
+				<br>
+				In the code I did it like this:
+				<pre class="prettyprint linenums">
+let lightLevel = 10
+let obj = intersect.object
+let intersectPos = intersect.intersectPos
+// loop light sources
+for(let lightObj of world.lights) {
+
+	let lightToObjDist = lightObj.pos.clone().subtract(obj.pos).getMagnitude()
+	let lightToIntersectDist = lightObj.pos.clone().subtract(intersectPos).getMagnitude()
+	let lightClosenessRelative = (lightToObjDist*0.995-lightToIntersectDist) / (obj.size/2)
+
+	let addedLight = lightObj.light*lightClosenessRelative
+	if(addedLight &lt; 0) continue
+	if(rayToLightIntersect.object == lightObj) lightLevel += addedLight
+}
+
+let objectColor = obj.color
+
+if(obj.light) lightLevel = 100
+
+let finalColor = [
+objectColor[0]*(lightLevel/100),
+objectColor[1]*(lightLevel/100),
+objectColor[2]*(lightLevel/100)
+]</pre>
+			You should be able to see better lighting now, I did tweak some values to get better results. 
+			Like multiplying <span class="highlight">b</span> with <span class="highlight">0.995</span> to get smoother edges.<br>
+
+				
+			</p>
+
+			<h3>Reflection</h3>
+			<p>
+				This is also a point where raytracing has advantages over traditional engines. That you can realistically get reflective surfaces
+			</p>
 		</div>
 	</body>
 </html>
