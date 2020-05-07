@@ -614,8 +614,8 @@ let projects = [
 		{
 			title: 'MonitorSim',
 			image: 'https://i.imgur.com/JUObzyx.png',
-			link: siteLink+'dungeoons',
-			code: githubSiteLink+'dungeoons',
+			link: siteLink+'monitorSimu',
+			code: githubSiteLink+'monitorSimu',
 			created: '2/5/2020',
 			score: 13,
 			description: `
