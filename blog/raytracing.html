@@ -30,9 +30,11 @@
 				<br><br>
 				The whole source code of this project can be found 
 				<a href="https://github.com/Mart100/Mart100.github.io/tree/master/raytracing">Here</a>
+				<br><br>
+				Also, This isn't a guide on how to make a raytracing engine. Its my adventure of making a raytracing engine, where you can possibly take some usefull information from.
 			</p>
 			
-			<h2>Settings up</h2>
+			<h2>Setting up</h2>
 			<p>
 				I started setting up basic things:
 				<ul>
@@ -41,6 +43,7 @@
 					<li>A world class</li>
 					<li>A renderer class</li>
 					<li>An object class</li>
+					<li>A vector class <a href="https://github.com/Mart100/Mart100.github.io/blob/master/raytracing/scripts/vector.js">[source]</a></li>
 					<li>And some other setup things</li>
 				</ul>
 			</p>
@@ -292,7 +295,11 @@ objectColor[2]*(lightLevel/100)
 
 			<h3>Reflection</h3>
 			<p>
-				This is also a point where raytracing has advantages over traditional engines. That you can realistically get reflective surfaces
+				This is also a point where raytracing has advantages over traditional engines. That you can realistically get reflective surfaces.<br>
+				Now the problem we face is, In what direction does a ray bounce to. 
+				<img src="https://i.imgur.com/fYMQEgz.png"><br>
+				As you see in the image above, what we need to do is get the surface angle of the ball. And create another ray with its the same angle but flipped.
+				<a href="https://www.3dkingdoms.com/weekly/weekly.php?a=2">This</a> was a great help on how to get the reflecting vector.
 			</p>
 		</div>
 	</body>

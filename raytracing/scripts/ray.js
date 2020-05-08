@@ -4,6 +4,7 @@ class Ray {
 	constructor(pos, vel) {
 		this.pos = pos
 		this.vel = vel.setMagnitude(1)
+		this.bounce = 0
 	}
 	getColor() {
 		let intersect = this.getFirstIntersect()
@@ -11,18 +12,21 @@ class Ray {
 		if(!intersect) return [0,0,0,0]
 
 		let obj = intersect.object
+		let intersectPos = intersect.intersectPos
 		let objPos = intersect.object.pos.clone()
+		let objIntersectVec = objPos.clone().subtract(intersectPos).setMagnitude(1)
 		let lightLevel = 10
+
 		// check light sources
 		for(let lightObj of world.lights) {
-			let objectMidToIntersectPos = intersect.object.pos.clone().subtract(intersect.intersectPos)
-			let rayToLightPos = intersect.intersectPos.clone() //.subtract(objectMidToIntersectPos.clone().setMagnitude(50))
+			let objectMidToIntersectPos = intersect.object.pos.clone().subtract(intersectPos)
+			let rayToLightPos = intersectPos.clone() //.subtract(objectMidToIntersectPos.clone().setMagnitude(50))
 			let rayToLightVec = rayToLightPos.clone().subtract(lightObj.pos).multiply(-1).setMagnitude(1)
 			
 			
 			let lightToObjVec = lightObj.pos.clone().subtract(objPos)
 			let lightToObjVecDist = lightToObjVec.getMagnitude()
-			let lightToIntersectVec = lightObj.pos.clone().subtract(intersect.intersectPos)
+			let lightToIntersectVec = lightObj.pos.clone().subtract(intersectPos)
 			let lightToIntersectVecDist = lightToIntersectVec.getMagnitude()
 			let lightClosenessRelative = (lightToObjVecDist*0.995-lightToIntersectVecDist) / (obj.size/2)
 
@@ -39,9 +43,27 @@ class Ray {
 		if(intersect.object.light) lightLevel = 100
 
 		let finalColor = []
-		finalColor[0] = objectColor[0]*(lightLevel/100)
-		finalColor[1] = objectColor[1]*(lightLevel/100)
-		finalColor[2] = objectColor[2]*(lightLevel/100)
+
+		finalColor[0]	= objectColor[0]*(lightLevel/100)
+		finalColor[1]	= objectColor[1]*(lightLevel/100)
+		finalColor[2]	= objectColor[2]*(lightLevel/100)
+
+		// reflection
+		if(this.bounce > 0) {
+			let reflection = obj.reflection
+			let diffusion = obj.diffusion
+
+			let bounceRayPos = intersectPos.clone().plus(objIntersectVec.clone().setMagnitude(5))
+			let bounceRayVec = objIntersectVec.clone().multiply(-2 * objIntersectVec.clone().setMagnitude(1).dotProduct(this.vel)).plus(this.vel).plus(new Vector().randomize(diffusion))
+			
+			let bounceRay = new Ray(bounceRayPos, bounceRayVec)
+			bounceRay.bounce = this.bounce-1
+			let bounceColor = bounceRay.getColor()
+
+			finalColor[0] = finalColor[0]*(1-reflection)+bounceColor[0]*reflection
+			finalColor[1] = finalColor[1]*(1-reflection)+bounceColor[1]*reflection
+			finalColor[2] = finalColor[2]*(1-reflection)+bounceColor[2]*reflection
+		}
 
 		return finalColor
 	}

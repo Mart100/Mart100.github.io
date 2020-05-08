@@ -1,8 +1,9 @@
 class Object {
 	constructor() {
 		this.pos = new Vector(0, 0, 0)
-		this.color = [0, 0, 0]
-		this.reflection = 0.5
+		this.color = [255, 255, 255]
+		this.reflection = 0.1
+		this.diffusion = 0.5
 		this.shape = 'ball'
 		this.size = new Vector(100, 100, 100)
 	}

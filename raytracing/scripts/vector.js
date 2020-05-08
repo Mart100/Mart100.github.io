@@ -7,6 +7,12 @@ class Vector {
 		if(x == undefined) this.x = 0
 		if(y == undefined) this.y = 0
 		if(z == undefined) this.z = 0
+
+		if(x != undefined && x.x != undefined) {
+			this.x = x.x
+			this.y = x.y
+			this.z = x.z
+		}
 	}
 	multiply(a) {
 		// if its another vector
@@ -34,9 +40,14 @@ class Vector {
 	
 		let angles = new Vector()
 
-		angles.x = Math.atan2(Math.sqrt(y^2+z^2),x),
-		angles.y = Math.atan2(Math.sqrt(z^2+x^2),y),
-		angles.z = Math.atan2(Math.sqrt(x^2+y^2),z)
+		//angles.x = Math.atan2(Math.sqrt(y^2+z^2),x)
+		//angles.y = Math.atan2(Math.sqrt(z^2+x^2),y)
+		//angles.z = Math.atan2(Math.sqrt(x^2+y^2),z)
+
+		angles.y = Math.asin(-this.y)
+		angles.z = Math.atan2(this.x, this.z)
+
+		
 		
 		return angles
 	}

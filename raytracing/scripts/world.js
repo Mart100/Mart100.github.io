@@ -51,21 +51,37 @@ class World {
 
 		object.load()		
 	}
+	async testRaySpeed() {
+		for(let i=-25;i<25;i++) {
+			let ball = new Object()
+			ball.size = 50
+			ball.pos = new Vector(i*10, 0, 0)
+			ball.load()
+		}
+
+		await sleep(100)
+
+		let startTime = performance.now()
+		let colors = []
+		for(let i=0;i<500000;i++) {
+			let ray = new Ray(renderer.camera.pos.clone(), new Vector(0, 0, -1).rotate('all', renderer.camera.rot))
+			let color = ray.getColor()
+			colors.push(color)
+		}
+		console.log(performance.now()-startTime, colors)
+	}
 	addBall() {
 		let pos = new Vector()
 		pos.x = Math.floor(Math.random()*2000)-1000
 		pos.y = Math.floor(Math.random()*1000)-500
 		pos.z = Math.floor(Math.random()*1000)-500
 
-		let size = Math.floor(Math.random()*100)+50
-
-		let color = randomRGB()
-
 		let object = new Object()
 
+		object.reflection = Math.random()
 		object.pos = pos
-		object.size = size
-		object.color = color
+		object.size = Math.floor(Math.random()*100)+50
+		object.color = randomRGB()
 		object.shape = 'ball'
 
 		object.load()

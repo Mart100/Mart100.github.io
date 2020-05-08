@@ -99,7 +99,7 @@ class Renderer {
 		let rayPos = this.camera.pos.clone() //.plus(new Vector(x, y)).subtract(new Vector(this.canvas.width/2, this.canvas.height/2))
 		let rayVec = vel //this.camera.direction.setMagnitude(1)
 		let ray = new Ray(rayPos, rayVec)
-		ray.bounce = 5
+		ray.bounce = 3
 		let color = ray.getColor()
 		//if(Math.random() > 0.99999) console.log(color)
 		return color
