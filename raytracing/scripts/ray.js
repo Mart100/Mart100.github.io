@@ -5,11 +5,13 @@ class Ray {
 		this.pos = pos
 		this.vel = vel.setMagnitude(1)
 		this.bounce = 0
+
+		world.raysCreated += 1
 	}
 	getColor() {
 		let intersect = this.getFirstIntersect()
 
-		if(!intersect) return [0,0,0,0]
+		if(!intersect) return [80,80,100,255]
 
 		let obj = intersect.object
 		let intersectPos = intersect.intersectPos
@@ -19,7 +21,7 @@ class Ray {
 
 		// check light sources
 		for(let lightObj of world.lights) {
-			let objectMidToIntersectPos = intersect.object.pos.clone().subtract(intersectPos)
+			//let objectMidToIntersectPos = intersect.object.pos.clone().subtract(intersectPos)
 			let rayToLightPos = intersectPos.clone() //.subtract(objectMidToIntersectPos.clone().setMagnitude(50))
 			let rayToLightVec = rayToLightPos.clone().subtract(lightObj.pos).multiply(-1).setMagnitude(1)
 			

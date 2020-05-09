@@ -6,15 +6,18 @@ class Renderer {
 
 		this.canvas = $('#canvas')[0]
 		this.ctx = canvas.getContext('2d')
-		this.canvas.width = window.innerWidth - 200
-		this.canvas.height = window.innerHeight
+
+		this.canvasSize = 1
+		this.canvas.width = (window.innerWidth - 200)/this.canvasSize
+		this.canvas.height = (window.innerHeight)/this.canvasSize
+		
 		this.imgData = this.ctx.createImageData(this.canvas.width, this.canvas.height)
 		this.size = new Vec2(this.canvas.width, this.canvas.height)
 
 		this.frame()
-		this.rayTracingRoughness = 4
+		this.rayTracingRoughness = 10
 		this.camera = {
-			pos: new Vector(0, 0, 1500),
+			pos: new Vector(0, 0, 1000),
 			fov: 90,
 			rot: new Vector(0, 0, 0), // https://en.wikipedia.org/wiki/Euler_angles
 			speed: 40
@@ -22,23 +25,40 @@ class Renderer {
 
 		this.lastCameraMovement = Date.now()
 		let tickAmount = 0
-		let autoFillSize = 10
+		
 		this.autoFill = false
 		setInterval(() => {
+			let autoFillSize = 8
+
 			if(Date.now()-this.lastCameraMovement < 500) return
+			else {
+				if(this.canvasSize == this.canvasSizeMoving) this.setCanvasSize(this.canvasSizeLoading)
+			}
 			if(!this.autoFill) return
+			if(this.pixelated) {
+				this.pixelated = false
+				this.clearCanvas()
+			}
 			tickAmount++
-			this.getRaytracingView(autoFillSize, {offset: {x: tickAmount%autoFillSize, y: Math.floor((tickAmount%(autoFillSize*autoFillSize))/autoFillSize) }, fill: false})
+			let offset = {x: (tickAmount%autoFillSize), y: Math.floor((tickAmount%(autoFillSize*autoFillSize))/autoFillSize)}
+			this.getRaytracingView(autoFillSize, {offset: offset, fill: false, update: true})
 		}, 10)
 
+	}
+	setCanvasSize(size) {
+		this.canvasSize = size
+		this.canvas.width = (window.innerWidth - 200)/size
+		this.canvas.height = (window.innerHeight)/size
+		this.imgData = this.ctx.createImageData(this.canvas.width, this.canvas.height)
+		this.size = new Vec2(this.canvas.width, this.canvas.height)
 	}
 	changeView(to) {
 		this.view = to
 		if(to == 'raytracing') {
 			this.autoFill = true
-			this.getRaytracingView()
+			this.getRaytracingView(undefined, {update: true})
 		} else {
-			this.autoFill = false
+			this.autoFill = true
 		}
 	}
 	setCanvasPixel(x, y, c) {
@@ -59,16 +79,17 @@ class Renderer {
 		return color
   }
 	updateCanvas() {
+    this.ctx.imageSmoothingEnabled = false
 		this.ctx.putImageData(this.imgData, 0, 0)
 	}
-	getRaytracingView(roughness, options={}) {
+	async getRaytracingView(roughness, options={}) {
 		if(!roughness) roughness = this.rayTracingRoughness
 		let offset = options.offset || {x: 0, y: 0}
 		let fillRoughness = options.fill != undefined ? options.fill : true
 		let fov_rad = dgr_to_rad(this.camera.fov)
+
 		for(let x=offset.x;x<this.canvas.width;x+=roughness) {
 			let angleA = (((x/this.canvas.width)*fov_rad)-(fov_rad/2))/(this.canvas.height/this.canvas.width)
-			let drawn = false
 			for(let y=offset.y;y<this.canvas.height;y+=roughness) {
 				let currentPix = this.getCanvasPixel(x, y)
 				if(currentPix[3] == 255) continue 
@@ -88,18 +109,16 @@ class Renderer {
 				}
 				color[3] = 255
 				this.setCanvasPixel(x, y, color)
-				drawn = true
-
-
 			}
 		}
-		this.updateCanvas()
+		//this.updateCanvas()
+
 	}
 	sendCameraRay(x, y, vel) {
 		let rayPos = this.camera.pos.clone() //.plus(new Vector(x, y)).subtract(new Vector(this.canvas.width/2, this.canvas.height/2))
 		let rayVec = vel //this.camera.direction.setMagnitude(1)
 		let ray = new Ray(rayPos, rayVec)
-		ray.bounce = 3
+		ray.bounce = 2
 		let color = ray.getColor()
 		//if(Math.random() > 0.99999) console.log(color)
 		return color
@@ -116,6 +135,8 @@ class Renderer {
 
 		// rerun frame
 		window.requestAnimationFrame(() => { this.frame() })
+
+		this.updateCanvas()
 		
 		if(this.view == 'raytracing') {
 

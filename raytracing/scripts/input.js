@@ -27,10 +27,10 @@ $(() => {
 		if(keys[87] || keys[38] || keys[68] || keys[39] || keys[83] || keys[40] || keys[65] || keys[37] || keys[81] || keys[69]) {
 			renderer.lastCameraMovement = Date.now()
 			renderer.clearCanvas()
-			renderer.getRaytracingView(12)
+			renderer.getRaytracingView(16)
 		}
 
-	}, 100)
+	}, 250)
 
 	$('#canvas').on('DOMMouseScroll mousewheel', (event) => {
 

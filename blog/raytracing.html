@@ -299,7 +299,40 @@ objectColor[2]*(lightLevel/100)
 				Now the problem we face is, In what direction does a ray bounce to. 
 				<img src="https://i.imgur.com/fYMQEgz.png"><br>
 				As you see in the image above, what we need to do is get the surface angle of the ball. And create another ray with its the same angle but flipped.
-				<a href="https://www.3dkingdoms.com/weekly/weekly.php?a=2">This</a> was a great help on how to get the reflecting vector.
+				<a href="https://www.3dkingdoms.com/weekly/weekly.php?a=2">This</a> was a great help on how to get the reflecting vector.<br>
+				So basically the formula to calculate the reflected ray is this:<br> <span class="highlight">Vnew = -2*(V dot N)*N + V</span><br>
+				With <span class="highlight">V</span> being the incomming vector, 
+				<span class="highlight">N</span> the red line on the image above
+				and <span class="highlight">Vnew</span> the reflected vector. Or in code:
+				<pre class="prettyprint linenums">
+// reflection
+if(this.bounce > 0) {
+	let reflection = obj.reflection
+	let diffusion = obj.diffusion
+
+	let bounceRayPos = intersectPos.clone().plus(objIntersectVec.clone().setMagnitude(5))
+	let bounceRayVec = objIntersectVec.clone().multiply(-2 * objIntersectVec.clone().setMagnitude(1).dotProduct(this.vel)).plus(this.vel).plus(new Vector().randomize(diffusion))
+	
+	let bounceRay = new Ray(bounceRayPos, bounceRayVec)
+	bounceRay.bounce = this.bounce-1
+	let bounceColor = bounceRay.getColor()
+
+	finalColor[0] = finalColor[0]*(1-reflection)+bounceColor[0]*reflection
+	finalColor[1] = finalColor[1]*(1-reflection)+bounceColor[1]*reflection
+	finalColor[2] = finalColor[2]*(1-reflection)+bounceColor[2]*reflection
+}</pre><br>
+				As you see in the code there is an important value <span class="highlight">this.bounce</span>. It simply says how many times a ray should bounce.
+				So having it set at 3 at the ray emitted from the camera, you can see 3 deep reflections. (seeing a reflection in a reflection in a reflection).
+				<br><br>
+				There is also the value <span class="highlight">reflection</span>, This is a value from 0 to 1. 
+				And says how to mix its own color and the color from the bounced ray. So if its 0 it will fully be its own color.
+				And if its 1 it will be the color of its bounced ray, so it would be a perfect mirror. And 0.5 an even mix of both.
+				<br><br>
+				The last value here is <span class="highlight">diffusion</span>, which says how much randomness is applied to the outbounding ray.
+				So if its 0 it will act as a perfect reflection, but if its 1 it will be a vague spreaded out reflection
+				<br><br>
+				So after implementing the reflections the result looks like this:
+				<br><img src="https://i.imgur.com/m68HD2j.png"><br>
 			</p>
 		</div>
 	</body>

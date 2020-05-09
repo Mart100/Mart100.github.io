@@ -3,6 +3,7 @@ class World {
 
 		this.objects = []
 		this.lights = []
+		this.raysCreated = 0
 	}
 	addObject(object) {
 		this.objects.push(object)
@@ -51,7 +52,23 @@ class World {
 
 		object.load()		
 	}
+	async testRenderSpeed() {
+		for(let i=-25;i<25;i++) {
+			let ball = new Object()
+			ball.size = 50
+			ball.pos = new Vector(i*10, 0, 0)
+			ball.load()
+		}
+
+		await sleep(100)
+		
+		console.time('testRenderSpeed')
+		renderer.getRaytracingView(1)
+		console.timeEnd('testRenderSpeed')
+	}
 	async testRaySpeed() {
+		world.objects = []
+		world.lights = []
 		for(let i=-25;i<25;i++) {
 			let ball = new Object()
 			ball.size = 50
@@ -79,6 +96,7 @@ class World {
 		let object = new Object()
 
 		object.reflection = Math.random()
+		object.diffusion = Math.round(Math.random())
 		object.pos = pos
 		object.size = Math.floor(Math.random()*100)+50
 		object.color = randomRGB()
