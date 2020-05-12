@@ -1,14 +1,17 @@
 body {
   margin: 0px;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Lato", Helvetica, sans-serif;
   background-color: rgb(30, 30, 30);
   height: 100%;
+  height: 100%;
+  margin: 0;
+  color: #777;
 }
 
 #startscreen {
 	text-align: center;
 	width: 100%;
-	background-color: rgb(192, 192, 192);
+	background-color: rgb(238, 188, 0);
 }
 #startscreen #thumbnail {
 	height: 50%;
@@ -52,4 +55,30 @@ td:nth-child(even) {
 
 tr:nth-child(even) {
   background-color: rgb(35, 35, 35);
+}
+
+.parallax {
+  position: relative;
+  background-attachment: fixed;
+  background-position: center 0;
+  background-repeat: no-repeat;
+  background-size: 500px 500px;
+
+  height: 50%;
+}
+
+h3 {
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  font: 20px "Lato", sans-serif;
+  color: #111111;
+  text-align:center;
+}
+
+.text {
+  color: #777777;
+  background-color: #ffffff;
+  text-align: center;
+  padding: 50px 80px;
+  text-align: justify;
 }
