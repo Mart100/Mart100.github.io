@@ -622,6 +622,17 @@ let projects = [
 			It simulates how a monitor works. And has a grid system with each cell being 3x3. with one row for red, green and blue.
 			`
 		},
+		{
+			title: 'Raytracer',
+			image: 'https://i.imgur.com/k4Gs3Bi.png',
+			link: siteLink+'raytracing',
+			code: githubSiteLink+'raytracing',
+			created: '8/5/2020',
+			score: 14,
+			description: `
+			It uses raytracing so cast a view of a 3D scene
+			`
+		},
 ]
 
 $(() => {
