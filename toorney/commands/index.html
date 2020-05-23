@@ -1,0 +1,243 @@
+<html>
+  <head>
+    <title>Toorney</title>
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="utf-8" http-equiv="encoding">
+    <link rel="shortcut icon" href="../favicon.png" type="image/png">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <!-- Adsense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({
+              google_ad_client: "ca-pub-7537311431691156",
+              enable_page_level_ads: true
+        });
+    </script>
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-140200727-3"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-140200727-3');
+    </script>
+
+
+    <script src="../scripts/toorney-api.js"></script>
+    <link href="style.css" rel="stylesheet">
+    <link href="../styles/nav.css" rel="stylesheet">
+  </head>
+  <body>
+    <div id="nav">
+      <a href="../">Home</a>
+      <a href="../tournaments">Tournaments</a>
+      <a href="../commands" class="selected">Commands</a>
+      <a href="../dashboard">Dashboard</a>
+      <div class="dropdown">
+        <a class="dropbtn">More</a>
+        <div class="dropdown-content">
+          <a href="../privacypolicy">Privacy Policy</a>
+          <a href="../contact">Contact</a>
+        </div>
+      </div>
+    </div>
+    <div id="commands">
+      <table>
+        <tr>
+          <th>Command</th>
+          <th>Description</th>
+          <th>Usage</th>
+        </tr>
+        <tr>
+          <td>=create [tournamentName]</td>
+          <td>Create a tournament</td>
+          <td>=create exampleTourney</td>
+        </tr>
+        <tr>
+          <td>=join [tournamentName]</td>
+          <td>Join a tournament</td>
+          <td>=join exampleTourney</td>
+        </tr>
+        <tr>
+          <td>=leave [tournamentName]</td>
+          <td>Leave a tournament</td>
+          <td>=leave exampleTourney</td>
+        </tr>
+        <tr>
+          <td>=brackets [tournamentName]</td>
+          <td>Provides a link to the brackets of the tournament</td>
+          <td>=brackets exampleTourney</td>
+        </tr>
+        <tr>
+          <td>=results [tournamentName] [your score] [opponent score]</td>
+          <td>Post the results of your match. Both contesters must confirm the results by the reaction checkmark</td>
+          <td>=results exampleTourney 2 1</td>
+        </tr>
+        <tr>
+          <td>=findopponent [tournamentName] [user]</td>
+          <td>Find the opponent of yourself or another player in the tournament</td>
+          <td>
+            =findopponent ToorneyTesting2 @Marto_0#1978<br>
+            =findopponent ToorneyTesting2
+          </td>
+        </tr>
+        <tr>
+          <td>=createteam [name]</td>
+          <td>Create a team to enter tournaments</td>
+          <td>=createteam exampleTeam124</td>
+        </tr>
+        <tr>
+          <td>=teaminvite [name] [user]</td>
+          <td>Invite someone to your team</td>
+          <td>=teaminvite exampleTeam124 @Marto_0#1978</td>
+        </tr>
+        <tr>
+          <td>=team [name]</td>
+          <td>Provides information about a specific team</td>
+          <td>=team exampleTeam124</td>
+        </tr>
+        <tr>
+          <td>=teams</td>
+          <td>Displays all the teams you're currently in</td>
+          <td>=teams</td>
+        </tr>
+        <tr>
+          <td>=leaveteam [name]</td>
+          <td>Leaves a team</td>
+          <td>=leaveteam exampleTeam124</td>
+        </tr>
+        <tr>
+          <td>=deleteteam [name]</td>
+          <td>Deletes a team</td>
+          <td>=deleteteam exampleTeam124</td>
+        </tr>
+        <tr>
+          <td>=setprefix [prefix]
+          </td>
+          <td>Sets the global prefix of the server
+          </td>
+          <td>
+            =setprefix !<br>
+            =setprefix *
+          </td>
+        </tr>
+        <tr>
+          <td>=setresultschannel [channelID]</td>
+          <td>Sets the channel where results of tournaments and coinflips will be posted</td>
+          <td>=setresultschannel 583241872038690818</td>
+        </tr>
+        <tr>
+          <td>=results [tournamentName] [your score] [opponent score]</td>
+          <td>Posts the score of your match. Both players must confirm the results with a checkmark reaction.</td>
+          <td>=results exampleTourney 2 1</td>
+        </tr>
+        <tr>
+          <td style="font-size: 95%;">=forceresults [tournament] [user1] [user2] [user1score] [user2score]</td>
+          <td>Will forcefully set the results of a match</td>
+          <td>=forceresults ToorneyTesting2 @testAlt#7592 @Marto_0#1978 2 0
+          </td>
+        </tr>
+        <tr>
+          <td>=kick [user]</td>
+          <td>Kicks a player from the tournament</td>
+          <td>=kick @Marto_0#1978</td>
+        </tr>
+        <tr>
+          <td>=forcejoin [tournamentName] [user]</td>
+          <td>Forcefully add a player to the tournament</td>
+          <td>=forcejoin ToorneyTesting2 @Marto_0#1978
+          </td>
+        </tr>
+        <tr>
+          <td>=giveadmin [user]</td>
+          <td>Gives someone admin permissions to use Toorney</td>
+          <td>=giveadmin @Marto_0#1978</td>
+        </tr>
+        <tr>
+          <td>=removeadmin [user]</td>
+          <td>Removes admin permissions from someone who currently has them</td>
+          <td>=removeadmin @Marto_0#1978</td>
+        </tr>
+        <tr>
+          <td>=adminlist</td>
+          <td>Retrives the list of everyone who has been given admin permissions</td>
+          <td>=adminlist</td>
+        </tr>
+        <tr>
+          <td>=adminrole [role]</td>
+          <td>Sets the admin role. Users who have this role in the Discord server will have admin permissions for Toorney</td>
+          <td>
+            =adminrole @Moderator<br>
+            =adminrole 583241872034496534
+          </td>
+        </tr>
+        <tr>
+          <td>=start [tournamentName]</td>
+          <td>Starts the tournament <br>Players will no longer be able to join and matches will start</td>
+          <td>=start exampleTourney
+          </td>
+        </tr>
+        <tr>
+          <td>=shuffle [tournamentName]</td>
+          <td>Shuffles all players in the tournament into randomized seeds <br>This is recommended before starting a tournament</td>
+          <td>=shuffle exampleTourney</td>
+        </tr>
+        <tr>
+          <td>=delete [tournamentName]</td>
+          <td>Deletes a tournament. WARNING: This also deletes the whole match history from Challonge!</td>
+          <td>=delete exampleTourney</td>
+        </tr>
+        <tr>
+          <td>=tournament [tournamentName] extendlimit [user | all] [days]</td>
+          <td>Extends the limit of when a player(s) has to finish their match</td>
+          <td>
+            =tournament exampleTourney extendlimit @Marto_0#1978 5<br>
+            =tournament exampleTourney extendlimit all 3
+          </td>
+        </tr>
+        <tr>
+          <td>=tournament [tournamentName] reactmessage [messageID]</td>
+          <td>Bind a reaction to a message which will allow users to join when clicked</td>
+          <td>=tournament exampleTourney reactmessage 235452157166485505</td>
+        </tr>
+        <tr>
+          <td>=tournament [tournamentName] description [description]</td>
+          <td>Sets the description for the tournament. This is also displayed on your personal tournament page on the Toorney website</td>
+          <td>=tournament exampleTourney description Season 5 of Toorney tournaments. Region is EU. Have fun!</td>
+        </tr>
+        <tr>
+          <td>=tournament [tournamentName] forcejoinonly [true|false]</td>
+          <td>Disables users from joining with the join command. Users instead must be forcejoined by an admin</td>
+          <td>=tournament exampleTourney forcejoinonly true</td>
+        </tr>
+        <tr>
+          <td>=tournament [tournamentName] teams [true|false]</td>
+          <td>Changes the format for the tournament from solo to teams</td>
+          <td>=tournament exampleTourney teams true</td>
+        </tr>
+        <tr>
+          <td>=tournament [tournamentName] autorole [role]</td>
+          <td>Automatically gives a role to players who join the tournament</td>
+          <td>=tournament exampleTourney autorole @TournamentContestor </td>
+        </tr>
+        <tr>
+          <td>=tournament [tournamentName] update [what] [to]</td>
+          <td>Changes values straight from the database. <br>ADVANCED USERS ONLY</td>
+          <td>
+            =tournament exampleTourney update status closed<br>
+            =tournament exampleTourney update roundMaxTime 14
+          </td>
+        </tr>
+        <tr>
+          <td>=bindchallonge</td>
+          <td>Bind your Challonge account allowing you to host tournaments from your own account</td>
+          <td>=bindchallonge</td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

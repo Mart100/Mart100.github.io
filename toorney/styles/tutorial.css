@@ -1,0 +1,20 @@
+#tutorial {
+  color: white;
+  text-align: center;
+  width: 60%;
+  margin: auto;
+  line-height: 25px;
+}
+
+#tutorial p {
+  color: rgb(211, 211, 211);
+}
+#tutorial .command {
+  background-color: rgb(15, 15, 15);
+  color: rgb(255, 210, 210);
+  padding: 3px;
+  border-radius: 2px;
+}
+#tutorial .title {
+  font-size: 50px;
+}

@@ -1,0 +1,78 @@
+<html>
+  <head>
+    <title>Toorney</title>
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="utf-8" http-equiv="encoding">
+    <link rel="shortcut icon" href="../favicon.png" type="image/png">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <!-- Adsense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-140200727-3"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-140200727-3');
+    </script>
+
+    <script src="../../scripts/toorney-api.js"></script>
+    <script src="../../scripts/utils.js"></script>
+    <link href="../../styles/nav.css" rel="stylesheet">
+    <link href="../../styles/basic.css" rel="stylesheet">
+    <link href="../../styles/tutorial.css" rel="stylesheet">
+  </head>
+  <body>
+    <div id="nav">
+      <a href="../../">Home</a>
+      <a href="../../tournaments">Tournaments</a>
+      <a href="../../commands">Commands</a>
+      <a href="../../dashboard">Dashboard</a>
+      <div class="dropdown">
+        <a class="dropbtn">More</a>
+        <div class="dropdown-content">
+          <a href="../../privacypolicy">Privacy Policy</a>
+          <a href="../../contact">Contact</a>
+        </div>
+      </div>
+    </div>
+    <div id="tutorial">
+      <h1 class="title">Tutorial: Setting up a tournament</h1>
+      <br><h2>1: Creating a brand new tournament</h2>
+      <p>
+        You can create a new tournament using <span class="command">=create [Tournament name] </span>
+      </p>
+      <br><h2>2: Setting up for players to join</h2>
+      <p>
+        There are two ways for players to join your tournament:<br>
+        <br>
+        The first way for players to join your tournament is with this command: <span class="command">=join [Tournament name] </span>
+        <br><br>
+        The second way is to make it possible for players to join with a reaction to a message.<br>
+        To make this possible, first send a message which the reaction will be binded to.<br>
+        For example, "React with ✅ To join the new 1v1 rocket league tournament. Tournament starts on 20 Sept"<br>
+        Then, copy the ID of that message (If you don't know how to get a message ID, follow <a href="../getMessageID/">this tutorial</a>)<br>
+        and use this command: <span class="command">=tournament [Tournament name] reactmessage [message ID]</span><br>
+        If done correctly, the bot will automatically react to the message with a ✅.<br>
+        Then you're set! Players will automatically join when reacting to that message!
+      </p>
+      <br><h2>3: Starting the tournament</h2>
+      <p>
+        Starting the tournament means that players will no longer be able to join<br>
+        and that players will be able to complete their matches.<br>
+        Starting a match is as simple as <span class="command">=tournament [Tournament name] start</span>
+      </p>
+      <br><h2>4: Results</h2>
+      <p>
+        The great thing about using Toorney is that you, as the Admin, don't have to input all the results manually.<br>
+        Players can do this themselves with this command: <span class="command">=results [Tournament name] [player score] [opponent score]</span><br>
+        If there are any issues with players using this command, Admins can always force results using:<br>
+        <span class="command">=forceresults [Tournament name] [player1] [player2] [player1 score] [player2 score]</span><br>
+      </p>
+    </div>
+  </body>
+</html>

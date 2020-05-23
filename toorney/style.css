@@ -1,0 +1,225 @@
+body {
+  margin: 0px;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: rgb(30, 30, 30);
+  text-align: center;
+  overflow-x: hidden;
+}
+
+
+#content {
+  width: 80%;
+  margin: auto;
+}
+#content hr {
+  color: white;
+}
+
+
+/*========CONTAINER1========*/
+.container1 {
+  height: 300px;
+  transform: translateX(-400px)
+}
+.container1 img {
+  height: 250px;
+  position: relative;
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, .7);
+  left: 200px;
+  bottom: 50px;
+}
+.container1 .title {
+  color: white;
+  font-size: 25px;
+  position: relative;
+  top: 75px;
+  right: 200px;
+}
+.container1 .desc {
+  color: white;
+  top: 100px;
+  right: 200px;
+  font-size: 17px;
+  position: relative;
+}
+
+
+/*========CONTAINER2========*/
+.container2 {
+  height: 300px;
+  transform: translateX(400px)
+}
+.container2 img {
+  height: 250px;
+  position: relative;
+  box-shadow: -3px 3px 10px rgba(0, 0, 0, .7);
+  right: 200px;
+  bottom: 50px;
+}
+.container2 .title {
+  color: white;
+  font-size: 25px;
+  position: relative;
+  top: 75px;
+  left: 200px;
+}
+.container2 .desc {
+  color: white;
+  top: 100px;
+  left: 200px;
+  font-size: 17px;
+  position: relative;
+}
+
+a {
+  color: #0096cf;
+}
+.container2, .container1 {
+  transition-duration: 0.8s;
+}
+
+.container2.reveal {
+  transform: translateX(0px)
+}
+.container1.reveal {
+  transform: translateX(0)
+}
+#content button {
+  background-color: rgb(30, 30, 30);
+  border: 2px solid red;
+  color: white;
+  width: 130px;
+  height: 40px;
+  font-size: 20px;
+  cursor: pointer;
+  border-radius: 5px;
+  position: absolute;
+  transform: translateX(-50%);
+  margin-top: 10px;
+  transition-duration: 0.5s;
+}
+#content button:hover {
+  border: 2px solid rgb(30, 30, 30);
+  background-color: red;
+  color: rgb(30, 30, 30);
+}
+#content #button a {
+  color: white;
+  text-decoration: none;
+}
+
+#thumbnail {
+  padding: 50px 40% 50px 40%;
+  width: 20%;
+  
+  background-color: rgb(255, 222, 89);
+}
+
+#nav {
+  position: fixed;
+  transition-duration: 0.5s;
+}
+#nav a {
+  transition-duration: 0.5s;
+}
+#nav.invisible {
+  background-color: rgba(0, 0, 0, 0) !important;
+}
+#nav.invisible > a, #nav.invisible .dropbtn {
+  color: black !important;
+}
+
+h1 {
+  color: white;
+}
+p {
+  color: white;
+  font-size: 20px;
+}
+
+#cont5 {
+  overflow-x: hidden;
+  height: 175px;
+  white-space:nowrap;
+}
+#cont5 div img {
+  width: 100px;
+  height: 100px;
+}
+#cont5 div a {
+  font-size: 13px;
+  white-space: nowrap;
+}
+#cont5 div {
+  color: white;
+  display: inline-block;
+  width: 150px;
+  margin: 5px;
+}
+#cont6 {
+  height: 320px;
+}
+#cont6 span {
+  color: white;
+  font-size: 20px;
+}
+#cont6 .num {
+  color: rgb(255, 222, 89);
+  font-size: 50px;
+}
+#cont6 #stats div {
+  display: inline-block;
+  padding: 80px;
+  text-align: center;
+}
+#cont6 #stats span {
+  text-align: center;
+}
+
+
+
+#cont7 p {
+  font-size: 20px;
+}
+
+#cont8 p {
+  font-size: 17px;
+}
+
+#sold .text {
+  color: white;
+  background-color: rgb(100, 30, 30);
+  padding: 20px;
+  font-size: 25px;
+}
+
+#sold .end {
+  color: white;
+  background-color: rgb(100, 30, 30);
+  height: 69px;
+}
+
+#sold .bg {
+  height: 500px;
+}
+#sold .bg img {
+  position: absolute;
+  z-index: 15;
+  height: 500px;
+
+  transform: translateX(-50%);
+}
+#sold .bg .left {
+  width: 50%;
+  height: 500px;
+  position: absolute;
+  left: 0px;
+  background-color: #f7de4a;
+}
+#sold .bg .right {
+  width: 50%;
+  height: 500px;
+  position: absolute;
+  right: 0px;
+  background-color: #392d49;
+}

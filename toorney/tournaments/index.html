@@ -1,0 +1,48 @@
+<html>
+  <head>
+    <title>Toorney</title>
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="utf-8" http-equiv="encoding">
+    <link rel="shortcut icon" href="../favicon.png" type="image/png">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <!-- Adsense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-140200727-3"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-140200727-3');
+    </script>
+
+    <script src="../scripts/toorney-api.js"></script>
+    <script src="../scripts/utils.js"></script>
+    <script src="tournament.js"></script>
+    <script src="tournaments.js"></script>
+    <link href="playerlist.css" rel="stylesheet">
+    <link href="tournaments.css" rel="stylesheet">
+    <link href="tournament.css" rel="stylesheet">
+    <link href="../styles/nav.css" rel="stylesheet">
+  </head>
+  <body>
+    <div id="nav">
+      <a href="../">Home</a>
+      <a href="../tournaments" class="selected">Tournaments</a>
+      <a href="../commands">Commands</a>
+      <a href="../dashboard">Dashboard</a>
+      <div class="dropdown">
+        <a class="dropbtn">More</a>
+        <div class="dropdown-content">
+          <a href="../privacypolicy">Privacy Policy</a>
+          <a href="../contact">Contact</a>
+        </div>
+      </div>
+    </div>
+    <div id="tournaments"></div>
+  </body>
+</html>

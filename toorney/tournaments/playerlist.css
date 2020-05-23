@@ -1,0 +1,35 @@
+.player {
+  margin: 20px;
+  height: 20px;
+  padding: 5px;
+  margin: 5px;
+  width: calc(100% - 20px);
+  background-color: rgb(20, 20, 20);
+  color: white;
+  border-radius: 2px;
+}
+
+.player .name {
+  position: absolute;
+  transform: translateX(50px);
+}
+
+.player .placement {
+  position: absolute;
+}
+
+.player .points {
+  position: absolute;
+  transform: translateX(250px);
+}
+
+.player .division {
+  position: absolute;
+  transform: translateX(360px);
+}
+
+.player .divisionIMG {
+  position: absolute;
+  transform: translateX(445px);
+}
+

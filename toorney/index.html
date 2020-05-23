@@ -1,0 +1,146 @@
+<html>
+  <head>
+    <title>Toorney</title>
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="utf-8" http-equiv="encoding">
+
+    <link rel="shortcut icon" href="./favicon.png" type="image/png">
+
+    <!-- JQUERY -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <!-- scrollmagic -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.7/ScrollMagic.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.7/plugins/debug.addIndicators.min.js"></script>
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-140200727-3"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-140200727-3');
+    </script>
+
+    <script data-ad-client="ca-pub-7510922462770765" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+    <script src="main.js"></script>
+    <script src="./scripts/toorney-api.js"></script>
+    <script src="./scripts/cookies.js"></script>
+    <script src="./scripts/utils.js"></script>
+    <link href="style.css" rel="stylesheet">
+    <link href="./styles/nav.css" rel="stylesheet">
+  </head>
+  <body>
+    <div id="nav" class="invisible">
+      <a href="./" class="selected">Home</a>
+      <a href="./tournaments" >Tournaments</a>
+      <a href="./commands">Commands</a>
+      <a href="./dashboard">Dashboard</a>
+      <div class="dropdown">
+        <a class="dropbtn">More</a>
+        <div class="dropdown-content">
+          <a href="./privacypolicy">Privacy Policy</a>
+          <a href="./contact">Contact</a>
+        </div>
+      </div>
+      <a class="invite" href="./invite">Invite Toorney!</a>
+    </div>
+    <img src="https://i.imgur.com/XIgjISl.png" id="thumbnail">
+    <div id="sold">
+      <div class="text">Toorney.xyz has been sold to <a href="https://tournamentkings.com/">Tournament kings </a></div>
+      <div class="bg">
+        <img src="https://i.imgur.com/tjSWPb9.png">
+        <div class="left"></div>
+        <div class="right"></div>
+      </div>
+      <div class="end"></div>
+      
+    </div>
+    <div id="content">
+      <br><br>
+      <div class="container1" id="cont1">
+        <span class="title">Host Tournaments</span>
+        <div class="desc">Start hosting your very own tournaments straight<br> from your Discord server today!<br></div>
+        <img src="https://i.imgur.com/8fTDQBf.png">
+      </div><hr>
+
+      <div class="container2" id="cont2">
+        <span class="title">Powerful 24/7 Discord Bot</span>
+        <div class="desc">Downtime? We don't even know what that is! <br> Never worry about Toorney being offline<br>
+          <a href="https://discordapp.com/oauth2/authorize?client_id=586627543088496650&permissions=27712&scope=bot" id="button"><button>Invite Bot</button></a>
+        </div>
+        <img src="https://i.imgur.com/dx68gib.png">
+      </div><hr>
+
+      <div class="container1" id="cont3">
+        <span class="title">Tournament Information</span>
+        <div class="desc">View in-depth tournament information on Toorney such as <br> all current tournaments, players participating and brackets</div>
+        <img src="https://i.imgur.com/SP1bBMD.png">
+      </div><hr>
+
+      <div class="container2" id="cont3b">
+        <span class="title">Tournament Dashboard</span>
+        <div class="desc">Our user-friendly dashboard allows you to <br> manage your tournaments with a click of a button!</div>
+        <img src="https://i.imgur.com/dUBb76t.png">
+      </div><hr>
+
+      <div class="container1" id="cont4">
+        <span class="title">Discord Server</span>
+        <div class="desc">
+          Join our Discord Support Server for help, <br> updates, bug reports and suggestions!
+          <br><a href="./discord?r=site" id="button"><button>Join!</button></a>
+        </div>
+        <img src="https://i.imgur.com/66tXCNv.png">
+      </div>
+      <h1>Why Use Toorney?</h1>
+      <p>
+        Toorney is the most powerful Challonge Discord bot that allows every part of the tournament to happen inside your Discord server.
+        Eliminate the manual work of typing names into websites, generating brackets and manually submitting scores for your participants
+        Your participants don't have to worry about not understanding some random 3rd-party tournament hoster.
+        Participants never have to use more than just a couple of quick and simple commands.
+        Sit back and enjoy your hosted tournaments being run automatically instead of working tirelessly to have them run to completion.<br><br>
+
+        Let Toorney do the work for you! <br><br><br>
+
+        <b> Join our <a href="https://discord.gg/rs7frz2">Discord Support Server</a> to see why Toorney is perfect for you!</b>
+      </p><br>
+
+        <hr>
+
+      </div>
+      <div id="cont8">
+        <h1>A Sneak Peek At Our Awesome Features:</h1>
+        <p>
+          Joining tournaments using a command or reaction message<br>
+          Using your own Challonge account to host tournaments<br>
+          Automatic role assignment when joining tournaments<br>
+          Players can post their own results<br>
+          Dedicated channel where all results to be posted in<br>
+          Automatic coinflip after round time limit reached<br>
+          Daily reminders for players of upcoming matches<br>
+          Add custom Toorney admins<br>
+          Team creation and tournaments<br>
+          <br>
+          The full list of commands can be found <a href="./commands">here</a>
+        </p><hr>
+
+          <h1>Servers Currently Using Toorney</h1>
+          <div class="container3" id="cont5"></div>
+          </div><hr>
+          <div id="cont6">
+            <h1>Statistics</h1>
+            <div id="stats">
+              <div><span>Total Matches Played:</span><br> <span class="num" id="stats-matches">soon</span></div>
+              <div><span>Tournaments:</span><br> <span class="num" id="stats-tournaments">0</span></div>
+              <div><span>Servers Using Toorney:</span><br> <span class="num" id="stats-servers">0</span></div>
+            </div>
+          </div>
+
+        </p>
+      </div>
+    </div>
+  </body>
+</html>

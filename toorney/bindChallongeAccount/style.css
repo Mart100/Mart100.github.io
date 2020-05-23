@@ -1,0 +1,19 @@
+body {
+  margin: 0px;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: rgb(30, 30, 30);
+  height: 100%;
+}
+
+#content {
+  text-align: center;
+  color: white;
+}
+
+#content img {
+  width: 50%;
+}
+
+a {
+  color: #0096cf
+}

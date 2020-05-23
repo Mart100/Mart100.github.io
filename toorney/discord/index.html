@@ -1,0 +1,19 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+  func()
+  function func() {
+    let params = new URLSearchParams(window.location.search) 
+    if(params.has('r')) {
+      let referal = params.get('r')
+      console.log(referal)
+      $.get(`https://toorney-api.herokuapp.com/discordserver?r=${referal}`, () => {
+        redirect()
+      })
+    }
+  }
+
+  function redirect() {
+    window.location = 'https://discord.gg/D8KJrkY'
+  }
+</script>
+<div style="text-align: center; margin: auto; cursor: pointer;" onclick="redirect()">You should be redirected soon. If not click here to try again</div>

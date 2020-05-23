@@ -312,7 +312,7 @@ let projects = [
 		{
 			title: 'Toorney',
 			image: 'https://i.imgur.com/oUKLIXv.png',
-			link: 'https://toorney.xyz',
+			link: siteLink+'toorney',
 			created: '7/6/2019',
 			score: 16.5,
 			description: `

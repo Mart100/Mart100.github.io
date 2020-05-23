@@ -1,0 +1,35 @@
+body {
+  margin: 0px;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: rgb(30, 30, 30);
+  height: 100%;
+}
+
+#tournaments {
+  width: 100%;
+  height: calc(100% - 50px);
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.tournament {
+  margin: 50px;
+  width: 250px;
+  height: 250px;
+  display: inline-block;
+  text-align: center;
+  color: white;
+  background-color: rgb(20, 20, 20);
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.tournament .name {
+  color: rgb(255, 10, 10);
+  font-size: 22px;
+}
+.tournament span {
+  margin: 10px;
+}
