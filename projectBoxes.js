@@ -633,6 +633,17 @@ let projects = [
 			It uses raytracing so cast a view of a 3D scene
 			`
 		},
+		{
+			title: 'HRinfo',
+			image: 'https://i.imgur.com/xnILjFI.png',
+			link: siteLink+'HRinfo',
+			code: githubSiteLink+'HRinfo',
+			created: '15/5/2019',
+			score: 16,
+			description: `
+			This was an information and community site + discord bot for an upcomming game named Helmet Royale.
+			`
+		},
 ]
 
 $(() => {
