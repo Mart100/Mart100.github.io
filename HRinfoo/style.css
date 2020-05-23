@@ -1,0 +1,142 @@
+body {
+  margin: 0px;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: rgb(30, 30, 30);
+  text-align: center;
+  overflow-x: hidden;
+}
+
+#content {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1000px;
+  font-size: 20px;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  align-content: center;
+  flex-flow: row wrap;
+  overflow: auto;
+  padding-right: calc(100% - 1465px);
+  padding-left: calc(100% - 1465px);
+}
+.container {
+  width: auto;
+  display: inline-block;
+  text-align: center;
+  height: auto;
+  padding: 30px;
+  margin: 20px;
+  background-color: rgb(20, 20, 20);
+  border-radius: 5px;
+  color: white;
+  border: black 1px solid;
+}
+
+#linkGame a {
+  text-decoration: none;
+  color: white;
+}
+
+#itemQuality img {
+  width: 400px;
+}
+#discordserver a img {
+  width: 80px;
+  height: 80px;
+}
+
+#advertisements div {
+  position: fixed;
+  width: 400px;
+  background-color: rgb(20, 20, 20);
+  border-radius: 5px;
+  border: black 1px solid;
+  height: 600px;
+}
+
+#content1 {
+  width: 80%;
+  margin: auto;
+}
+#content1 hr {
+  color: white;
+}
+
+#content1 button {
+  background-color: rgb(30, 30, 30);
+  border: 2px solid red;
+  color: white;
+  width: 130px;
+  height: 40px;
+  font-size: 20px;
+  cursor: pointer;
+  border-radius: 5px;
+  position: absolute;
+  transform: translateX(-50%);
+  margin-top: 10px;
+  transition-duration: 0.5s;
+}
+#content1 button:hover {
+  border: 2px solid rgb(30, 30, 30);
+  background-color: red;
+  color: rgb(30, 30, 30);
+}
+#content1 #buttona {
+  color: white;
+  text-decoration: none;
+}
+
+/*========CONTAINER1========*/
+.container1 {
+  height: 300px;
+}
+.container1 img {
+  height: 250px;
+  position: relative;
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, .7);
+  left: 200px;
+  bottom: 50px;
+}
+.container1 .title {
+  color: white;
+  font-size: 25px;
+  position: relative;
+  top: 75px;
+  right: 200px;
+}
+.container1 .desc {
+  color: white;
+  top: 100px;
+  right: 200px;
+  font-size: 17px;
+  position: relative;
+}
+
+
+/*========CONTAINER2========*/
+.container2 {
+  height: 300px;
+}
+.container2 img {
+  height: 250px;
+  position: relative;
+  box-shadow: -3px 3px 10px rgba(0, 0, 0, .7);
+  right: 200px;
+  bottom: 50px;
+}
+.container2 .title {
+  color: white;
+  font-size: 25px;
+  position: relative;
+  top: 75px;
+  left: 200px;
+}
+.container2 .desc {
+  color: white;
+  top: 100px;
+  left: 200px;
+  font-size: 17px;
+  position: relative;
+}

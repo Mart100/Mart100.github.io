@@ -1,0 +1,61 @@
+<html>
+  <head>
+    <title>HelmetRoyaleInfo</title>
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="utf-8" http-equiv="encoding">
+
+    <link rel="shortcut icon" href="../favicon.png" type="image/png">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-140200727-1"></script>
+
+    <!-- Chart.JS -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0/dist/Chart.min.js"></script>
+    
+    <script src="../scripts/stringScore.js"></script>
+    <script src="../scripts/database.js"></script>
+    <script src="../scripts/cookies.js"></script>
+    <script src="../scripts/analytics.js"></script>
+    <script src="main.js"></script>
+    <script src="performance.js"></script>
+    <link href="style.css" rel="stylesheet">
+    <link href="../styles/nav.css" rel="stylesheet">
+
+  </head>
+  <body>
+    <div id="nav">
+      <a href="../">Home</a>
+      <a href="../weapons">Weapons</a>
+      <a href="../map">Map</a>
+      <a href="../clans">Clans</a>
+      <a href="../skins">Skins</a>
+      <a href="../leaderboard">Leaderboard</a>
+      <a href="../profile" class="selected">Profile</a>
+      <div class="dropdown">
+        <a class="dropbtn">More</a>
+        <div class="dropdown-content">
+          <a href="../news">News</a>
+          <a href="../tips">Tips</a>
+          <a href="../playingcount">PlayingCount</a>
+        </div>
+      </div>
+    </div>
+    <div id="profile" style="display: none;">
+      <div id="top">
+        <img id="picture" src="https://i.imgur.com/6OUFdrQ.png">
+        <div id="username"></div>
+      </div>
+      <div id="navP">
+        <span id="navOverview" onclick="viewPlayerOverview()" class="selected">Overview</span>
+        <span id="navStatistics" onclick="viewPlayerStatistics()">Statistics</span>
+        <span id="navPerformance" onclick="viewPlayerPerformance()">Performance</span>
+      </div>
+      <div id="bottom">
+
+      </div>
+    </div>
+    <input id="search" class="searching" autocomplete="off" placeholder="Discord username..." autofocus>
+  </body>
+</html>

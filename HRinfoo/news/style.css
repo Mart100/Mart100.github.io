@@ -1,0 +1,39 @@
+body {
+  margin: 0px;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: rgb(30, 30, 30);
+}
+
+#newsContainer {
+  padding: 60px;
+  position: absolute;
+  width: 1200px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.article {
+  margin: 20px;
+  height: auto;
+  padding: 10px;
+  width: 100%;
+  border-radius: 5px;
+  background-color: rgb(20, 20, 20);
+  
+}
+.article .by {
+  color: rgb(150, 150, 150);
+  font-size: 16px;
+  position: relative;
+  left: 10px
+}
+.article .title {
+  color: white;
+  font-size: 28px;
+  position: relative;
+}
+.article .text {
+  color: rgb(200, 200, 200);
+  font-size: 23px;
+  position: relative;
+  left: 5px;
+}

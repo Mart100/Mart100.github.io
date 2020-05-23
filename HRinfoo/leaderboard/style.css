@@ -1,0 +1,83 @@
+body {
+  margin: 0px;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: rgb(30, 30, 30);
+}
+
+#leaderboard {
+  padding: 20px;
+  position: absolute;
+  width: 800px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+#players {
+  height: 1500px;
+}
+.player {
+  margin: 20px;
+  height: 20px;
+  padding: 5px;
+  margin: 5px;
+  width: 100%;
+  background-color: rgb(20, 20, 20);
+  color: white;
+  border-radius: 2px;
+}
+
+.player.first {
+  background-color: rgba(255, 215, 0, 0.1);
+}
+
+.player.second {
+  background-color: rgba(192, 192, 192, 0.1);
+}
+
+.player.third {
+  background-color: rgba(205, 127, 50, 0.1);
+}
+
+.player .name {
+  position: absolute;
+  margin-left: 50px;
+}
+
+.player .name a {
+  text-decoration: none;
+  color: rgb(200, 255, 255);
+}
+
+.player .placement {
+  position: absolute;
+}
+
+.player .points {
+  position: absolute;
+  margin-left: 250px;
+}
+
+.player .clan {
+  position: absolute;
+  margin-left: 400px;
+}
+.player .clan a {
+  text-decoration: none;
+  color: rgb(200, 200, 255);
+}
+
+.player .division {
+  position: absolute;
+  margin-left: 600px;
+}
+
+.player .divisionIMG {
+  position: absolute;
+  margin-left: 670px;
+}
+
+#leftSide {
+  left: 0px;
+  width: 500px;
+  height: 1500px;
+  position: absolute;
+}

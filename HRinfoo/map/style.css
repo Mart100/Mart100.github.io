@@ -1,0 +1,33 @@
+body {
+  margin: 0px;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: rgb(30, 30, 30);
+}
+
+#map {
+  height: calc(100% - 50px);
+  width: 50%;
+  left: 50%;
+  transform: translateX(-50%);
+  position: absolute;
+
+}
+
+#controlpanel {
+  position: absolute;
+  left: 0px;
+  width: 25%;
+  height: calc(100% - 150px);
+  background-color: rgb(25, 25, 25);
+  color: white;
+  padding: 50px;
+  font-size: 30px;
+}
+
+#controlpanel input {
+  transform: scale(2);
+}
+
+#controlpanel #category {
+  font-size: 20px;
+}

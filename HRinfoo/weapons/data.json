@@ -1,0 +1,227 @@
+[
+  {
+    "name": "Drumgun",
+    "damage": "8",
+    "image": "https://i.imgur.com/nDkEoU0.png",
+    "magazine": "32",
+    "rarity": "rare"
+  },
+  {
+    "name": "FireSpray",
+    "damage": "5",
+    "image": "https://i.imgur.com/dijE0Al.png",
+    "magazine": "30",
+    "rarity": "common"
+  },
+  {
+    "name": "Pumpaction",
+    "damage": "7",
+    "image": "https://i.imgur.com/G5CZ39v.png",
+    "magazine": "6",
+    "rarity": "unique",
+    "type": "shotgun",
+    "pellets": "15"
+  },
+  {
+    "name": "Burster",
+    "damage": "10",
+    "image": "https://i.imgur.com/7sWWZZF.png",
+    "magazine": "13",
+    "rarity": "rare"
+  },
+  {
+    "name": "Sawed-off",
+    "damage": "6",
+    "image": "https://i.imgur.com/RQQ7KXm.png",
+    "magazine": "2",
+    "rarity": "common",
+    "type": "shotgun"
+  },
+  {
+    "name": "Martin",
+    "damage": "10",
+    "image": "https://i.imgur.com/cghxZn7.png",
+    "magazine": "15",
+    "rarity": "rare",
+    "type": "bow"
+  },
+  {
+    "name": "Pistol",
+    "damage": "8",
+    "image": "https://i.imgur.com/dMaWi9d.png",
+    "magazine": "10",
+    "rarity": "common"
+  },
+  {
+    "name": "M4A1",
+    "damage": "10",
+    "image": "https://i.imgur.com/Xw1KZrL.png",
+    "magazine": "25",
+    "rarity": "rare"
+  },
+  {
+    "name": "MachineGun",
+    "damage": "12",
+    "image": "https://i.imgur.com/tiPMCnR.png",
+    "magazine": "42",
+    "rarity": "unique"
+  },
+  {
+    "name": "Uzi",
+    "damage": "8",
+    "image": "https://i.imgur.com/yZxX1Ja.png",
+    "magazine": "22",
+    "rarity": "common"
+  },
+  {
+    "name": "G-Launcher",
+    "damage": "32",
+    "image": "https://i.imgur.com/atyfJaR.png",
+    "magazine": "8",
+    "rarity": "common",
+    "type": "grenage-launcher"
+  },
+  {
+    "name": "Colt",
+    "damage": "18",
+    "image": "https://i.imgur.com/tz3dSCZ.png",
+    "magazine": "6",
+    "rarity": "common"
+  },
+  {
+    "name": "Sledge",
+    "damage": "50",
+    "image": "https://i.imgur.com/iPGCI7h.png",
+    "magazine": "infinite",
+    "rarity": "unique",
+    "type": "melee"
+  },
+  {
+    "name": "Farmer",
+    "damage": "6",
+    "image": "https://i.imgur.com/rotuC1Z.png",
+    "magazine": "5",
+    "rarity": "rare",
+    "type": "shotgun"
+  },
+  {
+    "name": "AK47",
+    "damage": "12",
+    "image": "https://i.imgur.com/5j2qh5U.png",
+    "magazine": "35",
+    "rarity": "rare"
+  },
+  {
+    "name": "Messenger",
+    "damage": "38",
+    "image": "https://i.imgur.com/YKQGDpq.png",
+    "magazine": "1",
+    "rarity": "rare",
+    "type": "bow"
+  },
+  {
+    "name": "Pickaxe",
+    "damage": "15",
+    "image": "https://i.imgur.com/93SDNvn.png",
+    "magazine": "Infinite",
+    "rarity": "rare",
+    "type": "melee"
+  },
+  {
+    "name": "Doob",
+    "damage": "7",
+    "image": "https://i.imgur.com/klzxXgA.png",
+    "magazine": "2",
+    "rarity": "unique",
+    "type": "shotgun",
+    "pellets": "15"
+  },
+  {
+    "name": "R-Launcher",
+    "damage": "48",
+    "image": "https://i.imgur.com/5EeSYS8.png",
+    "magazine": "4",
+    "rarity": "common",
+    "type": "rocket-launcher"
+  },
+  {
+    "name": "Sword",
+    "damage": "10",
+    "image": "https://i.imgur.com/bSI38ze.png",
+    "magazine": "Infinite",
+    "rarity": "common"
+  },
+  {
+    "name": "Rapidor",
+    "damage": "10",
+    "image": "https://i.imgur.com/Tnzp3UZ.png",
+    "magazine": "30",
+    "rarity": "unique"
+  },
+  {
+    "name": "Bomber",
+    "damage": "25",
+    "image": "https://i.imgur.com/jxmFmOi.png",
+    "magazine": "6",
+    "rarity": "legendary",
+    "type": "grenade-launcher"
+  },
+  {
+    "name": "Old_MachineGun",
+    "damage": "12",
+    "image": "https://i.imgur.com/k2V19O8.png",
+    "magazine": "35",
+    "rarity": "rare"
+  },
+  {
+    "name": "Robin",
+    "damage": "54",
+    "image": "https://i.imgur.com/rdsQg3L.png",
+    "magazine": "1",
+    "rarity": "legendary",
+    "type": "bow"
+  },
+  {
+    "name": "Shortbow",
+    "damage": "24",
+    "image": "https://i.imgur.com/nwm70sE.png",
+    "magazine": "1",
+    "rarity": "rare",
+    "type": "bow"
+  },
+  {
+    "name": "FlameThrower",
+    "damage": "5",
+    "image": "https://i.imgur.com/YcCSKh7.png",
+    "magazine": "70",
+    "rarity": "unique"
+  },
+  {
+    "name": "Hydra",
+    "damage": "8",
+    "image": "https://i.imgur.com/zaIuMD2.png",
+    "magazine": "20",
+    "rarity": "legendary"
+  },
+  {
+    "name": "Twins",
+    "damage": "9",
+    "image": "https://i.imgur.com/itFuUI6.png",
+    "magazine": "44",
+    "rarity": "legendary"
+  },
+  {
+    "name": "Doomsday",
+    "damage": "49",
+    "image": "https://i.imgur.com/M0aywBW.png",
+    "magazine": "6",
+    "rarity": "legendary"
+  },
+  {
+    "name": "Thinnozzle",
+    "damage": "4",
+    "image": "https://i.imgur.com/xz09cr5.png",
+    "magazine": "78",
+    "rarity": "legendary"
+  }
+]

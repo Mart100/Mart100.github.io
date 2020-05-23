@@ -1,0 +1,63 @@
+<html>
+  <head>
+    <title>HelmetRoyaleInfo</title>
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="utf-8" http-equiv="encoding">
+
+    <link rel="shortcut icon" href="../favicon.png" type="image/png">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <!-- Google Adsense -->
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({
+              google_ad_client: "ca-pub-7537311431691156",
+              enable_page_level_ads: true
+        });
+    </script>
+
+    <!-- Chart.JS -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0/dist/Chart.min.js"></script>
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-140200727-1"></script>
+
+    <script src="../scripts/database.js"></script>
+    <script src="../scripts/cookies.js"></script>
+    <script src="../scripts/analytics.js"></script>
+    <script src="main.js"></script>
+    <link href="style.css" rel="stylesheet">
+    <link href="../styles/nav.css" rel="stylesheet">
+  </head>
+  <body>
+    <div id="nav">
+      <a href="../">Home</a>
+      <a href="../weapons">Weapons</a>
+      <a href="../map">Map</a>
+      <a href="../clans">Clans</a>
+      <a href="../skins">Skins</a>
+      <a href="../leaderboard">Leaderboard</a>
+      <a href="../profile">Profile</a>
+      <div class="dropdown">
+        <a class="dropbtn">More</a>
+        <div class="dropdown-content">
+          <a href="../news">News</a>
+          <a href="../tips">Tips</a>
+          <a href="../playingcount" class="selected">PlayingCount</a>
+        </div>
+      </div>
+    </div>
+    <div id="container">
+      <div id="sidenav">
+        <span class="" id="LH">Last Hour</span>
+        <span class="" id="LD">Last Day</span>
+        <span class="" id="LW">Last Week</span>
+        <span class="" id="LM">Last Month</span>
+        <span class="" id="LY">Last Year</span>
+        <span class="" id="AT">All Time</span>
+      </div>
+      <div id="graphCont"><canvas id="graph"></canvas></div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,41 @@
+body {
+  margin: 0px;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: rgb(30, 30, 30);
+}
+
+#weapons {
+  padding: 60px;
+}
+.weapon {
+  display: inline-block;
+  margin: 20px;
+}
+.weapon img {
+  width: 400px;
+  height: 200px;
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  background-color: rgb(0,0,0,0)
+}
+.weapon .bar {
+  position: absolute;
+  color: white;
+  text-align: center;
+  transform: translateY(-30px);
+  width: 400px;
+  height: 30px;
+  cursor: default;
+  background-color: rgba(0, 0, 0, 0.8);
+  transition-duration: .3s;
+  transition-timing-function: ease-in-out;
+}
+
+.weapon .bar.extended {
+  transform: translateY(-200px);
+  height: 200px;
+}
+.weapon .bar .name {
+  font-size: 20px;
+  margin: 5px;
+}

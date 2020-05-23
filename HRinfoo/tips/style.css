@@ -1,0 +1,47 @@
+body {
+  margin: 0px;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: rgb(30, 30, 30);
+}
+
+#tips {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1500px;
+  font-size: 20px;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  align-content: center;
+  flex-flow: row wrap;
+}
+.tip {
+  width: auto;
+  display: inline-block;
+  text-align: center;
+  height: auto;
+  padding: 30px;
+  padding-bottom: 15px;
+  margin: 10px;
+  background-color: rgb(20, 20, 20);
+  border-radius: 5px;
+  color: white;
+}
+
+.tip .title {
+  color: white;
+  font-size: 30px;
+  position: relative;
+}
+.tip .text {
+  color: rgb(200, 200, 200);
+  font-size: 17px;
+  position: relative;
+  left: 5px;
+}
+.tip .by {
+  color: rgb(255, 200, 200);
+  float: left;
+  font-size: 15px;
+}
