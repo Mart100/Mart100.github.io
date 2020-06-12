@@ -1,0 +1,107 @@
+<html>
+	<head>
+		<title>Blog - Raytracing</title>
+		<meta charset="utf-8"/>
+		<link rel="icon" href="https://i.imgur.com/4FnSd4Q.png" type="image/x-icon">
+
+		<!-- code-prettify -->
+		<script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+
+		<!-- jQuery -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>
+		<link type="text/css" rel="stylesheet" href="style.css">
+		<script src="main.js"></script>
+	</head>
+	<body id="body">
+		<div id="content">
+			<h1>Making the "Keeping Track" app</h1>
+			<p>
+				In this "blog" or whatever this is. 
+				I will write down my challenges and how I solved them.
+				While trying to make an app for android where I can fill in statistics of each day, 
+				such as waking up time and sleeping, and what I ate that day. A journal sort of.
+			</p>
+
+			<h2>Some info</h2>
+			<p>
+				So for this project I will use <a href="https://flutter.dev/">Flutter</a>. A framework by google for making crosscompatible apps.<br>
+				And for saving the users data I will use firebase auth with firestore.
+			</p>
+			
+			<h2>Learning basics</h2>
+			<p>
+				Note that I've never used Flutter or dart before, So before I could dive in blindly I thought it would be smart to get to know the basics.
+			</p>
+			<h3>Getting to know flutter</h3>
+			<p>
+				Not much to say here, I learned the basics of flutter and dart with 
+				<a href="https://www.youtube.com/playlist?list=PL4cUxeGkcC9jLYyp2Aoh6hcWuxFDX6PBJ">this great video tutorial series</a>
+			</p>
+			<br><br>
+			<h2>Making the actual app</h2>
+			<p>
+				Yes, I know the previous paragraph was short, I got impatient and wanted to start on the actual app right away.
+			</p>
+			<h3>Creating the structure</h3>
+			<p>
+				So for this app I just simply want 4 pages to start with.
+				<ul>
+					<li>Home/Days</li>
+					<li>Day info</li>
+					<li>Edit day</li>
+					<li>Login</li>
+					<li>Loading</li>
+				</ul>
+				I will explain more about these pages one by one.
+				<br>
+				<h4>Home/Days</h4>
+				<p>
+					So this is without a doubt the most important page, 
+					This page will contain a list of every day reported on small cards that give a summary.
+					It will also have a button in the bottom right corner.
+					I have made a sketch in paint.net to get an idea of how I want it to look:
+					<br><img src="https://i.imgur.com/qLZP750.png" style="max-width: 300px;">
+				</p><br>
+				<h4>Day info</h4>
+				<p>
+					So this will be the page that pops up when you click on a Day card in the Home/Days page,
+					This will contain full information that has been filled in by the user.
+					I also made a sketch for this page:
+					<br><img src="https://i.imgur.com/ONVRnhS.png" style="max-width: 300px;">
+				</p><br>
+				<h4>Edit day</h4>
+				<p>
+					This page will be almost exactly the same as the Day info page, But it will be possible to edit the values.
+				</p><br>
+				<h4>Login</h4>
+				<p>
+					Now the login page, This page only has 1 purpose, which is making sure the user logins so firestore database can save their data.
+					<br><img src="https://i.imgur.com/zhnRWXL.jpg" style="max-width: 300px;">
+				</p><br>
+				<h4>Loading</h4>
+				<p>
+					I don't think I need to explain much here, This page is just a simple page when anything needs to load. 
+					And it has a fun little circle load thingy
+				</p><br>
+			</p>
+			<h3>Creating the authentication / login</h3>
+			<p>
+				So in this part I will try to make the user successfully login with google,
+				For this I use firebase auth. I mostly just followed <a href="https://medium.com/flutter-community/flutter-implementing-google-sign-in-71888bca24ed">This great tutorial</a>,
+				I did struggle quite a lot with getting that to work ( ugh ugh took 4 hours),
+				But this <a href="https://stackoverflow.com/questions/54557479/flutter-and-google-sign-in-plugin-platformexceptionsign-in-failed-com-google">stackoverflow thread</a> has helped me a ton with resolving those issues.<br>
+				But after I had this working, I honestly still had no idea how it worked, and how I could use it to store a users data.<br>
+				So at this point I made a quick flowchart to better understand what has to happened and when:
+				<br><img src="https://i.imgur.com/ZCAXguG.png">
+				<br>
+				So I successfully did the Login Page and had gotten the User ID,<br>
+				Now I had to send this data to the Loading page.<br><br>
+				So I did that, It now sends the user ID to the loading page, and from the loading page it gets the users Data from the database.<br>
+				And from there on, It sends that userData to the home/days page.<br>
+
+			</p>
+		</div>
+	</body>
+</html>
