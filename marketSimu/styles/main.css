@@ -1,0 +1,49 @@
+body {
+	font-family: Arial, Helvetica, sans-serif;
+	background-color: rgb(121, 121, 121);
+	overflow: hidden;
+}
+
+.page {
+	width: 100%;
+	height: 100%;
+}
+
+#pages {
+	width: calc(100% - 15px);
+	height: calc(100% - 61px);
+	position: absolute;
+}
+
+#nav {
+	height: 46px;
+	width: 100%;
+	background-color: #313031;
+	box-shadow: inset 3px 0 3px -3px #201815,inset 2px 0 2px -2px #201815,inset 1px 0 1px -1px #201815,inset 0 3px 3px -3px #8f8c8b,inset 0 2px 2px -2px #8f8c8b,inset 0 1px 1px -1px #8f8c8b,inset -3px 0 3px -3px #201815,inset -2px 0 2px -2px #201815,inset -2px 0 1px -1px #201815,inset 0 -3px 3px -3px #000,inset 0 -2px 2px -2px #000,inset 0 -1px 1px -1px #000,0 0 2px 0 #201815,0 0 4px 0 #201815;
+
+}
+#nav div {
+	display: inline-block;
+	color: black;
+	font-weight: 600;
+	background-color: #8e8e8e;
+	height: 16px;
+	padding: 8px;
+	margin: 8px;
+	font-size: 16px;
+	box-shadow: inset 8px 0 4px -8px #000,inset -8px 0 4px -8px #000,inset 0 10px 2px -8px #e3e3e3,inset 0 10px 2px -8px #282828,inset 0 -9px 2px -8px #000,0 0 4px 0 #000;
+	cursor: pointer;
+	user-select: none;
+}
+
+#nav div.active {
+	box-shadow: inset 8px 0 4px -8px #000,inset -8px 0 4px -8px #000,inset 0 9px 2px -8px #fff,inset 0 8px 4px -8px #000,inset 0 -8px 4px -8px #000,inset 0 -9px 2px -8px #432400,0 0 4px 0 #000,inset 0 0 4px 2px #f9b44b;
+	background-color: #e39827;
+	filter: drop-shadow(0 0 2px #f9b44b);
+} 
+
+#nav div:hover {
+	background-color: #e39827;
+	box-shadow: inset 0 0 3px 0 #000,0 -2px 2px -1px #000,-2px 0 2px -2px #28221f,-2px 0 2px -2px #28221f,2px 0 2px -2px #28221f,2px 0 2px -2px #28221f,0 3px 3px -3px #8f8c8b,0 2px 2px -2px #8f8c8b,0 1px 1px -1px #8f8c8b;
+}
+

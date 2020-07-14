@@ -21,10 +21,18 @@
 
 		<!-- scripts -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-		<!-- css -->
-		<link href="styles.css" rel="stylesheet">
 		<script src="script.js"></script>
 		<script src="projectBoxes.js"></script>
+
+		<!-- css -->
+		<link href="styles.css" rel="stylesheet">
+		<link href="skills.css" rel="stylesheet">
+
+		<!-- loading bar -->
+		<link rel="stylesheet" type="text/css" href="loading-bar.min.css"/>
+		<script type="text/javascript" src="loading-bar.min.js"></script>
+
+
 	</head>
 	<body id="body">
 		<div class="splitter">Mart van Enckevort</div>
@@ -49,6 +57,27 @@
 		</div>
 		<div id="projectsWrapper"></div>
 		
+		<div class="splitter" id="projectsSplitter">My Skills</div>
+		<div id="skills">
+			<div>
+				<div class="title">Programming Languages</div>
+				<div class="skill">
+					<span>Javascript</span>
+					<div class="ldBar" data-value="90" data-preset="circle"></div>
+				</div>
+				<div class="skill">
+					<span>Typescript</span>
+					<div class="ldBar" data-value="90" data-preset="circle"></div>
+				</div>
+			</div>
+			<div>
+				<div class="title">Technologies/Libraries</div>
+			</div>
+			<div>
+				<div class="title">Programming areas</div>
+			</div>
+		</div>
+
 		<!--<div class="splitter">NEWSLETTER</div>
 		<div id="newsletter">
 			<p>Stay updated about all my latest and newest projects!</p>

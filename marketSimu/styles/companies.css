@@ -1,0 +1,74 @@
+#page-companies {
+	display: flex;
+	flex-direction: row;
+}
+
+#page-companies > div {
+	height: calc(100% - 50px);
+	width: calc(100% - 50px);
+	margin: 10px;
+	user-select: none;
+}
+
+#page-companies .companyList {
+	width: 300px;
+}
+
+#page-companies .companyList > .content {
+	overflow-y: scroll;
+}
+
+#page-companies .companyList > .content > div {
+	height: 30px;
+}
+#page-companies .companyList > .content > div > .growth img {
+	height: 20px;
+	width: 20px;
+	padding: 5px;
+	vertical-align: middle;
+	float: right;
+}
+
+#page-companies .companyInfo > .content {
+	display: grid;
+	grid-template-columns: 50px auto 50px auto 50px auto 50px;
+	grid-template-rows: 50px auto 50px auto 50px auto 50px;
+	overflow-y: scroll;
+}
+
+#page-companies .companyInfo > .content > div {
+	justify-self: center;
+	width: 200px;
+	height: 200px;
+}
+
+#page-companies .companyInfo .content .products {
+	grid-column-start: 2;
+	grid-column-end: 3;
+	grid-row-start: 4;
+	grid-row-end: 5;
+}
+
+#page-companies .companyInfo .content .inventory {
+	grid-column-start: 4;
+	grid-column-end: 5;
+	grid-row-start: 2;
+	grid-row-end: 3;
+}
+
+#page-companies .companyInfo .content .details {
+	grid-column-start: 2;
+	grid-column-end: 3;
+	grid-row-start: 2;
+	grid-row-end: 3;
+}
+
+#page-companies .companyInfo .content .earningsgraph {
+	grid-column-start: 4;
+	grid-column-end: 5;
+	grid-row-start: 4;
+	grid-row-end: 5;
+	height: 100%;
+	width: 80%;
+
+}

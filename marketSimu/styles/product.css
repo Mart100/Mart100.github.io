@@ -1,0 +1,40 @@
+.panel.product > .content {
+	display: grid;
+	grid-template-columns: 50px auto 50px auto 50px;
+	grid-template-rows: 50px auto 50px auto 50px;
+	text-align: center;
+}
+
+.panel.product > .content > div {
+	justify-self: center;
+	width: 200px;
+	height: 200px;
+}
+
+.panel.product > .content > .components {
+	grid-column-start: 4;
+	grid-column-end: 5;
+	grid-row-start: 2;
+	grid-row-end: 3;
+}
+
+.panel.product > .content > .details {
+	grid-column-start: 2;
+	grid-column-end: 3;
+	grid-row-start: 2;
+	grid-row-end: 3;
+}
+
+.panel.product > .content > .supply {
+	grid-column-start: 2;
+	grid-column-end: 3;
+	grid-row-start: 4;
+	grid-row-end: 5;
+}
+
+.panel.product > .content > .demand {
+	grid-column-start: 4;
+	grid-column-end: 5;
+	grid-row-start: 4;
+	grid-row-end: 5;
+}

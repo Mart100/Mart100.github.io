@@ -1,0 +1,70 @@
+<html>
+	<head>
+		<title>Market Simu</title>
+		<meta charset="utf-8"/>
+
+		<!-- Styles -->
+		<link rel="stylesheet" type="text/css" href="styles/main.css">
+		<link rel="stylesheet" type="text/css" href="styles/panels.css">
+		<link rel="stylesheet" type="text/css" href="styles/companies.css">
+		<link rel="stylesheet" type="text/css" href="styles/popup.css">
+		<link rel="stylesheet" type="text/css" href="styles/product.css">
+
+
+		<!-- Scripts -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
+
+		
+		<script src="scripts/utils.js"></script>
+		<script src="scripts/world.js"></script>
+		<script src="scripts/product.js"></script>
+		<script src="scripts/company.js"></script>
+		<script src="scripts/process.js"></script>
+		<script src="scripts/dashboard.js"></script>
+		<script src="scripts/main.js"></script>
+		
+
+
+	</head>
+	<body>
+		<div id="nav">
+			<div class="active" id="nav-companies">Companies</div>
+			<div id="nav-products">Products</div>
+			<div id="nav-market">Market</div>
+		</div>
+		<div id="pages">
+			<div id="page-companies" class="page">
+				<div class="companyList panel list">
+					<div class="title">Companies</div>
+					<div class="content">
+						
+					</div>
+				</div>
+				<div class="companyInfo panel">
+					<div class="title">Google Inc.</div>
+					<div class="content">
+						<div class="panel details list">
+							<div class="title">Details</div>
+							<div class="content">Hmmmm</div>
+						</div>
+						<div class="panel products list">
+							<div class="title">Products</div>
+							<div class="content">Hmmmm</div>
+						</div>
+						<div class="panel inventory list">
+							<div class="title">Inventory</div>
+							<div class="content">Hmmmm</div>
+						</div>
+						<div class="panel earningsgraph">
+							<div class="title">Earnings Graph</div>
+							<div class="content">
+								<canvas></canvas>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

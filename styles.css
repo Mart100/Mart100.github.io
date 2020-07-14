@@ -18,9 +18,7 @@ body {
 	margin: 10;
 	cursor: pointer;
 	border-radius: 10px;
-	transition-property: width, height, max-width, max-height, margin, filter, opacity, font-size;
 	transition-duration: .2s;
-	transition-timing-function: linear;
 	background-color: rgb(40, 40, 40);
 }
 .projectBOX .thumbnail {
@@ -30,9 +28,7 @@ body {
 	height: 100%;
 	filter: grayscale(80%);
 	opacity: 0.9;
-	transition: opacity .2s linear;
-	transition: filter .2s linear;
-	animation-play-state: paused;
+	transition-duration: .2s;
 }
 .projectBOX:hover .thumbnail {
 	opacity: 1;
