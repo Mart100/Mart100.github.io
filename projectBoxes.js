@@ -644,6 +644,17 @@ let projects = [
 			This was an information and community site + discord bot for an upcomming game named Helmet Royale.
 			`
 		},
+		{
+			title: 'Market Simu',
+			image: 'https://i.imgur.com/HkpnkFe.png',
+			link: siteLink+'marketSimu',
+			code: githubSiteLink+'marketSimu',
+			created: '27/6/2020',
+			score: 13,
+			description: `
+			A program that simulates an open market making products.
+			`
+		},
 ]
 
 $(() => {

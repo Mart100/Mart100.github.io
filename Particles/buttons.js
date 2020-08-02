@@ -73,7 +73,40 @@ const buttons = {
     color: 'rgb(7, 168, 193)',
     text: 'Snow',
     clicked() {
+
+      let whiteBG
+
+      setTimeout(() => {
+        whiteBG = $('<div style="position: absolute; width: 100%; top: 0px; height: 100%; background-color: white; opacity: 0;"></div>')
+        $('body').append(whiteBG)
+        whiteBG.animate({'opacity': '1'}, 2000)
+      }, 500)
+
+      isPaused = false
+      // set particle Settings
+      Psettings.gravity = new Vec2(0, 0.5)
       
+      // create particles
+      let settings = {
+        shape: new Vec2(15, 15),
+        color: [255, 255, 255, 0.5]
+      }
+      for(let buttonName in buttons) {
+        let button = buttons[buttonName]
+
+        for(let i=0;i<800;i++) {
+          // change settings
+          settings.position = new Vec2(getRandomRange(button.x, button.x+button.width), -100)
+          settings.velocity = new Vec2(getRandomRange(-5, 5), getRandomRange(-50, 0))
+
+          particles.push(new Particle(settings))
+        }
+      }
+      setTimeout(() => {
+        whiteBG.remove()
+        particles = []
+        window.location.href = "particles/snow/index.html" 
+      }, 3000) 
     }
   },
   fire: {

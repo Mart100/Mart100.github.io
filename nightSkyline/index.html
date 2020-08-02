@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>nightSkyline</title>
+		<script src="https://code.jquery.com/jquery-3.5.1.slim.js"></script>
+		<link rel="stylesheet" href="styles.css">
+
+		<link rel="stylesheet" href="https://cdn.metroui.org.ua/v4/css/metro-all.min.css">
+
+		<script src="utils.js"></script>
+		<script src="noise.js"></script>
+		<script src="building.js"></script>
+		<script src="main.js"></script>
+	</head>
+	<body>
+		<canvas id="canvas"></canvas>
+
+		<div id="settings">
+			<div class="buildings">
+				Building amount:<br>
+				<input id="buildingAmount" data-role="slider" data-value="500" data-min="10" data-max="1000" data-hint-always="true">
+				<br>
+
+			</div>
+			<div class="blurring">
+				Apply blur:
+				<input id="applyBlur" type="checkbox" data-role="checkbox" checked>
+			</div>
+			<div class="grain">
+				Apply grain:
+				<input id="applyGrain" type="checkbox" data-role="checkbox" checked>
+			</div>
+			<div class="water">
+				Add water:
+				<input id="addWater" type="checkbox" data-role="checkbox" checked>
+			</div>
+
+			<br>
+			<div style="text-align:center;">
+				<button id="start" class="button success">Start</button>
+			</div>
+		</div>
+		<div id="loading">
+			<div id="loadingText">Processing...</div>
+			<div id="currentProcess">Waiting...</div>
+		</div>
+
+		<script src="https://cdn.metroui.org.ua/v4/js/metro.min.js"></script>
+	</body>
+</html>
