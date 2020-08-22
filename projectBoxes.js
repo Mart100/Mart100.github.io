@@ -711,7 +711,7 @@ function addProjects() {
 		let title = project.title
 		$('#projectsWrapper').append(`
 		<div class="ProjectBOX" id="project-${projectNum}">
-			<a href="${project.link}"><img class="thumbnail" src="${project.image}"/></a>
+			<a href="${project.link}"><img class="thumbnail" src="${project.image}" alt="preview of ${project.title}"/></a>
 			<div class="bar">
 				<span class="title">${project.title}</span>
 				${ project.description != undefined ? `<img class="infoButton" src="https://i.imgur.com/4fHs0Qk.png"/>` : ''}

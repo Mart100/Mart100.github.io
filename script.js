@@ -1,5 +1,5 @@
 $(() => {
-    titleFun()
+    //titleFun()
     //rainbowBackground()
     subscribe()
 
