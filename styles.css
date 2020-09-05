@@ -124,8 +124,8 @@ body {
 	}
 
 	.projectBOX:hover {
-		width: min-content !important;
-		height: min-content !important;
+		width: 200px !important;
+		height: 200px !important;
 	}
 
 	.projectBOX .thumbnail {

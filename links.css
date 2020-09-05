@@ -36,11 +36,13 @@
 
 @media only screen and (max-width: 768px) {
 	#links img {
-		width: 50px;
-		height: 50px;
+		width: 80px;
+		height: 80px;
+		filter: grayscale(0%);
 	}
 	#links img:hover {
-		width: 60px;
-		height: 60px;
+		width: 80px;
+		height: 80px;
+		padding: 10px;
 	}
 }
