@@ -1,4 +1,5 @@
-let siteLink = location.href.replace('index.html', '')
+let siteLink = location.href.replace('index.html', '').split('#')[0]
+if(!siteLink.endsWith('/')) siteLink += '/'
 let githubSiteLink = 'https://github.com/Mart100/Mart100.github.io/tree/master/'
 let projectsShown = 14
 let sortBy = 'best'
