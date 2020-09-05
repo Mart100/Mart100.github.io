@@ -3,9 +3,19 @@
 	padding-bottom: 100px;
 	display: flex;
 	flex-direction: row;
+	width: 100%;
+	overflow-x: auto;
 }
 
 #skills > div {
+	width: 100%;
+	min-width: 1344px;
+	display: flex;
+	flex-direction: row;
+	text-align: center;
+}
+
+#skills .skillCategory {
 	flex: 3;
 	text-align: center;
 	font-size: 25px;
@@ -13,7 +23,7 @@
 }
 
 
-#skills > div > .skill {
+#skills .skillCategory > .skill {
 	height: 80px;
 	padding-top: 10px;
 	padding-bottom: 10px;
@@ -26,15 +36,15 @@
 	border: white 1px solid;
 }
 
-#skills > div > .skill > .progressBar {
+#skills .skillCategory > .skill > .progressBar {
 	height: 20px;
-	width: 200px;
+	width: calc(100% - 50px);
 	border: white 2px solid;
 	display: inline-block;
 	position: relative;
 }
 
-#skills > div > .skill > .progressBar > div {
+#skills .skillCategory > .skill > .progressBar > div {
 	height: 100%;
 	background-color: white;
 }

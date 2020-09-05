@@ -3,17 +3,33 @@
 
 }
 
+#navigator > a {
+	text-align: center;
+	text-decoration: none;
+}
+
 #navigator > a > button {
 	display: inline-block;
 	background-color: transparent;
 	color: white;
 	font-family: sans-serif;
-	font-size: 20px;
+	font-size: 100%;
 	border: white 2px solid;
 	padding: 10px 30px;
 	margin: 0px 20px;
 	cursor: pointer;
 	transition-duration: 300ms;
+}
+
+@media only screen and (max-width: 768px) {
+	#navigator > a > button {
+		display: block;
+		justify-self: center;
+		margin-left: auto;
+		margin-right: auto;
+		margin-top: 10px;
+	}
+
 }
 
 #navigator > a > button:hover {

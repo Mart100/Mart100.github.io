@@ -2,8 +2,6 @@
 #linksCont {
 	max-width: 1500px;
 	width: 100%;
-	display: flex;
-	justify-content: center;
 	margin: auto;
 	text-align: center;
 }
@@ -19,6 +17,7 @@
 	filter: grayscale(100%);
 
 }
+
 #links img:hover {
 	width: 170px;
 	height: 170px;
@@ -33,5 +32,15 @@
 	margin: auto;
 	padding: 50px;
 	align-items: center;
-	display: flex;
+}
+
+@media only screen and (max-width: 768px) {
+	#links img {
+		width: 50px;
+		height: 50px;
+	}
+	#links img:hover {
+		width: 60px;
+		height: 60px;
+	}
 }
