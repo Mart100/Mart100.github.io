@@ -46,6 +46,9 @@
 		<!-- css -->
 		<link href="styles.css" rel="stylesheet">
 		<link href="skills.css" rel="stylesheet">
+		<link href="links.css" rel="stylesheet">
+		<link href="newsletter.css" rel="stylesheet">
+		<link href="navigator.css" rel="stylesheet">
 
 		<!-- loading bar -->
 		<link rel="stylesheet" type="text/css" href="loading-bar.min.css"/>
@@ -53,15 +56,25 @@
 
 
 	</head>
-	<body id="body">
-		<div class="splitter"><h1>Mart van Enckevort <br><h2>My personal website</h2></h1></div>
-		<p id="about-me">
+	<body id="body" class="backgroundNoise">
+		<div id="header">
+			<div></div>
+			<div class="name"><h1>Mart van Enckevort</h1></div>
+			<div class="about"><p>
 				Hey there,<br>
 				My name is Mart and welcome to my website!<br>
 				I am a 16 year old highschool student hobbying programming.<br>
 				This is my portofolio where I post most of my programming projects and other projects.<br>
 				Note that most projects won't work at their full power on mobile and using a computer is reccommended.
-		</p>
+			</p></div>
+			<div id="navigator">
+				<a href="#projectsSplitter"><button>Projects</button></a>
+				<a href="#skillsSplitter"><button>Skills</button></a>
+				<a href="#linksSplitter"><button>Links</button></a>
+				
+			</div>
+		</div>
+		
 		<div class="splitter" id="projectsSplitter"><span><h2>Projects</h2></span>
 			<div id="sort">Sort by:
 				<div class="dropdown">
@@ -75,24 +88,68 @@
 		</div>
 		<div id="projectsWrapper"></div>
 		
-		<div class="splitter" id="projectsSplitter" style="display:none;"><h2>Projects</h2></div>
-		<div id="skills" style="display:none;">
+		<div class="splitter" id="skillsSplitter"><h2>Skills</h2></div>
+		<div id="skills">
 			<div>
 				<div class="title">Programming Languages</div>
 				<div class="skill">
 					<span>Javascript</span>
-					<div class="ldBar" data-value="90" data-preset="circle"></div>
+					<br><div class="progressBar"><div style="width: 90%"></div></div>
 				</div>
 				<div class="skill">
 					<span>Typescript</span>
-					<div class="ldBar" data-value="90" data-preset="circle"></div>
+					<br><div class="progressBar"><div style="width: 80%"></div></div>
+				</div>
+				<div class="skill">
+					<span>Python</span>
+					<br><div class="progressBar"><div style="width: 65%"></div></div>
+				</div>
+				<div class="skill">
+					<span>Dart</span>
+					<br><div class="progressBar"><div style="width: 65%"></div></div>
 				</div>
 			</div>
 			<div>
 				<div class="title">Technologies/Libraries</div>
+				<div class="skill">
+					<span>Jquery</span>
+					<br><div class="progressBar"><div style="width: 90%"></div></div>
+				</div>
+				<div class="skill">
+					<span>Electron</span>
+					<br><div class="progressBar"><div style="width: 80%"></div></div>
+				</div>
+				<div class="skill">
+					<span>Express + socket.io</span>
+					<br><div class="progressBar"><div style="width: 80%"></div></div>
+				</div>
+				<div class="skill">
+					<span>Flutter</span>
+					<br><div class="progressBar"><div style="width: 70%"></div></div>
+				</div>
 			</div>
 			<div>
 				<div class="title">Programming areas</div>
+				<div class="skill">
+					<span>Simulations</span>
+					<br><div class="progressBar"><div style="width: 80%"></div></div>
+				</div>
+				<div class="skill">
+					<span>Websites</span>
+					<br><div class="progressBar"><div style="width: 75%"></div></div>
+				</div>
+				<div class="skill">
+					<span>Games</span>
+					<br><div class="progressBar"><div style="width: 75%"></div></div>
+				</div>
+				<div class="skill">
+					<span>Algorithms</span>
+					<br><div class="progressBar"><div style="width: 65%"></div></div>
+				</div>
+				<div class="skill">
+					<span>Apps</span>
+					<br><div class="progressBar"><div style="width: 60%"></div></div>
+				</div>
 			</div>
 		</div>
 
@@ -103,7 +160,7 @@
 			<div id="subscribe">Subscribe</div>
 			<br>
 		</div>-->
-		<div class="splitter"><h2>Links</h2></div>
+		<div class="splitter" id="linksSplitter"><h2>Links</h2></div>
 		<div id="linksCont"><div id="links">
 			<a href="https://github.com/Mart100"><img id="github" src="https://i.imgur.com/pP7GNhC.png" alt="github logo"/></a>
 			<a href="https://i.imgur.com/eaqjvxs.png"><img id="discord" src="https://i.imgur.com/ugJ4AMF.png" alt="discord logo"/></a>

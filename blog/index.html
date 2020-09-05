@@ -1,0 +1,108 @@
+<html>
+  <head>
+    <title>Mart's Blogs</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <style>
+      body {
+        margin: 0px;
+				background-color: rgb(15, 15, 15);
+				color: white;
+				font-size: 25px;
+      }
+      #blogs {
+				position: absolute;
+				width: 100%;
+				text-align: center;
+			}
+
+			#blogs > a {
+				width: 0px;
+				height: 0px;
+				font-size: 0px;
+				user-select: none;
+			}
+			.blog {
+				display: inline-block;
+				height: 450px;
+				width: 400px;
+				padding: 25px;
+				margin: 25px;
+				text-align: left;
+				border-radius: 10px;
+				transition-duration: 0.5s;
+				user-select: none;
+				cursor: pointer;
+				color: white;
+				font-size: 25px;
+				
+			}
+			.blog:hover {
+				background-color: rgb(50, 50, 50);
+			}
+			.blog .date {
+				margin-left: 20px;
+				font-size: 22px;
+				color: darkgrey;
+			}
+			.blog .title {
+				margin-left: 20px;
+			}
+			.blog img {
+				height: 400px;
+				width: 400px;
+			}
+			.splitter {
+				padding: 30px;
+				font-size: 62px;
+				text-align: center;
+				color: white;
+				user-select: none;
+				-moz-user-select: none;
+
+				background-color: rgb(28, 29, 32); /* rgba(0, 0, 0, 0.719); */
+				box-shadow: 0 0px 20px rgba(0,0,0,0.4);
+			}
+
+    </style>
+  </head>
+  <body>
+		<div class="splitter">My blogs</div>
+    <div id="blogs">
+		</div>
+  </body>
+</html>
+
+<script>
+let blogs = [
+	{
+		image: "https://i.imgur.com/k4Gs3Bi.png",
+		name: "Raytracer engine in javascript",
+		date: '8/5/2020',
+		link: "./raytracing.html"
+	},
+	{
+		image: "https://i.imgur.com/4FnSd4Q.png",
+		name: "Keeping Track flutter app",
+		date: '4/8/2020',
+		link: "./keepingTrack.html"
+	}, 
+]
+
+let dateStringToNum = (a) => {
+	let split = a.date.replace(/\./g, '0').split('/')
+	return Number(split[0]) + Number(split[1])*31 + Number(split[2])*12*31
+}
+
+blogs.sort((a, b) => dateStringToNum(b)-dateStringToNum(a))
+for(let blog of blogs) {
+	$('#blogs').append(`
+	<a href="${blog.link}"><div class="blog">
+		<img src="${blog.image}">
+		<div class="title">${blog.name}</div>
+		<div class="date">${blog.date}</div>
+	</div></a>
+	`)
+}
+</script>

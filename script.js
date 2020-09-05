@@ -2,9 +2,19 @@ $(() => {
     //titleFun()
     //rainbowBackground()
     subscribe()
+    backgroundNoise()
 
     console.log('Ehhh')
 })
+
+function backgroundNoise() {
+    setInterval(() => {
+        $('.backgroundNoise').css(
+            'background-position',
+            `${Math.random()*100}% ${Math.random()*100}%`
+        )
+    }, 25)
+}
 
 function titleFun() {
     let stateL = 0

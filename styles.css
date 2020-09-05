@@ -1,7 +1,9 @@
-
+html {
+  scroll-behavior: smooth;
+}
 
 body {
-	font-family: 'Quicksand';
+	font-family: Radikal,sans-serif; /*font-family: 'Quicksand';*/
 	margin: 0;
 	background-color: rgb(46, 47, 52) /*rgb(0, 81, 68);*/
 }
@@ -26,7 +28,7 @@ body {
 	position: relative;
 	width: 100%;
 	height: 100%;
-	filter: grayscale(80%);
+	filter: grayscale(100%);
 	opacity: 0.9;
 	transition-duration: .2s;
 }
@@ -116,89 +118,16 @@ body {
 
 
 .splitter {
-	padding: 20px;
-	font-size: 35px;
+	padding: 10px;
+	font-size: 40px;
 	text-align: center;
-	color: white;
+	color: black;
 	user-select: none;
 	-moz-user-select: none;
 
+	background: url(https://i.imgur.com/rxiAkeU.jpg) 0 0;
 	background-color: rgb(28, 29, 32); /* rgba(0, 0, 0, 0.719); */
 	box-shadow: 0 0px 20px rgba(0,0,0,0.4);
-}
-
-
-/*======NEWSLETTER======*/
-#newsletter p {
-	color: white;
-	font-size: 25px;
-	text-align: center;
-}
-#newsletter input {
-	position: relative;
-	left: 50%;
-	transform: translateX(-50%);
-	font-size: 20px;
-	width: 300px;
-	margin: 5px;
-}
-#newsletter #subscribe {
-	position: relative;
-	left: 50%;
-	transform: translateX(-50%);
-	font-size: 20px;
-	text-align: center;
-	width: 300px;
-	cursor: pointer;
-	border-radius: 1px;
-	background-color: rgb(52, 152, 219);
-	padding: 5px;
-	margin: 5px;
-	color: white;
-}
-#newsletter #subscribe:hover {
-	background-color: rgb(41, 128, 185);
-}
-
-/*======LINKS======*/
-#linksCont {
-	max-width: 1500px;
-	width: 100%;
-	display: flex;
-	justify-content: center;
-	margin: auto;
-	text-align: center;
-}
-#links img {
-	cursor: pointer;
-	width: 150px;
-	height: 150px;
-	transition-property: width, height, padding;
-	transition-duration: .4s;
-	padding: 10px;
-	margin: 0 auto;
-	display: inline-block;
-
-}
-#links img:hover {
-	width: 170px;
-	height: 170px;
-	padding: 0px;
-
-}
-#links {
-	overflow: auto;
-	width: auto;
-	margin: auto;
-	padding: 50px;
-	align-items: center;
-	display: flex;
-}
-
-/*======About-ME======*/
-#about-me {
-	color: white;
-	text-align: center;
 }
 
 /*======Projects Sort by Dropdown======*/
@@ -210,12 +139,12 @@ body {
 	font-weight: 400;
 	position: absolute;
 	right: 20px;
-	transform: translateY(-45px);
+	transform: translateY(-95px);
 	font-size: 20px;
 	text-align: right;
 }
 #projectsSplitter .dropbtn {
-	background-color: rgb(51, 151, 219);
+	background-color: black;
 	color: white;
 	padding: 16px;
 	font-size: 16px;
@@ -223,10 +152,11 @@ body {
 	border-radius: 1px;
 	cursor: pointer;
 	width: 105px;
+	transition-duration: 200ms;
 }
 
 #projectsSplitter .dropbtn:hover {
-	background-color: rgb(41, 128, 185);
+	background-color: rgb(50, 50, 50);
 }
 
 #projectsSplitter .dropdown {
@@ -249,13 +179,43 @@ body {
 	padding: 12px 16px;
 	display: block;
 	color: white;
-	background-color: rgb(41, 128, 185);
+	background-color: black;
 	width: 100%;
 	cursor: pointer;
 }
 #projectsSplitter .dropdown-content button:hover {
-	background-color: rgb(44, 117, 165);
+	background-color: rgb(50, 50, 50);
 
 }
 
 #projectsSplitter .show {display: block;}
+
+
+/*======Background noise======*/
+
+.backgroundNoise {
+	background: url(https://i.imgur.com/Cw8wqDs.jpg) 0 0;
+}
+
+
+/*======Background noise======*/
+#header {
+	height: 500px;
+}
+
+#header .name {
+	color: white;
+	text-align: center;
+	font-size: 40px;
+	padding-top: 20px;
+	
+}
+#header .name h1 {
+	margin-top: 0px;
+}
+
+#header .about {
+	color: white;
+	text-align: center;
+	font-size: 25px;
+}

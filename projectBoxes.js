@@ -655,6 +655,72 @@ let projects = [
 			A program that simulates an open market making products.
 			`
 		},
+		{
+			title: 'Blog',
+			image: 'https://i.imgur.com/tkBZR4n.png',
+			link: siteLink+'blog',
+			code: githubSiteLink+'blog',
+			created: '8/6/2020',
+			score: 13,
+			description: `
+			Here I keep and write down my journey on specific projects I've done.
+			`
+		},
+		{
+			title: 'Moving backgrounds folder',
+			image: 'https://i.imgur.com/5BVa1ZW.png',
+			link: siteLink+'art',
+			code: githubSiteLink+'art',
+			created: '12/8/2019',
+			score: 12,
+			description: `
+			Multiple projects which contain moving backgrounds "art" thingies
+			`
+		},
+		{
+			title: 'Keeping Track',
+			image: 'https://i.imgur.com/4FnSd4Q.png',
+			link: siteLink+'keepingTrack',
+			code: githubSiteLink+'keepingTrack',
+			created: '4/8/2020',
+			score: 14,
+			description: `
+			An app to keep track of your habits made in flutter
+			`
+		},
+		{
+			title: 'treesFog / 2D raytracer',
+			image: 'https://i.imgur.com/AwgHpGs.png',
+			link: siteLink+'treesFog',
+			code: githubSiteLink+'treesFog',
+			created: '26/7/2020',
+			score: 10,
+			description: `
+			a 2D raytracer, with some weird trees. I don't know where this project went, It was ment to look like a forest.
+			`
+		},
+		{
+			title: 'night Skyline',
+			image: 'https://i.imgur.com/FFcikhY.png',
+			link: siteLink+'nightSkyline',
+			code: githubSiteLink+'nightSkyline',
+			created: '27/7/2020',
+			score: 12,
+			description: `
+			A simulation that tries to create a skyline pixel by pixel. Using image effects etc
+			`
+		},
+		{
+			title: 'Tunneling',
+			image: 'https://i.imgur.com/2RaI8jZ.png',
+			link: siteLink+'tunneling',
+			code: githubSiteLink+'tunneling',
+			created: '28/7/2020',
+			score: 10,
+			description: `
+			Tunnel with circles? or something
+			`
+		},
 ]
 
 $(() => {
@@ -724,7 +790,7 @@ function addProjects() {
 			event.preventDefault()
 
 			if(!project.link) return
-			if(!project.link.includes('martve.me')) {
+			if(!project.link.includes('https://martvenck.com')) {
 				let num = splicedProjects.indexOf(splicedProjects.find((a) => a.title == title))
 				$(`#project-${num} .thumbnail`).attr('src', 'https://i.imgur.com/dwb4jC1.gif')
 				$(`#project-${num} .title`).html('Loading...')

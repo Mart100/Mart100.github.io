@@ -4,7 +4,7 @@ https://keybase.io/marto_0
 
 I hereby claim:
 
-  * I am an admin of https://martve.me
+  * I am an admin of https://martvenck.com
   * I am marto_0 (https://keybase.io/marto_0) on keybase.
   * I have a public key ASB2yP1BiNdO_s6Or4tPgiEy1YPXJEAW4Sf0mwKDhxdLvwo
 
@@ -27,7 +27,7 @@ To do so, I am signing this object:
     },
     "service": {
       "entropy": "vYonmEY5Zpqh8RlXnHb+KWFE",
-      "hostname": "martve.me",
+      "hostname": "martvenck.com",
       "protocol": "https:"
     },
     "type": "web_service_binding",

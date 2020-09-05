@@ -1,0 +1,31 @@
+/*======NEWSLETTER======*/
+#newsletter p {
+	color: white;
+	font-size: 25px;
+	text-align: center;
+}
+#newsletter input {
+	position: relative;
+	left: 50%;
+	transform: translateX(-50%);
+	font-size: 20px;
+	width: 300px;
+	margin: 5px;
+}
+#newsletter #subscribe {
+	position: relative;
+	left: 50%;
+	transform: translateX(-50%);
+	font-size: 20px;
+	text-align: center;
+	width: 300px;
+	cursor: pointer;
+	border-radius: 1px;
+	background-color: rgb(52, 152, 219);
+	padding: 5px;
+	margin: 5px;
+	color: white;
+}
+#newsletter #subscribe:hover {
+	background-color: rgb(41, 128, 185);
+}
