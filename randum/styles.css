@@ -1,0 +1,251 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+
+html {
+  scroll-behavior: smooth;
+}
+body {
+  margin: 0px;
+  background-color: rgb(34, 38, 41);
+  font-family: Poppins;
+  color: white;
+  height: 100%;
+}
+
+.logo {
+  font-weight: bold;
+}
+
+.title {
+  font-weight: bold;
+}
+a {
+  color: white;
+  text-decoration: none;
+}
+
+a.link {
+  text-decoration: underline;
+}
+
+#download {
+  background-color: rgb(34, 38, 41);
+  text-align: center;
+  height: calc(100% - 170px);
+  padding-top: 100px;
+}
+#download .title {
+  font-size: 45px;
+}
+#download .desc {
+  color: rgb(200, 200, 200);
+  font-size: 25px;
+  width: 800px;
+  margin: auto;
+  margin-top: 40px;
+}
+#download .button {
+  width: 300px;
+  height: 80px;
+  margin: auto;
+  margin-top: 50px;
+  cursor: pointer;
+}
+#download #buttons .button {
+  display: inline-block;
+  margin: 20px;
+  margin-top: 50px;
+}
+#download .button a {
+  text-decoration: none;
+}
+#download .button div {
+  padding: 25px;
+  width: 250px;
+  border-radius: 5px;
+  font-size: 25px;
+  transition-duration: 0.4s;
+}
+#download .button.download div {
+  background-color: rgb(200, 60, 70);
+  color: white;
+}
+#download .button.download:hover div {
+  background-color: rgb(255, 0, 0);
+}
+#download .button.features div {
+  background-color: rgb(20, 20, 20);
+  color: white;
+}
+#download .button.features:hover div {
+  background-color: rgb(0, 0, 0);
+}
+#features {
+  background-color: rgb(38, 42, 45);
+  height: auto;
+  padding-top: 100px;
+  padding-bottom: 100px;
+}
+#features .feature {
+  margin-top: 100px;
+  margin-right: auto;
+  margin-left: auto;
+  width: 60%;
+  height: 400px;
+}
+#features .feature .text {
+  width: 500px;
+  float: right;
+  padding-top: 100px;
+  height: 200px;
+}
+#features .feature .title {
+  font-size: 45px;
+}
+#features .feature .desc {
+  color: rgb(150, 150, 150);
+  font-size: 23px;
+  width: 800px;
+  margin: auto;
+  margin-top: 40px;
+}
+#features .feature img {
+  box-shadow: 5px 10px 10px rgba(0, 0, 0, 0.4);
+  max-width: 500px;
+  width: 90%;
+}
+
+#features .contR img {
+  float: right;
+}
+#features .contR .text {
+  float: left;
+}
+#FAQ {
+  padding-left: 250px;
+  padding-right: 250px;
+}
+#FAQ .title {
+  text-align: center;
+  font-size: 40px;
+  padding-top: 50px;
+}
+#FAQ .faq {
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+#FAQ .faq .q {
+  font-size: 30px;
+}
+#FAQ .faq .a {
+  font-size: 20px;
+  color: rgb(200, 200, 200);
+}
+#footer {
+  height: 100px;
+  background-color: rgb(20, 20, 20);
+  padding-left: 400px;
+  padding-right: 400px;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  font-family: 'roboto'
+}
+#footer .logo {
+  width: 200px;
+  height: 50px;
+}
+#footer .logo img {
+  width: 50px;
+  height: 50px;
+  float: left;
+}
+#footer .logo span {
+  font-size: 30px;
+  margin: 10px;
+  float: right;
+}
+#footer #contact {
+  float: right;
+  width: 50px;
+  position: relative;
+  transform: translateY(-100%);
+
+}
+#footer #contact a {
+  color: rgb(200, 200, 200);
+}
+#footer #contact a:hover {
+  color: rgb(255, 255, 255);
+}
+#footer .copyright {
+  width: 300px;
+}
+#footer #contact .title {
+  font-size: 25px;
+}
+
+
+@media only screen and (max-width: 800px) {
+  #download .desc {
+    width: auto;
+    font-size: 20px;
+  }
+  #download .title {
+    font-size: 35px;
+  }
+  #buttons {
+    text-align: center;
+    width: 80%;
+    padding-left: 10%;
+    padding-right: 10%;
+    margin-top: 30px;
+  }
+  #download .button {
+    margin-top: 20px !important;
+  }
+  #download .button div {
+    padding: 15px;
+    width: calc(100% - 30px);
+    border-radius: 5px;
+    font-size: 25px;
+    transition-duration: 0.4s;
+  }
+
+  #features .feature {
+    width: 80%;
+    height: auto;
+
+  }
+  #features .feature img {
+    float: none;
+  }
+  #features .feature .text {
+    width: auto;
+    height: auto;
+    float: none;
+    padding-top: 10px;
+  }
+  #features .feature .text .title {
+    font-size: 25px;
+  }
+  #features .feature .text .desc {
+    font-size: 15px;
+  }
+
+
+  #FAQ {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  #footer {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  #footer #contact {
+    width: 100px;
+  }
+  #contact a {
+    display: block;
+  }
+
+
+}

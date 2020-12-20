@@ -1,0 +1,180 @@
+body {
+  margin: 0px;
+  font-family: "Lato", Helvetica, sans-serif;
+  background-color: rgb(25, 25, 25);
+  
+  height: 100%;
+  height: 100%;
+  margin: 0;
+  color: #777;
+}
+
+#startscreen {
+	text-align: center;
+	width: 100%;
+	background-color: rgb(238, 188, 0);
+}
+#startscreen #thumbnail {
+	height: 50%;
+}
+
+#categories {
+  background-color: rgb(20, 20, 20);
+  padding-left: 5%;
+}
+
+#categories div {
+  display: inline-block;
+  height: 20px;
+  color: white;
+  font-size: 20px;
+  padding: 10px;
+  margin: 10px;
+  user-select: none;
+  cursor: pointer;
+  text-align: center;
+}
+
+#categories div.selected .background {
+  opacity: 0.8;
+  
+}
+#categories div.selected {
+  border: 2px solid rgb(255, 255, 255) !important;
+}
+
+#categories div.selected.all {
+  color: black;
+}
+
+#categories div:hover .background {
+  opacity: 0.7;
+}
+
+#categories div .background {
+  opacity: 0.2;
+  position: relative;
+  width: 100%;
+  transform: translate(-20px, -43px);
+  z-index: 0;
+  display: inline-block;
+  transition-duration: 300ms;
+  pointer-events: none;
+}
+#categories div span {
+  position: relative;
+  width: 0px;
+  z-index: 5;
+  transition-duration: 300ms;
+  pointer-events: none;
+}
+
+#commands {
+  width: 100%;
+  position: absolute;
+}
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+  color: rgb(210, 210, 210);
+  table-layout: fixed
+}
+
+td, th {
+  text-align: left;
+  padding: 25px;
+}
+
+nav {
+  font-family: Poppins;
+  font-weight: bold;
+  background-color: rgb(238, 188, 0);
+}
+nav a {
+  color: rgb(20, 20, 20) !important;
+}
+nav span {
+  color: rgb(20, 20, 20) !important;
+}
+
+th {
+  background-color: rgb(25, 25, 25);
+}
+
+tr {
+  background-color: rgb(30, 30, 30);
+}
+
+td:nth-child(odd) {
+  background-color: rgba(0, 0, 0, .1);
+}
+
+td {
+  font-size: 20px;
+}
+
+th:nth-child(1) {
+  padding: 2px;
+  width: 5px;
+}
+td:nth-child(1) {
+  padding: 2px;
+  width: 5px;
+}
+
+td:nth-child(2) {
+  color: white;
+  font-size: 25px;
+}
+
+td:nth-child(even) {
+  max-width: 600px;
+}
+
+tr:nth-child(even) {
+  background-color: rgb(35, 35, 35);
+}
+
+.parallax {
+  position: relative;
+  background-attachment: fixed;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: 500px 500px;
+
+  height: 50%;
+}
+
+h3 {
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  font: 20px "Lato", sans-serif;
+  color: #111111;
+  text-align:center;
+}
+
+.category div {
+  width: 5px;
+  height: 40px;
+}
+
+
+@media only screen and (max-width: 600px) {
+  td, th {
+    padding: 13px;
+    font-size: 13px;
+  }
+  td:nth-child(2) {
+    font-size: 17px;
+  }
+  .parallax {
+    background-size: 300px 300px;
+  }
+  td:nth-child(4) {
+    display:none;
+  }
+  th:nth-child(4) {
+    display:none;
+  }
+}

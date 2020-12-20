@@ -1,137 +1,108 @@
 <html>
-	<head>
-		<title>Randum.</title>
-		<meta content="text/html;charset=utf-8" http-equiv="Content-Type">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<meta content="utf-8" http-equiv="encoding">
-		<link rel="shortcut icon" href="./logo.png" type="image/jpg">
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <head>
+    <title>Randum.</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>
 
-		<!-- Google Analytics -->
-		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-140200727-6"></script>
-		<script>
-			window.dataLayer = window.dataLayer || [];
-			function gtag(){dataLayer.push(arguments);}
-			gtag('js', new Date());
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-140200727-6"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
 
-			gtag('config', 'UA-140200727-6');
-		</script>
+      gtag('config', 'UA-140200727-6');
+    </script>
 
+    <!-- stuff -->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link href="nav.css" rel="stylesheet">
+    <link href="styles.css" rel="stylesheet">
+    <script src="script.js"></script>
 
-		<script src="main.js"></script>
-		<link href="style.css" rel="stylesheet">
-	</head>
-	<body>
-		<div class="parallax" id="startscreen" data-image-src="./logo.png">
-		</div>
-		<div id="commands">
-			<table>
-				<tr>
-					<th>Command</th>
-					<th>Description</th>
-					<th>Source</th>
-				</tr>
-				<tr>
-					<td>randum help</td>
-					<td>Lists all commands</td>
-					<td>-</td>
-				</tr>
-				<tr>
-					<td>randum image</td>
-					<td>Shows a random image</td>
-					<td>https://picsum.photos</td>
-				</tr>
-				<tr>
-					<td>randum quote</td>
-					<td>Gets a random quote</td>
-					<td>https://github.com/vinitshahdeo/inspirational-quotes</td>
-				</tr>
-				<tr>
-					<td>randum word</td>
-					<td>Gets a random word</td>
-					<td>https://github.com/words/an-array-of-english-words</td>
-				</tr>
-				<tr>
-					<td>randum letter</td>
-					<td>Gets a random letter (don’t know why you would want that though)</td>
-					<td>-</td>
-				</tr>
-				<tr>
-					<td>randum activity</td>
-					<td>A random activity for you to do although you probably won’t</td>
-					<td>https://www.boredapi.com/</td>
-				</tr>
-				<tr>
-					<td>randum advice</td>
-					<td>just random stuff that probably won’t help you</td>
-					<td>https://api.adviceslip.com/</td>
-				</tr>
-				<tr>
-					<td>randum cat fact</td>
-					<td>Facts… about cats</td>
-					<td>https://alexwohlbruck.github.io/cat-facts</td>
-				</tr>
-				<tr>
-					<td>randum cat</td>
-					<td>What do you expect</td>
-					<td>https://aws.random.cat</td>
-				</tr>
-				<tr>
-					<td>randum dog</td>
-					<td>random picture of a cat maybe?</td>
-					<td>https://random.dog</td>
-				</tr>
-				<tr>
-					<td>randum dadjoke</td>
-					<td>just a random joke but its bad</td>
-					<td>https://icanhazdadjoke.com</td>
-				</tr>
-				<tr>
-					<td>randum person</td>
-					<td>Information about a made up person.</td>
-					<td>https://randomuser.me</td>
-				</tr>
-				<tr>
-					<td>randum yesorno</td>
-					<td>yes? Or… no?</td>
-					<td>https://yesno.wtf</td>
-				</tr>
-				<tr>
-					<td>randum number</td>
-					<td>Gets a random number</td>
-					<td>-</td>
-				</tr>
-				<tr>
-					<td>randum fact</td>
-					<td>Something probably not even interesting</td>
-					<td>https://uselessfacts.jsph.pl</td>
-				</tr>
-				<tr>
-					<td>randum poem</td>
-					<td>Bet you won’t actually read it</td>
-					<td>https://www.poemist.com</td>
-				</tr>
-				<tr>
-					<td>randum trump</td>
-					<td>Something trump would say</td>
-					<td>https://api.whatdoestrumpthink.com</td>
-				</tr>
-				<tr>
-					<td>randum wiki</td>
-					<td>Random wikipedia</td>
-					<td>Wikipedia</td>
-				</tr>
-				<tr>
-					<td>randum website</td>
-					<td>The most random websites</td>
-					<td>https://www.randomweb.site</td>
-				</tr>
-				<tr>
-					<td>randum logo [image]</td>
-					<td>Get a randomly colorized image/logo</td>
-					<td>https://brandmark.io/color-wheel/</td>
-				</tr>
-			</table>
-		</div>
-	</body>
+  </head>
+  <body>
+    <nav>
+      <a class="logo" href="./">
+        <span>Randum.</span>
+      </a>
+      <a class="link" href="#contact">Contact</a>
+      <a class="link" href="#FAQ">FAQ</a>
+      <a class="link" href="./commands/">Commands</a>
+      <a class="link" href="#features">Features</a>
+    </nav>
+    <div id="download">
+      <div class="title">THE discord bot for all your needs!</div>
+      <div class="desc">Randum. has a huge amount of commands to get a random x.<br>Jokes, Memes, Waifus, Dogs, Cats and more!</div>
+      <div id="buttons">
+        <div class="button download">
+          <a href="https://discordapp.com/api/oauth2/authorize?client_id=709062286731378789&permissions=2048&scope=bot">
+            <div>Add to discord</div>
+          </a>
+        </div>
+        <div class="button features">
+          <a href="#features">
+            <div>See features</div>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div id="features">
+      <div class="feature contL">
+        <img src="https://i.imgur.com/SLfmuYp.png">
+        <div class="text">
+          <span class="title">All the commands you would ever want</span>
+          <br><br>
+          <span class="desc">
+            Use and explore the many commands Randum. has to offer!
+            For a full list of all the commands, click <a class="link" href="commands/">here</a>
+          </span>
+        </div>
+      </div>
+      <div class="feature contR">
+        <img src="https://i.imgur.com/gCgEzzg.png">
+        <div class="text">
+          <span class="title">Full economy system! [UPCOMING]</span>
+          <br><br>
+          <span class="desc">
+            A fun and challenging economy system!
+          </span>
+        </div>
+      </div>
+    </div>
+    <div id="FAQ">
+      <div class="title">Frequently Asked Questions:</div>
+      <div class="faq">
+        <div class="q">What is Randum.?</div>
+        <div class="a">
+          Randum. is a discord bot, anyone can invite it to their discord server. And use its many commands!
+        </div>
+      </div>
+      <div class="faq">
+        <div class="q">What commands does Randum. have?</div>
+        <div class="a">
+          Visit the <a class="link" href="commands/">commands page</a> to get a list of all the commands you can use!
+        </div>
+      </div>
+      <div class="faq">
+        <div class="q">Who created Randum.?</div>
+        <div class="a">
+          I did. Find more about me here: <a class="link" href="https://martvenck.com">https://martvenck.com</a>
+        </div>
+      </div>
+    </div>
+    <footer id="footer">
+      <div class="logo">
+        <img src="https://i.imgur.com/e7Lu0eC.png">
+        <span>Randum.</span>
+      </div>
+      <div class="copyright">Copyright 2020 All rights reserved. </div>
+      <div id="contact">
+        <span class="title">Contact</span>
+        <a href="https://discord.gg/Q4GEUfD">Discord</a>
+        <a href="mailto:martvanenckk@gmail.com">Email</a>
+      </div>
+    </footer>
+  </body>
 </html>
