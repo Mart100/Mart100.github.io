@@ -3,7 +3,16 @@ let currentCategory = 'all'
 $(() => {
 	parallaxEffect()
 	addCommands()
+	checkSimpleMode()
 })
+
+function checkSimpleMode() {
+	let location = window.location.href
+	if(location.endsWith('simple')) {
+		$('nav').remove()
+		$('.parallax').remove()
+	}
+}
 
 function addCommands() {
 	let categories = {
