@@ -1,0 +1,18 @@
+body {
+	background-color: rgb(50, 50, 50);
+	margin: 0px;
+	text-align: center;
+	overflow: hidden;
+}
+
+canvas {
+	background-color: rgb(5, 5, 5);
+}
+
+#imgSize {
+	position: absolute;
+	font-family: Arial, Helvetica, sans-serif;
+	top: 5px;
+	right: 5px;
+	color: white;
+}
