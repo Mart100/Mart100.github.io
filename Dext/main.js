@@ -9,6 +9,8 @@ $(() => {
   let compiled = ''
   $('#run').on('click', async () => {
 
+    compiled = ''
+
     // open dext file
     let dext = $('#input').val()
 
@@ -20,6 +22,7 @@ $(() => {
 
     // run program
     console.logs.length = 0
+
     eval(compiled)
     output = console.logs.join('\n')
 

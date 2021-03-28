@@ -39,3 +39,15 @@ body {
   display: none;
   background-color: rgba(0,0,0,0.2);
 }
+
+#info {
+  position: absolute;
+  right: 0px;
+  top: 150px;
+  width: auto;
+  height: auto;
+  color: white;
+  padding: 5px;
+  background-color: rgba(0,0,0,0.2);
+  font-weight: bold;
+}

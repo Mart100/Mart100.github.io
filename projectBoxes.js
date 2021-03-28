@@ -443,8 +443,8 @@ let projects = [
 		},
 		{
 			title: 'Blonk',
-			image: 'https://i.imgur.com/a7vX7bb.png',
-			link: 'http://zrn.xyz',
+			image: 'https://i.imgur.com/SGhzYNr.png',
+			link: 'https://blonk.herokuapp.com',
 			created: '20/11/2019',
 			score: 16,
 			description: `
@@ -728,9 +728,32 @@ let projects = [
 			link: siteLink+'randum',
 			//code: githubSiteLink+'randum',
 			created: '18/12/2020',
-			score: 15,
+			score: 16,
 			description: `
 			Tunnel with circles? or something
+			`
+		},
+		{
+			title: 'Train-Pain.',
+			image: 'https://i.imgur.com/EH1t9sD.png',
+			link: 'https://train-pain.herokuapp.com/',
+			code: 'https://github.com/Mart100/Train-Pain',
+			created: '14/3/2021',
+			score: 15.5,
+			description: `
+			Trains
+			`
+		},
+		{
+			title: 'Spaceship-animation',
+			image: 'https://i.imgur.com/XIU7QrW.png',
+			link: siteLink+'coolSomething',
+			code: githubSiteLink+'coolSomething',
+			code: 'https://github.com/Mart100/Train-Pain',
+			created: '7/2/2021',
+			score: 13,
+			description: `
+			Trains
 			`
 		},
 ]
@@ -804,8 +827,8 @@ function addProjects() {
 			if(!project.link) return
 			if(!project.link.includes('https://martvenck.com')) {
 				let num = splicedProjects.indexOf(splicedProjects.find((a) => a.title == title))
-				$(`#project-${num} .thumbnail`).attr('src', 'https://i.imgur.com/dwb4jC1.gif')
-				$(`#project-${num} .title`).html('Loading...')
+				//$(`#project-${num} .thumbnail`).attr('src', 'https://i.imgur.com/dwb4jC1.gif')
+				$(`#project-${num} .title`).html('Loading... (This project has to startup first)')
 			}
 
 			setTimeout(() => {

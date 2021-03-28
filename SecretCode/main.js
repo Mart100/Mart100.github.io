@@ -8,7 +8,7 @@ $(function() {
     if($("#charactersC").prop('checked')) charnum = 2
     if($("#numbersC").prop('checked') && $("#charactersC").prop('checked')) charnum = 3
     if(charnum == 0) {
-      $(".code").append('CHECK THE DAMN RADIO\'S')
+      $(".code").append('Click the checkboxes to get started!')
       return
     }
     for(let i = 0; i < $("#length").val(); i++) {

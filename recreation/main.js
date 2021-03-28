@@ -38,7 +38,7 @@ function draw() {
 	drawCeiling()
 
 	grainCanvas()
-	blurCanvas()
+	//blurCanvas()
 	
 
 }
