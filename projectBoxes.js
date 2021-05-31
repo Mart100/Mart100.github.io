@@ -749,13 +749,23 @@ let projects = [
 			image: 'https://i.imgur.com/XIU7QrW.png',
 			link: siteLink+'coolSomething',
 			code: githubSiteLink+'coolSomething',
-			code: 'https://github.com/Mart100/Train-Pain',
 			created: '7/2/2021',
 			score: 13,
 			description: `
-			Trains
+			An animation
 			`
 		},
+		{
+		title: 'Odin',
+		image: 'https://i.imgur.com/JTvkT8R.png',
+		link: siteLink+'Odin',
+		code: 'https://github.com/Mart100/Odin',
+		created: '1/6/2021',
+		score: 15.4,
+		description: `
+		Simulation of people
+		`
+	},
 ]
 
 $(() => {
