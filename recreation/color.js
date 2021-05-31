@@ -15,10 +15,13 @@ class Color {
 
 		return this
 	}
+	clone() {
+		return new Color(this.r, this.g, this.b, this.a)
+	}
 	blend(color2, opacity) {
-		let r = this.r*(1-opacity)+color2.r*opacity
-		let g = this.g*(1-opacity)+color2.g*opacity
-		let b = this.b*(1-opacity)+color2.b*opacity
-		return new Color(r,g,b)
+		this.r = this.r*(1-opacity)+color2.r*opacity
+		this.g = this.g*(1-opacity)+color2.g*opacity
+		this.b = this.b*(1-opacity)+color2.b*opacity
+		return this
 	}
 }

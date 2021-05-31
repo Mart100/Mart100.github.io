@@ -108,6 +108,11 @@ class Vector {
 	clone() {
 		return new Vector(this.x, this.y)
 	}
+	round() {
+		this.x = Math.round(this.x)
+		this.y = Math.round(this.y)
+		return this
+	}
 	randomize(i) {
 		this.x = (Math.random()*i)-i/2
 		this.y = (Math.random()*i)-i/2

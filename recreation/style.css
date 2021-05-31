@@ -1,12 +1,14 @@
 body {
 	background-color: rgb(50, 50, 50);
 	margin: 0px;
-	text-align: center;
 	overflow: hidden;
 }
 
 canvas {
 	background-color: rgb(5, 5, 5);
+	position: absolute;
+	left: 50%;
+	transform: translateX(-50%);
 }
 
 #imgSize {
@@ -15,4 +17,12 @@ canvas {
 	top: 5px;
 	right: 5px;
 	color: white;
+}
+
+#image {
+	position: absolute;
+	z-index: 10;
+	opacity: 0;
+	left: 50%;
+	transform: translateX(-50%);
 }
