@@ -14,18 +14,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.7/ScrollMagic.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.7/plugins/debug.addIndicators.min.js"></script>
 
-    <!-- Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-140200727-3"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-
-      gtag('config', 'UA-140200727-3');
-    </script>
-
-    <script data-ad-client="ca-pub-7510922462770765" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-
     <script src="main.js"></script>
     <script src="./scripts/toorney-api.js"></script>
     <script src="./scripts/cookies.js"></script>
@@ -33,7 +21,14 @@
     <link href="style.css" rel="stylesheet">
     <link href="./styles/nav.css" rel="stylesheet">
   </head>
-  <body>
+  <body class="demo-bannered">
+    <style>
+      #demo-banner{position:fixed;top:0;left:0;right:0;background:#b33;color:#fff;text-align:center;padding:8px 12px;z-index:9999;font-weight:700;font-family:inherit}
+      body.demo-bannered{padding-top:34px}
+      #demo-banner .close{position:absolute;right:8px;top:6px;background:transparent;border:0;color:#fff;font-size:16px;cursor:pointer}
+      #demo-banner a{color:#fff;text-decoration:underline}
+    </style>
+    <div id="demo-banner">DEMO SITE — Data is mocked and stored locally. Not the live Toorney service. <button class="close" onclick="document.getElementById('demo-banner').style.display='none';document.body.classList.remove('demo-bannered')">✕</button></div>
     <div id="nav" class="invisible">
       <a href="./" class="selected">Home</a>
       <a href="./tournaments" >Tournaments</a>
@@ -48,16 +43,14 @@
       </div>
       <a class="invite" href="./invite">Invite Toorney!</a>
     </div>
-    <img src="https://i.imgur.com/XIgjISl.png" id="thumbnail">
     <div id="sold">
-      <div class="text">Toorney.xyz has been sold to <a href="https://tournamentkings.com/">Tournament kings </a></div>
+
       <div class="bg">
         <img src="https://i.imgur.com/tjSWPb9.png">
         <div class="left"></div>
         <div class="right"></div>
       </div>
-      <div class="end"></div>
-      
+      <div class="text">Toorney.xyz has been acquired by <a href="https://tournamentkings.com/">Tournament kings </a></div>
     </div>
     <div id="content">
       <br><br>

@@ -19,26 +19,7 @@ async function loadT() {
   guild = guilds[tournament.host]
 
   $('#tournaments').remove()
-
-  // add advertisements
-  $('body').append(`    
-  <!-- Ad horizontal tournament -->
-    <ins class="adsbygoogle" id="adsbygoogleH1"
-        style="width:728px;height:90px"
-        data-ad-client="ca-pub-7510922462770765"
-        data-ad-slot="4068793328"></ins>
-    <script>(adsbygoogleH1 = window.adsbygoogle || []).push({});</script>
-    
-    <!-- side Ad vertical tournament -->
-    <ins class="adsbygoogle" id="adsbygoogleV1" style="display:inline-block;width:300px;height:550px" data-ad-client="ca-pub-7510922462770765" data-ad-slot="8233546847"></ins>
-    <script>(adsbygoogleV1 = window.adsbygoogle || []).push({});</script>
-
-    <div id="tournament"></div>
-
-    <!-- side Ad vertical tournament -->
-    <ins class="adsbygoogle" id="adsbygoogleV2" style="display:inline-block;width:300px;height:550px" data-ad-client="ca-pub-7510922462770765" data-ad-slot="8233546847"></ins>
-    <script>(adsbygoogleV2 = window.adsbygoogle || []).push({});</script>
-  `)
+  $('body').append('<div id="tournament"></div>')
 
   $('#tournament').append(`
     <div id="top">

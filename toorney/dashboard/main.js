@@ -1,4 +1,5 @@
 let tournaments = {}
+let token = ''
 
 $(() => { onLoad() })
 
@@ -6,9 +7,13 @@ async function onLoad() {
 
   let userToken = getCookie('token')
 
-  if(getCookie('token') == '') return window.location = '../login'
+  // Demo mode: if no token present, use demo-token and persist it in cookie
+  if(!userToken || userToken == '') {
+    token = 'demo-token'
+    if(typeof setCookie === 'function') setCookie('token', token, 365)
+  } else token = userToken
 
-  tournaments = await getAdminTournaments(userToken)
+  tournaments = await getAdminTournaments(token)
 
   $('#loading').fadeOut()
 
@@ -95,8 +100,28 @@ async function loadTournament(tournamentID) {
   `
   $('body').append(html)
 
-  $('#tournament form').on('submit', () => {
+  // Intercept dashboard form submit and save locally via mock API
+  $('#tournament form').on('submit', async (e) => {
+    e.preventDefault()
     $("#tournament form").find(':checkbox:not(:checked)').attr('value', 'false').prop('checked', true);
+
+    const description = $('#tournament input[name="description"]').val()
+    const roundMaxTime = Number($('#tournament input[name="roundMaxTime"]').val())
+    const autorole = $('#tournament input[name="autorole"]').val()
+    const teams = $('#option-teams').is(':checked')
+    const forcejoinonly = $('#option-forcejoinonly').is(':checked')
+
+    tournament.description = description
+    tournament.roundMaxTime = roundMaxTime
+    tournament.autorole = autorole
+    tournament.teams = teams
+    tournament.forcejoinonly = forcejoinonly
+
+    try {
+      const res = await saveTournament(token, tournament)
+      if(res && res.success) alert('Saved (demo)')
+      else alert('Save failed')
+    } catch (err) { alert('Save error') }
   })
 
   if(tournament.status != 'ongoing') {

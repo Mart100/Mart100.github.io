@@ -1,0 +1,150 @@
+<html>
+	<head>
+		<title>Mart van Enckevort - personal programming website</title>
+
+		<meta name="title" content ="Mart van Enckevort - personal programming website">
+		<meta name="description" content="martvenck.com is a personal portofoliob y Mart van Enckevort. Where you can find my programming projects.">
+
+		<link rel="icon" type="image/jpg" href="https://i.imgur.com/DjZZBJf.jpeg"/>
+
+		<meta charset="utf-8"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>
+		<link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet"> 
+		
+
+		<!-- scripts -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<script src="script.js"></script>
+		<script src="projectBoxes.js"></script>
+
+		<!-- css -->
+		<link href="styles.css" rel="stylesheet">
+		<link href="skills.css" rel="stylesheet">
+		<link href="links.css" rel="stylesheet">
+		<link href="newsletter.css" rel="stylesheet">
+		<link href="navigator.css" rel="stylesheet">
+
+		<!-- loading bar -->
+		<link rel="stylesheet" type="text/css" href="loading-bar.min.css"/>
+		<script type="text/javascript" src="loading-bar.min.js"></script>
+
+
+	</head>
+	<body id="body" class="backgroundNoise">
+		<div id="header">
+			<div></div>
+			<div class="name"><h1>Mart van Enckevort</h1></div>
+			<div class="about"><p>
+				Hey there,<br>
+				My name is Mart and welcome to my website!<br>
+				I am a 17 year old highschool student hobbying programming.<br>
+				This is my portofolio where I post most of my programming projects and other projects.<br>
+				Note that most projects won't work at their full power on mobile and using a computer is reccommended.
+			</p></div>
+			<div id="navigator">
+				<a href="#projectsSplitter"><button>Projects</button></a>
+				<a href="#skillsSplitter"><button>Skills</button></a>
+				<a href="#linksSplitter"><button>Links</button></a>
+				
+			</div>
+		</div>
+		
+		<div class="splitter" id="projectsSplitter"><span><h2>Projects</h2></span>
+			<div id="sort">Sort by:
+				<div class="dropdown">
+						<button class="dropbtn">Best</button>
+						<div id="dropdown" class="dropdown-content">
+							<button id="newest">Newest</button>
+							<button id="best">Best</button>
+						</div>
+					</div>
+				</div>
+		</div>
+		<div id="projectsWrapper"></div>
+		
+		<div class="splitter" id="skillsSplitter"><h2>Skills</h2></div>
+		<div id="skills">
+			<div>
+				<div class="skillCategory">
+					<div class="title">Programming Languages</div>
+					<div class="skill">
+						<span>Javascript</span>
+						<br><div class="progressBar"><div style="width: 90%"></div></div>
+					</div>
+					<div class="skill">
+						<span>Typescript</span>
+						<br><div class="progressBar"><div style="width: 80%"></div></div>
+					</div>
+					<div class="skill">
+						<span>Python</span>
+						<br><div class="progressBar"><div style="width: 65%"></div></div>
+					</div>
+					<div class="skill">
+						<span>Dart</span>
+						<br><div class="progressBar"><div style="width: 65%"></div></div>
+					</div>
+				</div>
+				<div class="skillCategory">
+					<div class="title">Technologies/Libraries</div>
+					<div class="skill">
+						<span>Jquery</span>
+						<br><div class="progressBar"><div style="width: 90%"></div></div>
+					</div>
+					<div class="skill">
+						<span>Electron</span>
+						<br><div class="progressBar"><div style="width: 80%"></div></div>
+					</div>
+					<div class="skill">
+						<span>Express + socket.io</span>
+						<br><div class="progressBar"><div style="width: 80%"></div></div>
+					</div>
+					<div class="skill">
+						<span>Flutter</span>
+						<br><div class="progressBar"><div style="width: 70%"></div></div>
+					</div>
+				</div>
+				<div class="skillCategory">
+					<div class="title">Programming areas</div>
+					<div class="skill">
+						<span>Simulations</span>
+						<br><div class="progressBar"><div style="width: 80%"></div></div>
+					</div>
+					<div class="skill">
+						<span>Websites</span>
+						<br><div class="progressBar"><div style="width: 75%"></div></div>
+					</div>
+					<div class="skill">
+						<span>Games</span>
+						<br><div class="progressBar"><div style="width: 75%"></div></div>
+					</div>
+					<div class="skill">
+						<span>Algorithms</span>
+						<br><div class="progressBar"><div style="width: 65%"></div></div>
+					</div>
+					<div class="skill">
+						<span>Apps</span>
+						<br><div class="progressBar"><div style="width: 60%"></div></div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!--<div class="splitter">NEWSLETTER</div>
+		<div id="newsletter">
+			<p>Stay updated about all my latest and newest projects!</p>
+			<input type="email" placeholder="test124@gmail.com">
+			<div id="subscribe">Subscribe</div>
+			<br>
+		</div> -->
+		<div class="splitter" id="linksSplitter"><h2>Links</h2></div>
+		<div id="linksCont"><div id="links">
+			<a href="https://github.com/Mart100"><img id="github" src="https://i.imgur.com/pP7GNhC.png" alt="github logo"/></a>
+			<a href="https://i.imgur.com/eaqjvxs.png"><img id="discord" src="https://i.imgur.com/8XPlIYb.png" alt="discord logo"/></a>
+			<a href="https://www.sololearn.com/Profile/7589669"><img id="sololearn" src="https://i.imgur.com/G8qqexq.png" alt="sololearn logo"/></a>
+			<a href="https://jsfiddle.net/user/Marto_0/fiddles/"><img id="jsFiddle" src="https://i.imgur.com/vShtQmA.png" alt="jsfiddle logo"/></a>
+			<a href="https://twitter.com/Mart100_o"><img id="twitter" src="https://i.imgur.com/VwoEcG4.png" alt="twitter logo"/></a>
+			<a href="https://steamcommunity.com/id/Marto_0/myworkshopfiles/"><img id="steam" src="https://i.imgur.com/Vz8YNxf.png" alt="steam logo"/></a>
+			<a href="https://glitch.com/@Mart100"><img id="glitch" src="https://i.imgur.com/hIMVnoi.png" alt="glitch logo"/></a>
+		</div></div>
+	</body>
+</html>
